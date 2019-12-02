@@ -11,7 +11,13 @@ import Foundation
 class callingCellItem {
     
     var NameCallingFor = ""
+    var localName = ""
     var localTime = ""
+    var dateCalling = ""
+    var destinationTime = ""
+    var destinationName = ""
+    var jetLag = ""
+    
     var checked = false
    
     

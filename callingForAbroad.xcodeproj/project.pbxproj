@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6FCF2EE2237D480800EE7344 /* UINavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF2EE1237D480800EE7344 /* UINavigationViewController.swift */; };
+		6F3BF3992388B9F9003CE424 /* CallingDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF3982388B9F9003CE424 /* CallingDetailTableViewController.swift */; };
+		6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */; };
+		6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */; };
 		6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
 		6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */; };
@@ -20,7 +22,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6FCF2EE1237D480800EE7344 /* UINavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationViewController.swift; sourceTree = "<group>"; };
+		6F3BF3982388B9F9003CE424 /* CallingDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingDetailTableViewController.swift; sourceTree = "<group>"; };
+		6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCallingTableViewController.swift; sourceTree = "<group>"; };
+		6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemScrollview.swift; sourceTree = "<group>"; };
 		6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemViewController.swift; sourceTree = "<group>"; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6F047B032394BB5C00AD3F09 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				6F3BF3982388B9F9003CE424 /* CallingDetailTableViewController.swift */,
+				6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */,
+				6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */,
+			);
+			path = controller;
+			sourceTree = "<group>";
+		};
 		6FECA0EA23750BCE00B7DD8B = {
 			isa = PBXGroup;
 			children = (
@@ -64,13 +78,13 @@
 		6FECA0F523750BCE00B7DD8B /* callingForAbroad */ = {
 			isa = PBXGroup;
 			children = (
+				6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */,
+				6F047B032394BB5C00AD3F09 /* controller */,
 				6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */,
 				6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */,
-				6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */,
 				6FECA138237A3AC700B7DD8B /* callingCellList.swift */,
 				6FECA13223767A1500B7DD8B /* callingCellItem.swift */,
-				6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */,
-				6FCF2EE1237D480800EE7344 /* UINavigationViewController.swift */,
+				6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */,
 				6FECA0FC23750BCE00B7DD8B /* Main.storyboard */,
 				6FECA0FF23750BD200B7DD8B /* Assets.xcassets */,
 				6FECA10123750BD200B7DD8B /* LaunchScreen.storyboard */,
@@ -153,9 +167,11 @@
 				6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */,
 				6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */,
 				6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */,
+				6F3BF3992388B9F9003CE424 /* CallingDetailTableViewController.swift in Sources */,
 				6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */,
+				6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */,
+				6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */,
 				6FECA139237A3AC700B7DD8B /* callingCellList.swift in Sources */,
-				6FCF2EE2237D480800EE7344 /* UINavigationViewController.swift in Sources */,
 				6FECA13323767A1500B7DD8B /* callingCellItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,6 @@
 		6F150B7123AA03FD00908DEB /* JetLagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7023AA03FD00908DEB /* JetLagTableViewCell.swift */; };
 		6F150B7323AA047500908DEB /* DestinationTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7223AA047500908DEB /* DestinationTimeTableViewCell.swift */; };
 		6F150B7623AA053F00908DEB /* NameCallingForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */; };
-		6F150B7823AA057400908DEB /* DetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7723AA057400908DEB /* DetailList.swift */; };
 		6F150B7D23AA261C00908DEB /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7C23AA261C00908DEB /* MenuTableViewController.swift */; };
 		6F150B8123AA283900908DEB /* AccountSwitchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */; };
 		6F150B8323AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8223AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift */; };
@@ -48,7 +47,6 @@
 		6F150B7023AA03FD00908DEB /* JetLagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B7223AA047500908DEB /* DestinationTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTimeTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameCallingForTableViewCell.swift; path = "callingForAbroad/cell for Detail page/NameCallingForTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		6F150B7723AA057400908DEB /* DetailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailList.swift; path = callingForAbroad/DetailList.swift; sourceTree = SOURCE_ROOT; };
 		6F150B7C23AA261C00908DEB /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = /Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/MenuTableViewController.swift; sourceTree = "<absolute>"; };
 		6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSwitchingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F150B8223AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingNameCallingForTableViewCell.swift; sourceTree = "<group>"; };
@@ -150,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */,
-				6F150B7723AA057400908DEB /* DetailList.swift */,
 				6F150B9223AA2D0500908DEB /* cell for editting detail */,
 				6F150B7423AA04B800908DEB /* cell for Detail page */,
 				6F047B032394BB5C00AD3F09 /* controller */,
@@ -311,7 +308,6 @@
 				6F150B7323AA047500908DEB /* DestinationTimeTableViewCell.swift in Sources */,
 				6F150B8523AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift in Sources */,
 				6F150B8F23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift in Sources */,
-				6F150B7823AA057400908DEB /* DetailList.swift in Sources */,
 				6F150B6D23AA024300908DEB /* LocalTimeTableViewCell.swift in Sources */,
 				6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */,
 				6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */,

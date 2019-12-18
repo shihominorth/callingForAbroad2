@@ -31,12 +31,10 @@ class DetailCallingTableViewController: UITableViewController {
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditItemSegue" {
-        if let addItemViewController = segue.destination as? addCallingItemViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                let item = CallingCelllist.callingList[indexPath.row]
-                addItemViewController.itemToEdit = item
-            }
+        if segue.identifier == "editting Segue" {
+        if let edittingVC = segue.destination as? EdittingDetailTableViewController {
+            edittingVC.item = self.item
+            edittingVC.indexPath = self.indexPath
             }
         }
     }
@@ -78,7 +76,7 @@ class DetailCallingTableViewController: UITableViewController {
 
             // Configure the cell...
 
-            cell.localNameLabel.text = item.localTime
+            cell.localNameLabel.text = item.localName
             
             return cell
         }
@@ -119,6 +117,9 @@ class DetailCallingTableViewController: UITableViewController {
         let cell = UITableViewCell()
         return cell
     }
+    
+    
+    
     
 
     /*
@@ -166,38 +167,7 @@ class DetailCallingTableViewController: UITableViewController {
     }
     */
 
-
 }
 
-extension DetailCallingTableViewController {
-//    func assignImformationToCell(index: Int) {
-//
-//
-//        let nameCallingForTableViewCell = NameCallingForTableViewCell()
-//        let dateCallingTableViewCell = DateCallingTableViewCell()
-//        let localTimeTableViewCell = LocalTimeTableViewCell()
-//        let localNameTableViewCell = LocalNameTableViewCell()
-//        let destinationNameTableViewCell = DestinationNameTableViewCell()
-//        let jetLagTableViewCell = JetLagTableViewCell()
-//        let destinationTimeTableViewCell = DestinationTimeTableViewCell()
-//
-//
-//
-//            nameCallingForTableViewCell.NameCallingForLabel.text = item.NameCallingFor
-//            dateCallingTableViewCell.DateCallingLabel.text = item.dateCalling
-//
-//            localNameTableViewCell.localNameLabel.text = item.localName
-//
-//
-//            localTimeTableViewCell.LocalTimeLabel.text = item.localTime
-//
-//
-//            destinationNameTableViewCell.DestinationNameLabel.text = item.destinationName
-//
-//
-//            jetLagTableViewCell.jetLagLabel.text = item.jetLag
-//
-//
-//            destinationTimeTableViewCell.destinationTimeLabel.text = item.destinationTime
-//    }
-}
+
+

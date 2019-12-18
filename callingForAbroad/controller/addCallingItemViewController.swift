@@ -27,7 +27,8 @@ class addCallingItemViewController: UIViewController {
     @IBOutlet weak var textfield: UITextField!
     
     @IBOutlet weak var LocalTimeForCalling: UITextField!
-    @IBOutlet weak var reminderTextfiled: UITextField!
+    @IBOutlet weak var notificationTextFiled: UITextField!
+    
     
     // when you connect bar item button with IBAction, the name of function should be same as the name of bar button item.
     @IBAction func Add(_ sender: Any) {
@@ -72,7 +73,7 @@ class addCallingItemViewController: UIViewController {
 //        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 206.0/255.0, blue: 206.0/255.0, alpha: 1)
 //        self.navigationController?.navigationBar.backgroundColor = UIColor(red: 0.0, green: 206.0/255.0, blue: 206.0/255.0, alpha: 1)
         
-        toolBar = UIToolbar()
+        toolBar = UIToolbar(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: view.bounds.width, height: CGFloat(44))))
         toolBar.sizeToFit()
         let toolBarBtn = UIBarButtonItem(title: "DONE", style: .plain, target: self, action: "doneBtn")
         toolBar.items = [toolBarBtn]
@@ -102,7 +103,13 @@ extension addCallingItemViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         callingNametextFild.resignFirstResponder()
-        return false
+        // 次のTag番号を持っているテキストボックスがあれば、フォーカスする
+        let nextTag = textField.tag + 1
+        if let nextTextField = self.view.viewWithTag(nextTag) {
+            nextTextField.becomeFirstResponder()
+        }
+        
+        return true
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
@@ -123,23 +130,47 @@ extension addCallingItemViewController: UITextFieldDelegate {
     }
     
     //テキストフィールドが選択されたらdatepickerを表示
-    @IBAction func timeEditing(sender: UITextField) {
+//    @IBAction func timeEditing(sender: UITextField) {
+//        let datePickerView:UIDatePicker = UIDatePicker()
+//        datePickerView.datePickerMode = UIDatePicker.Mode.dateAndTime
+//        sender.inputView = datePickerView
+//        datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControl.Event.valueChanged)
+//    }
+    
+    @IBAction func notificationEditing(sender: UITextField) {
         let datePickerView:UIDatePicker = UIDatePicker()
-        datePickerView.datePickerMode = UIDatePicker.Mode.date
-        sender.inputView = datePickerView
-        datePickerView.addTarget(self, action: Selector("datePickerValueChanged"), for: UIControl.Event.valueChanged)
+        
+        if sender.tag == 3 {
+            datePickerView.datePickerMode = UIDatePicker.Mode.dateAndTime
+            sender.inputView = datePickerView
+            datePickerView.addTarget(self, action: #selector(datePickerValueChanged), for: UIControl.Event.valueChanged)
+        } else if sender.tag == 4 {
+            datePickerView.datePickerMode = UIDatePicker.Mode.countDownTimer
+            sender.inputView = datePickerView
+            datePickerView.addTarget(self, action: #selector(notificationPickerValueChanged), for: UIControl.Event.valueChanged)
+        }
+        
     }
     
-    
     //datepickerが選択されたらtextfieldに表示
-    func datePickerValueChanged(sender:UIDatePicker) {
+    @objc func datePickerValueChanged(sender:UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat  = "yyyy/MM/dd";
+        dateFormatter.dateFormat  = "MM/dd/yyyy hh:mm a";
         LocalTimeForCalling.text = dateFormatter.string(from: sender.date)
     }
     
-    func doneBtn(){
-        LocalTimeForCalling.resignFirstResponder()
+    @objc func notificationPickerValueChanged(sender:UIDatePicker){
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "h:mma";
+        notificationTextFiled.text = dateFormatter.string(from: sender.date)
+    }
+    
+//    @objc func doneBtn(){
+//        LocalTimeForCalling.resignFirstResponder()
+//    }
+    
+    @objc func doneBtn(){
+        textfield.resignFirstResponder()
     }
 }
 

@@ -10,7 +10,7 @@ import UIKit
 
 class callinglistViewController: UITableViewController {
     
-    var CallingCelllist = callingCellList()
+    let CallingCelllist = callingCellList()
 
     // i want to change this icon to gear icon
     
@@ -154,6 +154,16 @@ class callinglistViewController: UITableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                     let item = CallingCelllist.callingList[indexPath.row]
                     addItemViewController.itemToEdit = item
+                    
+                }
+            }
+        }
+        else if segue.identifier == "showDetailSegue" {
+            if let detailVC = segue.destination as? DetailCallingTableViewController {
+                if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+                    let item = CallingCelllist.callingList[indexPath.row]
+                    detailVC.item = item
+                    detailVC.indexPath = indexPath
                 }
             }
         }

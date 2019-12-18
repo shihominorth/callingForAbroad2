@@ -1,22 +1,20 @@
 //
-//  DetailCallingTableViewController.swift
+//  callingPlanDetailTableViewController.swift
 //  checklist
 //
-//  Created by 北島　志帆美 on 2019-11-22.
+//  Created by 北島　志帆美 on 2019-12-02.
 //  Copyright © 2019 北島　志帆美. All rights reserved.
 //
 
 import UIKit
 
-class DetailCallingTableViewController: UITableViewController {
+class callingPlanDetailTableViewController: UITableViewController {
     
-    var CallingCelllist = callingCellList()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -24,29 +22,17 @@ class DetailCallingTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "EditItemSegue" {
-        if let addItemViewController = segue.destination as? addCallingItemViewController {
-            if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                let item = CallingCelllist.callingList[indexPath.row]
-                addItemViewController.itemToEdit = item
-            }
-            }
-        }
-    }
-}
     // MARK: - Table view data source
 
-//    override func numberOfSections(in tableView: UITableView) -> Int {
-//        // #warning Incomplete implementation, return the number of sections
-//        return 0
-//    }
-//
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        // #warning Incomplete implementation, return the number of rows
-//        return 0
-//    }
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 0
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 0
+    }
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,4 +89,4 @@ class DetailCallingTableViewController: UITableViewController {
     }
     */
 
-
+}

@@ -10,7 +10,7 @@ import UIKit
 
 class DetailCallingTableViewController: UITableViewController {
     
-    var CallingCelllist = callingCellList()
+    var CallingCelllist = CallingCellList()
     var item = callingCellItem()
     var indexPath = IndexPath()
     
@@ -33,7 +33,7 @@ class DetailCallingTableViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editting Segue" {
         if let edittingVC = segue.destination as? EdittingDetailTableViewController {
-            edittingVC.item = self.item
+            edittingVC.editItem = self.item
             edittingVC.indexPath = self.indexPath
             }
         }
@@ -57,7 +57,7 @@ class DetailCallingTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "NameCalling", for: indexPath) as? NameCallingForTableViewCell)!
             
-            cell.NameCallingForLabel.text = item.NameCallingFor
+            cell.NameCallingForLabel.text = item.nameCallingFor
             
 
             // Configure the cell...
@@ -68,7 +68,7 @@ class DetailCallingTableViewController: UITableViewController {
                 let cell = (tableView.dequeueReusableCell(withIdentifier: "date Calling", for: indexPath) as? DateCallingTableViewCell)!
 
                 // Configure the cell...
-            cell.DateCallingLabel.text = item.dateCalling
+            cell.DateCallingLabel.text = item.localDate
                 return cell
             }
         else if indexPath.section == 2 {

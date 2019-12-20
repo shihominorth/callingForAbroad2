@@ -10,8 +10,15 @@ import UIKit
 
 class callinglistViewController: UITableViewController {
     
-    let CallingCelllist = callingCellList()
+    let callingCelllist = CallingCellList()
+    var section1: Dictionary = [String:NSMutableArray]()
+    var section2: Dictionary = [String:NSMutableArray]()
+    var sections: Array = [Dictionary<String,NSMutableArray>]()
+    
 
+    
+    @IBOutlet weak var addButton: UIBarButtonItem!
+    
     // i want to change this icon to gear icon
     
 //    @IBAction func userSettings(_ sender: Any) {
@@ -28,62 +35,89 @@ class callinglistViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        
-        tableView.rowHeight = 100.0
+        
         navigationController?.navigationBar.prefersLargeTitles = false
-//        
+        let delete = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteItems))
+        //let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: <#T##Selector?#>)
+        navigationItem.rightBarButtonItems = [editButtonItem, delete, addButton]
+        tableView.allowsMultipleSelectionDuringEditing = true
 //        let app = UINavigationBarAppearance()
 //        app.backgroundColor = UIColor(red: 0.0, green: 206.0/255.0, blue: 206.0/255.0, alpha: 1)
 //        self.navigationController?.navigationBar.scrollEdgeAppearance = app
 
         //UINavigationBar..UINavigationBarAppearance.color
     }
+    
+    @objc func deleteItems(_ sender: Any) {
+        if let selectRows = tableView.indexPathsForSelectedRows {
+            var items = [callingCellItem]()
+            for indexPath in selectRows {
+                items.append(callingCelllist.callingList[indexPath.row])
+            }
+            callingCelllist.remove(items: items)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: selectRows, with: .automatic)
+            tableView.endUpdates()
+            
+        }
+    }
+    
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        tableView.setEditing(tableView.isEditing, animated: true)
+        
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return CallingCelllist.callingList.count
+        
+        return callingCelllist.callingList.count
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
     
     
     // about deta the cell has
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "callingItem", for:indexPath)
-        let item = CallingCelllist.callingList[indexPath.row]
         
-        if let label1000 = cell.viewWithTag(1000) as? UILabel {
-            label1000.text = CallingCelllist.callingList[indexPath.row].NameCallingFor
-        }
-        if let label999 = cell.viewWithTag(999) as? UILabel {
-            label999.text = CallingCelllist.callingList[indexPath.row].localTime
-        }
-        if let label555 = cell.viewWithTag(555) as? UILabel {
-            label555.text = CallingCelllist.callingList[indexPath.row].localName
-        }
-        if let label333 = cell.viewWithTag(333) as? UILabel {
-            label333.text = CallingCelllist.callingList[indexPath.row].dateCalling
-        }
-        if let label111 = cell.viewWithTag(111) as? UILabel {
-            label111.text = CallingCelllist.callingList[indexPath.row].destinationName
-        }
-        if let label222 = cell.viewWithTag(222) as? UILabel {
-            label222.text = CallingCelllist.callingList[indexPath.row].jetLag
-        }
-        if let label666 = cell.viewWithTag(666) as? UILabel {
-            label666.text = CallingCelllist.callingList[indexPath.row].destinationTime
-        }
+        let cell = (tableView.dequeueReusableCell(withIdentifier: "callingItem", for:indexPath) as? callingItemTableViewCell)!
         
-        
-        
-        configureCheckmark(for: cell, with: item)
+        cell.nameCallingForLabel.text = callingCelllist.callingList[indexPath.row].nameCallingFor
+       
+        cell.localTimeLabel.text = callingCelllist.callingList[indexPath.row].localTime
+    
+        cell.localNameLabel.text = callingCelllist.callingList[indexPath.row].localName
+   
+        cell.localDateLabel.text = callingCelllist.callingList[indexPath.row].localDate
+   
+        cell.destinationNameLabel.text = callingCelllist.callingList[indexPath.row].destinationName
+   
+        cell.jetLagLabel.text = callingCelllist.callingList[indexPath.row].jetLag
+    
+        cell.destinationTimeLabel.text = callingCelllist.callingList[indexPath.row].destinationTime
+
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        return cell
+            
+       return cell
     }
     
-    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        callingCelllist.move(item: callingCelllist.callingList[sourceIndexPath.row], to: destinationIndexPath.row)
+    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEditing {
+            return
+        }
         // tableView.cellForRow(at: indexPath) means it return the cell user tapped
         if let cell = tableView.cellForRow(at: indexPath) {
-            let item = CallingCelllist.callingList[indexPath.row]
-           configureCheckmark(for: cell, with: item)
+            let item = callingCelllist.callingList[indexPath.row]
+//           configureCheckmark(for: cell, with: item)
             // tableView.deselectRow(at: indexPath, animated: true) stop highlighting the cell after user release finger.
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -91,7 +125,7 @@ class callinglistViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        CallingCelllist.callingList.remove(at: indexPath.row)
+        callingCelllist.callingList.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
         
@@ -103,7 +137,7 @@ class callinglistViewController: UITableViewController {
     
     func cellText(for cell:UITableViewCell, with item: callingCellItem) {
         if let label = cell.viewWithTag(1000) as? UILabel {
-            label.text = item.NameCallingFor
+            label.text = item.nameCallingFor
         }
         else if let label = cell.viewWithTag(999) as? UILabel {
             label.text = item.localTime
@@ -115,10 +149,10 @@ class callinglistViewController: UITableViewController {
             label.text = item.localName
         }
         else if let label = cell.viewWithTag(333) as? UILabel {
-            label.text = item.dateCalling
+            label.text = item.localDate
         }
         else if let label = cell.viewWithTag(111) as? UILabel {
-            label.text = item.dateCalling
+            label.text = item.localDate
         }
         else if let label = cell.viewWithTag(222) as? UILabel {
             label.text = item.jetLag
@@ -129,17 +163,11 @@ class callinglistViewController: UITableViewController {
         
     }
     
-    
-    
-    
-    func configureCheckmark(for cell:UITableViewCell, with item: callingCellItem) {
-       
-        if item.checked {
-            cell.accessoryType = .checkmark
-        } else {
-            cell.accessoryType = .none
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "showDetailSegue", tableView.isEditing {
+            return false
         }
-        item.toggleChecked()
+        return true
     }
     
     
@@ -147,12 +175,12 @@ class callinglistViewController: UITableViewController {
         if segue.identifier == "AddItemSegue" {
             if let addItemViewController = segue.destination as? addCallingItemViewController {
                 addItemViewController.delegate = self
-                addItemViewController.itemList = CallingCelllist
+                addItemViewController.itemList = callingCelllist
             }
         } else if segue.identifier == "EditItemSegue" {
             if let addItemViewController = segue.destination as? addCallingItemViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                    let item = CallingCelllist.callingList[indexPath.row]
+                    let item = callingCelllist.callingList[indexPath.row]
                     addItemViewController.itemToEdit = item
                     
                 }
@@ -161,7 +189,7 @@ class callinglistViewController: UITableViewController {
         else if segue.identifier == "showDetailSegue" {
             if let detailVC = segue.destination as? DetailCallingTableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                    let item = CallingCelllist.callingList[indexPath.row]
+                    let item = callingCelllist.callingList[indexPath.row]
                     detailVC.item = item
                     detailVC.indexPath = indexPath
                 }
@@ -171,6 +199,23 @@ class callinglistViewController: UITableViewController {
 }
 
 
+//extension callinglistViewController: AddViewControllerDelegate {
+//    func addItemViewControllerDidCancel(_ controller: addCallingItemViewController) {
+//        navigationController?.popViewController(animated: true)
+//    }
+//
+//    func addItemViewController(_ controller: addCallingItemViewController, didFinishAdding item: callingCellItem) {
+//        navigationController?.popViewController(animated: true)
+//        let rowIndex = CallingCelllist.callingList.count
+//        CallingCelllist.callingList.append(item)
+//        let indexPath = IndexPath(row: rowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+//    }
+//
+//
+//}
+
 extension callinglistViewController: AddViewControllerDelegate {
     func addItemViewControllerDidCancel(_ controller: addCallingItemViewController) {
         navigationController?.popViewController(animated: true)
@@ -178,13 +223,12 @@ extension callinglistViewController: AddViewControllerDelegate {
     
     func addItemViewController(_ controller: addCallingItemViewController, didFinishAdding item: callingCellItem) {
         navigationController?.popViewController(animated: true)
-        let rowIndex = CallingCelllist.callingList.count
-        CallingCelllist.callingList.append(item)
+        let rowIndex = callingCelllist.callingList.count
+        callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
-    
-    
+
 }
 

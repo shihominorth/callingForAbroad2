@@ -15,23 +15,27 @@ protocol EditItemTableViewControllerDelegate: class {
 class EdittingDetailTableViewController: UITableViewController {
 
     weak var editItem:callingCellItem?
-    var indexPath = IndexPath()
+//    var indexPath = IndexPath()
     weak var delegate: EditItemTableViewControllerDelegate?
     weak var callingCellList:CallingCellList?
     
 
+
     @IBAction func done(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-        
 //        if let item = editItem, let text =  textField.text {
 //            item.nameCallingFor = text
 //            delegate?.editItemViewController(self, didFinishEditting: item)
 //        }
     }
+
     
+    // something happen inside here
+    // when clicking the item bar button app carsh.
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        registerCell()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -41,6 +45,29 @@ class EdittingDetailTableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
+    private func registerCell() {
+        
+        self.tableView.register(EdittingNameCallingForTableViewCell.self, forCellReuseIdentifier: "Editting NameCalling")
+        
+        self.tableView.register(EdittingDateCallingTableViewCell.self,
+                                forCellReuseIdentifier: "Editting date Calling")
+        
+        self.tableView.register(EdittingLocalNameTableViewCell.self,
+                                forCellReuseIdentifier: "Editting local Name")
+
+        self.tableView.register(EdittingLocalTimeTableViewCell.self,
+                                forCellReuseIdentifier: "Editting local Time")
+
+        self.tableView.register(EdittingDestinationNameTableViewCell.self,
+                                forCellReuseIdentifier: "Editting destination Name")
+
+        self.tableView.register(EdittingJetLagTableViewCell.self,
+                                forCellReuseIdentifier: "Editting jet Lag")
+
+        self.tableView.register(EdittingDestinationTimeTableViewCell.self,
+                                forCellReuseIdentifier: "Editting destination Time")
+    }
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
@@ -53,6 +80,7 @@ class EdittingDetailTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
 //
 //        let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
 //
@@ -80,14 +108,12 @@ class EdittingDetailTableViewController: UITableViewController {
 
                cell.textField.text = editItem?.nameCallingFor
 
-
                // Configure the cell...
 
                return cell
            }
            else if indexPath.row == 1 {
                    let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
-
                    // Configure the cell...
             cell.textField.text = editItem?.localDate
                 return cell
@@ -95,13 +121,13 @@ class EdittingDetailTableViewController: UITableViewController {
             }
            else if indexPath.row == 2 {
                let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
-
                // Configure the cell...
 
                cell.textField.text = editItem?.localName
 
                return cell
            }
+
 
            else if indexPath.row == 3 {
                let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
@@ -112,6 +138,7 @@ class EdittingDetailTableViewController: UITableViewController {
                return cell
            }
            else if indexPath.row == 4 {
+
                let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
 
                // Configure the cell...
@@ -120,6 +147,7 @@ class EdittingDetailTableViewController: UITableViewController {
                return cell
            }
            else if indexPath.row == 5 {
+
                let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
 
                // Configure the cell...
@@ -128,6 +156,7 @@ class EdittingDetailTableViewController: UITableViewController {
                return cell
            }
            else if indexPath.row == 6 {
+
                let cell = (tableView.dequeueReusableCell(withIdentifier: "edittingTableViewCell", for: indexPath) as? EdittingTableViewCell)!
 
                // Configure the cell...

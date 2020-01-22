@@ -16,15 +16,21 @@ protocol AddViewControllerDelegate: class {
 class addCallingItemViewController: UIViewController {
     
     weak var delegate: AddViewControllerDelegate?
-    weak var itemList: callingCellList?
+    weak var itemList: CallingCellList?
     weak var itemToEdit: callingCellItem?
     var toolBar = UIToolbar()
    
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!
+    @IBOutlet weak var destinaitonNameTextField: UITextField!
+    @IBOutlet weak var localTimeTextField: UITextField!
+    @IBOutlet weak var notificateTimeTextField: UITextField!
+    @IBOutlet weak var callingPlaceAt: UITextField!
+    
+    
     
     @IBOutlet weak var addBarButton: UIBarButtonItem!
     
-    @IBOutlet weak var textfield: UITextField!
+    @IBOutlet weak var nameCallingFortextfield: UITextField!
     
     @IBOutlet weak var LocalTimeForCalling: UITextField!
     @IBOutlet weak var notificationTextFiled: UITextField!
@@ -42,10 +48,12 @@ class addCallingItemViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         delegate?.addItemViewControllerDidCancel(self)
         let item = callingCellItem()
-        if let textFiledText = textfield.text {
-            item.NameCallingFor = textFiledText
+        if let textFiledText = nameCallingFortextfield.text {
+            item.nameCallingFor = textFiledText
+//            item.localName = 
+            
         }
-        item.checked = false
+//        item.checked = false
         delegate?.addItemViewController(self, didFinishAdding: item)
     }
     
@@ -62,7 +70,7 @@ class addCallingItemViewController: UIViewController {
         
         if let item = itemToEdit {
             title = "Edit Item"
-            textfield.text = item.NameCallingFor
+            nameCallingFortextfield.text = item.nameCallingFor
             addBarButton.isEnabled = true
         }
 
@@ -102,13 +110,15 @@ class addCallingItemViewController: UIViewController {
 extension addCallingItemViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        callingNametextFild.resignFirstResponder()
+//        callingNametextFild.resignFirstResponder()
+        textField.resignFirstResponder()
         // 次のTag番号を持っているテキストボックスがあれば、フォーカスする
         let nextTag = textField.tag + 1
         if let nextTextField = self.view.viewWithTag(nextTag) {
             nextTextField.becomeFirstResponder()
         }
         
+
         return true
     }
     
@@ -170,7 +180,7 @@ extension addCallingItemViewController: UITextFieldDelegate {
 //    }
     
     @objc func doneBtn(){
-        textfield.resignFirstResponder()
+        nameCallingFortextfield.resignFirstResponder()
     }
 }
 

@@ -8,20 +8,25 @@
 
 import Foundation
 
-class callingCellItem {
+class callingCellItem: NSObject {
     
-    var NameCallingFor = ""
+    
+    
+    var nameCallingFor = ""
     var localName = ""
+    var localDate = ""
     var localTime = ""
-    var dateCalling = ""
     var destinationTime = ""
-    var destinationName = ""
     var jetLag = ""
+    var destinationName = ""
+    var notification = ""
+    var placeCallingAt = ""
     
-    var checked = false
-   
     
-    func toggleChecked() {
-        checked = !checked
-    }
+//    var checked = false
+//   
+//    
+//    func toggleChecked() {
+//        checked = !checked
+//    }
 }

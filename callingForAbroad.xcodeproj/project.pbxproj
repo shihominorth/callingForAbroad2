@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5431A834B3EC27A766474465 /* Pods_checklist.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E72489660E07ABFEEBBC7881 /* Pods_checklist.framework */; };
+		6F0FBB1223DA5A72009C1775 /* EdittingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F0FBB1123DA5A72009C1775 /* EdittingTableViewCell.swift */; };
 		6F150B6B23AA01C700908DEB /* DateCallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B6A23AA01C600908DEB /* DateCallingTableViewCell.swift */; };
 		6F150B6D23AA024300908DEB /* LocalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B6C23AA024300908DEB /* LocalTimeTableViewCell.swift */; };
 		6F150B6F23AA038C00908DEB /* DestinationNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B6E23AA038C00908DEB /* DestinationNameTableViewCell.swift */; };
@@ -16,13 +17,6 @@
 		6F150B7623AA053F00908DEB /* NameCallingForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */; };
 		6F150B7D23AA261C00908DEB /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B7C23AA261C00908DEB /* MenuTableViewController.swift */; };
 		6F150B8123AA283900908DEB /* AccountSwitchingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */; };
-		6F150B8323AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8223AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift */; };
-		6F150B8523AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8423AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift */; };
-		6F150B8723AA2ADA00908DEB /* EdittingLocalNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8623AA2ADA00908DEB /* EdittingLocalNameTableViewCell.swift */; };
-		6F150B8923AA2B0C00908DEB /* EdittingLocalTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8823AA2B0C00908DEB /* EdittingLocalTimeTableViewCell.swift */; };
-		6F150B8B23AA2B9400908DEB /* EdittingDestinationNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8A23AA2B9400908DEB /* EdittingDestinationNameTableViewCell.swift */; };
-		6F150B8D23AA2BDE00908DEB /* EdittingJetLagTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8C23AA2BDE00908DEB /* EdittingJetLagTableViewCell.swift */; };
-		6F150B8F23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B8E23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift */; };
 		6F150B9123AA2CC500908DEB /* EdittingDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B9023AA2CC500908DEB /* EdittingDetailTableViewController.swift */; };
 		6F150B9823AADF2500908DEB /* addingCallingItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B9723AADF2500908DEB /* addingCallingItemTableViewController.swift */; };
 		6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150B9923AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift */; };
@@ -53,6 +47,7 @@
 /* Begin PBXFileReference section */
 		3AD548683424567A6BE52995 /* Pods-checklist.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-checklist.release.xcconfig"; path = "Target Support Files/Pods-checklist/Pods-checklist.release.xcconfig"; sourceTree = "<group>"; };
 		65F104F30790D897993AB695 /* Pods-checklist.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-checklist.debug.xcconfig"; path = "Target Support Files/Pods-checklist/Pods-checklist.debug.xcconfig"; sourceTree = "<group>"; };
+		6F0FBB1123DA5A72009C1775 /* EdittingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EdittingTableViewCell.swift; path = callingForAbroad/EdittingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F150B6A23AA01C600908DEB /* DateCallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateCallingTableViewCell.swift; path = /Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/DateCallingTableViewCell.swift; sourceTree = "<absolute>"; };
 		6F150B6C23AA024300908DEB /* LocalTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalTimeTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B6E23AA038C00908DEB /* DestinationNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -61,13 +56,6 @@
 		6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameCallingForTableViewCell.swift; path = "callingForAbroad/cell for Detail page/NameCallingForTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
 		6F150B7C23AA261C00908DEB /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MenuTableViewController.swift; path = /Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/MenuTableViewController.swift; sourceTree = "<absolute>"; };
 		6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSwitchingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		6F150B8223AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingNameCallingForTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8423AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingDateCallingTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8623AA2ADA00908DEB /* EdittingLocalNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingLocalNameTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8823AA2B0C00908DEB /* EdittingLocalTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingLocalTimeTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8A23AA2B9400908DEB /* EdittingDestinationNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingDestinationNameTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8C23AA2BDE00908DEB /* EdittingJetLagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingJetLagTableViewCell.swift; sourceTree = "<group>"; };
-		6F150B8E23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdittingDestinationTimeTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B9023AA2CC500908DEB /* EdittingDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EdittingDetailTableViewController.swift; path = callingForAbroad/EdittingDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F150B9723AADF2500908DEB /* addingCallingItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = addingCallingItemTableViewController.swift; path = callingForAbroad/addingCallingItemTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F150B9923AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCallingForAddingTableViewCell.swift; sourceTree = "<group>"; };
@@ -140,13 +128,7 @@
 		6F150B9223AA2D0500908DEB /* cell for editting detail */ = {
 			isa = PBXGroup;
 			children = (
-				6F150B8223AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift */,
-				6F150B8623AA2ADA00908DEB /* EdittingLocalNameTableViewCell.swift */,
-				6F150B8823AA2B0C00908DEB /* EdittingLocalTimeTableViewCell.swift */,
-				6F150B8A23AA2B9400908DEB /* EdittingDestinationNameTableViewCell.swift */,
-				6F150B8C23AA2BDE00908DEB /* EdittingJetLagTableViewCell.swift */,
-				6F150B8E23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift */,
-				6F150B8423AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift */,
+				6F0FBB1123DA5A72009C1775 /* EdittingTableViewCell.swift */,
 			);
 			path = "cell for editting detail";
 			sourceTree = "<group>";
@@ -340,7 +322,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F150B8D23AA2BDE00908DEB /* EdittingJetLagTableViewCell.swift in Sources */,
 				6F150B8123AA283900908DEB /* AccountSwitchingTableViewCell.swift in Sources */,
 				6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */,
 				6F150B6B23AA01C700908DEB /* DateCallingTableViewCell.swift in Sources */,
@@ -348,13 +329,10 @@
 				6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */,
 				6F150B7123AA03FD00908DEB /* JetLagTableViewCell.swift in Sources */,
 				6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */,
-				6F150B8923AA2B0C00908DEB /* EdittingLocalTimeTableViewCell.swift in Sources */,
-				6F150B8323AA2A0500908DEB /* EdittingNameCallingForTableViewCell.swift in Sources */,
 				6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */,
 				6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */,
 				6F150B7323AA047500908DEB /* DestinationTimeTableViewCell.swift in Sources */,
-				6F150B8523AA2A6500908DEB /* EdittingDateCallingTableViewCell.swift in Sources */,
-				6F150B8F23AA2C2A00908DEB /* EdittingDestinationTimeTableViewCell.swift in Sources */,
+				6F0FBB1223DA5A72009C1775 /* EdittingTableViewCell.swift in Sources */,
 				6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */,
 				6F150B6D23AA024300908DEB /* LocalTimeTableViewCell.swift in Sources */,
 				6F150BA423AAE09000908DEB /* NotificationTimeAddingTableViewCell.swift in Sources */,
@@ -366,9 +344,7 @@
 				6F150BA823AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift in Sources */,
 				6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */,
 				6F150B7D23AA261C00908DEB /* MenuTableViewController.swift in Sources */,
-				6F150B8B23AA2B9400908DEB /* EdittingDestinationNameTableViewCell.swift in Sources */,
 				6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */,
-				6F150B8723AA2ADA00908DEB /* EdittingLocalNameTableViewCell.swift in Sources */,
 				6FECA139237A3AC700B7DD8B /* CallingCellList.swift in Sources */,
 				6F150B9123AA2CC500908DEB /* EdittingDetailTableViewController.swift in Sources */,
 				6F150B9C23AAE03300908DEB /* DestinationNameAddingTableViewCell.swift in Sources */,

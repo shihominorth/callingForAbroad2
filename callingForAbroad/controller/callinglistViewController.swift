@@ -92,15 +92,15 @@ class callinglistViewController: UITableViewController {
        
         cell.localTimeLabel.text = callingCelllist.callingList[indexPath.row].localTime
     
-        cell.localNameLabel.text = callingCelllist.callingList[indexPath.row].localName
+        //cell.localNameLabel.text = callingCelllist.callingList[indexPath.row].localName
    
         cell.localDateLabel.text = callingCelllist.callingList[indexPath.row].localDate
    
-        cell.destinationNameLabel.text = callingCelllist.callingList[indexPath.row].destinationName
+       cell.destinationNameLabel.text = callingCelllist.callingList[indexPath.row].destinationName
    
-        cell.jetLagLabel.text = callingCelllist.callingList[indexPath.row].jetLag
+        //cell.jetLagLabel.text = callingCelllist.callingList[indexPath.row].jetLag
     
-        cell.destinationTimeLabel.text = callingCelllist.callingList[indexPath.row].destinationTime
+       // cell.destinationTimeLabel.text = callingCelllist.callingList[indexPath.row].destinationTime
 
         tableView.deselectRow(at: indexPath, animated: true)
             

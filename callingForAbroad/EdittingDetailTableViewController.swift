@@ -22,41 +22,40 @@ class EdittingDetailTableViewController: UITableViewController {
     
     
     @IBAction func done(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+       
         let row = indexPath.row
-        guard let cell:EdittingTableViewCell
-            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell)
-            else { return }
         
-        
-        
-        switch row {
-        case 0:
-            editItem?.nameCallingFor = cell.textField.text ?? ""
-        case 1:
-            editItem?.localDate = cell.textField.text ?? ""
-        case 2:
-            editItem?.localName = cell.textField.text ?? ""
-        case 3:
-            editItem?.localTime = cell.textField.text ?? ""
-        case 4:
-            editItem?.destinationName = cell.textField.text ?? ""
-        case 5:
-            editItem?.jetLag = cell.textField.text ?? ""
-        case 6:
-            editItem?.destinationTime = cell.textField.text ?? ""
-        default:
-            break
+        if let cell:EdittingTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
+            
+            
+            
+            switch row {
+            case 0:
+                editItem?.nameCallingFor = cell.textField.text ?? ""
+            case 1:
+                editItem?.localDate = cell.textField.text ?? ""
+            case 2:
+                editItem?.localName = cell.textField.text ?? ""
+            case 3:
+                editItem?.localTime = cell.textField.text ?? ""
+            case 4:
+                editItem?.destinationName = cell.textField.text ?? ""
+            case 5:
+                editItem?.jetLag = cell.textField.text ?? ""
+            case 6:
+                editItem?.destinationTime = cell.textField.text ?? ""
+            default:
+                break
+            }
+            
         }
-        
         delegate?.editItemViewController(self, didFinishEditting: editItem!)
         
+        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
+        detailVC.item = editItem!
         
-//        navigationController?.pushViewController(<#UIViewController#>, animated: true)
-//        if let item = editItem, let text =  textField.text {
-//            item.nameCallingFor = text
-//            delegate?.editItemViewController(self, didFinishEditting: item)
-//        }
+        navigationController?.pushViewController(detailVC, animated: true)
     }
     
     override func viewDidLoad() {
@@ -189,14 +188,14 @@ class EdittingDetailTableViewController: UITableViewController {
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editting Segue" {
-            if let detailVC = segue.destination as? DetailCallingTableViewController {
-                detailVC.item = self.editItem!
-                detailVC.indexPath = self.indexPath
-            }
-        }
-    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "editting Segue" {
+//            if let detailVC = segue.destination as? DetailCallingTableViewController {
+//                detailVC.item = self.editItem!
+//                detailVC.indexPath = self.indexPath
+//            }
+//        }
+//    }
 
     
 

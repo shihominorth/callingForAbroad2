@@ -8,15 +8,16 @@
 
 import UIKit
 
-protocol AddItemTableViewControllerDelegate {
+protocol AddItemTableViewControllerDelegate: class {
      func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController)
-       func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem)
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem)
 }
 
 class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
     var callingCellList = CallingCellList()
+    weak var delegate: AddItemTableViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,12 @@ class addingCallingItemTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        
     }
 
     // MARK: - Table view data source
@@ -44,103 +51,121 @@ class addingCallingItemTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "name calling for", for: indexPath) as? NameCallingForAddingTableViewCell)!
-
+            
             // Configure the cell...
             
-
+            
             return cell
         }
         else if indexPath.section == 1 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local date", for: indexPath) as? LocalDateAddingTableViewCell)!
-
-            // Configure the cell...
-            item.localDate = cell.textField.text!
-
+            
             return cell
         }
         else if indexPath.section == 2 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local time", for: indexPath) as? LocalTimeAddingTableViewCell)!
-
-            // Configure the cell...
-            item.localTime = cell.textField.text!
-
+            
             return cell
         }
         else if indexPath.section == 3 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination name", for: indexPath) as? DestinationNameAddingTableViewCell)!
- 
-            // Configure the cell...
-
-            item.destinationName = cell.textFiled.text!
+            
             
             return cell
         }
         else if indexPath.section == 4 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "jet lag", for: indexPath) as? JetLagAddingTableViewCell)!
-
-            // Configure the cell...
             
-            item.jetLag = cell.textField.text!
-
             return cell
         }
         else if indexPath.section == 5 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination time", for: indexPath) as? DestinationTimeAddingTableViewCell)!
-
-            // Configure the cell...
-            item.localTime = cell.textField.text!
-
+            
             return cell
         }
         else if indexPath.section == 6 {
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificationTimeAddingTableViewCell)!
-
-                // Configure the cell...
-            item.notification = cell.textField.text!
-                return cell
-            }
-        else if indexPath.section == 7 {
-            let cell = (tableView.dequeueReusableCell(withIdentifier: "place calling at", for: indexPath) as? PlaceCallingAtAddingTableViewCell)!
-
-            // Configure the cell...
-            item.placeCallingAt = cell.textField.text!
-
-            return cell
-        } else {
-            let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapPlaceCallingAtTableViewCell)!
- 
-            // Configure the cell...
-
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificationTimeAddingTableViewCell)!
+           
             return cell
         }
+        else if indexPath.section == 7 {
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "place calling at", for: indexPath) as? PlaceCallingAtAddingTableViewCell)!
+            
+            
+            return cell
+        }
+        else if indexPath.section == 8
+        {
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapPlaceCallingAtTableViewCell)!
+            
+            return cell
+        }
+        
+        return UITableViewCell()
+        
         
         
     }
     
     @IBAction func add(_ sender: Any) {
         
-        let item = callingCellItem()
         
-//        let arrayTextFields = [nameCallingFortextField, localDateTextField, localTimeTextField, destinationNameTextField,jetLagTextField,destinationTimeTextField,notificationTextField, placeCallingAtTextField]
-//        var itemVariables = [item.nameCallingFor,item.localDate, item.localTime, item.destinationName, item.jetLag, item.destinationTime, item.notification, item.placeCallingAt]
-//        
-////        item.nameCallingFor = nameCallingFortextField.text!
-//        
-//        for index in 0 ..< arrayTextFields.count {
-//            itemVariables[index] = arrayTextFields[index]!.text!
-//        }
+        
+        //        let arrayTextFields = [nameCallingFortextField, localDateTextField, localTimeTextField, destinationNameTextField,jetLagTextField,destinationTimeTextField,notificationTextField, placeCallingAtTextField]
+        //        var itemVariables = [item.nameCallingFor,item.localDate, item.localTime, item.destinationName, item.jetLag, item.destinationTime, item.notification, item.placeCallingAt]
+        //
+        ////        item.nameCallingFor = nameCallingFortextField.text!
+        //
+        //        for index in 0 ..< arrayTextFields.count {
+        //            itemVariables[index] = arrayTextFields[index]!.text!
+        //        }
+        let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
+        
+        //        let newRowIndex = callingCellList.callingList.count
+        _ = callingCellList.newToDo(item: item)
+        
+        if let indexPath:IndexPath = IndexPath(row: 0, section: 0) {
+            let cell = (tableView.cellForRow(at: indexPath) as? NameCallingForAddingTableViewCell)!
+            item.nameCallingFor = cell.textField.text!
+        }
+        if let indexPath:IndexPath = IndexPath(row: 0, section: 1) {
+            let cell = (tableView.cellForRow(at: indexPath) as? LocalDateAddingTableViewCell)!
+            item.localDate = cell.textField.text!
+        }
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 2) {
+            let cell = (tableView.cellForRow(at: indexPath) as? LocalTimeAddingTableViewCell)!
+            item.localTime = cell.textField.text!
+        }
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 3) {
+            let cell = (tableView.cellForRow(at: indexPath) as? DestinationNameAddingTableViewCell)!
+            item.destinationName = cell.textField.text!
+        }
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 4) {
+            let cell = (tableView.cellForRow(at: indexPath) as? JetLagAddingTableViewCell)!
+            item.jetLag = cell.textField.text!
+        }
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 5) {
+            let cell = (tableView.cellForRow(at: indexPath) as? DestinationTimeAddingTableViewCell)!
+            item.destinationTime = cell.textField.text!
+        }
+        if let indexPath:IndexPath = IndexPath(row: 0, section: 6) {
+            let cell = (tableView.cellForRow(at: indexPath) as? NotificationTimeAddingTableViewCell)!
+            item.notification = cell.textField.text!
+        }
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 7) {
+            let cell = (tableView.cellForRow(at: indexPath) as? PlaceCallingAtAddingTableViewCell)!
+            item.placeCallingAt = cell.textField.text!
+        }
+        
+//        let indexPaths = [indexPath]
+//        homeVC.tableView.insertRows(at: indexPaths, with: .automatic)
+        
+        delegate?.addItemViewController(self, didFinishAdding: item)
+        navigationController?.popViewController(animated: true)
         
     }
     
-    @IBOutlet weak var nameCallingFortextField: UITextField!
-    @IBOutlet weak var localDateTextField: UITextField!
-    @IBOutlet weak var localTimeTextField: UITextField!
-    @IBOutlet weak var destinationNameTextField: UITextField!
-    @IBOutlet weak var jetLagTextField: UITextField!
-    @IBOutlet weak var destinationTimeTextField: UITextField!
-    @IBOutlet weak var notificationTextField: UITextField!
-    @IBOutlet weak var placeCallingAtTextField: UITextField!
-    
+//    
 
     /*
     // Override to support conditional editing of the table view.
@@ -150,7 +175,7 @@ class addingCallingItemTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -160,7 +185,7 @@ class addingCallingItemTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

@@ -15,6 +15,7 @@ protocol EditItemTableViewControllerDelegate: class {
 class EdittingDetailTableViewController: UITableViewController {
 
     weak var editItem:callingCellItem?
+    weak var edittedItem:callingCellItem? = callingCellItem()
     var indexPath = IndexPath()
     weak var delegate: EditItemTableViewControllerDelegate?
     weak var callingCellList:CallingCellList?
@@ -25,36 +26,45 @@ class EdittingDetailTableViewController: UITableViewController {
        
         let row = indexPath.row
         
-        if let cell:EdittingTableViewCell
-            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
-            
-            
-            
-            switch row {
-            case 0:
-                editItem?.nameCallingFor = cell.textField.text ?? ""
-            case 1:
-                editItem?.localDate = cell.textField.text ?? ""
-            case 2:
-                editItem?.localName = cell.textField.text ?? ""
-            case 3:
-                editItem?.localTime = cell.textField.text ?? ""
-            case 4:
-                editItem?.destinationName = cell.textField.text ?? ""
-            case 5:
-                editItem?.jetLag = cell.textField.text ?? ""
-            case 6:
-                editItem?.destinationTime = cell.textField.text ?? ""
-            default:
-                break
-            }
-            
+        switch row {
+        case 0:
+            let cell:EdittingNameCallingForTableViewCell
+            = (tableView.cellForRow(at: indexPath) as? EdittingNameCallingForTableViewCell)!
+            edittedItem?.nameCallingFor = cell.textField.text ?? ""
+        case 1:
+            let cell:EdittingLocalDateCallingTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingLocalDateCallingTableViewCell)
+            edittedItem?.localDate = cell.textField.text ?? ""
+        case 2:
+            let cell:EdittingLocalNameTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingLocalNameTableViewCell)
+            edittedItem?.localName = cell.textField.text ?? ""
+        case 3:
+            let cell:EdittingLocalTimeTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingLocalTimeTableViewCell)
+            edittedItem?.localTime = cell.textField.text ?? ""
+        case 4:
+            let cell:EdittingDestinationNameTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingDestinationNameTableViewCell)
+            edittedItem?.destinationName = cell.textField.text ?? ""
+        case 5:
+            let cell:EdittingJetLagTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingJetLagTableViewCell)
+            edittedItem?.jetLag = cell.textField.text ?? ""
+        case 6:
+            let cell:EdittingDestinationTimeTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingDestinationTimeTableViewCell)
+            edittedItem?.destinationTime = cell.textField.text ?? ""
+        default:
+            break
         }
+            
+        
         delegate?.editItemViewController(self, didFinishEditting: editItem!)
         
         let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
-        detailVC.item = editItem!
-        
+        detailVC.item = edittedItem!
+        print(edittedItem!.localName)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     
@@ -72,19 +82,19 @@ class EdittingDetailTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 7
+        return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
            
-           if indexPath.row == 0 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           if indexPath.section == 0 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit nameCallingFor", for: indexPath) as? EdittingNameCallingForTableViewCell)!
                
                cell.textField.text = editItem?.nameCallingFor
                
@@ -93,16 +103,16 @@ class EdittingDetailTableViewController: UITableViewController {
 
                return cell
            }
-           else if indexPath.row == 1 {
-                   let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 1 {
+                   let cell = (tableView.dequeueReusableCell(withIdentifier: "edit localDate", for: indexPath) as? EdittingLocalDateCallingTableViewCell)!
 
                    // Configure the cell...
             cell.textField.text = editItem?.localDate
                 return cell
             
             }
-           else if indexPath.row == 2 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 2 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit localName", for: indexPath) as? EdittingLocalNameTableViewCell)!
 
                // Configure the cell...
 
@@ -111,32 +121,32 @@ class EdittingDetailTableViewController: UITableViewController {
                return cell
            }
            
-           else if indexPath.row == 3 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 3 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit localTime", for: indexPath) as? EdittingLocalTimeTableViewCell)!
 
                // Configure the cell...
                cell.textField.text = editItem?.localTime
 
                return cell
            }
-           else if indexPath.row == 4 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 4 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit destinationName", for: indexPath) as? EdittingDestinationNameTableViewCell)!
 
                // Configure the cell...
 
                cell.textField.text = editItem?.destinationName
                return cell
            }
-           else if indexPath.row == 5 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 5 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit jetLag", for: indexPath) as? EdittingJetLagTableViewCell)!
     
                // Configure the cell...
                cell.textField.text = editItem?.jetLag
 
                return cell
            }
-           else if indexPath.row == 6 {
-               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit", for: indexPath) as? EdittingTableViewCell)!
+           else if indexPath.section == 6 {
+               let cell = (tableView.dequeueReusableCell(withIdentifier: "edit destinationTime", for: indexPath) as? EdittingDestinationTimeTableViewCell)!
 
                // Configure the cell...
                cell.textField.text = editItem?.destinationTime

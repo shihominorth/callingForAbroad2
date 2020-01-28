@@ -48,6 +48,7 @@ class callinglistViewController: UITableViewController {
         //UINavigationBar..UINavigationBarAppearance.color
     }
     
+    
     @objc func deleteItems(_ sender: Any) {
         if let selectRows = tableView.indexPathsForSelectedRows {
             var items = [callingCellItem]()
@@ -173,9 +174,9 @@ class callinglistViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "AddItemSegue" {
-            if let addItemViewController = segue.destination as? addCallingItemViewController {
+            if let addItemViewController = segue.destination as? addingCallingItemTableViewController {
                 addItemViewController.delegate = self
-                addItemViewController.itemList = callingCelllist
+                //addItemViewController.callingCellList = callingCelllist
             }
         } else if segue.identifier == "EditItemSegue" {
             if let addItemViewController = segue.destination as? addCallingItemViewController {
@@ -216,19 +217,18 @@ class callinglistViewController: UITableViewController {
 //
 //}
 
-extension callinglistViewController: AddViewControllerDelegate {
-    func addItemViewControllerDidCancel(_ controller: addCallingItemViewController) {
+extension callinglistViewController: AddItemTableViewControllerDelegate {
+    func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: addCallingItemViewController, didFinishAdding item: callingCellItem) {
-        navigationController?.popViewController(animated: true)
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
         let rowIndex = callingCelllist.callingList.count
-        callingCelllist.callingList.append(item)
-        let indexPath = IndexPath(row: rowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
+              callingCelllist.callingList.append(item)
+              let indexPath = IndexPath(row: rowIndex, section: 0)
+              let indexPaths = [indexPath]
+              tableView.insertRows(at: indexPaths, with: .automatic)
     }
-
+    
 }
 

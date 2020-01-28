@@ -1,16 +1,14 @@
 //
-//  DestinationNameTableViewCell.swift
+//  EdittingMapPlaceCallingAtTableViewCell.swift
 //  checklist
 //
-//  Created by 北島　志帆美 on 2019-12-18.
+//  Created by 北島　志帆美 on 2019-12-21.
 //  Copyright © 2019 北島　志帆美. All rights reserved.
 //
 
 import UIKit
 
-class DestinationNameAddingTableViewCell: UITableViewCell {
-    
-    @IBOutlet weak var textField: UITextField!
+class EdittingMapPlaceCallingAtTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()

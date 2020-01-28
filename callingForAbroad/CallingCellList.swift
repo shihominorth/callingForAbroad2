@@ -74,18 +74,18 @@ class CallingCellList {
         }
     }
     
-    func newToDo() -> callingCellItem {
+    func newToDo(item: callingCellItem) -> callingCellItem {
         
-        let item = callingCellItem()
-        item.nameCallingFor = ""
-        item.localDate = ""
-        item.localName = ""
-        item.localTime = ""
-        item.destinationName = ""
-        item.jetLag = ""
-        item.destinationTime = ""
-        item.notification = ""
-        item.placeCallingAt = ""
+//        let item = callingCellItem()
+//        item.nameCallingFor = ""
+//        item.localDate = ""
+//        item.localName = ""
+//        item.localTime = ""
+//        item.destinationName = ""
+//        item.jetLag = ""
+//        item.destinationTime = ""
+//        item.notification = ""
+//        item.placeCallingAt = ""
         
         callingList.append(item)
         return item

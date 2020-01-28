@@ -10,7 +10,7 @@ import UIKit
 
 class DetailCallingTableViewController: UITableViewController {
     
-    var CallingCelllist = CallingCellList()
+    var callingCelllist = CallingCellList()
     var item = callingCellItem()
     var indexPath = IndexPath()
     
@@ -123,7 +123,42 @@ class DetailCallingTableViewController: UITableViewController {
     }
     
     
+    //MARK: -BUTTON
     
+    @IBAction func back() {
+        let row = indexPath.row
+        
+        if let cell: EdittingTableViewCell
+            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
+            
+            switch row {
+            case 0:
+                item.nameCallingFor = cell.textField.text ?? ""
+            case 1:
+                item.localDate = cell.textField.text ?? ""
+            case 2:
+                item.localName = cell.textField.text ?? ""
+            case 3:
+                item.localTime = cell.textField.text ?? ""
+            case 4:
+                item.destinationName = cell.textField.text ?? ""
+            case 5:
+                item.jetLag = cell.textField.text ?? ""
+            case 6:
+                item.destinationTime = cell.textField.text ?? ""
+            default:
+                break
+            }
+            
+            callingCelllist.callingList.remove(at: indexPath.row)
+            callingCelllist.callingList.insert(item, at: indexPath.row)
+        }
+        
+        let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
+        
+        
+        navigationController?.pushViewController(homeVC, animated: true)
+    }
     
 
     /*

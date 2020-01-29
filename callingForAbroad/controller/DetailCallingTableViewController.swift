@@ -208,6 +208,48 @@ class DetailCallingTableViewController: UITableViewController {
 
 }
 
+extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem) {
+        
+        let rowIndex = callingCelllist.callingList.index(of: item)!
+        let indexPath = IndexPath(row: rowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+        
+//        if let cell:NameCallingForTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NameCallingForTableViewCell)!{
+//             cell.NameCallingForLabel.text = item.nameCallingFor
+//        }
+//        if let cell:DateCallingTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? DateCallingTableViewCell)! {
+//
+//             cell.DateCallingLabel.text = item.localDate
+//        }
+//        if let cell:LocalNameTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LocalNameTableViewCell)! {
+//              cell.localNameLabel.text = item.localName
+//        }
+//        if let cell:LocalTimeTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? LocalTimeTableViewCell)! {
+//             cell.LocalTimeLabel.text = item.localTime
+//         }
+//        if let cell:DestinationNameTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 4)) as? DestinationNameTableViewCell)! {
+//            cell.DestinationNameLabel.text = item.destinationName
+//        }
+//        if let cell:JetLagTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 5)) as? JetLagTableViewCell)! {
+//             cell.jetLagLabel.text = item.jetLag
+//        }
+//        if let cell:DestinationTimeTableViewCell
+//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 6)) as? DestinationTimeTableViewCell)! {
+//            cell.destinationTimeLabel.text = item.destinationTime
+//
+//        }
+    }
+    
+    
+}
 
 
 

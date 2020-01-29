@@ -927,7 +927,6 @@
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9Yd-Gb-cgN"/>
         <segue reference="tfE-91-zt8"/>
     </inferredMetricsTieBreakers>
 </document>

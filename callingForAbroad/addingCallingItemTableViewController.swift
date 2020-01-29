@@ -52,9 +52,6 @@ class addingCallingItemTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "name calling for", for: indexPath) as? NameCallingForAddingTableViewCell)!
             
-            // Configure the cell...
-            
-            
             return cell
         }
         else if indexPath.section == 1 {

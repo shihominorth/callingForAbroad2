@@ -15,6 +15,9 @@ class callinglistViewController: UITableViewController {
     var section2: Dictionary = [String:NSMutableArray]()
     var sections: Array = [Dictionary<String,NSMutableArray>]()
     
+    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    private var plans = [Plan]()
 
     
     @IBOutlet weak var addButton: UIBarButtonItem!
@@ -48,6 +51,15 @@ class callinglistViewController: UITableViewController {
         //UINavigationBar..UINavigationBarAppearance.color
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do {
+            plans = try context.fetch(Plan.fetchRequest())
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+    }
     
     @objc func deleteItems(_ sender: Any) {
         if let selectRows = tableView.indexPathsForSelectedRows {

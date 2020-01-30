@@ -12,7 +12,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="home" id="1m7-Fk-YOj" customClass="callinglistViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="6VE-rz-WHt">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -176,7 +176,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="detail" id="jzx-WV-1hE" customClass="DetailCallingTableViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="IID-8j-jHf">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -328,9 +328,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="pTx-SW-fef">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="3TH-Ho-BVc">
+                        <barButtonItem key="leftBarButtonItem" title="Item" id="H5p-Bp-QWi">
                             <connections>
-                                <segue destination="1m7-Fk-YOj" kind="show" id="tfE-91-zt8"/>
+                                <action selector="back" destination="jzx-WV-1hE" id="ypE-XJ-ABj"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" id="R7o-lq-1oG">
@@ -349,7 +349,7 @@
             <objects>
                 <tableViewController id="KXG-zc-Cs1" customClass="EdittingDetailTableViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mdB-CC-BLb">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -714,7 +714,7 @@
             <objects>
                 <tableViewController id="p07-51-H2e" customClass="addingCallingItemTableViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0x6-tf-sfW">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -926,7 +926,4 @@
     <resources>
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="tfE-91-zt8"/>
-    </inferredMetricsTieBreakers>
 </document>

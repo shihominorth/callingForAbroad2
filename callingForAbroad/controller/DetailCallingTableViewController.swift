@@ -8,11 +8,16 @@
 
 import UIKit
 
+protocol DetailCallingTableViewControllerDelegate: class {
+    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath)
+}
+
 class DetailCallingTableViewController: UITableViewController {
     
     var callingCelllist = CallingCellList()
     var item = callingCellItem()
     var indexPath = IndexPath()
+    weak var delegate: DetailCallingTableViewControllerDelegate?
     
 
     override func viewDidLoad() {
@@ -39,6 +44,7 @@ class DetailCallingTableViewController: UITableViewController {
         if let edittingVC = segue.destination as? EdittingDetailTableViewController {
             edittingVC.editItem = self.item
             edittingVC.indexPath = self.indexPath
+            edittingVC.delegate=self
             }
         }
     }
@@ -127,37 +133,33 @@ class DetailCallingTableViewController: UITableViewController {
     
     @IBAction func back() {
         let row = indexPath.row
+//
+//        if let cell: EdittingTableViewCell
+//            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
+//
+//            switch row {
+//            case 0:
+//                item.nameCallingFor = cell.textField.text ?? ""
+//            case 1:
+//                item.localDate = cell.textField.text ?? ""
+//            case 2:
+//                item.localName = cell.textField.text ?? ""
+//            case 3:
+//                item.localTime = cell.textField.text ?? ""
+//            case 4:
+//                item.destinationName = cell.textField.text ?? ""
+//            case 5:
+//                item.jetLag = cell.textField.text ?? ""
+//            case 6:
+//                item.destinationTime = cell.textField.text ?? ""
+//            default:
+//                break
+//            }
+//
+           
         
-        if let cell: EdittingTableViewCell
-            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
-            
-            switch row {
-            case 0:
-                item.nameCallingFor = cell.textField.text ?? ""
-            case 1:
-                item.localDate = cell.textField.text ?? ""
-            case 2:
-                item.localName = cell.textField.text ?? ""
-            case 3:
-                item.localTime = cell.textField.text ?? ""
-            case 4:
-                item.destinationName = cell.textField.text ?? ""
-            case 5:
-                item.jetLag = cell.textField.text ?? ""
-            case 6:
-                item.destinationTime = cell.textField.text ?? ""
-            default:
-                break
-            }
-            
-            callingCelllist.callingList.remove(at: indexPath.row)
-            callingCelllist.callingList.insert(item, at: indexPath.row)
-        }
-        
-        let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
-        
-        
-        navigationController?.pushViewController(homeVC, animated: true)
+        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+        navigationController?.popViewController(animated: true)
     }
     
 
@@ -209,43 +211,11 @@ class DetailCallingTableViewController: UITableViewController {
 }
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem) {
-        
-        let rowIndex = callingCelllist.callingList.index(of: item)!
-        let indexPath = IndexPath(row: rowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-        
-//        if let cell:NameCallingForTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? NameCallingForTableViewCell)!{
-//             cell.NameCallingForLabel.text = item.nameCallingFor
-//        }
-//        if let cell:DateCallingTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? DateCallingTableViewCell)! {
-//
-//             cell.DateCallingLabel.text = item.localDate
-//        }
-//        if let cell:LocalNameTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? LocalNameTableViewCell)! {
-//              cell.localNameLabel.text = item.localName
-//        }
-//        if let cell:LocalTimeTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? LocalTimeTableViewCell)! {
-//             cell.LocalTimeLabel.text = item.localTime
-//         }
-//        if let cell:DestinationNameTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 4)) as? DestinationNameTableViewCell)! {
-//            cell.DestinationNameLabel.text = item.destinationName
-//        }
-//        if let cell:JetLagTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 5)) as? JetLagTableViewCell)! {
-//             cell.jetLagLabel.text = item.jetLag
-//        }
-//        if let cell:DestinationTimeTableViewCell
-//            = (tableView.cellForRow(at: IndexPath(row: 0, section: 6)) as? DestinationTimeTableViewCell)! {
-//            cell.destinationTimeLabel.text = item.destinationTime
-//
-//        }
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem) {
+    
+        self.item = item
+        self.tableView.reloadData()
+
     }
     
     

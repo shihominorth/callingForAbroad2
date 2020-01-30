@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditItemTableViewControllerDelegate: class {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem)
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem)
 }
 
 class EdittingDetailTableViewController: UITableViewController {
@@ -56,10 +56,10 @@ class EdittingDetailTableViewController: UITableViewController {
         }
             
         
-        delegate?.editItemViewController(self, didFinishEditting: edittedItem!)
+        delegate?.editItemViewController(self, didFinishEditting: edittedItem!, original: editItem!)
         
-        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
-        detailVC.item = edittedItem ?? detailVC.item
+//        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
+//        detailVC.item = edittedItem ?? detailVC.item
         navigationController?.popViewController(animated: true)
     }
     

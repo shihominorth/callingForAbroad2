@@ -193,6 +193,7 @@ class callinglistViewController: UITableViewController {
                     let item = callingCelllist.callingList[indexPath.row]
                     detailVC.item = item
                     detailVC.indexPath = indexPath
+                    detailVC.delegate = self
                 }
             }
         }
@@ -232,3 +233,16 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     
 }
 
+extension callinglistViewController: DetailCallingTableViewControllerDelegate {
+    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath) {
+        
+        
+        callingCelllist.callingList.remove(at: indexPath.row)
+        callingCelllist.callingList.insert(item, at: indexPath.row)
+        
+        self.tableView.reloadData()
+           
+    }
+    
+    
+}

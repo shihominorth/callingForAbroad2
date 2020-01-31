@@ -7,5 +7,6 @@ target 'checklist' do
 
   # Pods for checklist
 pod 'SideMenu'
-
+pod 'GoogleMaps'
+pod 'GooglePlaces'
 end

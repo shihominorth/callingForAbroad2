@@ -21,6 +21,9 @@ class EdittingDetailTableViewController: UITableViewController {
     weak var callingCellList:CallingCellList?
     let detailVC = DetailCallingTableViewController()
     
+   
+    
+    
     
     @IBAction func done(_ sender: Any) {
         
@@ -67,10 +70,21 @@ class EdittingDetailTableViewController: UITableViewController {
         super.viewDidLoad()
 
         // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: NSNotification.Name.UIResponder.keyboardWillShowNotification, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: NSNotification.Name.UIResponder.keyboardWillHideNotification, object: nil)
+////        }
+        func keyboardWillShow(_ notification: NSNotification){
+            let userInfo = notification.userInfo ?? [:]
+            let keyboardFrame = (userInfo[UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+            let height = keyboardFrame.height + 20
+        }
+        func keyboardWillHide(_ notification: NSNotification){
+            
+        }
+            
+     
+            
+      
     }
 
     // MARK: - Table view data source
@@ -92,6 +106,7 @@ class EdittingDetailTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "edit nameCallingFor", for: indexPath) as? EdittingNameCallingForTableViewCell)!
             
             cell.textField.text = editItem?.nameCallingFor
+
             
             
             // Configure the cell...
@@ -103,6 +118,7 @@ class EdittingDetailTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.textField.text = editItem?.localDate
+            
             return cell
             
         }
@@ -205,3 +221,24 @@ class EdittingDetailTableViewController: UITableViewController {
     
 
 }
+//
+//extension EdittingDetailTableViewController :UITextFieldDelegate {
+//    
+//    
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//    
+//        switch textField.tag {
+//        case 0:
+//            let cell = (tableView.dequeueReusableCell(withIdentifier: "edit nameCallingFor", for: indexPath) as? EdittingNameCallingForTableViewCell)!
+//            let nextCell = (tableView.dequeueReusableCell(withIdentifier: "edit localDate", for: indexPath) as? EdittingLocalDateCallingTableViewCell)!
+//            
+//            cell.resignFirstResponder()
+//            nextCell.becomeFirstResponder()
+//        default:
+//            break
+//        }
+//        return true
+//    }
+//      
+//       
+//}

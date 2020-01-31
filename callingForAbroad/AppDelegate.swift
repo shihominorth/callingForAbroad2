@@ -8,9 +8,13 @@
 
 import UIKit
 import CoreData
+import GoogleMaps
+import GooglePlaces
 
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    let apiKey = "AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI"
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Plan")
@@ -53,6 +57,8 @@ import CoreData
 //         
 //        // ナビゲーションバーの下の影を無くす
 //        UINavigationBar.appearance().shadowImage = UIImage()
+        
+        GMSServices.provideAPIKey(apiKey)
         return true
     }
 

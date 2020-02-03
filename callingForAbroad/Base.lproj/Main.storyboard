@@ -415,7 +415,7 @@
                                     <outlet property="textField" destination="d1D-b1-kij" id="fna-1G-mx8"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="edit localDate" id="KKV-2U-0Jj" customClass="EdittingLocalDateCallingTableViewCell" customModule="checklist" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="edit localDate" id="KKV-2U-0Jj" customClass="EdittingLocalDateCallingTableViewCell" customModule="checklist" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="70.5" width="414" height="42.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="KKV-2U-0Jj" id="cL3-mb-QxF">

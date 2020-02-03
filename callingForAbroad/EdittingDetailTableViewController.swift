@@ -106,8 +106,7 @@ class EdittingDetailTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "edit nameCallingFor", for: indexPath) as? EdittingNameCallingForTableViewCell)!
             
             cell.textField.text = editItem?.nameCallingFor
-
-            
+            cell.textField.delegate = self
             
             // Configure the cell...
             
@@ -118,6 +117,7 @@ class EdittingDetailTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.textField.text = editItem?.localDate
+            cell.textField.delegate = self
             
             return cell
             
@@ -128,6 +128,7 @@ class EdittingDetailTableViewController: UITableViewController {
             // Configure the cell...
             
             cell.textField.text = editItem?.localName
+            cell.textField.delegate = self
             
             return cell
         }
@@ -137,6 +138,7 @@ class EdittingDetailTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.textField.text = editItem?.localTime
+            cell.textField.delegate = self
             
             return cell
         }
@@ -146,6 +148,7 @@ class EdittingDetailTableViewController: UITableViewController {
             // Configure the cell...
             
             cell.textField.text = editItem?.destinationName
+            cell.textField.delegate = self
             return cell
         }
         else if indexPath.section == 5 {
@@ -153,6 +156,7 @@ class EdittingDetailTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.textField.text = editItem?.jetLag
+            cell.textField.delegate = self
             
             return cell
         }
@@ -161,6 +165,7 @@ class EdittingDetailTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.textField.text = editItem?.destinationTime
+            cell.textField.delegate = self
             
             return cell
         }
@@ -221,24 +226,36 @@ class EdittingDetailTableViewController: UITableViewController {
     
 
 }
-//
-//extension EdittingDetailTableViewController :UITextFieldDelegate {
-//    
-//    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//    
-//        switch textField.tag {
-//        case 0:
+
+
+
+extension EdittingDetailTableViewController :UITextFieldDelegate {
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    
+        switch textField.tag {
+        case 0:
+            textField.resignFirstResponder()
+            let cell = tableView(self.tableView, cellForRowAt: IndexPath(row: 0, section: 1)) as? EdittingLocalDateCallingTableViewCell
+            
+            
+            
 //            let cell = (tableView.dequeueReusableCell(withIdentifier: "edit nameCallingFor", for: indexPath) as? EdittingNameCallingForTableViewCell)!
 //            let nextCell = (tableView.dequeueReusableCell(withIdentifier: "edit localDate", for: indexPath) as? EdittingLocalDateCallingTableViewCell)!
-//            
-//            cell.resignFirstResponder()
-//            nextCell.becomeFirstResponder()
-//        default:
-//            break
-//        }
-//        return true
-//    }
-//      
-//       
-//}
+            if let nextcell = cell {
+                nextcell.isEditing=true
+                nextcell.textField.text="dfsdfsd"
+                nextcell.textField.becomeFirstResponder()
+            }
+            
+        //     cell.resignFirstResponder()
+         //   nextCell.becomeFirstResponder()
+        default:
+            break
+        }
+        return true
+    }
+      
+       
+}

@@ -9,6 +9,7 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import Alamofire
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!

@@ -15,7 +15,7 @@ import GooglePlaces
         class AppDelegate: UIResponder, UIApplicationDelegate {
     
 //    let apiKey = "AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI"
-    let apiKey = "AIzaSyCZKoSF_7aY94FemdP1lnMwPz-Hcgiq0iQ"
+   
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "Plan")
@@ -42,6 +42,12 @@ import GooglePlaces
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        if let apiKey = KeyManager().getValue(key:"apiKey") as? String {
+               GMSServices.provideAPIKey(apiKey)
+               GMSPlacesClient.provideAPIKey(apiKey)
+           }
+        
         // Override point for customization after application launch.
 
 //        // ナビゲージョンアイテムの文字色
@@ -58,8 +64,6 @@ import GooglePlaces
 //         
 //        // ナビゲーションバーの下の影を無くす
 //        UINavigationBar.appearance().shadowImage = UIImage()
-        
-        GMSServices.provideAPIKey(apiKey)
         return true
     }
 

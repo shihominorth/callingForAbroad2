@@ -13,13 +13,15 @@ import Alamofire
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!
+    
+    let apiKey = KeyManager().getValue(key:"apiKey") as? String
 
     
     func get()  {
         let session = URLSession.shared
 //        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&keyword=cruise&key=AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI")!
         
-        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=AIzaSyCZKoSF_7aY94FemdP1lnMwPz-Hcgiq0iQ")!
+        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=\(apiKey!)")!
         
         let task = session.dataTask(with: url) { data, response, error in
 

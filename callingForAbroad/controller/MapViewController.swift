@@ -13,7 +13,7 @@ import Alamofire
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!
-    
+
     
     func get()  {
         let session = URLSession.shared

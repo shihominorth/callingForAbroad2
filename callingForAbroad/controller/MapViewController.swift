@@ -9,9 +9,46 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
+import Alamofire
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!
+    
+    
+    func get()  {
+        let session = URLSession.shared
+//        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&keyword=cruise&key=AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI")!
+        
+        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=AIzaSyCZKoSF_7aY94FemdP1lnMwPz-Hcgiq0iQ")!
+        
+        let task = session.dataTask(with: url) { data, response, error in
+
+            if error != nil || data == nil {
+                print("Client error!")
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print("Server error!")
+                return
+            }
+
+            guard let mime = response.mimeType, mime == "application/json" else {
+                print("Wrong MIME type!")
+                return
+            }
+
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(json)
+            } catch {
+                print("JSON error: \(error.localizedDescription)")
+            }
+        }
+
+        task.resume()
+    }
+    
     
     private let locationManager = CLLocationManager()
     
@@ -56,6 +93,8 @@ class MapViewController: UIViewController {
         } else {
             print("Location services are not enabled")
         }
+        
+        get()
     }
     
     func showCurrentLocation() {
@@ -77,6 +116,7 @@ class MapViewController: UIViewController {
         //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
     }
     
+
     
     
     

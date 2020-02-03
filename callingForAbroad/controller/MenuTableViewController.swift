@@ -28,16 +28,31 @@ class MenuTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 1
+        return 2
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = (tableView.dequeueReusableCell(withIdentifier: "account Switch", for: indexPath) as? AccountSwitchingTableViewCell)!
+        
+        switch indexPath.row {
+        case 0:
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "account Switch", for: indexPath) as? AccountSwitchingTableViewCell)!
 
-        // Configure the cell...
+            // Configure the cell...
 
-        return cell
+            return cell
+        case 1:
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapTableViewCell)!
+
+            // Configure the cell...
+
+            return cell
+        default:
+            break
+        }
+        
+        return UITableViewCell()
+        
     }
     
 

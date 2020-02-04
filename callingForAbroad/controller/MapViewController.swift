@@ -10,13 +10,13 @@ import UIKit
 import CoreLocation
 import GoogleMaps
 import GooglePlaces
-//import Alamofire
+
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!
     
     let apiKey = KeyManager().getValue(key:"apiKey") as? String
-
+    let viewDetail = UIView() as? SeeDetailView
    
     
     
@@ -26,6 +26,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+ 
         
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self as! CLLocationManagerDelegate
@@ -65,9 +66,9 @@ class MapViewController: UIViewController {
     
     func getSupermarketImformation()  {
            let session = URLSession.shared
-           
-           let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=\(apiKey!)")!
-           
+        
+        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=4500&type=cafe&key=\(apiKey!)")!
+        
            let task = session.dataTask(with: url) { data, response, error in
 
                if error != nil || data == nil {
@@ -110,51 +111,104 @@ class MapViewController: UIViewController {
         
        }
 
-    
-    
-    func showCurrentLocation() {
-        mapView.settings.myLocationButton = true
-        let locationObj = locationManager.location as! CLLocation
-        let coord = locationObj.coordinate
-        let lattitude = coord.latitude
-        let longitude = coord.longitude
+ 
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        print("\(marker.position.latitude)")
         
-        let center = CLLocationCoordinate2D(latitude: locationObj.coordinate.latitude, longitude: locationObj.coordinate.longitude)
-        let marker = GMSMarker()
-        marker.position = center
-        marker.title = "current location"
-        marker.map = mapView
-        //let camera: GMSCameraPosition = GMSCameraPosition.camera(withLatitude: lattitude, longitude: longitude, zoom: Float(5))
-        //self.mapView.animate(to: camera)
-        //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        let count = marker.snippet!.split(separator: ",").count
+        var word = marker.snippet!.split(separator: ",")
+        var words:[String] = []
+        var result = ""
+        var searchWords = ""
+        
+        for value in word {
+            for char in value {
+                var temp = String(char)
+                if char == " " {
+                    temp = ",+"
+                }
+                result += temp
+            }
+        }
+         
+        
+        print(result)
+        
+         if (UIApplication.shared.canOpenURL(URL(string:"comgooglemaps://")!)) {
+            UIApplication.shared.openURL(URL(string:           "comgooglemaps://?q=\(result)&center=\(marker.position.latitude),\(marker.position.longitude)&zoom=14&views=traffic")!)
+         } else {
+           print("Can't use comgooglemaps://");
+         }
     }
+
+//    func mapView(_ mapView: GMSMapView, markerInfoWindow marker: GMSMarker) -> UIView?
+//        let v = (UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 150)) as? SeeDetailView)
 //
-//    private func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
-//      // 1
-//      mapView.clear()
+//        v.backgroundColor = .white
+//        let nameLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 150, height: 50))
+//        nameLabel.text = "\(marker.title ?? "Can't load")"
+//        nameLabel.textAlignment = .center
+//        nameLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        nameLabel.numberOfLines = 0
+//        v.addSubview(nameLabel)
 //
+//        let addressLabel = UILabel(frame: CGRect(x: 10, y: 40, width: 150, height: 50))
+//        addressLabel.text = "\(marker.snippet ?? "Can't load")"
+//        addressLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+//        addressLabel.numberOfLines = 0
+//        addressLabel.font = UIFont.systemFont(ofSize: 10.0)
 //
+//        v.addSubview(addressLabel)
+//
+//        let seeDetailButton = UIButton(frame: CGRect(x: 5, y: 100, width: 140, height: 50))
+//        seeDetailButton.setTitle("See Detail", for: .normal)
+//        seeDetailButton.setTitleColor(#colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1), for: .normal)
+//        seeDetailButton.addTarget(self, action: #selector(self.lanuchGoogleMapApp(_ :)), for: .touchUpInside)
+//        seeDetailButton.isUserInteractionEnabled = true
+//
+//        v.addSubview(seeDetailButton)
+        
+   //     return v
+//}
+    
+//    func showCurrentLocation() {
+//        mapView.settings.myLocationButton = true
+//        let locationObj = locationManager.location!
+//        let coord = locationObj.coordinate
+//
+//        let center = CLLocationCoordinate2D(latitude: locationObj.coordinate.latitude, longitude: locationObj.coordinate.longitude)
+//        let marker = GMSMarker()
+//        marker.position = center
+//        marker.title = "current location"
+//        marker.map = mapView
 //    }
+
 
     
     private func createMarkers(root: Root) {
         
-        mapView.clear()
+//        mapView.clear()
         
         
         var markers: [GMSMarker] = []
         let places:[SearchResult] = root.results
-        let marker:GMSMarker = GMSMarker()
         
         for place in places {
             
-            let marker1 = GMSMarker()
-            marker1.position = CLLocationCoordinate2D(latitude: place.geometry.location.lat , longitude: place.geometry.location.lng)
+            let marker = GMSMarker()
+            marker.position = CLLocationCoordinate2D(latitude: place.geometry.location.lat , longitude: place.geometry.location.lng)
             marker.title = "\(place.name)"
-            marker1.snippet = "\(place.name)"
-            markers.append(marker1)
-            marker1.map = mapView
+            marker.snippet = "\(place.vicinity)"
+            markers.append(marker)
+            marker.map = mapView
         }
+    }
+    
+    @objc func lanuchGoogleMapApp(_ sender: UIButton){
+        
+        print("\(sender.isSelected)")
+        
+
     }
 
     
@@ -186,7 +240,7 @@ extension MapViewController: CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
         mapView.isMyLocationEnabled = true
         mapView.settings.myLocationButton = true
-        self.showCurrentLocation()
+//        self.showCurrentLocation()
         
     }
     
@@ -196,6 +250,6 @@ extension MapViewController: CLLocationManagerDelegate {
         }
         mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
-        self.showCurrentLocation()
+//        self.showCurrentLocation()
     }
 }

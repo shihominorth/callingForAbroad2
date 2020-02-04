@@ -39,12 +39,16 @@ class MenuTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "account Switch", for: indexPath) as? AccountSwitchingTableViewCell)!
 
             // Configure the cell...
+            
+            cell.accountSwitchingLabel.text = "Account Switch"
 
             return cell
         case 1:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapTableViewCell)!
 
             // Configure the cell...
+            
+            cell.label?.text = "Find Wifi"
 
             return cell
         default:

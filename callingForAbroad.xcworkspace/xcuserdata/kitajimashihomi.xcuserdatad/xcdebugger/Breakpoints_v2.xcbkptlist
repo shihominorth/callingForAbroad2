@@ -699,7 +699,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "DC2E081E-10E8-4F7B-9C35-5B681976024E"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
@@ -747,7 +747,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "65512E8B-99FF-4C11-9D7A-54F572A6033A"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
@@ -763,7 +763,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "FB477868-4728-49ED-852B-A94D62F86FE8"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
@@ -779,7 +779,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "62749A1C-2321-42B1-A5EB-56A38EE42CA0"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
@@ -795,7 +795,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "AE77E7A8-D126-4574-80E9-DE63659EBACB"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
@@ -842,16 +842,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "8FFC1178-4962-4D2E-B348-5F356C49B68F"
-            shouldBeEnabled = "Yes"
+            uuid = "60AD5E95-42DE-43DE-8F73-287F24FE0B5E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "24"
-            endingLineNumber = "24"
-            landmarkName = "get()"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "createMarkers(root:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87F382C9-B0D6-48AE-B261-6EDE9650A698"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/MapViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
+            landmarkName = "createMarkers(root:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

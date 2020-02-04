@@ -9,60 +9,24 @@
 import UIKit
 import CoreLocation
 import GoogleMaps
-import Alamofire
+import GooglePlaces
+//import Alamofire
 
 class MapViewController: UIViewController {
     var mapView: GMSMapView!
     
     let apiKey = KeyManager().getValue(key:"apiKey") as? String
 
-    
-    func get()  {
-        let session = URLSession.shared
-//        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&keyword=cruise&key=AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI")!
-        
-        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=\(apiKey!)")!
-        
-        let task = session.dataTask(with: url) { data, response, error in
-
-            if error != nil || data == nil {
-                print("Client error!")
-                return
-            }
-
-            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                print("Server error!")
-                return
-            }
-
-            guard let mime = response.mimeType, mime == "application/json" else {
-                print("Wrong MIME type!")
-                return
-            }
-
-            do {
-                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                print(json)
-            } catch {
-                print("JSON error: \(error.localizedDescription)")
-            }
-        }
-
-        task.resume()
-    }
+   
     
     
     private let locationManager = CLLocationManager()
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        //        locationManager.delegate = self as? CLLocationManagerDelegate
-        //        locationManager.requestWhenInUseAuthorization()
-        //        mapView.delegate = self as? GMSMapViewDelegate
-        //
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self as! CLLocationManagerDelegate
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -96,8 +60,57 @@ class MapViewController: UIViewController {
             print("Location services are not enabled")
         }
         
-        get()
+        getSupermarketImformation()
     }
+    
+    func getSupermarketImformation()  {
+           let session = URLSession.shared
+           
+           let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=1500&type=supermarket&key=\(apiKey!)")!
+           
+           let task = session.dataTask(with: url) { data, response, error in
+
+               if error != nil || data == nil {
+                   print("Client error!")
+                   return
+               }
+
+               guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                   print("Server error!")
+                   return
+               }
+
+               guard let mime = response.mimeType, mime == "application/json" else {
+                   print("Wrong MIME type!")
+                   return
+               }
+
+               do {
+                   let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                   print(json)
+               } catch {
+                   print("JSON error: \(error.localizedDescription)")
+               }
+            
+            do {
+                let decoder = JSONDecoder()
+                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                let root = try decoder.decode(Root.self, from: data!)
+                print(root)
+                self.createMarkers(root: root)
+            } catch {
+                print(error)
+            }
+           }
+        
+        
+
+           task.resume()
+        
+        
+       }
+
+    
     
     func showCurrentLocation() {
         mapView.settings.myLocationButton = true
@@ -105,8 +118,6 @@ class MapViewController: UIViewController {
         let coord = locationObj.coordinate
         let lattitude = coord.latitude
         let longitude = coord.longitude
-        print(" lat in  updating \(lattitude) ")
-        print(" long in  updating \(longitude)")
         
         let center = CLLocationCoordinate2D(latitude: locationObj.coordinate.latitude, longitude: locationObj.coordinate.longitude)
         let marker = GMSMarker()
@@ -117,7 +128,34 @@ class MapViewController: UIViewController {
         //self.mapView.animate(to: camera)
         //        mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
     }
+//
+//    private func fetchNearbyPlaces(coordinate: CLLocationCoordinate2D) {
+//      // 1
+//      mapView.clear()
+//
+//
+//    }
+
     
+    private func createMarkers(root: Root) {
+        
+        mapView.clear()
+        
+        
+        var markers: [GMSMarker] = []
+        let places:[SearchResult] = root.results
+        let marker:GMSMarker = GMSMarker()
+        
+        for place in places {
+            
+            let marker1 = GMSMarker()
+            marker1.position = CLLocationCoordinate2D(latitude: place.geometry.location.lat , longitude: place.geometry.location.lng)
+            marker.title = "\(place.name)"
+            marker1.snippet = "\(place.name)"
+            markers.append(marker1)
+            marker1.map = mapView
+        }
+    }
 
     
     

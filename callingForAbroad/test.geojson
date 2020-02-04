@@ -1,0 +1,1092 @@
+{
+    "html_attributions" =     (
+    );
+    results =     (
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2321281";
+                lng = "-123.0331882";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2334409802915";
+                    lng = "-123.0316418197085";
+                };
+                southwest =                     {
+                    lat = "49.2307430197085";
+                    lng = "-123.0343397802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 2162242ee541819d0bd2741f03f742d49988b814;
+        name = "Safeway Collingwood";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAA797kU1W7iicdG4eqTMwOlW6DQ24-tW51P2gwahhxiAhf6MfCIaayKLLCIu8_3ny8Nw6FMPyw8wijYRGtPui-nnrf9ZnIDw4xf1xuWjLqqNm95mfu_HBYvxkEj2_0Vzw-EhClRdMj8CpqocR9BtmOFoF5GhTYLImfJ2MicDHQBCqLBpWGyEja7Q";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJeY9C1JF2hlQRKP-wRbWc7-Q";
+        "plus_code" =             {
+            "compound_code" = "6XJ8+VP Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJ8+VP";
+        };
+        "price_level" = 2;
+        rating = "3.9";
+        reference = "ChIJeY9C1JF2hlQRKP-wRbWc7-Q";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        florist,
+        bakery,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1536;
+        vicinity = "3410 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2323329";
+                lng = "-123.0278897";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335704802915";
+                    lng = "-123.0265293197085";
+                };
+                southwest =                     {
+                    lat = "49.23087251970851";
+                    lng = "-123.0292272802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = f7b808a441f0dd5dcaed3454694bf95f294dd92f;
+        name = "Africana General Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAATboV2JK8ANlEMYa_xeYuH1HsCTeEQj05NIUN_jDNw00YK2xbfW-a99z9b_YKrgr2Rup5LORnbOG3Iz7fQBawxe6LGQBVbTSeAKJ0ZnHwUaNxV6Xu7m4o5ma4Or8KbmygEhDDJNlV2dvZDmRK-ScLRiIcGhQkCmAVIOn7fCQRdXPLlC3WOmSe6w";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJv-mQ5412hlQRzPs2IfuyGGM";
+        "plus_code" =             {
+            "compound_code" = "6XJC+WR Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJC+WR";
+        };
+        rating = "4.3";
+        reference = "ChIJv-mQ5412hlQRzPs2IfuyGGM";
+        scope = GOOGLE;
+        types =             (
+        "grocery_or_supermarket",
+        supermarket,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 10;
+        vicinity = "3543 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2450516";
+                lng = "-123.0241588";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.24645648029149";
+                    lng = "-123.0228136697085";
+                };
+                southwest =                     {
+                    lat = "49.24375851970849";
+                    lng = "-123.0255116302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 9bb9fb78dcfe17669515be3bec4e6b0966e71b52;
+        name = "Boundary Mini Mart";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 1536;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/112724056294813722825\">Local Buzz</a>"
+            );
+            "photo_reference" = "CmRaAAAAzkWEDsCwNxQlclVsraySMBumq3xC_fjqNIiFfnGxv7EUdPz1mbNbFQR05t9S2Y4A1HD3erblcFiVDy26KKIKyWyyqoEQs7hkMNwgIfvH8v3KtsBrBxlkkTGUl-P7a62XEhCFLDkB3Rd28pCzy42HPov_GhR5Q9eHaoOwoY0Cg7wCJpCxEZzs-Q";
+            width = 2048;
+        }
+        );
+        "place_id" = ChIJ54rK7el2hlQRaY0zYI451w8;
+        "plus_code" =             {
+            "compound_code" = "6XWG+28 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XWG+28";
+        };
+        rating = 3;
+        reference = ChIJ54rK7el2hlQRaY0zYI451w8;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1;
+        vicinity = "4409 Boundary Rd, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2397083";
+                lng = "-123.0301169";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2410721802915";
+                    lng = "-123.0289137697085";
+                };
+                southwest =                     {
+                    lat = "49.2383742197085";
+                    lng = "-123.0316117302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 5a287ca001771f7a1ae7cd69c5548875e516e44c;
+        name = "Joyce Way Food Market";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAA0IR3bJPg3Ei5HZ6cgAi5qTZkBGUFNmce2UidVC3ZOnoVRtcmG2oH7HnAByNCtngZKDR2GVOt_nxXH8dNiNRDATSgPnpRvZY9YI5XN3sorS5HeMwS3r5yWxvdQpC5nwLKEhAyxgFwc9_JI7UGZ-KUlVNgGhTyg5jLRDf33ZlXvU1mry9kwTGB0g";
+            width = 4032;
+        }
+        );
+        "place_id" = ChIJhWhvuJR2hlQREyM3Tyt16M4;
+        "plus_code" =             {
+            "compound_code" = "6XQ9+VX Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XQ9+VX";
+        };
+        rating = "4.6";
+        reference = ChIJhWhvuJR2hlQREyM3Tyt16M4;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 14;
+        vicinity = "4910 Joyce Street, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.23794880000001";
+                lng = "-123.0325096";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2392618802915";
+                    lng = "-123.0310741697085";
+                };
+                southwest =                     {
+                    lat = "49.2365639197085";
+                    lng = "-123.0337721302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 563fcd35517671c6f4876d08f62328fd5c2edd08;
+        name = "Kay Market";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3264;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/102854892699696338096\">T LC</a>"
+            );
+            "photo_reference" = "CmRaAAAArKlEhp9nqhtdMYqdVOcrNBUCQZueDQcutwPWcQzno6MSYizPKMk6wt3Lt2B-S31KZJn5SrcBW9hwqo2kcqsKwnXCLaHTdGvS0BxOwPYlXN3j-obBw0h5fvcSwaeGoCRTEhDO_us10Jv80gWaTmWzqPrtGhRrruATFvjsqlMjWh4P2pT11c_6cg";
+            width = 2448;
+        }
+        );
+        "place_id" = "ChIJUVZPeJR2hlQRW0KWhLI-IUQ";
+        "plus_code" =             {
+            "compound_code" = "6XQ8+5X Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XQ8+5X";
+        };
+        rating = 3;
+        reference = "ChIJUVZPeJR2hlQRW0KWhLI-IUQ";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 34;
+        vicinity = "5169 Joyce Street, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2328844";
+                lng = "-123.032973";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2341819802915";
+                    lng = "-123.0316863197085";
+                };
+                southwest =                     {
+                    lat = "49.2314840197085";
+                    lng = "-123.0343842802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png";
+        id = 1429801bceb6e88b474c9264dda50c5689bd364b;
+        name = "Ling Nan Dim Sum Food Co.";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3984;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/109865421029220289086\">chin</a>"
+            );
+            "photo_reference" = "CmRaAAAAzzlMXM06BBipcFOkE6H8jYOXyv6Zpf110eS6wN25zh0TZSL8KWZO8GzRA0qSoXNS9HeWmO5Wme-EZy8Rxm4JdOTqp-N3YgcQpV9fXTDy2MJhy7KHnfujSZ07ay1J7kdkEhANbbDAl-cDkaNqL7sxCkmIGhSQe7He_9Pn0K2rYd6aFGyrMxI1XA";
+            width = 2988;
+        }
+        );
+        "place_id" = "ChIJVSRdxJF2hlQR-TkMVgKlQXY";
+        "plus_code" =             {
+            "compound_code" = "6XM8+5R Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XM8+5R";
+        };
+        rating = 5;
+        reference = "ChIJVSRdxJF2hlQR-TkMVgKlQXY";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1;
+        vicinity = "3381 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2322932";
+                lng = "-123.0284932";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335361802915";
+                    lng = "-123.0271314197085";
+                };
+                southwest =                     {
+                    lat = "49.2308382197085";
+                    lng = "-123.0298293802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 567b717aeddd6e6855954555a1aff862efcace03;
+        name = "Kwick Pick";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 1080;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/108536505909147220019\">Siddhartha Naik</a>"
+            );
+            "photo_reference" = "CmRaAAAADztPvkWJYtD0ZFvbLrd5kR-buW6iC1l1c66Lp3t5YNFFshooScBWQpIww9t1XwV-bVe_nrrIOE6VX1Wp0oktGuRpJ2d31QFb_o7eRWZrQQSa1yQpYLRgxoBjCypRCuXNEhAWK1a-O-zP3GEbXT1IX3iKGhToJgGatjVwW3aoRYA0j1Z3goZs5A";
+            width = 1920;
+        }
+        );
+        "place_id" = ChIJ8dzv4I12hlQRRSjCyCf8Pvk;
+        "plus_code" =             {
+            "compound_code" = "6XJC+WJ Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJC+WJ";
+        };
+        rating = "3.5";
+        reference = ChIJ8dzv4I12hlQRRSjCyCf8Pvk;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 13;
+        vicinity = "3527 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2323271";
+                lng = "-123.0273406";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335795802915";
+                    lng = "-123.0259816697085";
+                };
+                southwest =                     {
+                    lat = "49.2308816197085";
+                    lng = "-123.0286796302915";
+                };
+            };
+            
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 88ccd92295e70cb4099efea1cf2ba10738752f92;
+        name = "OBA OBA Brasil Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/109436445323497874910\">OBA OBA Brasil Market</a>"
+            );
+            "photo_reference" = "CmRaAAAAf4dtef75MnMMJaC5etAgFBvGmoPgbInCCjQK51-oZ5vfR3--y4cicTR13gYjWDZoftuMuwTTPskhpSqfSEaUDTW3OD4kYbGnwpWbhJYTRM9F9jI2RiM5K1awPCpnGC83EhCOXu6uW2rEgX2MqMP1pPM3GhTXEI0pRMD7Z981RYB3ehUR1jjCCw";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJg8Dum4dxhlQRav5PgS-lVMc";
+        "plus_code" =             {
+            "compound_code" = "6XJF+W3 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJF+W3";
+        };
+        rating = "4.7";
+        reference = "ChIJg8Dum4dxhlQRav5PgS-lVMc";
+        scope = GOOGLE;
+        types =             (
+        "grocery_or_supermarket",
+        supermarket,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 65;
+        vicinity = "3565 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.23240869999999";
+                lng = "-123.025012";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2337020802915";
+                    lng = "-123.0236561197085";
+                };
+                southwest =                     {
+                    lat = "49.2310041197085";
+                    lng = "-123.0263540802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 7342d01bbe1a67dfbea9a3ba75fec2f3b73130bf;
+        name = "Asia Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 1153;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/116014184910974014950\">Asia Market</a>"
+            );
+            "photo_reference" = "CmRaAAAAGhknlE7zf8wV8vdNp2-7YibvZsYiuOd5UHSv_sEq05W6nH1jZAfISkH6abUCXsYHJQcbfs-lC662I60Wz_H_ylxesIKLWCtEzdRZykTvHSJ10eb-uB460o4jnEAehhWcEhAg2oU9T_E3vFbBod7bHenmGhQw25zEnvOFN7MwKNNsoKtNJief0w";
+            width = 2048;
+        }
+        );
+        "place_id" = ChIJp3jgrXFxhlQRvU5ND1286Lk;
+        "plus_code" =             {
+            "compound_code" = "6XJF+XX Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJF+XX";
+        };
+        rating = "3.9";
+        reference = ChIJp3jgrXFxhlQRvU5ND1286Lk;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        restaurant,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 54;
+        vicinity = "3645 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2374394";
+                lng = "-123.0490808";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2388338302915";
+                    lng = "-123.0477656697085";
+                };
+                southwest =                     {
+                    lat = "49.2361358697085";
+                    lng = "-123.0504636302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 4ec84b76232051ba88e6173f2d2273e99c33aa97;
+        name = "Great Two Supermarket \U8aa0\U4fe1\U8d85\U7d1a\U5e02\U5834";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3000;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/114108941105472980198\">yfw888</a>"
+            );
+            "photo_reference" = "CmRZAAAABjyMfr45i7DspnayExJcoXP_BpAp4qs24uAHvMrMgjRXyb0-zcAHtrn2XnlEeZMdHeg45mUcO3RLYK6NC7R9Y57WmxFO_YQpBucDPHhM1eGiQJwIVgI4mnrG2zkLRz3YEhBYnqTDBAFfm4FV1LIw7OjiGhTm04ZQ2XWqNtYrKURTPB1SWXgd4w";
+            width = 4000;
+        }
+        );
+        "place_id" = "ChIJDTbNdph2hlQRuE7O9B_Vm40";
+        "plus_code" =             {
+            "compound_code" = "6XP2+X9 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XP2+X9";
+        };
+        rating = "3.7";
+        reference = "ChIJDTbNdph2hlQRuE7O9B_Vm40";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 215;
+        vicinity = "2760 Kingsway, Vancouver";
+    }
+    );
+    status = OK;
+}
+2020-02-03 21:03:00.371800-0800 checklist[3371:1022838] Can't end BackgroundTask: no background task exists with identifier 60 (0x3c), or it may have already been ended. Break in UIApplicationEndBackgroundTaskError() to debug.
+2020-02-03 21:11:03.722903-0800 checklist[3371:1022838] Can't end BackgroundTask: no background task exists with identifier 122 (0x7a), or it may have already been ended. Break in UIApplicationEndBackgroundTaskError() to debug.
+Could not fetch Error Domain=Foundation._GenericObjCError Code=0 "(null)", [:]
+2020-02-03 21:12:51.341138-0800 checklist[3371:1022838] [LayoutConstraints] Unable to simultaneously satisfy constraints.
+Probably at least one of the constraints in the following list is one you don't want.
+Try this:
+(1) look at each constraint and try to figure out which you don't expect;
+(2) find the code that added the unwanted constraint or constraints and fix it.
+(Note: If you're seeing NSAutoresizingMaskLayoutConstraints that you don't understand, refer to the documentation for the UIView property translatesAutoresizingMaskIntoConstraints)
+(
+"<NSAutoresizingMaskLayoutConstraint:0x281064500 h=--& v=--& UITableViewCellContentView:0x1024679a0.minX == 0   (active, names: '|':checklist.MapTableViewCell:0x102410b40'map' )>",
+"<NSLayoutConstraint:0x2810676b0 UIImageView:0x102492910.leading == UITableViewCellContentView:0x1024679a0.leadingMargin   (active)>",
+"<NSLayoutConstraint:0x281067430 H:|-(103)-[UILabel:0x1024089c0'Label']   (active, names: '|':UITableViewCellContentView:0x1024679a0 )>",
+"<NSLayoutConstraint:0x281064050 H:[UIImageView:0x102492910]-(33)-[UILabel:0x1024089c0'Label']   (active)>",
+"<NSLayoutConstraint:0x281067020 UIImageView:0x102492910.centerX == checklist.MapTableViewCell:0x102410b40'map'.centerX   (active)>",
+"<NSLayoutConstraint:0x281066f30 'UIView-Encapsulated-Layout-Width' checklist.MapTableViewCell:0x102410b40'map'.width == 240   (active)>",
+"<NSLayoutConstraint:0x2810647d0 'UIView-leftMargin-guide-constraint' H:|-(16)-[UILayoutGuide:0x280afc7e0'UIViewLayoutMarginsGuide'](LTR)   (active, names: '|':UITableViewCellContentView:0x1024679a0 )>"
+)
+
+Will attempt to recover by breaking constraint
+<NSLayoutConstraint:0x281064050 H:[UIImageView:0x102492910]-(33)-[UILabel:0x1024089c0'Label']   (active)>
+
+Make a symbolic breakpoint at UIViewAlertForUnsatisfiableConstraints to catch this in the debugger.
+The methods in the UIConstraintBasedLayoutDebugging category on UIView listed in <UIKitCore/UIView.h> may also be helpful.
+Access
+lat in  updating 49.236175537109375
+long in  updating -123.03568155516221
+lat in  updating 49.236175537109375
+long in  updating -123.03568155516221
+{
+    "html_attributions" =     (
+    );
+    results =     (
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2321281";
+                lng = "-123.0331882";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2334409802915";
+                    lng = "-123.0316418197085";
+                };
+                southwest =                     {
+                    lat = "49.2307430197085";
+                    lng = "-123.0343397802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 2162242ee541819d0bd2741f03f742d49988b814;
+        name = "Safeway Collingwood";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAAoXxrEl8iUwDbxN9v2e5xMWCWMY-BfrS3M7rkTfNfb02jKcT3dvpeQ9kLxAv7W1tEvEQJeCn4f5SJLCBj6hluZ4gu4H2l95JLmePo7r8TDt-6Vw5ckotjdPgPoVcfBK4uEhApOKIKhbOZA5QUD2jvQD7HGhQFyFIwts1GMORcGozgsAb8BRChIg";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJeY9C1JF2hlQRKP-wRbWc7-Q";
+        "plus_code" =             {
+            "compound_code" = "6XJ8+VP Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJ8+VP";
+        };
+        "price_level" = 2;
+        rating = "3.9";
+        reference = "ChIJeY9C1JF2hlQRKP-wRbWc7-Q";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        florist,
+        bakery,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1536;
+        vicinity = "3410 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2323329";
+                lng = "-123.0278897";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335704802915";
+                    lng = "-123.0265293197085";
+                };
+                southwest =                     {
+                    lat = "49.23087251970851";
+                    lng = "-123.0292272802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = f7b808a441f0dd5dcaed3454694bf95f294dd92f;
+        name = "Africana General Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAAFeInJgZitHjoA-fc82vq3olVTUkd2DXwMtAlDgV3XSmc7xDyJmo4o5Kc88DXSzDwtgBXlnG21B5G5_8Ny2TmcIVWfBTdzYHeTdiX_9sEklCWos1XqpxZi-i3MKrVlRGuEhD8QSIBO36mAR3rhqL9StK1GhSKM52Ay2vuLIxHck1pj7gebe7-Sw";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJv-mQ5412hlQRzPs2IfuyGGM";
+        "plus_code" =             {
+            "compound_code" = "6XJC+WR Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJC+WR";
+        };
+        rating = "4.3";
+        reference = "ChIJv-mQ5412hlQRzPs2IfuyGGM";
+        scope = GOOGLE;
+        types =             (
+        "grocery_or_supermarket",
+        supermarket,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 10;
+        vicinity = "3543 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2450516";
+                lng = "-123.0241588";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.24645648029149";
+                    lng = "-123.0228136697085";
+                };
+                southwest =                     {
+                    lat = "49.24375851970849";
+                    lng = "-123.0255116302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 9bb9fb78dcfe17669515be3bec4e6b0966e71b52;
+        name = "Boundary Mini Mart";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 1536;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/112724056294813722825\">Local Buzz</a>"
+            );
+            "photo_reference" = "CmRaAAAAqT7eEdUaTrk6T4t89ZrN1cSu37jb-22qjIQBEOF2kkswucq0kX7DH67R4A3NEfBnCW98juj86hEBXb1UMcn_ZazLh9abFS1RjtVCHtsHpowjbfIftSEhSOIDJR99CkPhEhBeu_qFKpQvcEUkbIEns8iHGhR5mCptVEfgpUYZtladN_C6mCqkcQ";
+            width = 2048;
+        }
+        );
+        "place_id" = ChIJ54rK7el2hlQRaY0zYI451w8;
+        "plus_code" =             {
+            "compound_code" = "6XWG+28 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XWG+28";
+        };
+        rating = 3;
+        reference = ChIJ54rK7el2hlQRaY0zYI451w8;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1;
+        vicinity = "4409 Boundary Rd, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2397083";
+                lng = "-123.0301169";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2410721802915";
+                    lng = "-123.0289137697085";
+                };
+                southwest =                     {
+                    lat = "49.2383742197085";
+                    lng = "-123.0316117302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 5a287ca001771f7a1ae7cd69c5548875e516e44c;
+        name = "Joyce Way Food Market";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/105228349541098182324\">Godwin C</a>"
+            );
+            "photo_reference" = "CmRaAAAAfdTgxDTCt-soOyPuL7ZzEhH-cjzNUONquew0cuOjEBEDBMhpEJoNAQRksfg_jrJuLHMwnNDvt6i_4l0PiXmA2Abxo0bN_gDtFLYQMTxlM7UHjGc3ffZtHI5hrMZ-4DusEhAOUtzs1DMsW07lY9yqON23GhQ2MURmB6qiPFODhLIbbnb7S6WwbQ";
+            width = 4032;
+        }
+        );
+        "place_id" = ChIJhWhvuJR2hlQREyM3Tyt16M4;
+        "plus_code" =             {
+            "compound_code" = "6XQ9+VX Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XQ9+VX";
+        };
+        rating = "4.6";
+        reference = ChIJhWhvuJR2hlQREyM3Tyt16M4;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 14;
+        vicinity = "4910 Joyce Street, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.23794880000001";
+                lng = "-123.0325096";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2392618802915";
+                    lng = "-123.0310741697085";
+                };
+                southwest =                     {
+                    lat = "49.2365639197085";
+                    lng = "-123.0337721302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 563fcd35517671c6f4876d08f62328fd5c2edd08;
+        name = "Kay Market";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 3264;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/102854892699696338096\">T LC</a>"
+            );
+            "photo_reference" = "CmRaAAAAnQlp1KNgRbWSLNOr4tuTsC0CshQM573IJ8i5YdfSFWI2SFcnligwdmoKH0U2Jd5Ye23B701g0HfBK1i-cYnO6zlelMTCzP1Iy0BhSOLqBPLnFglWRAOOcl_M2S4GiUzPEhABONqb1oZ2T9gCUJwSBmXwGhSx99t9msoW3VSvM_LDxTf_c8QNbQ";
+            width = 2448;
+        }
+        );
+        "place_id" = "ChIJUVZPeJR2hlQRW0KWhLI-IUQ";
+        "plus_code" =             {
+            "compound_code" = "6XQ8+5X Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XQ8+5X";
+        };
+        rating = 3;
+        reference = "ChIJUVZPeJR2hlQRW0KWhLI-IUQ";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 34;
+        vicinity = "5169 Joyce Street, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2328844";
+                lng = "-123.032973";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2341819802915";
+                    lng = "-123.0316863197085";
+                };
+                southwest =                     {
+                    lat = "49.2314840197085";
+                    lng = "-123.0343842802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png";
+        id = 1429801bceb6e88b474c9264dda50c5689bd364b;
+        name = "Ling Nan Dim Sum Food Co.";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3984;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/109865421029220289086\">chin</a>"
+            );
+            "photo_reference" = "CmRaAAAASlRgGPKZJgXcc45cZOOCaS3HlKWWVQht4c1_Ucdls4AA0GrZ9bAS2aZJ679QhUJ6cN8yOMOI99uGAz2OlK1JQZzEILkZh5ido3WaN60unUtI5I-MkcHSoTFQ5y0tGm18EhDCFj6JA-BxZc4mvLLMisTSGhR-xOQAiHpPuMXkFpcX4KvZZe43QQ";
+            width = 2988;
+        }
+        );
+        "place_id" = "ChIJVSRdxJF2hlQR-TkMVgKlQXY";
+        "plus_code" =             {
+            "compound_code" = "6XM8+5R Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XM8+5R";
+        };
+        rating = 5;
+        reference = "ChIJVSRdxJF2hlQR-TkMVgKlQXY";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 1;
+        vicinity = "3381 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2322932";
+                lng = "-123.0284932";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335361802915";
+                    lng = "-123.0271314197085";
+                };
+                southwest =                     {
+                    lat = "49.2308382197085";
+                    lng = "-123.0298293802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 567b717aeddd6e6855954555a1aff862efcace03;
+        name = "Kwick Pick";
+        "opening_hours" =             {
+            "open_now" = 1;
+        };
+        photos =             (
+        {
+            height = 1080;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/108536505909147220019\">Siddhartha Naik</a>"
+            );
+            "photo_reference" = "CmRaAAAAvbBVJ2ehxgnGtq5ogLxo_StNuHgZYkC6voDVO4RXc_oLANfpbbVWgl7IuW0iXFOH-y9KPhBWdJ4hGgWh5Gax2Aav31s3gqN39iNPyIAVayt5uvEHggkQjcKL2crQ30MuEhBT_WBqAb1-t5Enw98UnbJgGhR445Ful2gj3KDCUKeKQnPeBKQotQ";
+            width = 1920;
+        }
+        );
+        "place_id" = ChIJ8dzv4I12hlQRRSjCyCf8Pvk;
+        "plus_code" =             {
+            "compound_code" = "6XJC+WJ Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJC+WJ";
+        };
+        rating = "3.5";
+        reference = ChIJ8dzv4I12hlQRRSjCyCf8Pvk;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 13;
+        vicinity = "3527 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2323271";
+                lng = "-123.0273406";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2335795802915";
+                    lng = "-123.0259816697085";
+                };
+                southwest =                     {
+                    lat = "49.2308816197085";
+                    lng = "-123.0286796302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 88ccd92295e70cb4099efea1cf2ba10738752f92;
+        name = "OBA OBA Brasil Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3024;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/109436445323497874910\">OBA OBA Brasil Market</a>"
+            );
+            "photo_reference" = "CmRaAAAAvhmk9sbo437SJ0iyJsdw-naJULTcNB2pOq0fWrJXaPdQehQr1EevEpnN5roJJzn50va2Ho8OXux9hSSfWAeMjSSGiNCCxmwYQKd1fIzpE7soc3iuEjTqgTOhqwGxjwcZEhBOtSrZASw6VdG6NbSzAJcXGhRC0AUB5YIFjS_p4DzjFrszbbdKiw";
+            width = 4032;
+        }
+        );
+        "place_id" = "ChIJg8Dum4dxhlQRav5PgS-lVMc";
+        "plus_code" =             {
+            "compound_code" = "6XJF+W3 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJF+W3";
+        };
+        rating = "4.7";
+        reference = "ChIJg8Dum4dxhlQRav5PgS-lVMc";
+        scope = GOOGLE;
+        types =             (
+        "grocery_or_supermarket",
+        supermarket,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 65;
+        vicinity = "3565 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.23240869999999";
+                lng = "-123.025012";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2337020802915";
+                    lng = "-123.0236561197085";
+                };
+                southwest =                     {
+                    lat = "49.2310041197085";
+                    lng = "-123.0263540802915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 7342d01bbe1a67dfbea9a3ba75fec2f3b73130bf;
+        name = "Asia Market";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 1153;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/116014184910974014950\">Asia Market</a>"
+            );
+            "photo_reference" = "CmRaAAAACUKFjlomOc9AriXCFKM_vm39oPSUpjqYZ_zKGTLnC4lAm6jBW9WTx8CZ75d0xSMSDqDMKockavTMc2ltdIM6RNpB48KXwAUSywgpS2Lv9uffqTsz0BY_YwTyZu-MkdeNEhBMrcBI4BX2O7o4CiHaaeq8GhSQnw2QoIsCB0YyKXv3sqA6-rjOSg";
+            width = 2048;
+        }
+        );
+        "place_id" = ChIJp3jgrXFxhlQRvU5ND1286Lk;
+        "plus_code" =             {
+            "compound_code" = "6XJF+XX Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XJF+XX";
+        };
+        rating = "3.9";
+        reference = ChIJp3jgrXFxhlQRvU5ND1286Lk;
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        restaurant,
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 54;
+        vicinity = "3645 Kingsway, Vancouver";
+    },
+    {
+        geometry =             {
+            location =                 {
+                lat = "49.2374394";
+                lng = "-123.0490808";
+            };
+            viewport =                 {
+                northeast =                     {
+                    lat = "49.2388338302915";
+                    lng = "-123.0477656697085";
+                };
+                southwest =                     {
+                    lat = "49.2361358697085";
+                    lng = "-123.0504636302915";
+                };
+            };
+        };
+        icon = "https://maps.gstatic.com/mapfiles/place_api/icons/shopping-71.png";
+        id = 4ec84b76232051ba88e6173f2d2273e99c33aa97;
+        name = "Great Two Supermarket \U8aa0\U4fe1\U8d85\U7d1a\U5e02\U5834";
+        "opening_hours" =             {
+            "open_now" = 0;
+        };
+        photos =             (
+        {
+            height = 3000;
+            "html_attributions" =                     (
+            "<a href=\"https://maps.google.com/maps/contrib/114108941105472980198\">yfw888</a>"
+            );
+            "photo_reference" = "CmRZAAAAZ0PWnmkrBER7-Ls6wqjNBBIstUvtrJm60lNbItQQj1U782v7HeT7FGXuwsq5XZY8UWSlAIrjjDW7KDXr0Ey6V1Ri9K0xAk1HOsyDqBNiEP_Bivt4fHir11DIwGlQgUAxEhAkIB0JWEOY7FJ1lCmOy02iGhSOlztpbbc4Ecu4Vxf3BHvaNLaF0g";
+            width = 4000;
+        }
+        );
+        "place_id" = "ChIJDTbNdph2hlQRuE7O9B_Vm40";
+        "plus_code" =             {
+            "compound_code" = "6XP2+X9 Vancouver, British Columbia, Canada";
+            "global_code" = "84XR6XP2+X9";
+        };
+        rating = "3.7";
+        reference = "ChIJDTbNdph2hlQRuE7O9B_Vm40";
+        scope = GOOGLE;
+        types =             (
+        supermarket,
+        "grocery_or_supermarket",
+        food,
+        "point_of_interest",
+        store,
+        establishment
+        );
+        "user_ratings_total" = 215;
+        vicinity = "2760 Kingsway, Vancouver";
+    }
+    );
+    status = OK;
+}

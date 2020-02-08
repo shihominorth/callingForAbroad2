@@ -43,6 +43,8 @@
 		6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */; };
 		6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */; };
 		6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */; };
+		6F8BE7A023EEEBB000CEA348 /* DayPickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79F23EEEBB000CEA348 /* DayPickerTableViewCell.swift */; };
+		6F8BE7A723EF171C00CEA348 /* dayPicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6F8BE7A523EF137B00CEA348 /* dayPicker.xib */; };
 		6FA5384B23AC9CC900F73D08 /* functionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */; };
 		6FA5384D23AD0A3400F73D08 /* callingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */; };
 		6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */; };
@@ -109,6 +111,8 @@
 		6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCallingViewController.swift; path = callingForAbroad/nameCallingViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = Pods/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameViewController.swift; sourceTree = "<group>"; };
+		6F8BE79F23EEEBB000CEA348 /* DayPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		6F8BE7A423EF137B00CEA348 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/dayPicker.xib; sourceTree = "<group>"; };
 		6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = callingItemTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 		6F150B7423AA04B800908DEB /* cell for Detail page */ = {
 			isa = PBXGroup;
 			children = (
+				6F8BE79F23EEEBB000CEA348 /* DayPickerTableViewCell.swift */,
+				6F8BE7A523EF137B00CEA348 /* dayPicker.xib */,
 				6FB86BFD23E8191800672851 /* DateCallingTableViewCell.swift */,
 				6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */,
 				6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */,
@@ -354,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8BE7A723EF171C00CEA348 /* dayPicker.xib in Resources */,
 				6FECA10323750BD200B7DD8B /* LaunchScreen.storyboard in Resources */,
 				6FB86C0523E8795000672851 /* apiKey.plist in Resources */,
 				6FECA10023750BD200B7DD8B /* Assets.xcassets in Resources */,
@@ -435,6 +442,7 @@
 				6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */,
 				6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */,
 				6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */,
+				6F8BE7A023EEEBB000CEA348 /* DayPickerTableViewCell.swift in Sources */,
 				6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */,
 				6F150B7123AA03FD00908DEB /* JetLagTableViewCell.swift in Sources */,
 				6FB86C0723E87B6900672851 /* KeyManager.swift in Sources */,
@@ -489,6 +497,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6F8BE7A523EF137B00CEA348 /* dayPicker.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6F8BE7A423EF137B00CEA348 /* Base */,
+			);
+			name = dayPicker.xib;
+			path = "callingForAbroad/cell for Detail page";
+			sourceTree = SOURCE_ROOT;
+		};
 		6FECA0FC23750BCE00B7DD8B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -18,6 +18,8 @@ class DetailCallingTableViewController: UITableViewController {
     var item = callingCellItem()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
+    var datePickerIndexPath: IndexPath?
+    var inputDates:[Date] = []
     
 
     override func viewDidLoad() {
@@ -32,18 +34,16 @@ class DetailCallingTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
 //        assignImformationToCell(index: indexPath.row)
+        
+        addInitailValues()
+//        showUpDatePicker()
+        tableView.register(UINib(nibName: "DayPickerTableViewCell", bundle: nil), forCellReuseIdentifier: "dayPicker")
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
 
-    
-    fileprivate func extractedFunc(_ edittingVC: DestinationNameViewController) {
-        edittingVC.item = self.item
-        edittingVC.indexPath = self.indexPath
-        edittingVC.delegate = self
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editting Segue" {
@@ -70,7 +70,9 @@ class DetailCallingTableViewController: UITableViewController {
         }
         if segue.identifier == "edittingDestinationName" {
             if let edittingVC = segue.destination as? DestinationNameViewController {
-                extractedFunc(edittingVC)
+                edittingVC.item = self.item
+                edittingVC.indexPath = self.indexPath
+                edittingVC.delegate = self
             }
         }
     }
@@ -79,16 +81,32 @@ class DetailCallingTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        
+//        if datePickerIndexPath != nil {
+//            return 8
+//        }
         return 7
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        
+        if section == 1 && datePickerIndexPath != nil {
+            return 2
+        }
         return 1
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if datePickerIndexPath == indexPath {
+            let datePickerCell = (tableView.dequeueReusableCell(withIdentifier:   DayPickerTableViewCell.reuseIdentier()) as?  DayPickerTableViewCell)!
+            datePickerCell.updateCell(date: inputDates[indexPath.section - 1], indexPath: indexPath)
+            datePickerCell.delegate = self as DatePickerDelegate
+            
+            return datePickerCell
+        }
         
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "NameCalling", for: indexPath) as? NameCallingForTableViewCell)!
@@ -101,11 +119,16 @@ class DetailCallingTableViewController: UITableViewController {
             return cell
         }
         else if indexPath.section == 1 {
-                let cell = (tableView.dequeueReusableCell(withIdentifier: "date Calling", for: indexPath) as? DateCallingTableViewCell)!
-
-                // Configure the cell...
+            
+            
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "date Calling", for: indexPath) as? DateCallingTableViewCell)!
+            cell.updateText(date: inputDates[indexPath.row])
+            
+            // Configure the cell...
             cell.DateCallingLabel.text = item.localDate
-                return cell
+            return cell
+            
+            
             }
         else if indexPath.section == 2 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local Name", for: indexPath) as? LocalNameTableViewCell)!
@@ -155,39 +178,41 @@ class DetailCallingTableViewController: UITableViewController {
     }
     
     
-    //MARK: -BUTTON
     
-    @IBAction func back() {
-        let row = indexPath.row
-//
-//        if let cell: EdittingTableViewCell
-//            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
-//
-//            switch row {
-//            case 0:
-//                item.nameCallingFor = cell.textField.text ?? ""
-//            case 1:
-//                item.localDate = cell.textField.text ?? ""
-//            case 2:
-//                item.localName = cell.textField.text ?? ""
-//            case 3:
-//                item.localTime = cell.textField.text ?? ""
-//            case 4:
-//                item.destinationName = cell.textField.text ?? ""
-//            case 5:
-//                item.jetLag = cell.textField.text ?? ""
-//            case 6:
-//                item.destinationTime = cell.textField.text ?? ""
-//            default:
-//                break
-//            }
-//
-           
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
-        navigationController?.popViewController(animated: true)
+        if indexPath.section == 1 {
+            
+            tableView.beginUpdates()
+            
+             if let datePickerIndexPath = datePickerIndexPath,   datePickerIndexPath.row - 1 == indexPath.row {
+               tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
+               self.datePickerIndexPath = nil
+            } else {
+               // 2
+               if let datePickerIndexPath = datePickerIndexPath {
+                  tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
+               }
+               datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
+               tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
+               tableView.deselectRow(at: indexPath, animated: true)
+            }
+               tableView.endUpdates()
+            
+            
+            
+        }
+        
+        
     }
     
+    func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
+       if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
+            return indexPath
+       } else {
+            return IndexPath(row: indexPath.row + 1, section: indexPath.section)
+       }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -223,6 +248,9 @@ class DetailCallingTableViewController: UITableViewController {
         return true
     }
     */
+    
+    
+    
 
     /*
     // MARK: - Navigation
@@ -233,6 +261,22 @@ class DetailCallingTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+//    func showUpDatePicker()  {
+//
+//
+//    }
+    
+    func addInitailValues() {
+        inputDates = Array(repeating: Date(), count: 1)
+    }
+    
+    //MARK: - BUTTON
+    
+    @IBAction func back() {
+        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+        navigationController?.popViewController(animated: true)
+    }
 
 }
 
@@ -268,5 +312,13 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
         self.tableView.reloadData()
     }
     
+}
+
+extension DetailCallingTableViewController: DatePickerDelegate {
+    
+    func didChangeDate(date: Date, indexPath: IndexPath) {
+        inputDates[indexPath.row] = date
+        tableView.reloadRows(at: [indexPath], with: .none)
+    }
     
 }

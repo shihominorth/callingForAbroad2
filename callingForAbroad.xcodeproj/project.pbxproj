@@ -36,8 +36,6 @@
 		6F3FF55823DC1D0E005162C7 /* EdittingDestinationNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54F23DC1D0D005162C7 /* EdittingDestinationNameTableViewCell.swift */; };
 		6F3FF55923DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF55023DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift */; };
 		6F3FF56023E11D09005162C7 /* callingForAbroad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF55E23E11D09005162C7 /* callingForAbroad.xcdatamodeld */; };
-		6F3FF56323E12048005162C7 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56123E12048005162C7 /* Plan+CoreDataClass.swift */; };
-		6F3FF56423E12048005162C7 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56223E12048005162C7 /* Plan+CoreDataProperties.swift */; };
 		6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56523E38753005162C7 /* MapViewController.swift */; };
 		6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */; };
 		6FA5384B23AC9CC900F73D08 /* functionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */; };
@@ -55,6 +53,9 @@
 		6FB86C1623E941C100672851 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C1523E941C100672851 /* Photo.swift */; };
 		6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */; };
 		6FB86C2723E9FF3E00672851 /* SeeDatailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */; };
+		6FB86C4023ECB20400672851 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C3F23ECB20400672851 /* Plan+CoreDataProperties.swift */; };
+		6FB86C4223ECB29800672851 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C4123ECB29800672851 /* Plan+CoreDataClass.swift */; };
+		6FB86C4423ECB74400672851 /* PlanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C4323ECB74400672851 /* PlanDelegate.swift */; };
 		6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */; };
 		6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
@@ -99,8 +100,6 @@
 		6F3FF54F23DC1D0D005162C7 /* EdittingDestinationNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingDestinationNameTableViewCell.swift; sourceTree = "<group>"; };
 		6F3FF55023DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingNotificationTableViewCell.swift; sourceTree = "<group>"; };
 		6F3FF55F23E11D09005162C7 /* callingForAbroad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = callingForAbroad.xcdatamodel; sourceTree = "<group>"; };
-		6F3FF56123E12048005162C7 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		6F3FF56223E12048005162C7 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6F3FF56523E38753005162C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapTableViewCell.swift; path = controller/MapTableViewCell.swift; sourceTree = "<group>"; };
 		6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
@@ -117,6 +116,9 @@
 		6FB86C1523E941C100672851 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailView.swift; sourceTree = "<group>"; };
 		6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDatailViewController.swift; sourceTree = "<group>"; };
+		6FB86C3F23ECB20400672851 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		6FB86C4123ECB29800672851 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		6FB86C4323ECB74400672851 /* PlanDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDelegate.swift; sourceTree = "<group>"; };
 		6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagAddingTableViewCell.swift; sourceTree = "<group>"; };
 		6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemViewController.swift; sourceTree = "<group>"; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -239,8 +241,8 @@
 		6FECA0F523750BCE00B7DD8B /* callingForAbroad */ = {
 			isa = PBXGroup;
 			children = (
-				6F3FF56123E12048005162C7 /* Plan+CoreDataClass.swift */,
-				6F3FF56223E12048005162C7 /* Plan+CoreDataProperties.swift */,
+				6FB86C4123ECB29800672851 /* Plan+CoreDataClass.swift */,
+				6FB86C3F23ECB20400672851 /* Plan+CoreDataProperties.swift */,
 				6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */,
 				6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */,
 				6F150BA923AAE0F200908DEB /* Adding Calling Item */,
@@ -253,6 +255,7 @@
 				6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */,
 				6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */,
 				6FECA138237A3AC700B7DD8B /* CallingCellList.swift */,
+				6FB86C4323ECB74400672851 /* PlanDelegate.swift */,
 				6FECA13223767A1500B7DD8B /* callingCellItem.swift */,
 				6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */,
 				6FECA0FC23750BCE00B7DD8B /* Main.storyboard */,
@@ -419,15 +422,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FB86C0323E81AD800672851 /* MenuTableViewController.swift in Sources */,
+				6FB86C4423ECB74400672851 /* PlanDelegate.swift in Sources */,
 				6FB86BFF23E8196B00672851 /* LocalTimeAddingTableViewCell.swift in Sources */,
 				6FB86BFE23E8191800672851 /* DateCallingTableViewCell.swift in Sources */,
 				6F150B8123AA283900908DEB /* AccountSwitchingTableViewCell.swift in Sources */,
+				6FB86C4223ECB29800672851 /* Plan+CoreDataClass.swift in Sources */,
 				6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */,
 				6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */,
 				6F150B7123AA03FD00908DEB /* JetLagTableViewCell.swift in Sources */,
 				6FB86C0723E87B6900672851 /* KeyManager.swift in Sources */,
 				6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */,
 				6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */,
+				6FB86C4023ECB20400672851 /* Plan+CoreDataProperties.swift in Sources */,
 				6FB86C2723E9FF3E00672851 /* SeeDatailViewController.swift in Sources */,
 				6F3FF55523DC1D0E005162C7 /* EdittingLocalTimeTableViewCell.swift in Sources */,
 				6F3FF56023E11D09005162C7 /* callingForAbroad.xcdatamodeld in Sources */,
@@ -436,7 +442,6 @@
 				6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */,
 				6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */,
 				6F150B7323AA047500908DEB /* DestinationTimeTableViewCell.swift in Sources */,
-				6F3FF56423E12048005162C7 /* Plan+CoreDataProperties.swift in Sources */,
 				6F3FF55823DC1D0E005162C7 /* EdittingDestinationNameTableViewCell.swift in Sources */,
 				6F0FBB1223DA5A72009C1775 /* EdittingTableViewCell.swift in Sources */,
 				6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */,
@@ -459,7 +464,6 @@
 				6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */,
 				6FB86C1023E9402200672851 /* SerachResult.swift in Sources */,
 				6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */,
-				6F3FF56323E12048005162C7 /* Plan+CoreDataClass.swift in Sources */,
 				6FECA139237A3AC700B7DD8B /* CallingCellList.swift in Sources */,
 				6F150B9123AA2CC500908DEB /* EdittingDetailTableViewController.swift in Sources */,
 				6F150B9C23AAE03300908DEB /* DestinationNameAddingTableViewCell.swift in Sources */,

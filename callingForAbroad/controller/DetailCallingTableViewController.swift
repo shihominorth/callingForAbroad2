@@ -9,13 +9,13 @@
 import UIKit
 
 protocol DetailCallingTableViewControllerDelegate: class {
-    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath)
+    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath)
 }
 
 class DetailCallingTableViewController: UITableViewController {
     
     var callingCelllist = CallingCellList()
-    var item = callingCellItem()
+    var item = Plan()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
     
@@ -119,7 +119,7 @@ class DetailCallingTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination Time", for: indexPath) as? DestinationTimeTableViewCell)!
 
             // Configure the cell...
-            cell.destinationTimeLabel.text = item.destinationTime
+            cell.destinationTimeLabel.text = item.destinationTime as? String
 
             return cell
         }
@@ -211,7 +211,7 @@ class DetailCallingTableViewController: UITableViewController {
 }
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem) {
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan) {
     
         self.item = item
         self.tableView.reloadData()

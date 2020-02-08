@@ -17,7 +17,7 @@ class addCallingItemViewController: UIViewController {
     
     weak var delegate: AddViewControllerDelegate?
     weak var itemList: CallingCellList?
-    weak var itemToEdit: callingCellItem?
+    weak var itemToEdit: Plan?
     var toolBar = UIToolbar()
    
     @IBOutlet weak var cancelBarButton: UIBarButtonItem!

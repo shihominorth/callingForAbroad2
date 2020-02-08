@@ -49,21 +49,8 @@ import GooglePlaces
            }
         
         // Override point for customization after application launch.
-
-//        // ナビゲージョンアイテムの文字色
-//        UINavigationBar.appearance().tintColor = UIColor.red
-//         
-//        // ナビゲーションバーのタイトルの文字色
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.blue]
-//         
-//        // ナビゲーションバーの背景色
-//        UINavigationBar.appearance().barTintColor = UIColor.yellow
-//         
-//        // ナビゲーションバーの背景の透過
-//        (UINavigationBar.appearance() as UINavigationBar).setBackgroundImage(UIImage(), for: .default)
-//         
-//        // ナビゲーションバーの下の影を無くす
-//        UINavigationBar.appearance().shadowImage = UIImage()
+        
+        
         return true
     }
 

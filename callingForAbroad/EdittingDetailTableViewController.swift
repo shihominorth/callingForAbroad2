@@ -9,21 +9,17 @@
 import UIKit
 
 protocol EditItemTableViewControllerDelegate: class {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem)
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan)
 }
 
 class EdittingDetailTableViewController: UITableViewController {
 
-    weak var editItem:callingCellItem?
-    var edittedItem:callingCellItem? = callingCellItem()
+    weak var editItem:Plan?
+    var edittedItem:Plan? = Plan()
     var indexPath = IndexPath()
     weak var delegate: EditItemTableViewControllerDelegate?
     weak var callingCellList:CallingCellList?
     let detailVC = DetailCallingTableViewController()
-    
-   
-    
-    
     
     @IBAction func done(_ sender: Any) {
         

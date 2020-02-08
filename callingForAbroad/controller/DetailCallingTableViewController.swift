@@ -39,12 +39,38 @@ class DetailCallingTableViewController: UITableViewController {
     }
 
     
+    fileprivate func extractedFunc(_ edittingVC: DestinationNameViewController) {
+        edittingVC.item = self.item
+        edittingVC.indexPath = self.indexPath
+        edittingVC.delegate = self
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editting Segue" {
         if let edittingVC = segue.destination as? EdittingDetailTableViewController {
             edittingVC.editItem = self.item
             edittingVC.indexPath = self.indexPath
             edittingVC.delegate=self
+            }
+        }
+        
+        if segue.identifier == "edittingNameCallingFor" {
+        if let edittingVC = segue.destination as? nameCallingViewController {
+            edittingVC.item = self.item
+            edittingVC.indexPath = self.indexPath
+            edittingVC.delegate = self
+            }
+        }
+        if segue.identifier == "edittingLocalName" {
+            if let edittingVC = segue.destination as? LocalNameViewController {
+                edittingVC.item = self.item
+                edittingVC.indexPath = self.indexPath
+                edittingVC.delegate = self
+            }
+        }
+        if segue.identifier == "edittingDestinationName" {
+            if let edittingVC = segue.destination as? DestinationNameViewController {
+                extractedFunc(edittingVC)
             }
         }
     }
@@ -221,5 +247,26 @@ extension DetailCallingTableViewController: EditItemTableViewControllerDelegate 
     
 }
 
+extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
+    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem) {
+        self.item = item
+        self.tableView.reloadData()
+    }
+}
+
+extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
+     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem) {
+        self.item = item
+        self.tableView.reloadData()
+    }
+}
 
 
+extension DetailCallingTableViewController: DestinationNameViewControllerDelegate {
+    func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem) {
+        self.item = item
+        self.tableView.reloadData()
+    }
+    
+    
+}

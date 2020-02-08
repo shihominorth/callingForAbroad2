@@ -40,6 +40,9 @@
 		6F3FF56423E12048005162C7 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56223E12048005162C7 /* Plan+CoreDataProperties.swift */; };
 		6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56523E38753005162C7 /* MapViewController.swift */; };
 		6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */; };
+		6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */; };
+		6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */; };
+		6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */; };
 		6FA5384B23AC9CC900F73D08 /* functionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */; };
 		6FA5384D23AD0A3400F73D08 /* callingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */; };
 		6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */; };
@@ -103,6 +106,9 @@
 		6F3FF56223E12048005162C7 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6F3FF56523E38753005162C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapTableViewCell.swift; path = controller/MapTableViewCell.swift; sourceTree = "<group>"; };
+		6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCallingViewController.swift; path = callingForAbroad/nameCallingViewController.swift; sourceTree = SOURCE_ROOT; };
+		6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = Pods/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
+		6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameViewController.swift; sourceTree = "<group>"; };
 		6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = callingItemTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -147,6 +153,8 @@
 		6F047B032394BB5C00AD3F09 /* controller */ = {
 			isa = PBXGroup;
 			children = (
+				6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */,
+				6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */,
 				6FB86C0223E81AD700672851 /* MenuTableViewController.swift */,
 				6F3FF56523E38753005162C7 /* MapViewController.swift */,
 				6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */,
@@ -154,6 +162,7 @@
 				6F150B9023AA2CC500908DEB /* EdittingDetailTableViewController.swift */,
 				6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */,
 				6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */,
+				6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */,
 				6FCF2EE9237E2CFA00EE7344 /* addCallingItemViewController.swift */,
 			);
 			path = controller;
@@ -418,12 +427,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */,
 				6FB86C0323E81AD800672851 /* MenuTableViewController.swift in Sources */,
 				6FB86BFF23E8196B00672851 /* LocalTimeAddingTableViewCell.swift in Sources */,
 				6FB86BFE23E8191800672851 /* DateCallingTableViewCell.swift in Sources */,
 				6F150B8123AA283900908DEB /* AccountSwitchingTableViewCell.swift in Sources */,
+				6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */,
 				6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */,
 				6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */,
+				6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */,
 				6F150B7123AA03FD00908DEB /* JetLagTableViewCell.swift in Sources */,
 				6FB86C0723E87B6900672851 /* KeyManager.swift in Sources */,
 				6FCF2EEA237E2CFA00EE7344 /* addCallingItemViewController.swift in Sources */,

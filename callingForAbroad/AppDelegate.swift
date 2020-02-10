@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import GoogleMaps
 import GooglePlaces
+import Firebase
 
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -39,6 +40,8 @@ import GooglePlaces
                 fatalError("Unsolved error: \(error), \(error.userInfo)")
             }
         }
+        
+        FirebaseApp.configure()
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

@@ -43,6 +43,7 @@
 		6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */; };
 		6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */; };
 		6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */; };
+		6F8BE7AA23EF297200CEA348 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6F8BE7A923EF297200CEA348 /* GoogleService-Info.plist */; };
 		6FA5384B23AC9CC900F73D08 /* functionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */; };
 		6FA5384D23AD0A3400F73D08 /* callingItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */; };
 		6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */; };
@@ -109,6 +110,7 @@
 		6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCallingViewController.swift; path = callingForAbroad/nameCallingViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = Pods/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameViewController.swift; sourceTree = "<group>"; };
+		6F8BE7A923EF297200CEA348 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = functionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = callingItemTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FAFCF4A23A9FF05008918CD /* LocalNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNameTableViewCell.swift; sourceTree = "<group>"; };
@@ -265,6 +267,7 @@
 				6FECA13223767A1500B7DD8B /* callingCellItem.swift */,
 				6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */,
 				6FECA0FC23750BCE00B7DD8B /* Main.storyboard */,
+				6F8BE7A923EF297200CEA348 /* GoogleService-Info.plist */,
 				6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */,
 				6F3FF55E23E11D09005162C7 /* callingForAbroad.xcdatamodeld */,
 				6FECA0FF23750BD200B7DD8B /* Assets.xcassets */,
@@ -356,6 +359,7 @@
 			files = (
 				6FECA10323750BD200B7DD8B /* LaunchScreen.storyboard in Resources */,
 				6FB86C0523E8795000672851 /* apiKey.plist in Resources */,
+				6F8BE7AA23EF297200CEA348 /* GoogleService-Info.plist in Resources */,
 				6FECA10023750BD200B7DD8B /* Assets.xcassets in Resources */,
 				6FECA0FE23750BCE00B7DD8B /* Main.storyboard in Resources */,
 			);

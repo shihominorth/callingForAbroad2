@@ -10,12 +10,12 @@ import UIKit
 
 protocol AddItemTableViewControllerDelegate: class {
      func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController)
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan)
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem)
 }
 
 class addingCallingItemTableViewController: UITableViewController {
     
-    var item = Plan()
+    var item = callingCellItem()
     var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     
@@ -119,7 +119,7 @@ class addingCallingItemTableViewController: UITableViewController {
         let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
         
         //        let newRowIndex = callingCellList.callingList.count
-        _ = planDelegate.addPlan(item: item)
+//        _ = planDelegate.addPlan(item: item)
         
         if let indexPath:IndexPath = IndexPath(row: 0, section: 0) {
             let cell = (tableView.cellForRow(at: indexPath) as? NameCallingForAddingTableViewCell)!

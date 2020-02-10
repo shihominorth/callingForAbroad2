@@ -9,17 +9,22 @@
 import UIKit
 
 protocol DetailCallingTableViewControllerDelegate: class {
-    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath)
+    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath)
 }
 
 class DetailCallingTableViewController: UITableViewController {
     
     var callingCelllist = CallingCellList()
-    var item = callingCellItem()
+    var item = Plan()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
+
     var datePickerIndexPath: IndexPath?
     var inputDates:[Date] = []
+    
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     
 
     override func viewDidLoad() {
@@ -50,7 +55,7 @@ class DetailCallingTableViewController: UITableViewController {
         if let edittingVC = segue.destination as? EdittingDetailTableViewController {
             edittingVC.editItem = self.item
             edittingVC.indexPath = self.indexPath
-            edittingVC.delegate=self
+            edittingVC.delegate = self
             }
         }
         
@@ -168,7 +173,7 @@ class DetailCallingTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination Time", for: indexPath) as? DestinationTimeTableViewCell)!
 
             // Configure the cell...
-            cell.destinationTimeLabel.text = item.destinationTime
+            cell.destinationTimeLabel.text = item.destinationTime as? String
 
             return cell
         }
@@ -179,6 +184,7 @@ class DetailCallingTableViewController: UITableViewController {
     
     
     
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.section == 1 {
@@ -202,8 +208,14 @@ class DetailCallingTableViewController: UITableViewController {
             
             
         }
+    }
         
         
+    @IBAction func back() {
+           
+        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+        navigationController?.popViewController(animated: true)
+
     }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
@@ -281,13 +293,29 @@ class DetailCallingTableViewController: UITableViewController {
 }
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem) {
-    
+    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan) {
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
-
     }
     
+   
+    
+//    func addValue(item: Plan) -> Plan {
+//        let plan = Plan(entity: Plan.entity(), insertInto: context)
+//        plan.nameCallingFor = item.nameCallingFor
+//        plan.localDate = item.localDate
+//        plan.localName = item.localName
+//        plan.localTime = item.localTime
+//        plan.destinationName = item.destinationName
+//        plan.jetLag = item.jetLag
+//        plan.destinationTime = item.destinationTime
+//        plan.notification = item.notification
+//        plan.placeCallingAt = item.placeCallingAt
+//        
+//        return plan
+//        
+//    }
     
 }
 

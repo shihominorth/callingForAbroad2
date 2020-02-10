@@ -16,7 +16,7 @@ protocol AddItemTableViewControllerDelegate: class {
 class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
-    var callingCellList = CallingCellList()
+    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -119,7 +119,7 @@ class addingCallingItemTableViewController: UITableViewController {
         let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
         
         //        let newRowIndex = callingCellList.callingList.count
-        _ = callingCellList.newToDo(item: item)
+//        _ = planDelegate.addPlan(item: item)
         
         if let indexPath:IndexPath = IndexPath(row: 0, section: 0) {
             let cell = (tableView.cellForRow(at: indexPath) as? NameCallingForAddingTableViewCell)!
@@ -153,6 +153,9 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.cellForRow(at: indexPath) as? PlaceCallingAtAddingTableViewCell)!
             item.placeCallingAt = cell.textField.text!
         }
+        
+        
+        
         
 //        let indexPaths = [indexPath]
 //        homeVC.tableView.insertRows(at: indexPaths, with: .automatic)
@@ -208,5 +211,17 @@ class addingCallingItemTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
+    
+    // MARK: - Core data
+    
+    func createItem(item: Plan) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+    }
 
 }

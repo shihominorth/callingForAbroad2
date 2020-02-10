@@ -10,29 +10,19 @@ import UIKit
 
 class callinglistViewController: UITableViewController {
     
-    let callingCelllist = CallingCellList()
+//    let callingCelllist = CallingCellList()
+    let planDelegate = PlanDelegate()
     var section1: Dictionary = [String:NSMutableArray]()
     var section2: Dictionary = [String:NSMutableArray]()
     var sections: Array = [Dictionary<String,NSMutableArray>]()
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    private var plans = [Plan]()
+    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+    private var plans:[Plan]? = []
 
     
     @IBOutlet weak var addButton: UIBarButtonItem!
-    
-    // i want to change this icon to gear icon
-    
-//    @IBAction func userSettings(_ sender: Any) {
-//        let newRowIndex = CallingCelllist.callingList.count
-//        _ = CallingCelllist.newToDo()
-//        let indexPath = IndexPath(row: newRowIndex, section: 0)
-//        let indexPaths = [indexPath]
-//        
-//        tableView.insertRows(at: indexPaths, with: .automatic)
-//    }
-
     
     
     override func viewDidLoad() {
@@ -40,9 +30,9 @@ class callinglistViewController: UITableViewController {
        
         
         navigationController?.navigationBar.prefersLargeTitles = false
-        let delete = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteItems))
+//        let delete = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(deleteItems))
         //let add = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: <#T##Selector?#>)
-        navigationItem.rightBarButtonItems = [editButtonItem, delete, addButton]
+//        navigationItem.rightBarButtonItems = [editButtonItem, delete, addButton]
         tableView.allowsMultipleSelectionDuringEditing = true
 //        let app = UINavigationBarAppearance()
 //        app.backgroundColor = UIColor(red: 0.0, green: 206.0/255.0, blue: 206.0/255.0, alpha: 1)
@@ -51,9 +41,7 @@ class callinglistViewController: UITableViewController {
         //UINavigationBar..UINavigationBarAppearance.color
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
+    fileprivate func getData() {
         do {
             plans = try context.fetch(Plan.fetchRequest())
         } catch let error as NSError {
@@ -61,19 +49,25 @@ class callinglistViewController: UITableViewController {
         }
     }
     
-    @objc func deleteItems(_ sender: Any) {
-        if let selectRows = tableView.indexPathsForSelectedRows {
-            var items = [callingCellItem]()
-            for indexPath in selectRows {
-                items.append(callingCelllist.callingList[indexPath.row])
-            }
-            callingCelllist.remove(items: items)
-            tableView.beginUpdates()
-            tableView.deleteRows(at: selectRows, with: .automatic)
-            tableView.endUpdates()
-            
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        getData()
+        tableView.reloadData()
     }
+    
+//    @objc func deleteItems(_ sender: Any) {
+//        if let selectRows = tableView.indexPathsForSelectedRows {
+//            var items = [Plan]()
+//            for indexPath in selectRows {
+//                items.append(plans[indexPath.row])
+//            }
+//            planDelegate.remove(items: items)
+//            tableView.beginUpdates()
+//            tableView.deleteRows(at: selectRows, with: .automatic)
+//            tableView.endUpdates()
+//
+//        }
+//    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
@@ -87,7 +81,7 @@ class callinglistViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return callingCelllist.callingList.count
+        return plans!.count
         
     }
     
@@ -101,15 +95,15 @@ class callinglistViewController: UITableViewController {
         
         let cell = (tableView.dequeueReusableCell(withIdentifier: "callingItem", for:indexPath) as? callingItemTableViewCell)!
         
-        cell.nameCallingForLabel.text = callingCelllist.callingList[indexPath.row].nameCallingFor
+        cell.nameCallingForLabel.text = plans?[indexPath.row].nameCallingFor
        
-        cell.localTimeLabel.text = callingCelllist.callingList[indexPath.row].localTime
+        cell.localTimeLabel.text =  plans?[indexPath.row].localTime
     
         //cell.localNameLabel.text = callingCelllist.callingList[indexPath.row].localName
    
-        cell.localDateLabel.text = callingCelllist.callingList[indexPath.row].localDate
+        cell.localDateLabel.text =  plans?[indexPath.row].localDate
    
-       cell.destinationNameLabel.text = callingCelllist.callingList[indexPath.row].destinationName
+        cell.destinationNameLabel.text = plans?[indexPath.row].destinationName
    
         //cell.jetLagLabel.text = callingCelllist.callingList[indexPath.row].jetLag
     
@@ -120,16 +114,16 @@ class callinglistViewController: UITableViewController {
        return cell
     }
     
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        callingCelllist.move(item: callingCelllist.callingList[sourceIndexPath.row], to: destinationIndexPath.row)
-    }
+//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+//        planDelegate.move(item: plans[sourceIndexPath.row], index: destinationIndexPath.row)
+//    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             return
         }
         // tableView.cellForRow(at: indexPath) means it return the cell user tapped
         if let cell = tableView.cellForRow(at: indexPath) {
-            let item = callingCelllist.callingList[indexPath.row]
+            let item =  plans?[indexPath.row]
 //           configureCheckmark(for: cell, with: item)
             // tableView.deselectRow(at: indexPath, animated: true) stop highlighting the cell after user release finger.
             tableView.deselectRow(at: indexPath, animated: true)
@@ -138,7 +132,7 @@ class callinglistViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        callingCelllist.callingList.remove(at: indexPath.row)
+        plans?.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
         
@@ -193,7 +187,7 @@ class callinglistViewController: UITableViewController {
         } else if segue.identifier == "EditItemSegue" {
             if let addItemViewController = segue.destination as? addCallingItemViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                    let item = callingCelllist.callingList[indexPath.row]
+                    let item = plans?[indexPath.row]
                     addItemViewController.itemToEdit = item
                     
                 }
@@ -202,8 +196,8 @@ class callinglistViewController: UITableViewController {
         else if segue.identifier == "showDetailSegue" {
             if let detailVC = segue.destination as? DetailCallingTableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                    let item = callingCelllist.callingList[indexPath.row]
-                    detailVC.item = item
+                    let item = plans?[indexPath.row]
+                    detailVC.item = item!
                     detailVC.indexPath = indexPath
                     detailVC.delegate = self
                 }
@@ -236,24 +230,40 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     }
     
     func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
-        let rowIndex = callingCelllist.callingList.count
-              callingCelllist.callingList.append(item)
-              let indexPath = IndexPath(row: rowIndex, section: 0)
-              let indexPaths = [indexPath]
-              tableView.insertRows(at: indexPaths, with: .automatic)
+        guard let rowIndex = plans?.count else { return }
+        let plan = addValue(item: item)
+        appDelegate.saveContext() 
+        plans?.append(plan)
+        let indexPath = IndexPath(row: rowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
+    func addValue(item: callingCellItem) -> Plan{
+        let plan = Plan(entity: Plan.entity(), insertInto: context)
+        plan.nameCallingFor = item.nameCallingFor
+        plan.localDate = item.localDate
+        plan.localName = item.localName
+        plan.localTime = item.localTime
+        plan.destinationName = item.destinationName
+        plan.jetLag = item.jetLag
+        plan.destinationTime = item.destinationTime
+        plan.notification = item.notification
+        plan.placeCallingAt = item.placeCallingAt
+        
+        return plan
+        
     }
     
 }
 
 extension callinglistViewController: DetailCallingTableViewControllerDelegate {
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath) {
-        
-        
-        callingCelllist.callingList.remove(at: indexPath.row)
-        callingCelllist.callingList.insert(item, at: indexPath.row)
+    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
+        plans?.remove(at: indexPath.row)
+        plans?.insert(item, at: indexPath.row)
+        appDelegate.saveContext()
         
         self.tableView.reloadData()
-           
     }
     
     

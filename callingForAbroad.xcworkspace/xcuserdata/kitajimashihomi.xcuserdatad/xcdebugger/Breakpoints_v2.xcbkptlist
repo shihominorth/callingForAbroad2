@@ -30,9 +30,15 @@
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "64"
             endingLineNumber = "64"
             landmarkName = "prepare(for:sender:)"
+=======
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "numberOfSections(in:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -70,9 +76,15 @@
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "63"
             endingLineNumber = "63"
             landmarkName = "prepare(for:sender:)"
+=======
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "numberOfSections(in:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -86,8 +98,8 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
             landmarkName = "prepare(for:sender:)"
             landmarkType = "7">
             <Actions>
@@ -103,129 +115,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "EdittingDetailTableViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - 563b0389d02b66a3"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.indexPath.getter : Foundation.IndexPath"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "116">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - 36f3f1e93202b6d7"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.indexPath.setter : Foundation.IndexPath"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "250">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - 4d2bb6f3f8d622a4"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.indexPath.modify : Foundation.IndexPath"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "18">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - 146956eabd90179a"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.indexPath.modify : Foundation.IndexPath with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "4">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - ada632638ff6a6bc"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.init(style: __C.UITableViewStyle) -&gt; checklist.EdittingDetailTableViewController"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "254">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - a68c7b64caa3a6f2"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; checklist.EdittingDetailTableViewController"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "293">
-               </Location>
-               <Location
-                  uuid = "6894963A-343D-4164-8E04-D0EF3C0E901B - 65b969a6c2969539"
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "checklist.EdittingDetailTableViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;checklist.EdittingDetailTableViewController&gt;"
-                  moduleName = "checklist"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/kitajimashihomi/tutorialClass/callingForAbroad/callingForAbroad/EdittingDetailTableViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "14"
-                  endingLineNumber = "14"
-                  offsetFromSymbolStart = "240">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "03F8F945-4082-4FDC-A746-25AE4CD89FF3"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -233,8 +122,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "EdittingDetailTableViewController"
             landmarkType = "3">
             <Actions>
@@ -257,10 +146,10 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "174"
-            endingLineNumber = "174"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "EdittingDetailTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -273,10 +162,10 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "175"
-            endingLineNumber = "175"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "EdittingDetailTableViewController"
+            landmarkType = "3">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Sound">
@@ -345,10 +234,10 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "76"
-            endingLineNumber = "76"
-            landmarkName = "deleteItems(_:)"
-            landmarkType = "7">
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "callinglistViewController"
+            landmarkType = "3">
             <Actions>
                <BreakpointActionProxy
                   ActionExtensionID = "Xcode.BreakpointAction.Sound">
@@ -369,8 +258,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -378,6 +267,25 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
+=======
+            uuid = "D5CA7819-4891-4C66-9239-7D91E0509F55"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "DetailCallingTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+>>>>>>> coredata1
             uuid = "A796C65B-4E3F-4CA4-8908-6FB6CEDFD4B6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -385,9 +293,15 @@
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "97"
             endingLineNumber = "97"
             landmarkName = "tableView(_:numberOfRowsInSection:)"
+=======
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "tableView(_:cellForRowAt:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -401,15 +315,50 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "66"
-            endingLineNumber = "66"
-            landmarkName = "done(_:)"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
+=======
+            uuid = "9AD83791-3468-4BB0-AEAE-F19413FEF52A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "DetailCallingTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FE713BDC-EB1C-48DD-971D-6A3EFBCB2034"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "DetailCallingTableViewController"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+>>>>>>> coredata1
             uuid = "BCFF80E2-42DA-4584-AF43-E64AF13DA0C1"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -417,8 +366,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -433,8 +382,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -449,8 +398,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -465,8 +414,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -609,9 +558,9 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "prepare(for:sender:)"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "shouldPerformSegue(withIdentifier:sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -625,10 +574,10 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
-            landmarkName = "DetailCallingTableViewController(_:didFinishEditting:indexPath:)"
-            landmarkType = "7">
+            startingLineNumber = "257"
+            endingLineNumber = "257"
+            landmarkName = "callinglistViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -641,9 +590,9 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
-            landmarkName = "done(_:)"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -657,8 +606,8 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
             landmarkName = "done(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -673,10 +622,15 @@
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "255"
             endingLineNumber = "255"
             landmarkName = "DetailCallingTableViewController"
             landmarkType = "3">
+=======
+            startingLineNumber = "219"
+            endingLineNumber = "219">
+>>>>>>> coredata1
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -689,8 +643,8 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "244"
-            endingLineNumber = "244"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
             landmarkName = "addItemViewController(_:didFinishAdding:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -705,8 +659,8 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "243"
-            endingLineNumber = "243"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "addItemViewController(_:didFinishAdding:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -721,9 +675,9 @@
             filePath = "callingForAbroad/controller/callinglistViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "240"
-            endingLineNumber = "240"
-            landmarkName = "addItemViewController(_:didFinishAdding:)"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "addItemTableViewControllerDidCancel(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -737,10 +691,17 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "236"
             endingLineNumber = "236"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
+=======
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "DetailCallingTableViewController"
+            landmarkType = "3">
+>>>>>>> coredata1
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -753,10 +714,17 @@
             filePath = "callingForAbroad/EdittingDetailTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "235"
             endingLineNumber = "235"
             landmarkName = "textFieldShouldReturn(_:)"
             landmarkType = "7">
+=======
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "DetailCallingTableViewController"
+            landmarkType = "3">
+>>>>>>> coredata1
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -769,6 +737,7 @@
             filePath = "callingForAbroad/controller/MapViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "130"
             endingLineNumber = "130"
             landmarkName = "MapViewController"
@@ -788,6 +757,11 @@
             startingLineNumber = "163"
             endingLineNumber = "163"
             landmarkName = "add(_:)"
+=======
+            startingLineNumber = "237"
+            endingLineNumber = "237"
+            landmarkName = "textFieldShouldReturn(_:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -801,31 +775,50 @@
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "107"
             endingLineNumber = "107"
             landmarkName = "tableView(_:cellForRowAt:)"
+=======
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "textFieldShouldReturn(_:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "0DF91C04-3B40-42FF-AA4A-795CB535A823"
             shouldBeEnabled = "Yes"
+=======
+            uuid = "87F382C9-B0D6-48AE-B261-6EDE9650A698"
+            shouldBeEnabled = "No"
+>>>>>>> coredata1
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "callingForAbroad/controller/DetailCallingTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
+<<<<<<< HEAD
             startingLineNumber = "183"
             endingLineNumber = "183"
             landmarkName = "tableView(_:didSelectRowAt:)"
             landmarkType = "7">
+=======
+            startingLineNumber = "130"
+            endingLineNumber = "130"
+            landmarkName = "MapViewController"
+            landmarkType = "3">
+>>>>>>> coredata1
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "FCF1C045-101E-42AE-9733-D9B07961FAC0"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -836,12 +829,25 @@
             startingLineNumber = "102"
             endingLineNumber = "102"
             landmarkName = "tableView(_:cellForRowAt:)"
+=======
+            uuid = "C7223DE9-E5E6-40C5-B016-77FA35CAAD29"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/addingCallingItemTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "add(_:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "7AC05EF1-21FC-414C-A95B-6F0F4E494909"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -852,12 +858,25 @@
             startingLineNumber = "187"
             endingLineNumber = "187"
             landmarkName = "tableView(_:didSelectRowAt:)"
+=======
+            uuid = "3DF60BBE-986C-4098-A6B1-84174A56ABE1"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/callinglistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "addItemViewController(_:didFinishAdding:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "052FB727-6100-4C3D-B8CC-1DE37AB94974"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -868,12 +887,25 @@
             startingLineNumber = "209"
             endingLineNumber = "209"
             landmarkName = "indexPathToInsertDatePicker(indexPath:)"
+=======
+            uuid = "B13938E1-4841-4DEC-A769-1E3075A68830"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/callinglistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "addItemViewController(_:didFinishAdding:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "8A390DC6-B8AC-432F-B36D-D99ADAFB1224"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -992,11 +1024,25 @@
                   offsetFromSymbolStart = "746">
                </Location>
             </Locations>
+=======
+            uuid = "12CF7609-1E6F-4B80-8ABC-E9E380A95A14"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/callinglistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "234"
+            endingLineNumber = "234"
+            landmarkName = "addItemViewController(_:didFinishAdding:)"
+            landmarkType = "7">
+>>>>>>> coredata1
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+<<<<<<< HEAD
             uuid = "E50A472B-2C66-4D5A-BF94-CF44B3F127D9"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1055,6 +1101,18 @@
             startingLineNumber = "212"
             endingLineNumber = "212"
             landmarkName = "indexPathToInsertDatePicker(indexPath:)"
+=======
+            uuid = "806F015F-30E3-463B-8D8F-809201B37628"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "callingForAbroad/controller/callinglistViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "prepare(for:sender:)"
+>>>>>>> coredata1
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

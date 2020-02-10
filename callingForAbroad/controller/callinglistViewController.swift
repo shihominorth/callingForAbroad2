@@ -230,7 +230,7 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     }
     
     func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
-        guard let rowIndex = plans?.count else { return  }
+        guard let rowIndex = plans?.count else { return }
         let plan = addValue(item: item)
         appDelegate.saveContext() 
         plans?.append(plan)
@@ -259,12 +259,11 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
 
 extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
-        
         plans?.remove(at: indexPath.row)
         plans?.insert(item, at: indexPath.row)
+        appDelegate.saveContext()
         
         self.tableView.reloadData()
-           
     }
     
     

@@ -18,6 +18,8 @@ class DetailCallingTableViewController: UITableViewController {
     var item = Plan()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
 
     override func viewDidLoad() {
@@ -44,7 +46,7 @@ class DetailCallingTableViewController: UITableViewController {
         if let edittingVC = segue.destination as? EdittingDetailTableViewController {
             edittingVC.editItem = self.item
             edittingVC.indexPath = self.indexPath
-            edittingVC.delegate=self
+            edittingVC.delegate = self
             }
         }
     }
@@ -132,32 +134,7 @@ class DetailCallingTableViewController: UITableViewController {
     //MARK: -BUTTON
     
     @IBAction func back() {
-        let row = indexPath.row
-//
-//        if let cell: EdittingTableViewCell
-//            = (tableView.cellForRow(at: indexPath) as! EdittingTableViewCell) {
-//
-//            switch row {
-//            case 0:
-//                item.nameCallingFor = cell.textField.text ?? ""
-//            case 1:
-//                item.localDate = cell.textField.text ?? ""
-//            case 2:
-//                item.localName = cell.textField.text ?? ""
-//            case 3:
-//                item.localTime = cell.textField.text ?? ""
-//            case 4:
-//                item.destinationName = cell.textField.text ?? ""
-//            case 5:
-//                item.jetLag = cell.textField.text ?? ""
-//            case 6:
-//                item.destinationTime = cell.textField.text ?? ""
-//            default:
-//                break
-//            }
-//
            
-        
         delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
         navigationController?.popViewController(animated: true)
     }
@@ -212,12 +189,28 @@ class DetailCallingTableViewController: UITableViewController {
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
     func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan) {
-    
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
-
     }
     
+   
+    
+//    func addValue(item: Plan) -> Plan {
+//        let plan = Plan(entity: Plan.entity(), insertInto: context)
+//        plan.nameCallingFor = item.nameCallingFor
+//        plan.localDate = item.localDate
+//        plan.localName = item.localName
+//        plan.localTime = item.localTime
+//        plan.destinationName = item.destinationName
+//        plan.jetLag = item.jetLag
+//        plan.destinationTime = item.destinationTime
+//        plan.notification = item.notification
+//        plan.placeCallingAt = item.placeCallingAt
+//        
+//        return plan
+//        
+//    }
     
 }
 

@@ -14,48 +14,49 @@ protocol EditItemTableViewControllerDelegate: class {
 
 class EdittingDetailTableViewController: UITableViewController {
 
+    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     weak var editItem:Plan?
-    var edittedItem:Plan? = Plan()
     var indexPath = IndexPath()
     weak var delegate: EditItemTableViewControllerDelegate?
     weak var callingCellList:CallingCellList?
     let detailVC = DetailCallingTableViewController()
     
+    
     @IBAction func done(_ sender: Any) {
-        
+         var edittedItem = Plan(entity: Plan.entity(), insertInto: context)
         if let cell:EdittingNameCallingForTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EdittingNameCallingForTableViewCell)!{
-            edittedItem?.nameCallingFor = cell.textField.text ?? ""
+            edittedItem.nameCallingFor = cell.textField.text ?? ""
         }
         if let cell:EdittingLocalDateCallingTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? EdittingLocalDateCallingTableViewCell)! {
             
-            edittedItem?.localDate = cell.textField.text ?? ""
+            edittedItem.localDate = cell.textField.text ?? ""
         }
         if let cell:EdittingLocalNameTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? EdittingLocalNameTableViewCell)! {
-            edittedItem?.localName = cell.textField.text ?? ""
+            edittedItem.localName = cell.textField.text ?? ""
         }
         if let cell:EdittingLocalTimeTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? EdittingLocalTimeTableViewCell)! {
-            edittedItem?.localTime = cell.textField.text ?? ""
+            edittedItem.localTime = cell.textField.text ?? ""
         }
         if let cell:EdittingDestinationNameTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 4)) as? EdittingDestinationNameTableViewCell)! {
-            edittedItem?.destinationName = cell.textField.text ?? ""
+            edittedItem.destinationName = cell.textField.text ?? ""
         }
         if let cell:EdittingJetLagTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 5)) as? EdittingJetLagTableViewCell)! {
-            edittedItem?.jetLag = cell.textField.text ?? ""
+            edittedItem.jetLag = cell.textField.text ?? ""
         }
         if let cell:EdittingDestinationTimeTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 6)) as? EdittingDestinationTimeTableViewCell)! {
-            edittedItem?.destinationTime = cell.textField.text ?? ""
+            edittedItem.destinationTime = cell.textField.text ?? ""
             
         }
             
         
-            delegate?.editItemViewController(self, didFinishEditting: edittedItem!, original: editItem!)
+        delegate?.editItemViewController(self, didFinishEditting: edittedItem, original: editItem!)
         
 //        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
 //        detailVC.item = edittedItem ?? detailVC.item

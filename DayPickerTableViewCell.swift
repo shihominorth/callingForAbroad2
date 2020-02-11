@@ -14,14 +14,27 @@ protocol DatePickerDelegate: class {
 
 class DayPickerTableViewCell: UITableViewCell {
     
-    
-    @IBOutlet weak var dayPicker: UIDatePicker!
     var indexPath: IndexPath!
     weak var delegate: DatePickerDelegate?
+    
+    
+   
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        DatePicker()
+        
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+       
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -30,12 +43,16 @@ class DayPickerTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    class func reuseIdentier() -> String {
-        return "dayPicker"
+
+    func DatePicker() {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePicker.Mode.date
+        self.addSubview(datePicker)
+
     }
     
-    func updateCell(date: Date, indexPath: IndexPath) {
-        dayPicker.setDate(date, animated: true)
-        self.indexPath = indexPath
-    }
+//    func updateCell(date: Date, indexPath: IndexPath) {
+//        datePicker.setDate(date, animated: true)
+//        self.indexPath = indexPath 
+//    }
 }

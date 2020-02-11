@@ -27,7 +27,7 @@ class DetailCallingTableViewController: UITableViewController {
     
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     
 
     override func viewDidLoad() {
@@ -45,7 +45,8 @@ class DetailCallingTableViewController: UITableViewController {
         
         addInitailValues()
 //        showUpDatePicker()
-        tableView.register(UINib(nibName: "DayPickerTableViewCell", bundle: nil), forCellReuseIdentifier: "dayPicker")
+        
+        tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -109,9 +110,9 @@ class DetailCallingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if datePickerIndexPath == indexPath {
-            let datePickerCell = (tableView.dequeueReusableCell(withIdentifier:   DayPickerTableViewCell.reuseIdentier()) as?  DayPickerTableViewCell)!
-            datePickerCell.updateCell(date: inputDates[indexPath.section - 1], indexPath: indexPath)
-            datePickerCell.delegate = self as DatePickerDelegate
+            let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as!  DayPickerTableViewCell
+//            datePickerCell.updateCell(date: inputDates[indexPath.section - 1], indexPath: indexPath)
+            datePickerCell.delegate = self// as DatePickerDelegate
             
             return datePickerCell
         }
@@ -217,6 +218,7 @@ class DetailCallingTableViewController: UITableViewController {
                if let datePickerIndexPath = datePickerIndexPath {
                   tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
                }
+                
                datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
                tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
                tableView.deselectRow(at: indexPath, animated: true)
@@ -228,6 +230,13 @@ class DetailCallingTableViewController: UITableViewController {
         }
     }
         
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if datePickerIndexPath?.section == 1, indexPath.row == 1 {
+            return 150.0
+        }
+        return UITableView.automaticDimension
+    }
         
 
     

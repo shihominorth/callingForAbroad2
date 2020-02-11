@@ -10,7 +10,7 @@ import UIKit
 
 class callinglistViewController: UITableViewController {
     
-//    let callingCelllist = CallingCellList()
+    let callingCelllist = CallingCellList()
     let planDelegate = PlanDelegate()
     var section1: Dictionary = [String:NSMutableArray]()
     var section2: Dictionary = [String:NSMutableArray]()
@@ -132,9 +132,18 @@ class callinglistViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        plans?.remove(at: indexPath.row)
-        let indexPaths = [indexPath]
-        tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        if editingStyle == .delete {
+            plans?.remove(at: indexPath.row)
+            appDelegate.saveContext()
+            // not sure if it is necessary
+            getData()
+            
+            let indexPaths = [indexPath]
+            tableView.deleteRows(at: indexPaths, with: .automatic)
+            tableView.reloadData()
+        }
+        
         
         // can also delete cell visually, but it doesn't show animation.
         //tableView.reloadData()
@@ -196,6 +205,7 @@ class callinglistViewController: UITableViewController {
         else if segue.identifier == "showDetailSegue" {
             if let detailVC = segue.destination as? DetailCallingTableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+//                    let item = callingCelllist.callingList[indexPath.row]
                     let item = plans?[indexPath.row]
                     detailVC.item = item!
                     detailVC.indexPath = indexPath
@@ -234,6 +244,7 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         let plan = addValue(item: item)
         appDelegate.saveContext() 
         plans?.append(plan)
+        self.callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
@@ -259,12 +270,46 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
 
 extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
-        plans?.remove(at: indexPath.row)
-        plans?.insert(item, at: indexPath.row)
-        appDelegate.saveContext()
-        
-        self.tableView.reloadData()
+//         let plan = editValue(item: item)
+//               plans?.remove(at: indexPath.row)
+//               plans?.insert(plan, at: indexPath.row)
+//               appDelegate.saveContext()
+               
+//               callingCelllist.move(item: item, to: indexPath.row)
+               // not sure if it is necessary
+               getData()
+               
+               self.tableView.reloadData()
     }
     
+//    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath) {
+//
+//        let plan = editValue(item: item)
+//        plans?.remove(at: indexPath.row)
+//        plans?.insert(plan, at: indexPath.row)
+//        appDelegate.saveContext()
+//
+//        callingCelllist.move(item: item, to: indexPath.row)
+//        // not sure if it is necessary
+//        getData()
+//
+//        self.tableView.reloadData()
+//    }
+    
+    func editValue(item: callingCellItem) -> Plan{
+        let plan = Plan(entity: Plan.entity(), insertInto: context)
+        plan.nameCallingFor = item.nameCallingFor
+        plan.localDate = item.localDate
+        plan.localName = item.localName
+        plan.localTime = item.localTime
+        plan.destinationName = item.destinationName
+        plan.jetLag = item.jetLag
+        plan.destinationTime = item.destinationTime
+        plan.notification = item.notification
+        plan.placeCallingAt = item.placeCallingAt
+        
+        return plan
+        
+    }
     
 }

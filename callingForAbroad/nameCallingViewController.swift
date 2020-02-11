@@ -10,13 +10,15 @@ import UIKit
 
 protocol nameCallingViewControllerDelegate: class {
     
-    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem)
+//    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem)
+    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan)
+
 }
 
 class nameCallingViewController: UIViewController {
 
     
-    var item = callingCellItem()
+    var item = Plan()
     var indexPath = IndexPath()
     
     @IBOutlet weak var label: UILabel!

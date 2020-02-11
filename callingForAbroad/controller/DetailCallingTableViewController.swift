@@ -9,12 +9,15 @@
 import UIKit
 
 protocol DetailCallingTableViewControllerDelegate: class {
+//    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath)
+    
     func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath)
 }
 
 class DetailCallingTableViewController: UITableViewController {
     
     var callingCelllist = CallingCellList()
+//    var item = callingCellItem()
     var item = Plan()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
@@ -90,7 +93,7 @@ class DetailCallingTableViewController: UITableViewController {
 //        if datePickerIndexPath != nil {
 //            return 8
 //        }
-        return 7
+        return 9
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -178,6 +181,21 @@ class DetailCallingTableViewController: UITableViewController {
             return cell
         }
         
+        else if indexPath.section == 7 {
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificaitonTableViewCell)!
+            
+            cell.label.text = item.notification
+            
+            return cell
+        }
+        else if indexPath.section == 8 {
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "detail place calling at ", for: indexPath) as? DetailPlaceCallingAtTableViewCell)!
+            
+            cell.label.text = item.placeCallingAt
+            
+            return cell
+        }
+        
         let cell = UITableViewCell()
         return cell
     }
@@ -211,12 +229,7 @@ class DetailCallingTableViewController: UITableViewController {
     }
         
         
-    @IBAction func back() {
-           
-        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
-        navigationController?.popViewController(animated: true)
 
-    }
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
@@ -293,13 +306,11 @@ class DetailCallingTableViewController: UITableViewController {
 }
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan) {
-        self.item = item
-        appDelegate.saveContext()
-        self.tableView.reloadData()
-    }
-    
-   
+//    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem) {
+//        self.item = item
+//        appDelegate.saveContext()
+//        self.tableView.reloadData()
+//    }
     
 //    func addValue(item: Plan) -> Plan {
 //        let plan = Plan(entity: Plan.entity(), insertInto: context)
@@ -320,22 +331,36 @@ extension DetailCallingTableViewController: EditItemTableViewControllerDelegate 
 }
 
 extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
-    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem) {
+    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan) {
         self.item = item
         self.tableView.reloadData()
     }
+    
+//    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem) {
+//        self.item = item
+//        self.tableView.reloadData()
+//    }
 }
 
 extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
-     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem) {
-        self.item = item
-        self.tableView.reloadData()
-    }
+//     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem) {
+//        self.item = item
+//        self.tableView.reloadData()
+//    }
+    
+    func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: Plan) {
+           self.item = item
+           self.tableView.reloadData()
+       }
 }
 
 
 extension DetailCallingTableViewController: DestinationNameViewControllerDelegate {
-    func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem) {
+//    func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem) {
+//        self.item = item
+//        self.tableView.reloadData()
+//    }
+    func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan) {
         self.item = item
         self.tableView.reloadData()
     }

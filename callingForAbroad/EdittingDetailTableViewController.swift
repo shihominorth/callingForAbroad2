@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditItemTableViewControllerDelegate: class {
-    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: Plan, original originalItem: Plan)
+//    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem)
 }
 
 class EdittingDetailTableViewController: UITableViewController {
@@ -56,7 +56,7 @@ class EdittingDetailTableViewController: UITableViewController {
         }
             
         
-        delegate?.editItemViewController(self, didFinishEditting: edittedItem, original: editItem!)
+//        delegate?.editItemViewController(self, didFinishEditting: edittedItem, original: callingCellItem?)
         
 //        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
 //        detailVC.item = edittedItem ?? detailVC.item

@@ -85,12 +85,15 @@
                                 <segue destination="eJT-sE-UGd" kind="presentation" id="6rP-jw-BBd"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="KHx-id-et8">
-                            <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <connections>
-                                <segue destination="p07-51-H2e" kind="show" identifier="AddItemSegue" id="Xb8-SQ-ZFc"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="KHx-id-et8">
+                                <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <segue destination="p07-51-H2e" kind="show" identifier="AddItemSegue" id="Xb8-SQ-ZFc"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="edit" id="05x-0a-cXS"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="addButton" destination="KHx-id-et8" id="cgn-Gv-B4Z"/>
@@ -363,6 +366,56 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="destinationTimeLabel" destination="iCw-kf-LTW" id="qgp-BN-Ksn"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification" id="Jnc-J5-Dey" customClass="NotificaitonTableViewCell" customModule="checklist" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="332.5" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Jnc-J5-Dey" id="V6b-Ib-quG">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxI-Rq-UxZ">
+                                            <rect key="frame" x="20" y="11" width="374" height="21.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailingMargin" secondItem="cxI-Rq-UxZ" secondAttribute="trailing" id="BqN-Un-vwq"/>
+                                        <constraint firstItem="cxI-Rq-UxZ" firstAttribute="centerY" secondItem="V6b-Ib-quG" secondAttribute="centerY" id="QiE-z6-pte"/>
+                                        <constraint firstItem="cxI-Rq-UxZ" firstAttribute="top" secondItem="V6b-Ib-quG" secondAttribute="topMargin" id="Y1Z-Zd-3Mz"/>
+                                        <constraint firstItem="cxI-Rq-UxZ" firstAttribute="leading" secondItem="V6b-Ib-quG" secondAttribute="leadingMargin" id="tH0-ap-fQd"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="cxI-Rq-UxZ" id="NS7-cH-XpF"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detail place calling at " id="A8Z-qH-i1X" customClass="DetailPlaceCallingAtTableViewCell" customModule="checklist" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="376" width="414" height="43"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A8Z-qH-i1X" id="034-jt-juS">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tqn-gK-5EL">
+                                            <rect key="frame" x="20" y="11" width="386" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="tqn-gK-5EL" firstAttribute="centerY" secondItem="034-jt-juS" secondAttribute="centerY" id="0fg-sA-Mea"/>
+                                        <constraint firstItem="tqn-gK-5EL" firstAttribute="leading" secondItem="034-jt-juS" secondAttribute="leadingMargin" id="H5P-gU-uBc"/>
+                                        <constraint firstItem="tqn-gK-5EL" firstAttribute="top" secondItem="034-jt-juS" secondAttribute="topMargin" id="Mc3-eu-qYW"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="tqn-gK-5EL" secondAttribute="trailing" constant="-12" id="w5s-6M-3XB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="label" destination="tqn-gK-5EL" id="lJ0-F6-Csq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -974,8 +1027,32 @@
                                     <outlet property="textField" destination="jqb-rd-zIv" id="njY-Dc-5gN"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="local name" id="CPO-WR-jT5" customClass="LocalNameAddingTableViewCell" customModule="checklist" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="71.5" width="414" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CPO-WR-jT5" id="va6-Gj-J9y">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="34.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ex. Vancouver" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ahU-Ca-OMN">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="34.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <textInputTraits key="textInputTraits"/>
+                                        </textField>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ahU-Ca-OMN" secondAttribute="trailing" constant="20" id="6ky-OZ-MOm"/>
+                                        <constraint firstItem="ahU-Ca-OMN" firstAttribute="centerY" secondItem="va6-Gj-J9y" secondAttribute="centerY" id="GEd-cm-j65"/>
+                                        <constraint firstItem="ahU-Ca-OMN" firstAttribute="top" secondItem="va6-Gj-J9y" secondAttribute="top" id="Z4I-YT-rUm"/>
+                                        <constraint firstItem="ahU-Ca-OMN" firstAttribute="leading" secondItem="va6-Gj-J9y" secondAttribute="leading" constant="20" id="iCE-77-NbA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="textField" destination="ahU-Ca-OMN" id="z84-PY-ksO"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="local date" id="3bl-rH-UF5" customClass="LocalDateAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="71.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="106" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3bl-rH-UF5" id="yrp-Bn-p0X">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -994,7 +1071,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="local time" id="76J-T8-SKH" customClass="LocalTimeAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="115" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="149.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="76J-T8-SKH" id="IbV-et-5wJ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1013,7 +1090,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="destination name" id="taY-lE-Gr2" customClass="DestinationNameAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="158.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="193" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="taY-lE-Gr2" id="uZE-SN-mgM">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1032,7 +1109,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="jet lag" id="9Up-C4-mp3" customClass="JetLagAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="202" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="236.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9Up-C4-mp3" id="NpL-vg-0Ok">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1051,7 +1128,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="destination time" id="woj-Fi-LJU" customClass="DestinationTimeAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="245.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="280" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="woj-Fi-LJU" id="qAw-qX-du6">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1070,7 +1147,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="notification" id="Ei5-QX-8EA" customClass="NotificationTimeAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="289" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="323.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ei5-QX-8EA" id="hj0-0o-ul8">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1089,7 +1166,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="place calling at" id="VMN-D7-HgR" customClass="PlaceCallingAtAddingTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="332.5" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="367" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VMN-D7-HgR" id="srG-cy-iDS">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -1108,7 +1185,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="map" id="UHg-2j-tYx" customClass="MapPlaceCallingAtTableViewCell" customModule="checklist" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="376" width="414" height="43.5"/>
+                                <rect key="frame" x="0.0" y="410.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UHg-2j-tYx" id="8JF-v2-Uxx">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

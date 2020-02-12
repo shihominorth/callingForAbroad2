@@ -113,7 +113,10 @@ class DetailCallingTableViewController: UITableViewController {
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as!  DayPickerTableViewCell
 //            datePickerCell.updateCell(date: inputDates[indexPath.section - 1], indexPath: indexPath)
             datePickerCell.delegate = self// as DatePickerDelegate
-            
+           
+//            datePickerCell.datePicker!.centerXAnchor.constraint(equalTo: datePickerCell.contentView.centerXAnchor).isActive = true
+//            datePickerCell.datePicker!.centerYAnchor.constraint(equalTo: datePickerCell.contentView.centerYAnchor).isActive = true
+//
             return datePickerCell
         }
         

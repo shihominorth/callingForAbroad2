@@ -16,7 +16,7 @@ class DayPickerTableViewCell: UITableViewCell {
     
     var indexPath: IndexPath!
     weak var delegate: DatePickerDelegate?
-    
+    var datePicker : UIDatePicker!
     
    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,14 +45,28 @@ class DayPickerTableViewCell: UITableViewCell {
     
 
     func DatePicker() {
-        let datePicker = UIDatePicker()
-        datePicker.datePickerMode = UIDatePicker.Mode.date
+        self.datePicker = UIDatePicker()
+        self.datePicker.datePickerMode = UIDatePicker.Mode.date
         self.addSubview(datePicker)
-
+        
+        
+       
+//        self.addConstraint(<#T##constraint: NSLayoutConstraint##NSLayoutConstraint#>)
+       
+        
     }
     
 //    func updateCell(date: Date, indexPath: IndexPath) {
 //        datePicker.setDate(date, animated: true)
 //        self.indexPath = indexPath 
 //    }
+    
+    override func layoutSubviews() {
+        //datePicker.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        //datePicker.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
+        let x:CGFloat = self.frame.size.width-self.datePicker.frame.size.width
+        datePicker.frame = CGRect(x: x/2, y: 0, width: self.datePicker.frame.size.width, height: self.frame.height)
+
+    }
 }

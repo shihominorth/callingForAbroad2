@@ -373,58 +373,29 @@ class DetailCallingTableViewController: UITableViewController {
     //MARK: - BUTTON
     
     @IBAction func back() {
-        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+            delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
         navigationController?.popViewController(animated: true)
     }
 
 }
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-//    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem) {
-//        self.item = item
-//        appDelegate.saveContext()
-//        self.tableView.reloadData()
-//    }
-    
-//    func addValue(item: Plan) -> Plan {
-//        let plan = Plan(entity: Plan.entity(), insertInto: context)
-//        plan.nameCallingFor = item.nameCallingFor
-//        plan.localDate = item.localDate
-//        plan.localName = item.localName
-//        plan.localTime = item.localTime
-//        plan.destinationName = item.destinationName
-//        plan.jetLag = item.jetLag
-//        plan.destinationTime = item.destinationTime
-//        plan.notification = item.notification
-//        plan.placeCallingAt = item.placeCallingAt
-//        
-//        return plan
-//        
-//    }
     
 }
 
 extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
     func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan) {
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
     }
-    
-//    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem) {
-//        self.item = item
-//        self.tableView.reloadData()
-//    }
 }
 
 extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
-//     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem) {
-//        self.item = item
-//        self.tableView.reloadData()
-//    }
-    
     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: Plan) {
-           self.item = item
-           self.tableView.reloadData()
+        self.item = item
+        appDelegate.saveContext()
+        self.tableView.reloadData()
        }
 }
 
@@ -433,6 +404,7 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
 
     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan) {
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
     }
     
@@ -441,6 +413,7 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
 extension DetailCallingTableViewController: NotificationViewControllerDelegate {
     func editItemViewController(_ controller: NotificationViewController, didFinishEditting item: Plan) {
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
     }
     
@@ -449,6 +422,7 @@ extension DetailCallingTableViewController: NotificationViewControllerDelegate {
 extension DetailCallingTableViewController: PlaceCallingAtViewControllerDelegate {
     func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting item: Plan) {
         self.item = item
+        appDelegate.saveContext()
         self.tableView.reloadData()
     }
     

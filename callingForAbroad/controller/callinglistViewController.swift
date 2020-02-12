@@ -277,34 +277,5 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
                self.tableView.reloadData()
     }
     
-//    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath) {
-//
-//        let plan = editValue(item: item)
-//        plans?.remove(at: indexPath.row)
-//        plans?.insert(plan, at: indexPath.row)
-//        appDelegate.saveContext()
-//
-//        callingCelllist.move(item: item, to: indexPath.row)
-//        // not sure if it is necessary
-//        getData()
-//
-//        self.tableView.reloadData()
-//    }
-//
-//    func editValue(item: callingCellItem) -> Plan{
-//        let plan = Plan(entity: Plan.entity(), insertInto: context)
-//        plan.nameCallingFor = item.nameCallingFor
-//        plan.localDate = item.localDate
-//        plan.localName = item.localName
-//        plan.localTime = item.localTime
-//        plan.destinationName = item.destinationName
-//        plan.jetLag = item.jetLag
-//        plan.destinationTime = item.destinationTime
-//        plan.notification = item.notification
-//        plan.placeCallingAt = item.placeCallingAt
-//
-//        return plan
-//
-//    }
     
 }

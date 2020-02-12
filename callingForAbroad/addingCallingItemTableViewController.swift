@@ -16,7 +16,7 @@ protocol AddItemTableViewControllerDelegate: class {
 class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
-    var callingCellList = CallingCellList()
+    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     
     override func viewDidLoad() {
@@ -39,7 +39,7 @@ class addingCallingItemTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return  9
+        return  10
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -55,43 +55,49 @@ class addingCallingItemTableViewController: UITableViewController {
             return cell
         }
         else if indexPath.section == 1 {
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "local name", for: indexPath) as? LocalNameAddingTableViewCell)!
+            
+            return cell
+        }
+            
+        else if indexPath.section == 2 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local date", for: indexPath) as? LocalDateAddingTableViewCell)!
             
             return cell
         }
-        else if indexPath.section == 2 {
+        else if indexPath.section == 3 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local time", for: indexPath) as? LocalTimeAddingTableViewCell)!
             
             return cell
         }
-        else if indexPath.section == 3 {
+        else if indexPath.section == 4 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination name", for: indexPath) as? DestinationNameAddingTableViewCell)!
             
             
             return cell
         }
-        else if indexPath.section == 4 {
+        else if indexPath.section == 5 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "jet lag", for: indexPath) as? JetLagAddingTableViewCell)!
             
             return cell
         }
-        else if indexPath.section == 5 {
+        else if indexPath.section == 6 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination time", for: indexPath) as? DestinationTimeAddingTableViewCell)!
             
             return cell
         }
-        else if indexPath.section == 6 {
+        else if indexPath.section == 7 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificationTimeAddingTableViewCell)!
            
             return cell
         }
-        else if indexPath.section == 7 {
+        else if indexPath.section == 8 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "place calling at", for: indexPath) as? PlaceCallingAtAddingTableViewCell)!
             
             
             return cell
         }
-        else if indexPath.section == 8
+        else if indexPath.section == 9
         {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapPlaceCallingAtTableViewCell)!
             
@@ -119,40 +125,48 @@ class addingCallingItemTableViewController: UITableViewController {
         let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
         
         //        let newRowIndex = callingCellList.callingList.count
-        _ = callingCellList.newToDo(item: item)
+//        _ = planDelegate.addPlan(item: item)
         
         if let indexPath:IndexPath = IndexPath(row: 0, section: 0) {
             let cell = (tableView.cellForRow(at: indexPath) as? NameCallingForAddingTableViewCell)!
             item.nameCallingFor = cell.textField.text!
         }
         if let indexPath:IndexPath = IndexPath(row: 0, section: 1) {
+            let cell = (tableView.cellForRow(at: indexPath) as? LocalNameAddingTableViewCell)!
+            item.localName = cell.textField.text!
+        }
+        
+        if let indexPath:IndexPath = IndexPath(row: 0, section: 2) {
             let cell = (tableView.cellForRow(at: indexPath) as? LocalDateAddingTableViewCell)!
             item.localDate = cell.textField.text!
         }
-        if let indexPath: IndexPath = IndexPath(row: 0, section: 2) {
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 3) {
             let cell = (tableView.cellForRow(at: indexPath) as? LocalTimeAddingTableViewCell)!
             item.localTime = cell.textField.text!
         }
-        if let indexPath: IndexPath = IndexPath(row: 0, section: 3) {
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 4) {
             let cell = (tableView.cellForRow(at: indexPath) as? DestinationNameAddingTableViewCell)!
             item.destinationName = cell.textField.text!
         }
-        if let indexPath: IndexPath = IndexPath(row: 0, section: 4) {
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 5) {
             let cell = (tableView.cellForRow(at: indexPath) as? JetLagAddingTableViewCell)!
             item.jetLag = cell.textField.text!
         }
-        if let indexPath: IndexPath = IndexPath(row: 0, section: 5) {
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 6) {
             let cell = (tableView.cellForRow(at: indexPath) as? DestinationTimeAddingTableViewCell)!
             item.destinationTime = cell.textField.text!
         }
-        if let indexPath:IndexPath = IndexPath(row: 0, section: 6) {
+        if let indexPath:IndexPath = IndexPath(row: 0, section: 7) {
             let cell = (tableView.cellForRow(at: indexPath) as? NotificationTimeAddingTableViewCell)!
             item.notification = cell.textField.text!
         }
-        if let indexPath: IndexPath = IndexPath(row: 0, section: 7) {
+        if let indexPath: IndexPath = IndexPath(row: 0, section: 8) {
             let cell = (tableView.cellForRow(at: indexPath) as? PlaceCallingAtAddingTableViewCell)!
             item.placeCallingAt = cell.textField.text!
         }
+        
+        
+        
         
 //        let indexPaths = [indexPath]
 //        homeVC.tableView.insertRows(at: indexPaths, with: .automatic)
@@ -208,5 +222,17 @@ class addingCallingItemTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     
+    
+    // MARK: - Core data
+    
+    func createItem(item: Plan) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let context = appDelegate.persistentContainer.viewContext
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+    }
 
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 protocol DestinationNameViewControllerDelegate: class {
-//     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem)
      func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan)
 }
 

@@ -28,7 +28,7 @@ class DetailCallingTableViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    
+    var isFirst = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +84,22 @@ class DetailCallingTableViewController: UITableViewController {
                 edittingVC.delegate = self
             }
         }
+        
+        if segue.identifier == "edittingNotification" {
+            if let edittingVC = segue.destination as? NotificationViewController {
+                edittingVC.item = self.item
+                edittingVC.indexPath = self.indexPath
+                edittingVC.delegate = self as NotificationViewControllerDelegate
+            }
+        }
+        
+        if segue.identifier == "editting place calling at" {
+            if let edittingVC = segue.destination as? PlaceCallingAtViewController {
+                edittingVC.item = self.item
+                edittingVC.indexPath = self.indexPath
+                edittingVC.delegate = self as? PlaceCallingAtViewControllerDelegate
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -100,12 +116,24 @@ class DetailCallingTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        if section == 1 && datePickerIndexPath != nil {
+        
+        if section == 1 && datePickerIndexPath?.section == 1 && isFirst == false {
+            isFirst = true
             return 2
         }
+        else if section == 3 && datePickerIndexPath?.section == 3 && isFirst == false{
+            isFirst = true
+            return 2
+        }
+        else if  section == 6 && datePickerIndexPath?.section == 6 && isFirst == false {
+            isFirst = true
+            return 2
+        }
+        
         return 1
     }
-
+    
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -113,10 +141,21 @@ class DetailCallingTableViewController: UITableViewController {
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as!  DayPickerTableViewCell
 //            datePickerCell.updateCell(date: inputDates[indexPath.section - 1], indexPath: indexPath)
             datePickerCell.delegate = self// as DatePickerDelegate
-           
-//            datePickerCell.datePicker!.centerXAnchor.constraint(equalTo: datePickerCell.contentView.centerXAnchor).isActive = true
-//            datePickerCell.datePicker!.centerYAnchor.constraint(equalTo: datePickerCell.contentView.centerYAnchor).isActive = true
-//
+            
+            
+            switch datePickerIndexPath?.section {
+            case 1:
+                datePickerCell.datePicker.datePickerMode = .date
+                
+            case 3:
+                datePickerCell.datePicker.datePickerMode = .time
+            case 6:
+                datePickerCell.datePicker.datePickerMode = .dateAndTime
+                
+            default:
+                break
+            }
+            
             return datePickerCell
         }
         
@@ -180,7 +219,7 @@ class DetailCallingTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination Time", for: indexPath) as? DestinationTimeTableViewCell)!
 
             // Configure the cell...
-            cell.destinationTimeLabel.text = item.destinationTime as? String
+            cell.destinationTimeLabel.text = item.destinationTime
 
             return cell
         }
@@ -209,13 +248,14 @@ class DetailCallingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.section == 1 {
+        if indexPath.section == 1 || indexPath.section == 3 || indexPath.section == 6 {
             
             tableView.beginUpdates()
             
              if let datePickerIndexPath = datePickerIndexPath,   datePickerIndexPath.row - 1 == indexPath.row {
                tableView.deleteRows(at: [datePickerIndexPath], with: .fade)
                self.datePickerIndexPath = nil
+                isFirst = false
             } else {
                // 2
                if let datePickerIndexPath = datePickerIndexPath {
@@ -229,19 +269,13 @@ class DetailCallingTableViewController: UITableViewController {
                tableView.endUpdates()
             
             
-            
         }
-    }
         
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+    }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if datePickerIndexPath?.section == 1, indexPath.row == 1 {
-            return 150.0
-        }
-        return UITableView.automaticDimension
-    }
-        
-
     
     func indexPathToInsertDatePicker(indexPath: IndexPath) -> IndexPath {
        if let datePickerIndexPath = datePickerIndexPath, datePickerIndexPath.row < indexPath.row {
@@ -250,6 +284,34 @@ class DetailCallingTableViewController: UITableViewController {
             return IndexPath(row: indexPath.row + 1, section: indexPath.section)
        }
     }
+        
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        
+        switch indexPath.row {
+        case 1:
+            if datePickerIndexPath?.section == 1 {
+                return 150.0
+            }
+            else if datePickerIndexPath?.section == 3 {
+                return 150.0
+            }
+            else if datePickerIndexPath?.section == 6 {
+                return 150.0
+            }
+            
+        default:
+            break
+        }
+        
+        
+        return UITableView.automaticDimension
+    }
+        
+    
+    
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -368,16 +430,30 @@ extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
 
 
 extension DetailCallingTableViewController: DestinationNameViewControllerDelegate {
-//    func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem) {
-//        self.item = item
-//        self.tableView.reloadData()
-//    }
+
     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan) {
         self.item = item
         self.tableView.reloadData()
     }
     
 }
+
+extension DetailCallingTableViewController: NotificationViewControllerDelegate {
+    func editItemViewController(_ controller: NotificationViewController, didFinishEditting item: Plan) {
+        self.item = item
+        self.tableView.reloadData()
+    }
+    
+}
+
+extension DetailCallingTableViewController: PlaceCallingAtViewControllerDelegate {
+    func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting item: Plan) {
+        self.item = item
+        self.tableView.reloadData()
+    }
+    
+}
+
 
 extension DetailCallingTableViewController: DatePickerDelegate {
     

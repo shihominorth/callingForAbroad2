@@ -46,7 +46,7 @@ class DayPickerTableViewCell: UITableViewCell {
 
     func DatePicker() {
         self.datePicker = UIDatePicker()
-        self.datePicker.datePickerMode = UIDatePicker.Mode.date
+//        self.datePicker.datePickerMode = UIDatePicker.Mode.date
         self.addSubview(datePicker)
         
         

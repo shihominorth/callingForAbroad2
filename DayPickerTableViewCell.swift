@@ -34,6 +34,7 @@ class DayPickerTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
        
+        initView()
         
     }
 
@@ -46,20 +47,15 @@ class DayPickerTableViewCell: UITableViewCell {
 
     func DatePicker() {
         self.datePicker = UIDatePicker()
-//        self.datePicker.datePickerMode = UIDatePicker.Mode.date
+        datePicker.addTarget(self, action: #selector(dateDidChange), for: .valueChanged)
         self.addSubview(datePicker)
-        
-        
-       
-//        self.addConstraint(<#T##constraint: NSLayoutConstraint##NSLayoutConstraint#>)
-       
         
     }
     
-//    func updateCell(date: Date, indexPath: IndexPath) {
-//        datePicker.setDate(date, animated: true)
-//        self.indexPath = indexPath 
-//    }
+    func updateCell(date: Date, indexPath: IndexPath) {
+        datePicker.setDate(date, animated: true)
+        self.indexPath = indexPath
+    }
     
     override func layoutSubviews() {
         //datePicker.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
@@ -69,4 +65,15 @@ class DayPickerTableViewCell: UITableViewCell {
         datePicker.frame = CGRect(x: x/2, y: 0, width: self.datePicker.frame.size.width, height: self.frame.height)
 
     }
+    
+    
+    func initView() {
+        datePicker.addTarget(self, action: #selector(dateDidChange), for: .valueChanged)
+    }
+    
+    @objc func dateDidChange(_ sender: UIDatePicker) {
+        let indexPathForDisplayDate = IndexPath(row: 0, section: indexPath.section)
+        delegate?.didChangeDate(date: sender.date, indexPath: indexPathForDisplayDate)
+    }
+
 }

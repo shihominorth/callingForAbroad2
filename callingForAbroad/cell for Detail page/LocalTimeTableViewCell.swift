@@ -13,6 +13,16 @@ class LocalTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var LocalTimeLabel: UILabel!
     
+    func updateText(date: Date) -> String{
+        LocalTimeLabel.text = date.convertToString(dateformat: .dateWithTime)
+        
+        return date.convertToString(dateformat: .dateWithTime)
+    }
+    
+    func giveText(date: Date) -> String {
+        return date.convertToString(dateformat: .dateWithTime)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

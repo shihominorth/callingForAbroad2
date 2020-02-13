@@ -210,6 +210,7 @@ class callinglistViewController: UITableViewController {
                     detailVC.item = item!
                     detailVC.indexPath = indexPath
                     detailVC.delegate = self
+                    detailVC.isFirstDateValuePassed = true
                 }
             }
         }

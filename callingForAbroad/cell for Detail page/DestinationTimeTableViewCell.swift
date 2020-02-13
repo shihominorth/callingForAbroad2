@@ -12,6 +12,14 @@ class DestinationTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var destinationTimeLabel: UILabel!
     
+    func updateText(date: Date) {
+        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime)
+    }
+    
+    func giveText(date: Date) -> String {
+        return date.convertToString(dateformat: .dateWithTime)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -24,7 +24,11 @@ class DateCallingTableViewCell: UITableViewCell {
     @IBOutlet weak var DateCallingLabel: UILabel!
     
     func updateText(date: Date) {
-        DateCallingLabel.text = date.convertToString(dateformat: .dateWithTime)
+        DateCallingLabel.text = date.convertToString(dateformat: .date)
+    }
+    
+    func giveText(date: Date) -> String{
+        return  date.convertToString(dateformat: .date)
     }
     
     override func awakeFromNib() {

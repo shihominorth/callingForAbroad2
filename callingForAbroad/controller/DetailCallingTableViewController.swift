@@ -12,6 +12,8 @@ protocol DetailCallingTableViewControllerDelegate: class {
 //    func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: callingCellItem, indexPath: IndexPath)
     
     func  DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath)
+    
+    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath)
 }
 
 class DetailCallingTableViewController: UITableViewController {
@@ -30,6 +32,7 @@ class DetailCallingTableViewController: UITableViewController {
     
     var isFirstOpenDatePicker = false
     var isFirstDateValuePassed: Bool?
+    var isEditting: Bool?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -173,7 +176,7 @@ class DetailCallingTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "NameCalling", for: indexPath) as? NameCallingForTableViewCell)!
             
-            cell.NameCallingForLabel.text = item.nameCallingFor
+            cell.NameCallingForLabel.text = item.nameCallingFor ?? ""
             
 
             // Configure the cell...
@@ -188,7 +191,7 @@ class DetailCallingTableViewController: UITableViewController {
             
             // Configure the cell...
             if isFirstDateValuePassed == true {
-                cell.DateCallingLabel.text = item.localDate
+                cell.DateCallingLabel.text = item.localDate ?? "None"
             } else {
                 cell.updateText(date: inputDates[0])
                 item.localDate = cell.giveText(date: inputDates[0])
@@ -203,7 +206,7 @@ class DetailCallingTableViewController: UITableViewController {
 
             // Configure the cell...
 
-            cell.localNameLabel.text = item.localName
+            cell.localNameLabel.text = item.localName  ?? "None"
             
             return cell
         }
@@ -214,7 +217,7 @@ class DetailCallingTableViewController: UITableViewController {
             // Configure the cell...
             
             if isFirstDateValuePassed == true {
-                cell.LocalTimeLabel.text = item.localTime
+                cell.LocalTimeLabel.text = item.localTime ?? "None"
             } else {
                 cell.updateText(date: inputDates[1])
                 item.localTime = cell.giveText(date: inputDates[1])
@@ -228,14 +231,14 @@ class DetailCallingTableViewController: UITableViewController {
 
             // Configure the cell...
 
-            cell.DestinationNameLabel.text = item.destinationName
+            cell.DestinationNameLabel.text = item.destinationName ?? "None"
             return cell
         }
         else if indexPath.section == 5 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "jet Lag", for: indexPath) as? JetLagTableViewCell)!
  
             // Configure the cell...
-            cell.jetLagLabel.text = item.jetLag
+            cell.jetLagLabel.text = item.jetLag ?? "None"
 
             return cell
         }
@@ -260,14 +263,14 @@ class DetailCallingTableViewController: UITableViewController {
         else if indexPath.section == 7 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificaitonTableViewCell)!
             
-            cell.label.text = item.notification
+            cell.label.text = item.notification ?? "None"
             
             return cell
         }
         else if indexPath.section == 8 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "detail place calling at ", for: indexPath) as? DetailPlaceCallingAtTableViewCell)!
             
-            cell.label.text = item.placeCallingAt
+            cell.label.text = item.placeCallingAt ?? "None"
             
             return cell
         }
@@ -410,8 +413,14 @@ class DetailCallingTableViewController: UITableViewController {
     //MARK: - BUTTON
     
     @IBAction func back() {
-        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
-        navigationController?.popViewController(animated: true)
+        
+        if isEditing {
+            delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+        } else {
+             delegate?.DetailCallingTableViewController(self, addNewItem: item, indexPath: self.indexPath)
+        }
+            
+            navigationController?.popViewController(animated: true)
     }
 
 }

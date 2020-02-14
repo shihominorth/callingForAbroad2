@@ -9,9 +9,10 @@
         <attribute name="localTime" attributeType="String"/>
         <attribute name="nameCallingFor" attributeType="String"/>
         <attribute name="notification" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Transformable"/>
         <attribute name="placeCallingAt" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Plan" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="Plan" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>

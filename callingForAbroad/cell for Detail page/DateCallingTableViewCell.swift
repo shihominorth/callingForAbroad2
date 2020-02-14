@@ -10,13 +10,13 @@ import UIKit
 // Date Format type
 enum DateFormatType: String {
     /// Time
-    case time = "HH:mm:ss"
+    case time = "HH:mm"
     
     /// Date with hours
-    case dateWithTime = "dd-MMM-yyyy  H:mm"
+    case dateWithTime = "EEE, MMMM d, yyyy  H:mm"
     
     /// Date
-    case date = "dd-MMM-yyyy"
+    case date = "EEE, MMMM d, yyyy"
 }
 
 class DateCallingTableViewCell: UITableViewCell {

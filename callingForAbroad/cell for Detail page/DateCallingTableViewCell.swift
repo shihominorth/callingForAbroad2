@@ -7,9 +7,29 @@
 
 import UIKit
 
+// Date Format type
+enum DateFormatType: String {
+    /// Time
+    case time = "HH:mm"
+    
+    /// Date with hours
+    case dateWithTime = "EEE, MMMM d, yyyy  H:mm"
+    
+    /// Date
+    case date = "EEE, MMMM d, yyyy"
+}
+
 class DateCallingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var DateCallingLabel: UILabel!
+    
+    func updateText(date: Date) {
+        DateCallingLabel.text = date.convertToString(dateformat: .date)
+    }
+    
+    func giveText(date: Date) -> String{
+        return  date.convertToString(dateformat: .date)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,4 +42,16 @@ class DateCallingTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+}
+
+
+extension Date {
+    
+    func convertToString(dateformat formatType: DateFormatType) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = formatType.rawValue
+        let newDate: String = dateFormatter.string(from: self)
+        return newDate
+    }
+    
 }

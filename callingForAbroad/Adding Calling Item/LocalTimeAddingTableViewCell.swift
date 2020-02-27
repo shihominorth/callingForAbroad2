@@ -10,8 +10,16 @@ import UIKit
 
 class LocalTimeAddingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
-
+    @IBOutlet weak var label: UILabel!
+    
+    func updateText(date: Date) {
+           label.text = date.convertToString(dateformat: .time)
+       }
+       
+    func giveText(date: Date) -> String{
+        return  date.convertToString(dateformat: .time)
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

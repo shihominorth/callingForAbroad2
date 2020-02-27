@@ -2,15 +2,17 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Plan" representedClassName=".Plan" syncable="YES">
         <attribute name="destinationName" attributeType="String"/>
+        <attribute name="destinationTime" optional="YES" attributeType="String"/>
         <attribute name="jetLag" attributeType="String"/>
         <attribute name="localDate" attributeType="String"/>
         <attribute name="localName" attributeType="String"/>
         <attribute name="localTime" attributeType="String"/>
         <attribute name="nameCallingFor" attributeType="String"/>
         <attribute name="notification" attributeType="String"/>
+        <attribute name="order" optional="YES" attributeType="Transformable"/>
         <attribute name="placeCallingAt" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Plan" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="Plan" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>

@@ -10,7 +10,16 @@ import UIKit
 
 class LocalDateAddingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var label: UILabel!
+    
+    func updateText(date: Date) {
+           label.text = date.convertToString(dateformat: .date)
+       }
+       
+    func giveText(date: Date) -> String{
+        return  date.convertToString(dateformat: .date)
+    }
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

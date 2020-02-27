@@ -10,24 +10,42 @@ import UIKit
 
 
 protocol LocalNameViewControllerDelegate: class {
-     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem)
+//     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: callingCellItem)
+    func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: Plan)
+
+}
+
+protocol LocalNameViewControllerDelegate2: class {
+    func editItemViewController(_ controller: LocalNameViewController, didFinishEditting localName: String!)
 }
 
 class LocalNameViewController: UIViewController {
 
     
-    var item = callingCellItem()
+    var item: Plan?
     var indexPath = IndexPath()
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     
+    var text = ""
+    
     weak var delegate:LocalNameViewControllerDelegate?
+    
+    var isAdding: Bool?
+    weak var delegate2:LocalNameViewControllerDelegate2?
     
     @IBAction func done(_ sender: Any) {
         
-        item.localName = textField.text ?? ""
-        delegate?.editItemViewController(self, didFinishEditting: item)
+        if isAdding != true {
+            item?.localName = textField.text
+            delegate?.editItemViewController(self, didFinishEditting: item!)
+        } else {
+            if textField.text == "" {
+               textField.text = "NONE"
+            }
+            delegate2?.editItemViewController(self, didFinishEditting: textField.text)
+        }
         
         navigationController?.popViewController(animated: true)
         
@@ -39,7 +57,15 @@ class LocalNameViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        textField.text = item.localName
+        if item?.localName != nil {
+            textField.text = item!.localName
+        }
+        else if text != "" {
+            textField.text = text
+        }
+        else {
+            textField.text = ""
+        }
     }
     
 

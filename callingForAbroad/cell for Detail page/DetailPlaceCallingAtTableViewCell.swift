@@ -1,18 +1,16 @@
 //
-//  JetLagTableViewCell.swift
+//  DetailPlaceCallingAtTableViewCell.swift
 //  checklist
 //
-//  Created by 北島　志帆美 on 2019-12-18.
-//  Copyright © 2019 北島　志帆美. All rights reserved.
+//  Created by 北島　志帆美 on 2020-02-10.
+//  Copyright © 2020 北島　志帆美. All rights reserved.
 //
 
 import UIKit
 
-class JetLagAddingTableViewCell: UITableViewCell {
+class DetailPlaceCallingAtTableViewCell: UITableViewCell {
 
-    
     @IBOutlet weak var label: UILabel!
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()

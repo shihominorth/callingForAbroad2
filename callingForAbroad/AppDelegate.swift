@@ -15,11 +15,9 @@ import Firebase
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
     
-//    let apiKey = "AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI"
-   
     
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "Plan")
+        let container = NSPersistentContainer(name: "callingForAbroad")
         container.loadPersistentStores(completionHandler: {
             (storeDescription, error) in
             print(storeDescription)
@@ -52,21 +50,8 @@ import Firebase
            }
         
         // Override point for customization after application launch.
-
-//        // ナビゲージョンアイテムの文字色
-//        UINavigationBar.appearance().tintColor = UIColor.red
-//         
-//        // ナビゲーションバーのタイトルの文字色
-//        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.blue]
-//         
-//        // ナビゲーションバーの背景色
-//        UINavigationBar.appearance().barTintColor = UIColor.yellow
-//         
-//        // ナビゲーションバーの背景の透過
-//        (UINavigationBar.appearance() as UINavigationBar).setBackgroundImage(UIImage(), for: .default)
-//         
-//        // ナビゲーションバーの下の影を無くす
-//        UINavigationBar.appearance().shadowImage = UIImage()
+        
+        
         return true
     }
 

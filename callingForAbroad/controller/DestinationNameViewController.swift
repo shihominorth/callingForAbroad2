@@ -9,25 +9,43 @@
 import UIKit
 
 protocol DestinationNameViewControllerDelegate: class {
-     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: callingCellItem)
+     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan)
 }
+
+protocol DestinationNameViewControllerDelegate2: class {
+    func editItemViewController(_ controller: DestinationNameViewController, destinationName: String)
+}
+
 
 class DestinationNameViewController: UIViewController {
 
     
-    var item = callingCellItem()
+    var item: Plan?
     var indexPath = IndexPath()
+    var text: String?
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     weak var delegate:DestinationNameViewControllerDelegate?
     
+    weak var delegate2:DestinationNameViewControllerDelegate2?
+    
+    var isAdding: Bool?
+    
     @IBAction func done(_ sender: Any) {
         
-        item.destinationName = textField.text ?? ""
-        delegate?.editItemViewController(self, didFinishEditting: item)
+       
         
+        if isAdding != true {
+            item?.destinationName = textField.text ?? ""
+            delegate?.editItemViewController(self, didFinishEditting: item!)
+        } else {
+            if textField.text == "" {
+               textField.text = "NONE"
+            }
+            delegate2?.editItemViewController(self, destinationName: textField.text!)
+        }
         navigationController?.popViewController(animated: true)
         
     }
@@ -37,7 +55,15 @@ class DestinationNameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        textField.text = item.destinationName
+        if item?.localName != nil {
+            textField.text = item?.localName
+        }
+        else if text != "" {
+            textField.text = text
+        }
+        else {
+         textField.text = ""
+        }
     }
     
 

@@ -14,8 +14,6 @@ import GooglePlaces
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
     
-//    let apiKey = "AIzaSyAy1cHc3umfq1DHnqckpJCMK7xlfzhuXeI"
-   
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "callingForAbroad")

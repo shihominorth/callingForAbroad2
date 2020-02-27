@@ -12,28 +12,54 @@ protocol PlaceCallingAtViewControllerDelegate: class {
     func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting item: Plan)
 }
 
+protocol PlaceCallingAtViewControllerDelegate2: class  {
+     func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting placeCallingAt: String)
+}
+
 class PlaceCallingAtViewController: UIViewController {
 
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
+    var isAdding: Bool?
+    var text: String?
     
-    var item = Plan()
+    
+    
+    var item: Plan?
     var indexPath = IndexPath()
     
     weak var delegate: PlaceCallingAtViewControllerDelegate?
+    weak var delegate2: PlaceCallingAtViewControllerDelegate2?
+    
     
     @IBAction func done(_ sender: Any) {
-           
-           item.placeCallingAt = textField.text ?? ""
-           delegate?.editItemViewController(self, didFinishEditting: item)
-           navigationController?.popViewController(animated: true)
+          
+        if isAdding != true {
+        item?.placeCallingAt = textField.text ?? ""
+        delegate?.editItemViewController(self, didFinishEditting: item!)
+        }
+        else {
+            if textField.text == "" {
+                textField.text = "NONE"
+            }
+            delegate2?.editItemViewController(self, didFinishEditting: textField.text!)
+            }
+        navigationController?.popViewController(animated: true)
            
        }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.text = item.placeCallingAt
+        if item?.placeCallingAt != nil {
+            textField.text = item!.placeCallingAt
+        }
+        else if text != "" {
+            textField.text = text
+        }
+        else {
+            textField.text = ""
+        }
         // Do any additional setup after loading the view.
     }
     

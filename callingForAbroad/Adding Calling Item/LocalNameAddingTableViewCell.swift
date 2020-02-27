@@ -10,7 +10,8 @@ import UIKit
 
 class LocalNameAddingTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var textField: UITextField!
+   
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

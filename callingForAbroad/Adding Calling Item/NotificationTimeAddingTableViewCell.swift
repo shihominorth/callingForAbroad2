@@ -10,8 +10,8 @@ import UIKit
 
 class NotificationTimeAddingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var label: UILabel!
     
-    @IBOutlet weak var textField: UITextField!
     
     override func awakeFromNib() {
         super.awakeFromNib()

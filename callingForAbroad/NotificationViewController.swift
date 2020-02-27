@@ -13,9 +13,19 @@ protocol NotificationViewControllerDelegate : class {
     func editItemViewController(_ controller: NotificationViewController, didFinishEditting item: Plan)
 }
 
+
+
+protocol NotificationViewControllerDelegate2 : class {
+    func editItemViewController(_ controller: NotificationViewController, didFinishEditting notificaiton: String)
+}
+
 class NotificationViewController: UIViewController {
-    var item = Plan()
+    var item: Plan?
     var indexPath = IndexPath()
+    var isAdding: Bool?
+   var text = ""
+    
+   
     
     
     let notifications: [Int] = [0, 5, 10, 30, 45, 60, 360,]
@@ -24,6 +34,7 @@ class NotificationViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     weak var delegate:NotificationViewControllerDelegate?
+    weak var delegate2: NotificationViewControllerDelegate2?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,13 +91,41 @@ extension NotificationViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
          
+        if isAdding != true {
         let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
         
-        item.notification = cell.timeLabel.text
+        item?.notification = cell.timeLabel.text
         tableView.deselectRow(at: indexPath, animated: true)
         
-        delegate?.editItemViewController(self, didFinishEditting: item)
-        navigationController?.popViewController(animated: true)
+        
+        delegate?.editItemViewController(self, didFinishEditting: item!)
+        } else {
+              let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
+            
+            switch indexPath.row {
+            case 0:
+                text = "0"
+            case 1:
+                text = "5"
+            case 2:
+                text = "10"
+            case 3:
+                text = "30"
+            case 4:
+                text = "45"
+            case 5:
+                text = "60"
+            case 6:
+                text = "360"
+            default:
+                break
+            }
+//            text = cell.textLabel!.text!
+            
+            delegate2?.editItemViewController(self, didFinishEditting: text)
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+            navigationController?.popViewController(animated: true)
         
     }
     

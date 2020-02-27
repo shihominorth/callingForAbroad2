@@ -10,8 +10,18 @@ import UIKit
 
 class DestinationTimeAddingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
 
+    @IBOutlet weak var label: UILabel!
+    
+    func updateText(date: Date) {
+           label.text = date.convertToString(dateformat: .dateWithTime)
+       }
+       
+    func giveText(date: Date) -> String{
+        return  date.convertToString(dateformat: .dateWithTime)
+    }
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

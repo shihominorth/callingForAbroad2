@@ -10,8 +10,8 @@ import UIKit
 
 class PlaceCallingAtAddingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var textField: UITextField!
-
+    @IBOutlet weak var label: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

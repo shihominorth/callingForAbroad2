@@ -10,27 +10,42 @@ import UIKit
 
 protocol nameCallingViewControllerDelegate: class {
     
-//    func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: callingCellItem)
     func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan)
 
 }
 
+protocol nameCallingViewControllerDelegate2: class {
+    func editItemViewController(_ controller: nameCallingViewController, nameCallFor: String)
+}
+
 class nameCallingViewController: UIViewController {
 
+    var item: Plan?
     
-    var item = Plan()
+    var text = ""
     var indexPath = IndexPath()
+    
+    var isAdding: Bool?
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var textField: UITextField!
     
     weak var delegate:nameCallingViewControllerDelegate?
+    weak var delegate2: nameCallingViewControllerDelegate2?
     
     @IBAction func done(_ sender: Any) {
         
-        item.nameCallingFor = textField.text ?? ""
-        delegate?.editItemViewController(self, didFinishEditting: item)
+       
         
+        if isAdding != true {
+            item?.nameCallingFor = textField.text ?? ""
+            delegate?.editItemViewController(self, didFinishEditting: item!)
+        } else {
+            if textField.text == "" {
+               textField.text = "NONE"
+            }
+            delegate2?.editItemViewController(self, nameCallFor: textField.text!)
+        }
         navigationController?.popViewController(animated: true)
         
     }
@@ -40,7 +55,12 @@ class nameCallingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        textField.text = item.nameCallingFor
+        if item?.nameCallingFor != nil {
+            textField.text = item?.nameCallingFor
+        }
+        else if text != "" {
+         textField.text = text
+        }
     }
     
 

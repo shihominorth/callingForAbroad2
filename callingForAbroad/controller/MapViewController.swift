@@ -16,7 +16,6 @@ class MapViewController: UIViewController {
     var mapView: GMSMapView!
     
     let apiKey = KeyManager().getValue(key:"apiKey") as? String
-    let viewDetail = UIView() as? SeeDetailView
    
     private let locationManager = CLLocationManager()
     
@@ -24,70 +23,76 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
  
         
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self as! CLLocationManagerDelegate
-            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            locationManager.requestWhenInUseAuthorization()
-            locationManager.startUpdatingLocation()
-        }
-        let camera = GMSCameraPosition.camera(withLatitude: locationManager.location!.coordinate.latitude, longitude: locationManager.location!.coordinate.longitude, zoom: 15);
-        mapView = GMSMapView.map(withFrame: self.view.bounds, camera: camera)
-        mapView.delegate = self as! GMSMapViewDelegate
-        self.view.addSubview(mapView)
-        mapView.settings.myLocationButton = true
-        mapView.isMyLocationEnabled = true
-        
-        mapView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            mapView.topAnchor.constraint(equalTo: view.topAnchor),
-            mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-        ])
-        
-        
-        if CLLocationManager.locationServicesEnabled() {
-            switch (CLLocationManager.authorizationStatus()) {
-            case .notDetermined, .restricted, .denied:
-                print("No access")
-            case .authorizedAlways, .authorizedWhenInUse:
-                print("Access")
+        //        if CLLocationManager.locationServicesEnabled() {
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.requestWhenInUseAuthorization()
+       
+        //        }
+        if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
+             locationManager.startUpdatingLocation()
+            let camera = GMSCameraPosition.camera(withLatitude: locationManager.location!.coordinate.latitude, longitude: locationManager.location!.coordinate.longitude, zoom: 15);
+            mapView = GMSMapView.map(withFrame: self.view.bounds, camera: camera)
+            mapView.delegate = self as GMSMapViewDelegate
+            self.view.addSubview(mapView)
+            mapView.settings.myLocationButton = true
+            mapView.isMyLocationEnabled = true
+            
+            mapView.translatesAutoresizingMaskIntoConstraints = false
+            NSLayoutConstraint.activate([
+                mapView.topAnchor.constraint(equalTo: view.topAnchor),
+                mapView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+                mapView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+                mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            ])
+            
+            
+            if CLLocationManager.locationServicesEnabled() {
+                switch (CLLocationManager.authorizationStatus()) {
+                case .notDetermined, .restricted, .denied:
+                    print("No access")
+                case .authorizedAlways, .authorizedWhenInUse:
+                    print("Access")
+                }
+            } else {
+                print("Location services are not enabled")
             }
-        } else {
-            print("Location services are not enabled")
+            
+            getSupermarketImformation()
         }
         
-        getSupermarketImformation()
+        
+        
     }
     
     func getSupermarketImformation()  {
-           let session = URLSession.shared
+        let session = URLSession.shared
         
         let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=4500&type=cafe&key=\(apiKey!)")!
         
-           let task = session.dataTask(with: url) { data, response, error in
-
-               if error != nil || data == nil {
-                   print("Client error!")
-                   return
-               }
-
-               guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-                   print("Server error!")
-                   return
-               }
-
-               guard let mime = response.mimeType, mime == "application/json" else {
-                   print("Wrong MIME type!")
-                   return
-               }
-
-               do {
-                   let json = try JSONSerialization.jsonObject(with: data!, options: [])
-                   print(json)
-               } catch {
-                   print("JSON error: \(error.localizedDescription)")
-               }
+        let task = session.dataTask(with: url) { data, response, error in
+            
+            if error != nil || data == nil {
+                print("Client error!")
+                return
+            }
+            
+            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+                print("Server error!")
+                return
+            }
+            
+            guard let mime = response.mimeType, mime == "application/json" else {
+                print("Wrong MIME type!")
+                return
+            }
+            
+            do {
+                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+                print(json)
+            } catch {
+                print("JSON error: \(error.localizedDescription)")
+            }
             
             do {
                 let decoder = JSONDecoder()
@@ -98,14 +103,14 @@ class MapViewController: UIViewController {
             } catch {
                 print(error)
             }
-           }
+        }
         
         
-
-           task.resume()
+        
+        task.resume()
         
         
-       }
+    }
 
 
     
@@ -199,8 +204,10 @@ extension MapViewController: CLLocationManagerDelegate {
         }
         
         locationManager.startUpdatingLocation()
-        mapView.isMyLocationEnabled = true
-        mapView.settings.myLocationButton = true
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            mapView?.isMyLocationEnabled = true
+            mapView?.settings.myLocationButton = true
+        }
 //        self.showCurrentLocation()
         
     }
@@ -209,7 +216,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        mapView?.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
         locationManager.stopUpdatingLocation()
 //        self.showCurrentLocation()
     }

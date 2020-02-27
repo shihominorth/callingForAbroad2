@@ -147,17 +147,17 @@ class callinglistViewController: UITableViewController {
 
     }
     
-//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        getData()
-//        let item = plans![sourceIndexPath.row]
-////        context.delete(item)
-////        context.insert(item)
-//        plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
-//        plans?.remove(at: sourceIndexPath.row)
-//        plans?.insert(item, at: destinationIndexPath.row)
-//
-//        appDelegate.saveContext()
-//    }
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        getData()
+        let item = plans![sourceIndexPath.row]
+//        context.delete(item)
+//        context.insert(item)
+        plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
+        plans?.remove(at: sourceIndexPath.row)
+        plans?.insert(item, at: destinationIndexPath.row)
+
+        appDelegate.saveContext()
+    }
     
     func cellText(for cell:UITableViewCell, with item: callingCellItem) {
         if let label = cell.viewWithTag(1000) as? UILabel {
@@ -197,10 +197,9 @@ class callinglistViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemSegue" {
-            if let addItemViewController = segue.destination as? DetailCallingTableViewController {
+            if let addItemViewController = segue.destination as? addingCallingItemTableViewController {
                 addItemViewController.delegate = self
                 addItemViewController.isEditting = false
-                addItemViewController.item = Plan(entity: Plan.entity(), insertInto: context)
                 //addItemViewController.callingCellList = callingCelllist
             }
         } else if segue.identifier == "EditItemSegue" {
@@ -247,16 +246,26 @@ class callinglistViewController: UITableViewController {
 //}
 
 extension callinglistViewController: AddItemTableViewControllerDelegate {
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
+        guard let rowIndex = plans?.count else { return }
+        let item = addValue(item: item)
+        plans?.append(item)
+        appDelegate.saveContext()
+        //        self.callingCelllist.callingList.append(item)
+        let indexPath = IndexPath(row: rowIndex, section: 0)
+        let indexPaths = [indexPath]
+        tableView.insertRows(at: indexPaths, with: .automatic)
+    }
+    
     func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
         guard let rowIndex = plans?.count else { return }
-        let plan = addValue(item: item)
         appDelegate.saveContext() 
-        plans?.append(plan)
-        self.callingCelllist.callingList.append(item)
+        plans?.append(item)
+//        self.callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)

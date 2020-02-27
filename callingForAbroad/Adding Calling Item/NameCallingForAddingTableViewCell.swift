@@ -10,9 +10,7 @@ import UIKit
 
 class NameCallingForAddingTableViewCell: UITableViewCell {
     
-
-
-    @IBOutlet weak var textField: UITextField!
+    @IBOutlet weak var label: UILabel!
     
     
     override func awakeFromNib() {

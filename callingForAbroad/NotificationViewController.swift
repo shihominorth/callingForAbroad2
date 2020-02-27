@@ -75,13 +75,14 @@ extension NotificationViewController: UITableViewDataSource {
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: "pick up time") as? PickNotificationTimeTableViewCell)!
-        
+       
         
         switch indexPath.row {
         
         case 0, 1, 2, 3 ,4, 5, 6:
             cell.timeLabel.text = String(notifications[indexPath.row])
         default:
+            
             break
         }
         
@@ -128,6 +129,7 @@ extension NotificationViewController: UITableViewDataSource {
             navigationController?.popViewController(animated: true)
         
     }
+    
     
    
 }

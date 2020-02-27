@@ -49,7 +49,7 @@ class DetailCallingTableViewController: UITableViewController {
         
         addInitailValues()
 //        showUpDatePicker()
-        
+        tableView.tableFooterView = UIView()
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
     }
     

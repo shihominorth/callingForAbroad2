@@ -39,6 +39,7 @@ class addingCallingItemTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         addInitailValues()
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
+        tableView.tableFooterView = UIView()
     }
     
     func addInitailValues() {

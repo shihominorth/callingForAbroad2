@@ -33,7 +33,7 @@ class callinglistViewController: UITableViewController {
        
         
         navigationController?.navigationBar.prefersLargeTitles = false
-
+        tableView.tableFooterView = UIView()
      
         self.navigationItem.rightBarButtonItems = [self.editButtonItem, self.addButton]
         tableView.allowsMultipleSelectionDuringEditing = true

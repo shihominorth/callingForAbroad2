@@ -55,8 +55,8 @@ class DestinationNameViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        if item?.localName != nil {
-            textField.text = item?.localName
+        if item?.destinationName != nil {
+            textField.text = item?.destinationName
         }
         else if text != "" {
             textField.text = text

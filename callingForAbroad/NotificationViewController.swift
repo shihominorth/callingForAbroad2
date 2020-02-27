@@ -28,7 +28,7 @@ class NotificationViewController: UIViewController {
    
     
     
-    let notifications: [Int] = [0, 5, 10, 30, 45, 60, 360,]
+    let notifications: [Int] = [0, 5, 10, 30, 45, 60, 360]
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var tableView: UITableView!

@@ -146,10 +146,16 @@ class DetailCallingTableViewController: UITableViewController {
             
             switch datePickerIndexPath?.section {
             case 1:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[0], indexPath: indexPath)
             case 3:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[1], indexPath: indexPath)
             case 6:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[2], indexPath: indexPath)
             default:
                 break

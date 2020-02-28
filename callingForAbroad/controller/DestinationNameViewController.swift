@@ -33,6 +33,10 @@ class DestinationNameViewController: UIViewController {
     
     var isAdding: Bool?
     
+    var cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
+    var city = ""
+    var picker:UIPickerView?
+    
     @IBAction func done(_ sender: Any) {
         
        
@@ -64,8 +68,41 @@ class DestinationNameViewController: UIViewController {
         else {
          textField.text = ""
         }
+        
+        textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
     }
     
+    
+       
+       @objc func showUpPicker() {
+           self.picker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
+           self.picker?.delegate = self
+           self.picker?.dataSource = self
+           textField.inputView = self.picker
+
+           // ToolBar
+           let toolBar = UIToolbar()
+           toolBar.barStyle = .default
+           toolBar.isTranslucent = true
+           toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+           toolBar.sizeToFit()
+
+           // Adding Button ToolBar
+           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(LocalNameViewController.doneClick))
+           let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(LocalNameViewController.cancelClick))
+           toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+           toolBar.isUserInteractionEnabled = true
+           textField.inputAccessoryView = toolBar
+       }
+       
+       //MARK:- Button
+       @objc func doneClick() {
+           textField.resignFirstResponder()
+       }
+       @objc func cancelClick() {
+           textField.resignFirstResponder()
+       }
 
     /*
     // MARK: - Navigation
@@ -79,3 +116,31 @@ class DestinationNameViewController: UIViewController {
 
 }
 
+extension DestinationNameViewController: UIPickerViewDelegate {
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+          print(row)
+          return cityNamesTimezone[row]
+      }
+    
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+        return 40.0
+    }
+}
+extension DestinationNameViewController: UIPickerViewDataSource{
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+  
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return cityNamesTimezone.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        textField.text = cityNamesTimezone[row]
+    }
+    
+    
+}

@@ -159,6 +159,7 @@ class callinglistViewController: UITableViewController {
         appDelegate.saveContext()
     }
     
+    
     func cellText(for cell:UITableViewCell, with item: callingCellItem) {
         if let label = cell.viewWithTag(1000) as? UILabel {
             label.text = item.nameCallingFor

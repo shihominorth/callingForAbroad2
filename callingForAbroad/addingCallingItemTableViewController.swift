@@ -87,10 +87,16 @@ class addingCallingItemTableViewController: UITableViewController {
             
             switch datePickerIndexPath?.section {
             case 1:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[0], indexPath: indexPath)
             case 3:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[1], indexPath: indexPath)
             case 6:
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName)) ?? TimeZone.current
+                print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[2], indexPath: indexPath)
             default:
                 break
@@ -421,7 +427,48 @@ class addingCallingItemTableViewController: UITableViewController {
     }
     
     
-    // MARK: - Core data
+    // MARK: - TimeZone API
+    
+    func getTimezone(){
+//        let session = URLSession.shared
+//        
+//        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=4500&type=cafe&key=\(apiKey!)")!
+//        
+//        let task = session.dataTask(with: url) { data, response, error in
+//            
+//            if error != nil || data == nil {
+//                print("Client error!")
+//                return
+//            }
+//            
+//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
+//                print("Server error!")
+//                return
+//            }
+//            
+//            guard let mime = response.mimeType, mime == "application/json" else {
+//                print("Wrong MIME type!")
+//                return
+//            }
+//            
+//            do {
+//                let json = try JSONSerialization.jsonObject(with: data!, options: [])
+//                print(json)
+//            } catch {
+//                print("JSON error: \(error.localizedDescription)")
+//            }
+//            
+//            do {
+//                let decoder = JSONDecoder()
+//                decoder.keyDecodingStrategy = .convertFromSnakeCase
+//                let root = try decoder.decode(Root.self, from: data!)
+//                print(root)
+//                self.createMarkers(root: root)
+//            } catch {
+//                print(error)
+//            }
+//        }
+    }
     
 }
 

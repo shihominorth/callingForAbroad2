@@ -90,13 +90,16 @@ class addingCallingItemTableViewController: UITableViewController {
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDates[0], indexPath: indexPath)
+                datePickerCell.datePicker.setDate(inputDates[0], animated: true)
             case 3:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
+                datePickerCell.datePicker.setDate(inputDates[1], animated: true)
                 datePickerCell.updateCell(date: inputDates[1], indexPath: indexPath)
             case 6:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
+                datePickerCell.datePicker.setDate(inputDates[2], animated: true)
                 datePickerCell.updateCell(date: inputDates[2], indexPath: indexPath)
             default:
                 break
@@ -131,9 +134,10 @@ class addingCallingItemTableViewController: UITableViewController {
             
             if isFirstDateValuePassed == true {
                 cell.label.text = item.localDate
+                
             } else {
-                cell.updateText(date: inputDates[0])
-                item.localDate = cell.giveText(date: inputDates[0])
+                cell.updateText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
+                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
             }
             
             return cell
@@ -152,8 +156,8 @@ class addingCallingItemTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.label.text = item.localTime
             } else {
-                cell.updateText(date: inputDates[1])
-                item.localTime = cell.giveText(date: inputDates[1])
+                cell.updateText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
+                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
             }
             
         
@@ -179,8 +183,8 @@ class addingCallingItemTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.label.text = item.destinationTime
             } else {
-                cell.updateText(date: inputDates[2])
-                item.destinationTime = cell.giveText(date: inputDates[2])
+                cell.updateText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
+                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
             }
             
             
@@ -286,6 +290,18 @@ class addingCallingItemTableViewController: UITableViewController {
                 tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
                 tableView.deselectRow(at: indexPath, animated: true)
                 
+//                let cell = (tableView.cellForRow(at: indexPath) as? DayPickerTableViewCell)!
+//                switch indexPath.section {
+//                case 1:
+//                    cell.datePicker.setDate(inputDates[0], animated: true)
+//                case 3:
+//                    print("local time : \(inputDates[1].convertToString(dateformat: .dateWithTime, indexNumber: 3, timeZoneIdentifier: item.localName))")
+//                    cell.datePicker.setDate(inputDates[1], animated: true)
+//                case 6:
+//                    cell.datePicker.setDate(inputDates[2], animated: true)
+//                default:
+//                    break
+//                }
 
             }
             tableView.endUpdates()

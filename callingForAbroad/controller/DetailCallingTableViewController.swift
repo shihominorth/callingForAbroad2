@@ -148,14 +148,17 @@ class DetailCallingTableViewController: UITableViewController {
             case 1:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
+                datePickerCell.datePicker.setDate(inputDates[0], animated: true)
                 datePickerCell.updateCell(date: inputDates[0], indexPath: indexPath)
             case 3:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
+                datePickerCell.datePicker.setDate(inputDates[1], animated: true)
                 datePickerCell.updateCell(date: inputDates[1], indexPath: indexPath)
             case 6:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
+                datePickerCell.datePicker.setDate(inputDates[2], animated: true)
                 datePickerCell.updateCell(date: inputDates[2], indexPath: indexPath)
             default:
                 break
@@ -199,8 +202,8 @@ class DetailCallingTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.DateCallingLabel.text = item.localDate ?? "None"
             } else {
-                cell.updateText(date: inputDates[0])
-                item.localDate = cell.giveText(date: inputDates[0])
+                cell.updateText(date: inputDates[0], timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 0)
+                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 0)
                 appDelegate.saveContext()
             }
             return cell
@@ -225,8 +228,8 @@ class DetailCallingTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.LocalTimeLabel.text = item.localTime ?? "None"
             } else {
-                cell.updateText(date: inputDates[1])
-                item.localTime = cell.giveText(date: inputDates[1])
+                cell.updateText(date: inputDates[1], timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
+                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 appDelegate.saveContext()
             }
             
@@ -257,8 +260,8 @@ class DetailCallingTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.destinationTimeLabel.text = item.destinationTime
             } else {
-                cell.updateText(date: inputDates[2])
-                item.destinationTime = cell.giveText(date: inputDates[2])
+                cell.updateText(date: inputDates[2], timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
+                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
                 
                 appDelegate.saveContext()
             }
@@ -310,8 +313,25 @@ class DetailCallingTableViewController: UITableViewController {
                datePickerIndexPath = indexPathToInsertDatePicker(indexPath: indexPath)
                tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
                tableView.deselectRow(at: indexPath, animated: true)
+                
+                
+                
             }
                tableView.endUpdates()
+            
+            if let datePickerIndexPath = datePickerIndexPath, let datePickerCell = (tableView.cellForRow(at: datePickerIndexPath) as? DayPickerTableViewCell) {
+            
+                switch datePickerIndexPath.section {
+                case 1:
+                    datePickerCell.datePicker.setDate(inputDates[0], animated: true)
+                case 3:
+                    datePickerCell.datePicker.setDate(inputDates[1], animated: true)
+                case 6:
+                    datePickerCell.datePicker.setDate(inputDates[2], animated: true)
+                default:
+                    break
+                }
+            }
             
             
         }

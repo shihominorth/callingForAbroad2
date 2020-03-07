@@ -105,9 +105,9 @@ class callinglistViewController: UITableViewController {
 
         cell.nameCallingForLabel.text = plans?[indexPath.row].nameCallingFor
 
-        cell.localTimeLabel.text =  plans?[indexPath.row].localTime
+        cell.localTimeLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .date, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
 
-        cell.localDateLabel.text =  plans?[indexPath.row].localDate
+        cell.localDateLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .time, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
 
         cell.destinationNameLabel.text = plans?[indexPath.row].destinationName
     
@@ -160,33 +160,33 @@ class callinglistViewController: UITableViewController {
     }
     
     
-    func cellText(for cell:UITableViewCell, with item: callingCellItem) {
-        if let label = cell.viewWithTag(1000) as? UILabel {
-            label.text = item.nameCallingFor
-        }
-        else if let label = cell.viewWithTag(999) as? UILabel {
-            label.text = item.localTime
-        }
-        else if let label = cell.viewWithTag(999) as? UILabel {
-            label.text = item.localTime
-        }
-        else if let label = cell.viewWithTag(555) as? UILabel {
-            label.text = item.localName
-        }
-        else if let label = cell.viewWithTag(333) as? UILabel {
-            label.text = item.localDate
-        }
-        else if let label = cell.viewWithTag(111) as? UILabel {
-            label.text = item.localDate
-        }
-        else if let label = cell.viewWithTag(222) as? UILabel {
-            label.text = item.jetLag
-        }
-        else if let label = cell.viewWithTag(666) as? UILabel {
-            label.text = item.destinationTime
-        }
-        
-    }
+//    func cellText(for cell:UITableViewCell, with item: callingCellItem) {
+//        if let label = cell.viewWithTag(1000) as? UILabel {
+//            label.text = item.nameCallingFor
+//        }
+//        else if let label = cell.viewWithTag(999) as? UILabel {
+//            label.text = item.localTime
+//        }
+//        else if let label = cell.viewWithTag(999) as? UILabel {
+//            label.text = item.localTime
+//        }
+//        else if let label = cell.viewWithTag(555) as? UILabel {
+//            label.text = item.localName
+//        }
+//        else if let label = cell.viewWithTag(333) as? UILabel {
+//            label.text = item.localDate
+//        }
+//        else if let label = cell.viewWithTag(111) as? UILabel {
+//            label.text = item.localDate
+//        }
+//        else if let label = cell.viewWithTag(222) as? UILabel {
+//            label.text = item.jetLag
+//        }
+//        else if let label = cell.viewWithTag(666) as? UILabel {
+//            label.text = item.destinationTime
+//        }
+//
+//    }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showDetailSegue", tableView.isEditing {
@@ -203,15 +203,16 @@ class callinglistViewController: UITableViewController {
                 addItemViewController.isEditting = false
                 //addItemViewController.callingCellList = callingCelllist
             }
-        } else if segue.identifier == "EditItemSegue" {
-            if let addItemViewController = segue.destination as? addCallingItemViewController {
-                if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-                    let item = plans?[indexPath.row]
-                    addItemViewController.itemToEdit = item
-                    
-                }
-            }
         }
+//        } else if segue.identifier == "EditItemSegue" {
+//            if let addItemViewController = segue.destination as? addCallingItemViewController {
+//                if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
+//                    let item = plans?[indexPath.row]
+//                    addItemViewController.itemToEdit = item
+//
+//                }
+//            }
+//        }
         else if segue.identifier == "showDetailSegue" {
             if let detailVC = segue.destination as? DetailCallingTableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
@@ -275,11 +276,13 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     func addValue(item: callingCellItem) -> Plan{
         let plan = Plan(entity: Plan.entity(), insertInto: context)
         plan.nameCallingFor = item.nameCallingFor
+        // MARK: ERROR!
+//        plan.localDate = item.localDate.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
         plan.localDate = item.localDate
         plan.localName = item.localName
-        plan.localTime = item.localTime
         plan.destinationName = item.destinationName
         plan.jetLag = item.jetLag
+//        plan.destinationTime = item.destinationTime.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
         plan.destinationTime = item.destinationTime
         plan.notification = item.notification
         plan.placeCallingAt = item.placeCallingAt

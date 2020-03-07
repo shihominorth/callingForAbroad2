@@ -13,11 +13,11 @@ class DestinationTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var destinationTimeLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
-        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, indexNumber: indexNumber, timeZoneIdentifier: timeZoneIdentifier)
+        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
     }
     
     func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String {
-        return date.convertToString(dateformat: .dateWithTime, indexNumber: indexNumber, timeZoneIdentifier: timeZoneIdentifier)
+        return date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
     }
     
     override func awakeFromNib() {

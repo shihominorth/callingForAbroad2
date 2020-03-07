@@ -23,23 +23,23 @@ class EdittingDetailTableViewController: UITableViewController {
     
     
     @IBAction func done(_ sender: Any) {
-         var edittedItem = Plan(entity: Plan.entity(), insertInto: context)
+        let edittedItem = Plan(entity: Plan.entity(), insertInto: context)
         if let cell:EdittingNameCallingForTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EdittingNameCallingForTableViewCell)!{
             edittedItem.nameCallingFor = cell.textField.text ?? ""
         }
         if let cell:EdittingLocalDateCallingTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 1)) as? EdittingLocalDateCallingTableViewCell)! {
-            
-            edittedItem.localDate = cell.textField.text ?? ""
-        }
+            let date = cell.textField.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: edittedItem.localName!)
+            edittedItem.localDate = date
         if let cell:EdittingLocalNameTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 2)) as? EdittingLocalNameTableViewCell)! {
             edittedItem.localName = cell.textField.text ?? ""
         }
         if let cell:EdittingLocalTimeTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 3)) as? EdittingLocalTimeTableViewCell)! {
-            edittedItem.localTime = cell.textField.text ?? ""
+            let date = cell.textField.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: edittedItem.localName!)
+            edittedItem.localDate = date
         }
         if let cell:EdittingDestinationNameTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 4)) as? EdittingDestinationNameTableViewCell)! {
@@ -51,7 +51,7 @@ class EdittingDetailTableViewController: UITableViewController {
         }
         if let cell:EdittingDestinationTimeTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 6)) as? EdittingDestinationTimeTableViewCell)! {
-            edittedItem.destinationTime = cell.textField.text ?? ""
+            edittedItem.destinationTime = cell.textField.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: edittedItem.destinationName!)
             
         }
             
@@ -61,6 +61,7 @@ class EdittingDetailTableViewController: UITableViewController {
 //        let detailVC = storyboard?.instantiateViewController(identifier: "detail") as! DetailCallingTableViewController
 //        detailVC.item = edittedItem ?? detailVC.item
         navigationController?.popViewController(animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -113,7 +114,7 @@ class EdittingDetailTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "edit localDate", for: indexPath) as? EdittingLocalDateCallingTableViewCell)!
             
             // Configure the cell...
-            cell.textField.text = editItem?.localDate
+            cell.textField.text = editItem?.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: editItem!.localName!)
             cell.textField.delegate = self
             
             return cell
@@ -134,7 +135,7 @@ class EdittingDetailTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "edit localTime", for: indexPath) as? EdittingLocalTimeTableViewCell)!
             
             // Configure the cell...
-            cell.textField.text = editItem?.localTime
+            cell.textField.text = editItem?.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: editItem!.localName!)
             cell.textField.delegate = self
             
             return cell
@@ -161,7 +162,7 @@ class EdittingDetailTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "edit destinationTime", for: indexPath) as? EdittingDestinationTimeTableViewCell)!
             
             // Configure the cell...
-            cell.textField.text = editItem?.destinationTime
+            cell.textField.text = editItem?.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: editItem!.destinationName!)
             cell.textField.delegate = self
             
             return cell

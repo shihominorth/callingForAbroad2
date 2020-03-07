@@ -46,13 +46,6 @@ class addingCallingItemTableViewController: UITableViewController {
         inputDates = Array(repeating: Date(), count: 3)
         
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-        
-    }
-    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -133,11 +126,11 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local date", for: indexPath) as? LocalDateAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localDate
+                cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
                 
             } else {
                 cell.updateText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
-                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
+//                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
             }
             
             return cell
@@ -154,10 +147,11 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local time", for: indexPath) as? LocalTimeAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localTime
+                cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+                
             } else {
                 cell.updateText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
-                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
+//                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
             }
             
         
@@ -181,10 +175,11 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination time", for: indexPath) as? DestinationTimeAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.destinationTime
+                cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
             } else {
                 cell.updateText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
-                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
+//                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
+                
             }
             
             
@@ -427,7 +422,7 @@ class addingCallingItemTableViewController: UITableViewController {
             if let edittingVC = segue.destination as? NotificationViewController {
                 edittingVC.isAdding = true
                 edittingVC.text = item.destinationName
-                edittingVC.delegate2 = self as? NotificationViewControllerDelegate2
+                edittingVC.delegate2 = self as NotificationViewControllerDelegate2
                 
                 //                edittingVC.delegate = self as! nameCallingViewControllerDelegate
             }
@@ -437,7 +432,7 @@ class addingCallingItemTableViewController: UITableViewController {
             if let edittingVC = segue.destination as? PlaceCallingAtViewController {
                 edittingVC.isAdding = true
                 edittingVC.text = item.placeCallingAt
-                edittingVC.delegate2 = self as? PlaceCallingAtViewControllerDelegate2
+                edittingVC.delegate2 = self as PlaceCallingAtViewControllerDelegate2
             }
         }
     }
@@ -489,7 +484,7 @@ class addingCallingItemTableViewController: UITableViewController {
 }
 
 extension addingCallingItemTableViewController: DatePickerDelegate {
-    
+
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
         self.isFirstDateValuePassed = false
@@ -497,10 +492,16 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
         switch indexPath.section {
         case 1:
             inputDates[0] = date
+//            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+            item.localDate = date
         case 3:
             inputDates[1] = date
+//            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+            item.localDate = date
         case 6:
             inputDates[2] = date
+//            item.destinationTime = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+            item.destinationTime = date
         default:
             break
         }

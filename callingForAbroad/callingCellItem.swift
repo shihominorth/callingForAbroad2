@@ -14,9 +14,8 @@ class callingCellItem: NSObject {
     
     var nameCallingFor = ""
     var localName = ""
-    var localDate = ""
-    var localTime = ""
-    var destinationTime = ""
+    var localDate:Date?
+    var destinationTime: Date?
     var jetLag = ""
     var destinationName = ""
     var notification = ""

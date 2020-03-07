@@ -13,11 +13,11 @@ class LocalTimeAddingTableViewCell: UITableViewCell {
     @IBOutlet weak var label: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
-        label.text = date.convertToString(dateformat: .dateWithTime, indexNumber: indexNumber, timeZoneIdentifier: timeZoneIdentifier)
+        label.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
           }
           
        func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String{
-        return  date.convertToString(dateformat: .dateWithTime, indexNumber: indexNumber, timeZoneIdentifier: timeZoneIdentifier)
+        return  date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
        }
     
     override func awakeFromNib() {

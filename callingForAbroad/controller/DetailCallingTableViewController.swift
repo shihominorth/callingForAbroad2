@@ -147,7 +147,7 @@ class DetailCallingTableViewController: UITableViewController {
         
         if datePickerIndexPath == indexPath {
             let datePickerCell = tableView.dequeueReusableCell(withIdentifier: "datePicker") as!  DayPickerTableViewCell
-            
+            datePickerCell.indexPath = indexPath
             
             switch datePickerIndexPath?.section {
             case 1:
@@ -155,22 +155,23 @@ class DetailCallingTableViewController: UITableViewController {
                 print(datePickerCell.datePicker.timeZone!)
 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
+                
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
+//                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 3:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
+//                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 6:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
+//                datePickerCell.updateCell(date: item.destinationTime!, indexPath: indexPath)
             default:
                 break
             }
@@ -334,36 +335,13 @@ class DetailCallingTableViewController: UITableViewController {
             if let datePickerIndexPath = datePickerIndexPath, let datePickerCell = (tableView.cellForRow(at: datePickerIndexPath) as? DayPickerTableViewCell) {
                 
                 switch datePickerIndexPath.section {
-                case 1:
-                    if inputDates != item.localDate {
-                        item.localDate! = inputDates
-                        datePickerCell.datePicker.setDate(inputDates, animated: true)
-                    }
-                    else {
-                        item.localDate! = inputDates
-                        datePickerCell.datePicker.setDate(inputDates, animated: true)
-                    }
-                case 3:
+                case 1, 3:
                     
-                    //                    guard let date = item.localDate) else { return  }
-                    
-                    //                    print(date)
-                    
-                    inputDates = item.localDate!
-                    datePickerCell.datePicker.setDate(inputDates, animated: true)
-                    
-                    
+                    datePickerCell.datePicker.setDate(item.localDate!, animated: true)
+
                 case 6:
-                    
-                    //                    guard let date = item.destinationTime?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!) else { return  }
-                    //
-                    //                    print(date)
-                    
-                    //                    inputDates = date
-                    
-//                    guard let date = item.destinationTime?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!) else { return }
-                    inputDates = item.destinationTime!
-                    datePickerCell.datePicker.setDate(inputDates, animated: true)
+
+                    datePickerCell.datePicker.setDate(item.destinationTime!, animated: true)
                     
                 default:
                     break

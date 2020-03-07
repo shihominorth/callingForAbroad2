@@ -404,12 +404,11 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
         self.isFirstDateValuePassed = false
         
         switch indexPath.section {
-        
+
         case 1, 3:
             inputDate = date
 //            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.localDate = date
-
         case 6:
             inputDate = date
 //            item.destinationTime = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)

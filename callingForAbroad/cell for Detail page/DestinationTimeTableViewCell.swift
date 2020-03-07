@@ -12,12 +12,12 @@ class DestinationTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var destinationTimeLabel: UILabel!
     
-    func updateText(date: Date) {
-        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime)
+    func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
+        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
     }
     
-    func giveText(date: Date) -> String {
-        return date.convertToString(dateformat: .dateWithTime)
+    func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String {
+        return date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
     }
     
     override func awakeFromNib() {

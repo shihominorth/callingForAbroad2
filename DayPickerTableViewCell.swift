@@ -10,7 +10,8 @@ import UIKit
 
 protocol DatePickerDelegate: class {
     func didChangeDate(date: Date, indexPath: IndexPath)
-}
+   
+ }
 
 class DayPickerTableViewCell: UITableViewCell {
     

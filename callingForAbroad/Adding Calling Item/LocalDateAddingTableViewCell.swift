@@ -12,14 +12,13 @@ class LocalDateAddingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var label: UILabel!
     
-    func updateText(date: Date) {
-           label.text = date.convertToString(dateformat: .date)
+    func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
+        label.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
+          }
+          
+    func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String {
+        return  date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
        }
-       
-    func giveText(date: Date) -> String{
-        return  date.convertToString(dateformat: .date)
-    }
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()

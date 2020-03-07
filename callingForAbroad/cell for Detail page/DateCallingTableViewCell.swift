@@ -23,12 +23,12 @@ class DateCallingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var DateCallingLabel: UILabel!
     
-    func updateText(date: Date) {
-        DateCallingLabel.text = date.convertToString(dateformat: .date)
+    func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
+        DateCallingLabel.text = date.convertToString(dateformat: .date, timeZoneIdentifier: timeZoneIdentifier)
     }
     
-    func giveText(date: Date) -> String{
-        return  date.convertToString(dateformat: .date)
+    func giveText(date: Date, timeZoneIdentifier: String) -> String{
+        return  date.convertToString(dateformat: .date, timeZoneIdentifier: timeZoneIdentifier)
     }
     
     override func awakeFromNib() {
@@ -45,13 +45,3 @@ class DateCallingTableViewCell: UITableViewCell {
 }
 
 
-extension Date {
-    
-    func convertToString(dateformat formatType: DateFormatType) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = formatType.rawValue
-        let newDate: String = dateFormatter.string(from: self)
-        return newDate
-    }
-    
-}

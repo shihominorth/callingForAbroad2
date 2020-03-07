@@ -24,7 +24,8 @@ class addingCallingItemTableViewController: UITableViewController {
     var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     var datePickerIndexPath: IndexPath?
-    var inputDates:[Date] = []
+//    var inputDates:[Date] = []
+    var inputDate = Date()
     var isFirstOpenDatePicker = false
     var isFirstDateValuePassed: Bool?
     var isEditting: Bool?
@@ -37,15 +38,15 @@ class addingCallingItemTableViewController: UITableViewController {
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
-        addInitailValues()
+//        addInitailValues()
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
         tableView.tableFooterView = UIView()
     }
     
-    func addInitailValues() {
-        inputDates = Array(repeating: Date(), count: 3)
-        
-    }
+//    func addInitailValues() {
+//        inputDates = Array(repeating: Date(), count: 3)
+//
+//    }
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -82,23 +83,23 @@ class addingCallingItemTableViewController: UITableViewController {
             case 1:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-                datePickerCell.updateCell(date: inputDates[0], indexPath: indexPath)
-                datePickerCell.datePicker.setDate(inputDates[0], animated: true)
+                datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
+                datePickerCell.datePicker.setDate(inputDate, animated: true)
             case 3:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-                datePickerCell.datePicker.setDate(inputDates[1], animated: true)
-                datePickerCell.updateCell(date: inputDates[1], indexPath: indexPath)
+                datePickerCell.datePicker.setDate(inputDate, animated: true)
+                datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
             case 6:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-                datePickerCell.datePicker.setDate(inputDates[2], animated: true)
-                datePickerCell.updateCell(date: inputDates[2], indexPath: indexPath)
+                datePickerCell.datePicker.setDate(inputDate, animated: true)
+                datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
             default:
                 break
             }
             
-            datePickerCell.delegate = self as! DatePickerDelegate
+            datePickerCell.delegate = self
             
             
             switch datePickerIndexPath?.section {
@@ -129,7 +130,7 @@ class addingCallingItemTableViewController: UITableViewController {
                 cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
                 
             } else {
-                cell.updateText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 0)
 //                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
             }
             
@@ -150,7 +151,7 @@ class addingCallingItemTableViewController: UITableViewController {
                 cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
                 
             } else {
-                cell.updateText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 1)
 //                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
             }
             
@@ -177,7 +178,7 @@ class addingCallingItemTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
             } else {
-                cell.updateText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.destinationName, indexNumber: 2)
 //                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
                 
             }
@@ -213,49 +214,6 @@ class addingCallingItemTableViewController: UITableViewController {
     }
     
     @IBAction func add(_ sender: Any) {
-        
-        let homeVC = storyboard?.instantiateViewController(identifier: "home") as! callinglistViewController
-        
-        
-        
-//        if let indexPath:IndexPath = IndexPath(row: 0, section: 0) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? NameCallingForAddingTableViewCell)!
-//            item.nameCallingFor = cell.label.text!
-//        }
-//        if let indexPath:IndexPath = IndexPath(row: 0, section: 1) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? LocalTimeAddingTableViewCell)!
-//            item.localName = cell.label.text!
-//        }
-        
-//        if let indexPath:IndexPath = IndexPath(row: 0, section: 2) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? LocalDateAddingTableViewCell)!
-//            item.localDate = cell.label.text! ?? ""
-//        }
-//        if let indexPath: IndexPath = IndexPath(row: 0, section: 3) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? LocalTimeAddingTableViewCell)!
-//            item.localTime = cell.label.text! ?? ""
-//        }
-////        if let indexPath: IndexPath = IndexPath(row: 0, section: 4) {
-////            let cell = (tableView.cellForRow(at: indexPath) as? DestinationNameAddingTableViewCell)!
-////            item.destinationName = cell.label.text! ?? ""
-////        }
-//        if let indexPath: IndexPath = IndexPath(row: 0, section: 5) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? JetLagAddingTableViewCell)!
-//            item.jetLag = cell.label.text! ?? ""
-//        }
-//        if let indexPath: IndexPath = IndexPath(row: 0, section: 6) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? DestinationTimeAddingTableViewCell)!
-//            item.destinationTime = cell.label.text! ?? ""
-//        }
-//        if let indexPath:IndexPath = IndexPath(row: 0, section: 7) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? NotificationTimeAddingTableViewCell)!
-//            item.notification = cell.label.text! ?? ""
-//        }
-//        if let indexPath: IndexPath = IndexPath(row: 0, section: 8) {
-//            let cell = (tableView.cellForRow(at: indexPath) as? PlaceCallingAtAddingTableViewCell)!
-//            item.placeCallingAt = cell.label.text!
-//        }
-//        
         
         delegate?.addItemViewController(self, didFinishAdding: item)
         navigationController?.popViewController(animated: true)
@@ -490,16 +448,13 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
         self.isFirstDateValuePassed = false
         
         switch indexPath.section {
-        case 1:
-            inputDates[0] = date
+        case 1, 3:
+            inputDate = date
 //            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.localDate = date
-        case 3:
-            inputDates[1] = date
-//            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
-            item.localDate = date
+            
         case 6:
-            inputDates[2] = date
+            inputDate = date
 //            item.destinationTime = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.destinationTime = date
         default:

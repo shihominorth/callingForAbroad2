@@ -546,8 +546,8 @@ extension DetailCallingTableViewController: DatePickerDelegate {
         switch indexPath.section {
         case 1, 3:
             item.localDate = date
-//        case 6:
-//            item.destinationTime = date
+        case 6:
+            item.destinationTime = date
         default:
             break
         }

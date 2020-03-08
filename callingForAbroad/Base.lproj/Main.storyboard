@@ -215,7 +215,7 @@
             </objects>
             <point key="canvasLocation" x="-843" y="804"/>
         </scene>
-        <!--Detail Calling Table View Controller-->
+        <!--Edit-->
         <scene sceneID="ZkS-iG-obp">
             <objects>
                 <tableViewController storyboardIdentifier="detail" id="jzx-WV-1hE" customClass="DetailCallingTableViewController" customModule="checklist" customModuleProvider="target" sceneMemberID="viewController">
@@ -585,7 +585,7 @@
                             <outlet property="delegate" destination="jzx-WV-1hE" id="eHa-jx-BCI"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="pTx-SW-fef">
+                    <navigationItem key="navigationItem" title="Edit" id="pTx-SW-fef">
                         <barButtonItem key="leftBarButtonItem" title="《Back" id="k7b-mV-lJz">
                             <connections>
                                 <action selector="back" destination="jzx-WV-1hE" id="V5q-qD-KvO"/>

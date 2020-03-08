@@ -26,6 +26,7 @@
 		6F150BA823AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */; };
 		6F29FA87241379D80008D639 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */; };
 		6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */; };
+		6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */; };
 		6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */; };
 		6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */; };
 		6F3FF55123DC1D0E005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */; };
@@ -66,7 +67,6 @@
 		6FB86C1623E941C100672851 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C1523E941C100672851 /* Photo.swift */; };
 		6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */; };
 		6FB86C2723E9FF3E00672851 /* SeeDatailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */; };
-		6FB86C4423ECB74400672851 /* PlanDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C4323ECB74400672851 /* PlanDelegate.swift */; };
 		6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
 		6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */; };
@@ -100,6 +100,7 @@
 		6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
 		6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTimeDifference.swift; sourceTree = "<group>"; };
 		6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCallingTableViewController.swift; sourceTree = "<group>"; };
 		6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemScrollview.swift; sourceTree = "<group>"; };
 		6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingMapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,7 +140,6 @@
 		6FB86C1523E941C100672851 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailView.swift; sourceTree = "<group>"; };
 		6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDatailViewController.swift; sourceTree = "<group>"; };
-		6FB86C4323ECB74400672851 /* PlanDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanDelegate.swift; sourceTree = "<group>"; };
 		6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagAddingTableViewCell.swift; sourceTree = "<group>"; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -273,6 +273,7 @@
 				6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */,
 				6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */,
 				6F4966262411CF0700397B4F /* extensions.swift */,
+				6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */,
 				6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */,
 				6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */,
 				6F150BA923AAE0F200908DEB /* Adding Calling Item */,
@@ -285,7 +286,6 @@
 				6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */,
 				6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */,
 				6FECA138237A3AC700B7DD8B /* CallingCellList.swift */,
-				6FB86C4323ECB74400672851 /* PlanDelegate.swift */,
 				6FECA13223767A1500B7DD8B /* callingCellItem.swift */,
 				6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */,
 				6FECA0FC23750BCE00B7DD8B /* Main.storyboard */,
@@ -454,9 +454,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */,
+				6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */,
 				6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */,
 				6FB86C0323E81AD800672851 /* MenuTableViewController.swift in Sources */,
-				6FB86C4423ECB74400672851 /* PlanDelegate.swift in Sources */,
 				6FB86BFF23E8196B00672851 /* LocalTimeAddingTableViewCell.swift in Sources */,
 				6FB86BFE23E8191800672851 /* DateCallingTableViewCell.swift in Sources */,
 				6F8BE7B823F2631A00CEA348 /* DetailPlaceCallingAtTableViewCell.swift in Sources */,

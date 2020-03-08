@@ -20,14 +20,16 @@ class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
     
-    var planDelegate = PlanDelegate()
+//    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     var datePickerIndexPath: IndexPath?
-//    var inputDates:[Date] = []
+    //    var inputDates:[Date] = []
     var inputDate = Date()
     var isFirstOpenDatePicker = false
     var isFirstDateValuePassed: Bool?
     var isEditting: Bool?
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,11 +38,11 @@ class addingCallingItemTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-
+        
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
         tableView.tableFooterView = UIView()
     }
-
+    
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -121,11 +123,13 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local date", for: indexPath) as? LocalDateAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+                cell.label.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName)
+                
                 
             } else {
-                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 0)
-//                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName , indexNumber: 0)
+                appDelegate.saveContext()
+                //                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
             }
             
             return cell
@@ -142,14 +146,14 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local time", for: indexPath) as? LocalTimeAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
+                cell.label.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName)
+               
                 
             } else {
                 cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 1)
-//                item.localTime = cell.giveText(date: inputDates[1], timeZoneIdentifier: item.localName, indexNumber: 1)
             }
             
-        
+            
             return cell
         }
         else if indexPath.section == 4 {
@@ -162,7 +166,13 @@ class addingCallingItemTableViewController: UITableViewController {
         else if indexPath.section == 5 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "jet lag", for: indexPath) as? JetLagAddingTableViewCell)!
             
-            cell.label.text = item.jetLag
+            
+            let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
+            
+            item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+            
+            
+            cell.label.text = "\(item.jetLag)"
             
             return cell
         }
@@ -170,11 +180,12 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "destination time", for: indexPath) as? DestinationTimeAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
+                
                 cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
+               
+                
             } else {
                 cell.updateText(date: inputDate, timeZoneIdentifier: item.destinationName, indexNumber: 2)
-//                item.destinationTime = cell.giveText(date: inputDates[2], timeZoneIdentifier: item.destinationName, indexNumber: 2)
-                
             }
             
             
@@ -237,19 +248,6 @@ class addingCallingItemTableViewController: UITableViewController {
                 tableView.insertRows(at: [datePickerIndexPath!], with: .fade)
                 tableView.deselectRow(at: indexPath, animated: true)
                 
-//                let cell = (tableView.cellForRow(at: indexPath) as? DayPickerTableViewCell)!
-//                switch indexPath.section {
-//                case 1:
-//                    cell.datePicker.setDate(inputDates[0], animated: true)
-//                case 3:
-//                    print("local time : \(inputDates[1].convertToString(dateformat: .dateWithTime, indexNumber: 3, timeZoneIdentifier: item.localName))")
-//                    cell.datePicker.setDate(inputDates[1], animated: true)
-//                case 6:
-//                    cell.datePicker.setDate(inputDates[2], animated: true)
-//                default:
-//                    break
-//                }
-
             }
             tableView.endUpdates()
             
@@ -341,17 +339,10 @@ class addingCallingItemTableViewController: UITableViewController {
         if segue.identifier == "addingNameCallingFor" {
             if let edittingVC = segue.destination as? nameCallingViewController {
                 edittingVC.isAdding = true
-                 edittingVC.text = item.nameCallingFor
+                edittingVC.text = item.nameCallingFor
                 edittingVC.delegate2 = self as nameCallingViewControllerDelegate2
             }
         }
-        
-        //         if segue.identifier == "addingNameCallingFor" {
-        //                    if let edittingVC = segue.destination as? nameCallingViewController {
-        //                        edittingVC.item = self.plan
-        //        //                edittingVC.delegate = self as! nameCallingViewControllerDelegate
-        //                    }
-        //                }
         
         if segue.identifier == "addingLocalName" {
             if let edittingVC = segue.destination as? LocalNameViewController {
@@ -391,7 +382,7 @@ class addingCallingItemTableViewController: UITableViewController {
 }
 
 extension addingCallingItemTableViewController: DatePickerDelegate {
-
+    
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
         self.isFirstDateValuePassed = false
@@ -455,4 +446,31 @@ extension addingCallingItemTableViewController: PlaceCallingAtViewControllerDele
 }
 
 
+// MARK: how to calculate time difference?
+/*
+ what property is necessary to calculate?
+ first          second
+ 1: localDate and destinationName (in this case, localName should be current location)
+ 2: localName and destinaitonName
+ destination time should be known after destinaitonName is decided.
+ 
+ 3: destinaitonName and localName
+ 4: destinationTime and localName (in this case, destinationName should be current location)
+ localTime should be known after destinaitonName is decided.
+ 
+ possiblity, Suppose that we don't know neither localName and destinationName,
+ 5: localTime and destinationTime
+ 6: destinationTime and localTime
+ But does Timezone affect the calculation??? I don't hope so....
+ I can use the function in date extension by any chance.
+ 
+ 1. localDate, 2, localName, 3. destinationName, 4, destinationDate have responsibility to calculate time difference
+ 
+ localName and destinationName have VC. so pass the value of either of them in prepare.
+ calculate the time difference and then pass it to delegate.
+ 
+ Calculate...
+ current local time and current destination time. we need function for the calculation!
+ 
+ */
 

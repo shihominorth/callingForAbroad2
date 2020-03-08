@@ -11,10 +11,10 @@ import UIKit
 class callinglistViewController: UITableViewController {
     
     let callingCelllist = CallingCellList()
-    let planDelegate = PlanDelegate()
-    var section1: Dictionary = [String:NSMutableArray]()
-    var section2: Dictionary = [String:NSMutableArray]()
-    var sections: Array = [Dictionary<String,NSMutableArray>]()
+//    let planDelegate = PlanDelegate()
+//    var section1: Dictionary = [String:NSMutableArray]()
+//    var section2: Dictionary = [String:NSMutableArray]()
+//    var sections: Array = [Dictionary<String,NSMutableArray>]()
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

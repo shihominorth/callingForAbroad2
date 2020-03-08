@@ -20,7 +20,7 @@ class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
     
-    var planDelegate = PlanDelegate()
+//    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     var datePickerIndexPath: IndexPath?
     //    var inputDates:[Date] = []

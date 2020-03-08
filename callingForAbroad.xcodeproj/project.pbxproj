@@ -26,6 +26,7 @@
 		6F150BA823AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */; };
 		6F29FA87241379D80008D639 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */; };
 		6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */; };
+		6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */; };
 		6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */; };
 		6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */; };
 		6F3FF55123DC1D0E005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */; };
@@ -100,6 +101,7 @@
 		6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
 		6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
+		6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTimeDifference.swift; sourceTree = "<group>"; };
 		6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCallingTableViewController.swift; sourceTree = "<group>"; };
 		6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemScrollview.swift; sourceTree = "<group>"; };
 		6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingMapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
@@ -273,6 +275,7 @@
 				6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */,
 				6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */,
 				6F4966262411CF0700397B4F /* extensions.swift */,
+				6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */,
 				6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */,
 				6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */,
 				6F150BA923AAE0F200908DEB /* Adding Calling Item */,
@@ -452,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */,
+				6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */,
 				6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */,
 				6FB86C0323E81AD800672851 /* MenuTableViewController.swift in Sources */,
 				6FB86C4423ECB74400672851 /* PlanDelegate.swift in Sources */,

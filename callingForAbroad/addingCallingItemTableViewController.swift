@@ -18,7 +18,6 @@ class addingCallingItemTableViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    //lazy var plan = Plan(entity: Plan.entity(), insertInto: context)
     var item = callingCellItem()
     
     var planDelegate = PlanDelegate()
@@ -37,16 +36,11 @@ class addingCallingItemTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-//        addInitailValues()
+
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
         tableView.tableFooterView = UIView()
     }
-    
-//    func addInitailValues() {
-//        inputDates = Array(repeating: Date(), count: 3)
-//
-//    }
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -396,49 +390,6 @@ class addingCallingItemTableViewController: UITableViewController {
     }
     
     
-    // MARK: - TimeZone API
-    
-    func getTimezone(){
-//        let session = URLSession.shared
-//        
-//        let url = URL(string: "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=\(locationManager.location!.coordinate.latitude),\(locationManager.location!.coordinate.longitude)&radius=4500&type=cafe&key=\(apiKey!)")!
-//        
-//        let task = session.dataTask(with: url) { data, response, error in
-//            
-//            if error != nil || data == nil {
-//                print("Client error!")
-//                return
-//            }
-//            
-//            guard let response = response as? HTTPURLResponse, (200...299).contains(response.statusCode) else {
-//                print("Server error!")
-//                return
-//            }
-//            
-//            guard let mime = response.mimeType, mime == "application/json" else {
-//                print("Wrong MIME type!")
-//                return
-//            }
-//            
-//            do {
-//                let json = try JSONSerialization.jsonObject(with: data!, options: [])
-//                print(json)
-//            } catch {
-//                print("JSON error: \(error.localizedDescription)")
-//            }
-//            
-//            do {
-//                let decoder = JSONDecoder()
-//                decoder.keyDecodingStrategy = .convertFromSnakeCase
-//                let root = try decoder.decode(Root.self, from: data!)
-//                print(root)
-//                self.createMarkers(root: root)
-//            } catch {
-//                print(error)
-//            }
-//        }
-    }
-    
 }
 
 extension addingCallingItemTableViewController: DatePickerDelegate {
@@ -450,12 +401,10 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
         switch indexPath.section {
         case 1, 3:
             inputDate = date
-//            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.localDate = date
             
         case 6:
             inputDate = date
-//            item.destinationTime = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.destinationTime = date
         default:
             break

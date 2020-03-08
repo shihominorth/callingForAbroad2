@@ -18,26 +18,26 @@ class callinglistViewController: UITableViewController {
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-
+    
     private var plans:[Plan]? = []
     
     @IBOutlet weak var addButton: UIBarButtonItem!
-   
     
     
-  
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         
         navigationController?.navigationBar.prefersLargeTitles = false
         tableView.tableFooterView = UIView()
-     
+        
         self.navigationItem.rightBarButtonItems = [self.editButtonItem, self.addButton]
         tableView.allowsMultipleSelectionDuringEditing = true
-
+        
     }
     
     fileprivate func getData() {
@@ -54,27 +54,27 @@ class callinglistViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//    @objc func deleteItems(_ sender: Any) {
-//        if let selectRows = tableView.indexPathsForSelectedRows {
-//            var items = [Plan]()
-//            for indexPath in selectRows {
-//                items.append(plans[indexPath.row])
-//            }
-//            planDelegate.remove(items: items)
-//            tableView.beginUpdates()
-//            tableView.deleteRows(at: selectRows, with: .automatic)
-//            tableView.endUpdates()
-//
-//        }
-//    }
+    //    @objc func deleteItems(_ sender: Any) {
+    //        if let selectRows = tableView.indexPathsForSelectedRows {
+    //            var items = [Plan]()
+    //            for indexPath in selectRows {
+    //                items.append(plans[indexPath.row])
+    //            }
+    //            planDelegate.remove(items: items)
+    //            tableView.beginUpdates()
+    //            tableView.deleteRows(at: selectRows, with: .automatic)
+    //            tableView.endUpdates()
+    //
+    //        }
+    //    }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         
         
         
-//        if editing {
-//            navigationItem.rightBarButtonItems?.append(<#T##newElement: UIBarButtonItem##UIBarButtonItem#>)
-//        }
+        //        if editing {
+        //            navigationItem.rightBarButtonItems?.append(<#T##newElement: UIBarButtonItem##UIBarButtonItem#>)
+        //        }
         
         super.setEditing(editing, animated: animated)
         tableView.setEditing(tableView.isEditing, animated: true)
@@ -84,7 +84,7 @@ class callinglistViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return plans!.count
@@ -100,26 +100,26 @@ class callinglistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = (tableView.dequeueReusableCell(withIdentifier: "callingItem", for:indexPath) as? callingItemTableViewCell)!
-
-//        let orderCellNum = plans![indexPath.row].order as? Int
-
+        
+        //        let orderCellNum = plans![indexPath.row].order as? Int
+        
         cell.nameCallingForLabel.text = plans?[indexPath.row].nameCallingFor
-
-        cell.localTimeLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .date, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
-
-        cell.localDateLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .time, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
-
+        
+        cell.localTimeLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .time, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
+        
+        cell.localDateLabel.text =  plans?[indexPath.row].localDate?.convertToString(dateformat: .date, timeZoneIdentifier: (plans?[indexPath.row].localName)!)
+        
         cell.destinationNameLabel.text = plans?[indexPath.row].destinationName
-    
-
+        
+        
         tableView.deselectRow(at: indexPath, animated: true)
-            
-       return cell
+        
+        return cell
     }
     
-//    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-//        planDelegate.move(item: plans[sourceIndexPath.row], index: destinationIndexPath.row)
-//    }
+    //    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+    //        planDelegate.move(item: plans[sourceIndexPath.row], index: destinationIndexPath.row)
+    //    }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView.isEditing {
             return
@@ -127,7 +127,7 @@ class callinglistViewController: UITableViewController {
         // tableView.cellForRow(at: indexPath) means it return the cell user tapped
         if let cell = tableView.cellForRow(at: indexPath) {
             let item =  plans?[indexPath.row]
-//           configureCheckmark(for: cell, with: item)
+            //           configureCheckmark(for: cell, with: item)
             // tableView.deselectRow(at: indexPath, animated: true) stop highlighting the cell after user release finger.
             tableView.deselectRow(at: indexPath, animated: true)
         }
@@ -144,49 +144,21 @@ class callinglistViewController: UITableViewController {
             
             
         }
-
+        
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         getData()
         let item = plans![sourceIndexPath.row]
-//        context.delete(item)
-//        context.insert(item)
+        //        context.delete(item)
+        //        context.insert(item)
         plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
         plans?.remove(at: sourceIndexPath.row)
         plans?.insert(item, at: destinationIndexPath.row)
-
+        
         appDelegate.saveContext()
     }
     
-    
-//    func cellText(for cell:UITableViewCell, with item: callingCellItem) {
-//        if let label = cell.viewWithTag(1000) as? UILabel {
-//            label.text = item.nameCallingFor
-//        }
-//        else if let label = cell.viewWithTag(999) as? UILabel {
-//            label.text = item.localTime
-//        }
-//        else if let label = cell.viewWithTag(999) as? UILabel {
-//            label.text = item.localTime
-//        }
-//        else if let label = cell.viewWithTag(555) as? UILabel {
-//            label.text = item.localName
-//        }
-//        else if let label = cell.viewWithTag(333) as? UILabel {
-//            label.text = item.localDate
-//        }
-//        else if let label = cell.viewWithTag(111) as? UILabel {
-//            label.text = item.localDate
-//        }
-//        else if let label = cell.viewWithTag(222) as? UILabel {
-//            label.text = item.jetLag
-//        }
-//        else if let label = cell.viewWithTag(666) as? UILabel {
-//            label.text = item.destinationTime
-//        }
-//
-//    }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "showDetailSegue", tableView.isEditing {
@@ -201,22 +173,11 @@ class callinglistViewController: UITableViewController {
             if let addItemViewController = segue.destination as? addingCallingItemTableViewController {
                 addItemViewController.delegate = self
                 addItemViewController.isEditting = false
-                //addItemViewController.callingCellList = callingCelllist
             }
         }
-//        } else if segue.identifier == "EditItemSegue" {
-//            if let addItemViewController = segue.destination as? addCallingItemViewController {
-//                if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-//                    let item = plans?[indexPath.row]
-//                    addItemViewController.itemToEdit = item
-//
-//                }
-//            }
-//        }
         else if segue.identifier == "showDetailSegue" {
             if let detailVC = segue.destination as? DetailCallingTableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
-//                    let item = callingCelllist.callingList[indexPath.row]
                     let item = plans?[indexPath.row]
                     detailVC.item = item!
                     detailVC.indexPath = indexPath
@@ -267,7 +228,6 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         guard let rowIndex = plans?.count else { return }
         appDelegate.saveContext() 
         plans?.append(item)
-//        self.callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
@@ -276,13 +236,10 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     func addValue(item: callingCellItem) -> Plan{
         let plan = Plan(entity: Plan.entity(), insertInto: context)
         plan.nameCallingFor = item.nameCallingFor
-        // MARK: ERROR!
-//        plan.localDate = item.localDate.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
         plan.localDate = item.localDate
         plan.localName = item.localName
         plan.destinationName = item.destinationName
         plan.jetLag = item.jetLag
-//        plan.destinationTime = item.destinationTime.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
         plan.destinationTime = item.destinationTime
         plan.notification = item.notification
         plan.placeCallingAt = item.placeCallingAt
@@ -297,11 +254,12 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
 
 extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
-
-               appDelegate.saveContext()
-               getData()
-               
-               self.tableView.reloadData()
+        
+        print(item.localDate!)
+        appDelegate.saveContext()
+        getData()
+        
+        self.tableView.reloadData()
     }
     
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath){
@@ -309,28 +267,9 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
         item.order = plans?.count as NSObject?
         appDelegate.saveContext()
         plans?.append(item)
-//        self.callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
-    
-//    func addValue(item: callingCellItem) -> Plan{
-//        let plan = Plan(entity: Plan.entity(), insertInto: context)
-//        plan.nameCallingFor = item.nameCallingFor
-//        plan.localDate = item.localDate
-//        plan.localName = item.localName
-//        plan.localTime = item.localTime
-//        plan.destinationName = item.destinationName
-//        plan.jetLag = item.jetLag
-//        plan.destinationTime = item.destinationTime
-//        plan.notification = item.notification
-//        plan.placeCallingAt = item.placeCallingAt
-//        plan.order = plans?.count as NSObject?
-//
-//
-//        return plan
-//
-//    }
     
 }

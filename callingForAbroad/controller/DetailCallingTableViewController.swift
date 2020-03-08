@@ -35,6 +35,7 @@ class DetailCallingTableViewController: UITableViewController {
     var isEditting: Bool?
     
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -153,25 +154,25 @@ class DetailCallingTableViewController: UITableViewController {
             case 1:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-//                datePickerCell.datePicker.setDate(inputDates, animated: true)
-//                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
+                //                datePickerCell.datePicker.setDate(inputDates, animated: true)
+                //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-//                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
+            //                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 3:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-//                datePickerCell.datePicker.setDate(inputDates, animated: true)
-//                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
+                //                datePickerCell.datePicker.setDate(inputDates, animated: true)
+                //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-//                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
+            //                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 6:
                 datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
-//                datePickerCell.datePicker.setDate(inputDates, animated: true)
-//                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
+                //                datePickerCell.datePicker.setDate(inputDates, animated: true)
+                //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-//                datePickerCell.updateCell(date: item.destinationTime!, indexPath: indexPath)
+            //                datePickerCell.updateCell(date: item.destinationTime!, indexPath: indexPath)
             default:
                 break
             }
@@ -214,7 +215,7 @@ class DetailCallingTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
             } else {
-//                cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
+                //                cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
                 cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 0)
                 appDelegate.saveContext()
             }
@@ -240,9 +241,9 @@ class DetailCallingTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 cell.LocalTimeLabel.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName!) ?? "None"
             } else {
-//                cell.updateText(date: inputDates, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
+                //                cell.updateText(date: inputDates, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
-//                item.localDate = cell.LocalTimeLabel.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!)
+                //                item.localDate = cell.LocalTimeLabel.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!)
                 appDelegate.saveContext()
             }
             
@@ -274,7 +275,7 @@ class DetailCallingTableViewController: UITableViewController {
                 cell.destinationTimeLabel.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!)
             } else {
                 cell.updateText(date: inputDates, timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
-//                item.destinationTime = cell.destinationTimeLabel.text
+                //                item.destinationTime = cell.destinationTimeLabel.text
                 
                 appDelegate.saveContext()
             }
@@ -338,9 +339,9 @@ class DetailCallingTableViewController: UITableViewController {
                 case 1, 3:
                     
                     datePickerCell.datePicker.setDate(item.localDate!, animated: true)
-
+                    
                 case 6:
-
+                    
                     datePickerCell.datePicker.setDate(item.destinationTime!, animated: true)
                     
                 default:
@@ -438,30 +439,17 @@ class DetailCallingTableViewController: UITableViewController {
      }
      */
     
-    //    func showUpDatePicker()  {
-    //
-    //
-    //    }
-    
-    //    func addInitailValues() {
-    //        inputDates = Array(repeating: Date(), count: 3)
-    //
-    //    }
-    
     //MARK: - BUTTON
     
     @IBAction func back() {
         
-        if isEditing {
-            delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
-        } else {
-            delegate?.DetailCallingTableViewController(self, addNewItem: item, indexPath: self.indexPath)
-        }
-        
+        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
         navigationController?.popViewController(animated: true)
     }
 }
 
+
+// MARK: Extensions
 
 
 extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
@@ -524,8 +512,8 @@ extension DetailCallingTableViewController: DatePickerDelegate {
         switch indexPath.section {
         case 1, 3:
             item.localDate = date
-//        case 6:
-//            item.destinationTime = date
+        case 6:
+            item.destinationTime = date
         default:
             break
         }

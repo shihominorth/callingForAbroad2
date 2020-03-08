@@ -18,7 +18,6 @@ class addingCallingItemTableViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    //lazy var plan = Plan(entity: Plan.entity(), insertInto: context)
     var item = callingCellItem()
     
     var planDelegate = PlanDelegate()
@@ -37,16 +36,11 @@ class addingCallingItemTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
-//        addInitailValues()
+
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
         tableView.tableFooterView = UIView()
     }
-    
-//    func addInitailValues() {
-//        inputDates = Array(repeating: Date(), count: 3)
-//
-//    }
+
     // MARK: - Table view data source
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -394,7 +388,6 @@ class addingCallingItemTableViewController: UITableViewController {
             }
         }
     }
-    
 }
 
 extension addingCallingItemTableViewController: DatePickerDelegate {
@@ -407,11 +400,9 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
 
         case 1, 3:
             inputDate = date
-//            item.localDate = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.localDate = date
         case 6:
             inputDate = date
-//            item.destinationTime = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName)
             item.destinationTime = date
         default:
             break

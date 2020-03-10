@@ -70,12 +70,6 @@ class callinglistViewController: UITableViewController {
     
     override func setEditing(_ editing: Bool, animated: Bool) {
         
-        
-        
-        //        if editing {
-        //            navigationItem.rightBarButtonItems?.append(<#T##newElement: UIBarButtonItem##UIBarButtonItem#>)
-        //        }
-        
         super.setEditing(editing, animated: animated)
         tableView.setEditing(tableView.isEditing, animated: true)
         

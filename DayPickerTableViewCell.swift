@@ -10,6 +10,8 @@ import UIKit
 
 protocol DatePickerDelegate: class {
     func didChangeDate(date: Date, indexPath: IndexPath)
+    
+//    func showDateFromTimeDifference(timeDifference: String, date: Date)  -> (Int, Int)
    
  }
 

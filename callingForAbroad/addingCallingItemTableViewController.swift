@@ -20,7 +20,7 @@ class addingCallingItemTableViewController: UITableViewController {
     
     var item = callingCellItem()
     
-//    var planDelegate = PlanDelegate()
+    //    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
     var datePickerIndexPath: IndexPath?
     //    var inputDates:[Date] = []
@@ -147,10 +147,11 @@ class addingCallingItemTableViewController: UITableViewController {
             
             if isFirstDateValuePassed == true {
                 cell.label.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName)
-               
+                
                 
             } else {
                 cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 1)
+                appDelegate.saveContext()
             }
             
             
@@ -182,10 +183,11 @@ class addingCallingItemTableViewController: UITableViewController {
             if isFirstDateValuePassed == true {
                 
                 cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
-               
+                
                 
             } else {
                 cell.updateText(date: inputDate, timeZoneIdentifier: item.destinationName, indexNumber: 2)
+                appDelegate.saveContext()
             }
             
             
@@ -364,7 +366,7 @@ class addingCallingItemTableViewController: UITableViewController {
         if segue.identifier == "addingNotification" {
             if let edittingVC = segue.destination as? NotificationViewController {
                 edittingVC.isAdding = true
-                edittingVC.text = item.destinationName
+                edittingVC.text = item.notification
                 edittingVC.delegate2 = self as NotificationViewControllerDelegate2
                 
                 //                edittingVC.delegate = self as! nameCallingViewControllerDelegate
@@ -385,21 +387,71 @@ class addingCallingItemTableViewController: UITableViewController {
 
 extension addingCallingItemTableViewController: DatePickerDelegate {
     
+    func showDateFromTimeDifference(timeDifference: String, date: Date) -> (Int, Int) {
+        let tuple = date.getHour(timeZoneIdentifier: item.localName)
+        let numTimeDifference = timeDifference.split(separator: " ").index(after: 0)
+        
+        print(numTimeDifference)
+        
+        if timeDifference.contains("+") {
+            let result =  Int(numTimeDifference) + tuple.hour
+            
+            if result >= 23 {
+                return (tuple.date, result)
+            } else {
+                return (tuple.date + 1, result - 24)
+            }
+        }
+        else if timeDifference.contains("-"){
+            let result =  tuple.hour - Int(numTimeDifference)
+            
+            if result >= 0 {
+                return (tuple.date, result)
+            } else {
+                return (tuple.date - 1, 24 - result)
+            }
+        }
+        else {
+            return (tuple.date, tuple.hour)
+        }
+        
+    }
+    
+    
+    
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
+       
         self.isFirstDateValuePassed = false
+        inputDate = date
         
         switch indexPath.section {
         case 1, 3:
-            inputDate = date
+            
             item.localDate = date
+            item.destinationTime = date
+            
+            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName))
+            
+            
+            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName))
             
         case 6:
-            inputDate = date
+            
             item.destinationTime = date
+            item.localDate = date
+            
+            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName))
+            
+            
+            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName))
+            
+            
         default:
             break
         }
+        
+        
         
     }
     

@@ -242,7 +242,7 @@ class DetailCallingTableViewController: UITableViewController {
             
             if isFirstDateValuePassed == true {
                 cell.LocalTimeLabel.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName!) ?? "None"
-
+                
             } else {
                 //                cell.updateText(date: inputDates, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
@@ -265,7 +265,7 @@ class DetailCallingTableViewController: UITableViewController {
             
             // Configure the cell...
             let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
-                       
+            
             item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
             cell.jetLagLabel.text = item.jetLag ?? "None"
             
@@ -279,7 +279,7 @@ class DetailCallingTableViewController: UITableViewController {
             
             if isFirstDateValuePassed == true {
                 cell.destinationTimeLabel.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!)
-
+                
             } else {
                 cell.updateText(date: inputDates, timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
                 //                item.destinationTime = cell.destinationTimeLabel.text
@@ -511,20 +511,34 @@ extension DetailCallingTableViewController: PlaceCallingAtViewControllerDelegate
 
 extension DetailCallingTableViewController: DatePickerDelegate {
     
+    
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
+       
         self.isFirstDateValuePassed = false
         inputDates = date
         
+        
         switch indexPath.section {
         case 1, 3:
+            
             item.localDate = date
-        case 6:
             item.destinationTime = date
+            
+             let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
+             item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+            
+        case 6:
+            
+            item.localDate = date
+            item.destinationTime = date
+            
+             let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
+             item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+            
         default:
             break
         }
-        
     }
     
 }

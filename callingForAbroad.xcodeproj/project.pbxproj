@@ -42,6 +42,7 @@
 		6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56523E38753005162C7 /* MapViewController.swift */; };
 		6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */; };
 		6F4966272411CF0700397B4F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4966262411CF0700397B4F /* extensions.swift */; };
+		6F85EF2824185F9A0020C628 /* nameCitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F85EF2724185E580020C628 /* nameCitiesTableViewCell.swift */; };
 		6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */; };
 		6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */; };
 		6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */; };
@@ -116,6 +117,7 @@
 		6F3FF56523E38753005162C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapTableViewCell.swift; path = controller/MapTableViewCell.swift; sourceTree = "<group>"; };
 		6F4966262411CF0700397B4F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		6F85EF2724185E580020C628 /* nameCitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCitiesTableViewCell.swift; path = Pods/nameCitiesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCallingViewController.swift; path = callingForAbroad/nameCallingViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = Pods/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameViewController.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 		6F150B7423AA04B800908DEB /* cell for Detail page */ = {
 			isa = PBXGroup;
 			children = (
+				6F85EF2724185E580020C628 /* nameCitiesTableViewCell.swift */,
 				6F8BE7E623F4569100CEA348 /* PickNotificationTimeTableViewCell.swift */,
 				6F8BE7B723F2631A00CEA348 /* DetailPlaceCallingAtTableViewCell.swift */,
 				6F8BE7B523F261B500CEA348 /* NotificaitonTableViewCell.swift */,
@@ -451,6 +454,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6F85EF2824185F9A0020C628 /* nameCitiesTableViewCell.swift in Sources */,
 				6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */,
 				6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */,
 				6F8BE79C23EED7F600CEA348 /* LocalNameViewController.swift in Sources */,

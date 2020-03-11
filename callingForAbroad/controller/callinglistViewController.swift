@@ -184,24 +184,6 @@ class callinglistViewController: UITableViewController {
     }
 }
 
-
-//extension callinglistViewController: AddViewControllerDelegate {
-//    func addItemViewControllerDidCancel(_ controller: addCallingItemViewController) {
-//        navigationController?.popViewController(animated: true)
-//    }
-//
-//    func addItemViewController(_ controller: addCallingItemViewController, didFinishAdding item: callingCellItem) {
-//        navigationController?.popViewController(animated: true)
-//        let rowIndex = CallingCelllist.callingList.count
-//        CallingCelllist.callingList.append(item)
-//        let indexPath = IndexPath(row: rowIndex, section: 0)
-//        let indexPaths = [indexPath]
-//        tableView.insertRows(at: indexPaths, with: .automatic)
-//    }
-//
-//
-//}
-
 extension callinglistViewController: AddItemTableViewControllerDelegate {
     func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
         guard let rowIndex = plans?.count else { return }

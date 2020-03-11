@@ -10,6 +10,7 @@ import UIKit
 import CoreData
 import GoogleMaps
 import GooglePlaces
+import UserNotifications
 
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -48,6 +49,14 @@ import GooglePlaces
         
         // Override point for customization after application launch.
         
+        UNUserNotificationCenter.current().requestAuthorization(
+        options: [.alert, .sound, .badge]){
+            (granted, _) in
+            if granted{
+                UNUserNotificationCenter.current().delegate = self
+            }
+        }
+        
         
         return true
     }
@@ -66,6 +75,45 @@ import GooglePlaces
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+
+        //　通知設定に必要なクラスをインスタンス化
+        let trigger: UNNotificationTrigger
+        let content = UNMutableNotificationContent()
+        var notificationTime = DateComponents()
+
+        // トリガー設定
+     
+        notificationTime.minute = 27
+        notificationTime.hour = 22
+        
+        trigger = UNCalendarNotificationTrigger(dateMatching: notificationTime, repeats: false)
+
+        // 通知内容の設定
+        content.title = ""
+        content.body = "食事の時間になりました！"
+        content.sound = UNNotificationSound.default
+
+        // 通知スタイルを指定
+        let request = UNNotificationRequest(identifier: "uuid", content: content, trigger: trigger)
+        // 通知をセット
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+
+    }
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // アプリ起動中でもアラートと音で通知
+        completionHandler([.alert, .sound])
+        
+    }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+        
+    }
+}

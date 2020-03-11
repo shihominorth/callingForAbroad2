@@ -40,7 +40,7 @@ class MenuTableViewController: UITableViewController {
 
             // Configure the cell...
             
-            cell.accountSwitchingLabel.text = "Account Switch"
+            cell.accountSwitchinglabel.text = "Account Switch"
 
             return cell
         case 1:

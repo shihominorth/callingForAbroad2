@@ -342,4 +342,9 @@ extension LocalNameViewController: UISearchBarDelegate {
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+            self.searchBar.endEditing(true)
+    //        navigationController?.popViewController(animated: true)
+    }
 }

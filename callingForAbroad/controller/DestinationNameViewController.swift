@@ -46,13 +46,13 @@ class DestinationNameViewController: UIViewController {
         
         
         if isAdding != true {
-            item?.destinationName = searchBar.text ?? ""
+            item?.destinationName = placeLabel.text ?? ""
             delegate?.editItemViewController(self, didFinishEditting: item!)
         } else {
-            if searchBar.text == "" {
-                searchBar.text = "NONE"
+            if placeLabel.text == "Type the place" {
+                placeLabel.text = "NONE"
             }
-            delegate2?.editItemViewController(self, destinationName: searchBar.text!)
+            delegate2?.editItemViewController(self, destinationName: placeLabel.text!)
         }
         navigationController?.popViewController(animated: true)
         
@@ -101,6 +101,7 @@ class DestinationNameViewController: UIViewController {
                 arr.append(String(timezone))
             }
         }
+    
         
         return arr
     }
@@ -116,11 +117,11 @@ class DestinationNameViewController: UIViewController {
         }
         else if text != "" {
             searchBar.text = text
-            placeLabel.text = item?.destinationName
+            placeLabel.text = text
         }
         else {
             searchBar.text = ""
-            placeLabel.text = "Type the place in where the person you are calling"
+            placeLabel.text = "Type the place"
         }
         
         tableView.delegate = self
@@ -232,12 +233,14 @@ extension DestinationNameViewController: UITableViewDataSource {
         
                for (index, region) in regions.enumerated() {
                    if indexPath.section == index {
-                       
+
                        let cities = nameCities(regionName: region)
                        item?.destinationName = cities[indexPath.row]
                     placeLabel.text = cities[indexPath.row]
+                     
                    }
                }
+        
         
         
         
@@ -288,7 +291,10 @@ extension DestinationNameViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
     
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.searchBar.endEditing(true)
+//        navigationController?.popViewController(animated: true)
+    }
     
 }
 

@@ -69,6 +69,9 @@
 		6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */; };
 		6FB86C2723E9FF3E00672851 /* SeeDatailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */; };
 		6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */; };
+		6FC3C3D2241B929900D9E14E /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D1241B929800D9E14E /* LocalNameViewController.swift */; };
+		6FC3C3D4241B930700D9E14E /* DestinationCityNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D3241B930700D9E14E /* DestinationCityNameTableViewCell.swift */; };
+		6FC3C3D6241B950C00D9E14E /* nameCitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D5241B950C00D9E14E /* nameCitiesTableViewCell.swift */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
 		6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */; };
 		6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */; };
@@ -88,7 +91,6 @@
 		6F150B7023AA03FD00908DEB /* JetLagTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B7223AA047500908DEB /* DestinationTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationTimeTableViewCell.swift; sourceTree = "<group>"; };
 		6F150B7523AA053F00908DEB /* NameCallingForTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NameCallingForTableViewCell.swift; path = "callingForAbroad/cell for Detail page/NameCallingForTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
-		6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSwitchingTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F150B9023AA2CC500908DEB /* EdittingDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = EdittingDetailTableViewController.swift; path = callingForAbroad/EdittingDetailTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F150B9723AADF2500908DEB /* addingCallingItemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = addingCallingItemTableViewController.swift; path = callingForAbroad/addingCallingItemTableViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F150B9923AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameCallingForAddingTableViewCell.swift; sourceTree = "<group>"; };
@@ -120,9 +122,7 @@
 		6F84A6E42418A43D00EECBA2 /* nameCitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nameCitiesTableViewCell.swift; sourceTree = "<group>"; };
 		6F84A6E62418A45600EECBA2 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNameViewController.swift; sourceTree = "<group>"; };
 		6F84A6E82418A48100EECBA2 /* AccountSwitchingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSwitchingTableViewCell.swift; sourceTree = "<group>"; };
-		6F85EF2724185E580020C628 /* nameCitiesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCitiesTableViewCell.swift; path = Pods/nameCitiesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = nameCallingViewController.swift; path = callingForAbroad/nameCallingViewController.swift; sourceTree = SOURCE_ROOT; };
-		6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = Pods/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE79D23EED8C300CEA348 /* DestinationNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationNameViewController.swift; sourceTree = "<group>"; };
 		6F8BE79F23EEEBB000CEA348 /* DayPickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayPickerTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6F8BE7B323F25B7D00CEA348 /* LocalNameAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalNameAddingTableViewCell.swift; path = "callingForAbroad/Adding Calling Item/LocalNameAddingTableViewCell.swift"; sourceTree = SOURCE_ROOT; };
@@ -146,6 +146,9 @@
 		6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailView.swift; sourceTree = "<group>"; };
 		6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDatailViewController.swift; sourceTree = "<group>"; };
 		6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagAddingTableViewCell.swift; sourceTree = "<group>"; };
+		6FC3C3D1241B929800D9E14E /* LocalNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = callingForAbroad/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
+		6FC3C3D3241B930700D9E14E /* DestinationCityNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCityNameTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		6FC3C3D5241B950C00D9E14E /* nameCitiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = nameCitiesTableViewCell.swift; path = callingForAbroad/nameCitiesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -179,7 +182,7 @@
 				6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */,
 				6F8BE7E823F46B2200CEA348 /* PlaceCallingAtViewController.swift */,
 				6F8BE7E423F4505800CEA348 /* NotificationViewController.swift */,
-				6F8BE79B23EED63900CEA348 /* LocalNameViewController.swift */,
+				6FC3C3D1241B929800D9E14E /* LocalNameViewController.swift */,
 				6F8BE79923EED10500CEA348 /* nameCallingViewController.swift */,
 				6FB86C0223E81AD700672851 /* MenuTableViewController.swift */,
 				6F3FF56523E38753005162C7 /* MapViewController.swift */,
@@ -193,7 +196,8 @@
 		6F150B7423AA04B800908DEB /* cell for Detail page */ = {
 			isa = PBXGroup;
 			children = (
-				6F85EF2724185E580020C628 /* nameCitiesTableViewCell.swift */,
+				6FC3C3D3241B930700D9E14E /* DestinationCityNameTableViewCell.swift */,
+				6FC3C3D5241B950C00D9E14E /* nameCitiesTableViewCell.swift */,
 				6F8BE7E623F4569100CEA348 /* PickNotificationTimeTableViewCell.swift */,
 				6F8BE7B723F2631A00CEA348 /* DetailPlaceCallingAtTableViewCell.swift */,
 				6F8BE7B523F261B500CEA348 /* NotificaitonTableViewCell.swift */,
@@ -286,7 +290,6 @@
 				6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */,
 				6FA5384A23AC9CC900F73D08 /* functionTableViewCell.swift */,
 				6F150BA923AAE0F200908DEB /* Adding Calling Item */,
-				6F150B8023AA283900908DEB /* AccountSwitchingTableViewCell.swift */,
 				6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */,
 				6F150B9223AA2D0500908DEB /* cell for editting detail */,
 				6F150B7423AA04B800908DEB /* cell for Detail page */,
@@ -473,6 +476,7 @@
 				6F8BE79A23EED10500CEA348 /* nameCallingViewController.swift in Sources */,
 				6F150B9A23AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift in Sources */,
 				6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */,
+				6FC3C3D6241B950C00D9E14E /* nameCitiesTableViewCell.swift in Sources */,
 				6F8BE7A023EEEBB000CEA348 /* DayPickerTableViewCell.swift in Sources */,
 				6F8BE79E23EED8C300CEA348 /* DestinationNameViewController.swift in Sources */,
 				6F8BE7B623F261B500CEA348 /* NotificaitonTableViewCell.swift in Sources */,
@@ -494,6 +498,7 @@
 				6F0FBB1223DA5A72009C1775 /* EdittingTableViewCell.swift in Sources */,
 				6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */,
 				6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */,
+				6FC3C3D4241B930700D9E14E /* DestinationCityNameTableViewCell.swift in Sources */,
 				6F150B6D23AA024300908DEB /* LocalTimeTableViewCell.swift in Sources */,
 				6FB86C1223E9415A00672851 /* Geometry.swift in Sources */,
 				6F150BA423AAE09000908DEB /* NotificationTimeAddingTableViewCell.swift in Sources */,
@@ -525,6 +530,7 @@
 				6F150B7623AA053F00908DEB /* NameCallingForTableViewCell.swift in Sources */,
 				6F3FF55223DC1D0E005162C7 /* EdittingLocalDateCallingTableViewCell.swift in Sources */,
 				6F8BE7B423F25B7D00CEA348 /* LocalNameAddingTableViewCell.swift in Sources */,
+				6FC3C3D2241B929900D9E14E /* LocalNameViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

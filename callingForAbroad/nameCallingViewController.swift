@@ -41,7 +41,7 @@ class nameCallingViewController: UIViewController {
             item?.nameCallingFor = textField.text ?? ""
             delegate?.editItemViewController(self, didFinishEditting: item!)
         } else {
-            if textField.text == "" {
+            if textField.text == nil {
                textField.text = "NONE"
             }
             delegate2?.editItemViewController(self, nameCallFor: textField.text!)

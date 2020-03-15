@@ -9,12 +9,16 @@ target 'checklist' do
 pod 'SideMenu'
 pod 'GoogleMaps'
 pod 'GooglePlaces'
-pod 'Alamofire', '~> 5.0.0-rc.3'
 
 # add the Firebase pod for Google Analytics
 pod 'Firebase/Analytics'
+pod 'Firebase/Auth'
+pod 'Firebase/Core'
+pod 'Firebase/Firestore'
+
+# Optionally, include the Swift extensions if you're using Swift.
+pod 'FirebaseFirestoreSwift'
+
 # add pods for any other desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods
-
-pod 'Firebase/Auth'
 end

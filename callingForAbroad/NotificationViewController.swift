@@ -16,7 +16,7 @@ protocol NotificationViewControllerDelegate : class {
 
 
 protocol NotificationViewControllerDelegate2 : class {
-    func editItemViewController(_ controller: NotificationViewController, didFinishEditting notificaiton: String)
+    func editItemViewController(_ controller: NotificationViewController, didFinishEditting notificaiton: Int)
 }
 
 class NotificationViewController: UIViewController {
@@ -95,35 +95,35 @@ extension NotificationViewController: UITableViewDataSource {
         if isAdding != true {
         let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
         
-        item?.notification = cell.timeLabel.text
+            item?.notification = Int(cell.timeLabel.text!)
         tableView.deselectRow(at: indexPath, animated: true)
         
         
         delegate?.editItemViewController(self, didFinishEditting: item!)
         } else {
-              let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
+//              let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
             
-            switch indexPath.row {
-            case 0:
-                text = "0"
-            case 1:
-                text = "5"
-            case 2:
-                text = "10"
-            case 3:
-                text = "30"
-            case 4:
-                text = "45"
-            case 5:
-                text = "60"
-            case 6:
-                text = "360"
-            default:
-                break
-            }
+//            switch indexPath.row {
+//            case 0:
+//                text = "0"
+//            case 1:
+//                text = "5"
+//            case 2:
+//                text = "10"
+//            case 3:
+//                text = "30"
+//            case 4:
+//                text = "45"
+//            case 5:
+//                text = "60"
+//            case 6:
+//                text = "360"
+//            default:
+//                break
+//            }
 //            text = cell.textLabel!.text!
             
-            delegate2?.editItemViewController(self, didFinishEditting: text)
+            delegate2?.editItemViewController(self, didFinishEditting: notifications[indexPath.row])
             tableView.deselectRow(at: indexPath, animated: true)
         }
             navigationController?.popViewController(animated: true)

@@ -23,9 +23,9 @@
 		6F150BA423AAE09000908DEB /* NotificationTimeAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150BA323AAE09000908DEB /* NotificationTimeAddingTableViewCell.swift */; };
 		6F150BA623AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150BA523AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift */; };
 		6F150BA823AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */; };
-		6F29FA87241379D80008D639 /* Plan+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */; };
-		6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */; };
 		6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */; };
+		6F34DADA241E21CB005754E9 /* dataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34DAD9241E21CB005754E9 /* dataManager.swift */; };
+		6F34DADC241E2910005754E9 /* delegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F34DADB241E2910005754E9 /* delegate.swift */; };
 		6F3BF39B2388BADF003CE424 /* DetailCallingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */; };
 		6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */; };
 		6F3FF55123DC1D0E005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */; };
@@ -37,7 +37,6 @@
 		6F3FF55723DC1D0E005162C7 /* EdittingNameCallingForTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54E23DC1D0D005162C7 /* EdittingNameCallingForTableViewCell.swift */; };
 		6F3FF55823DC1D0E005162C7 /* EdittingDestinationNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF54F23DC1D0D005162C7 /* EdittingDestinationNameTableViewCell.swift */; };
 		6F3FF55923DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF55023DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift */; };
-		6F3FF56023E11D09005162C7 /* callingForAbroad.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF55E23E11D09005162C7 /* callingForAbroad.xcdatamodeld */; };
 		6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56523E38753005162C7 /* MapViewController.swift */; };
 		6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */; };
 		6F4966272411CF0700397B4F /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F4966262411CF0700397B4F /* extensions.swift */; };
@@ -72,13 +71,14 @@
 		6FC3C3D2241B929900D9E14E /* LocalNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D1241B929800D9E14E /* LocalNameViewController.swift */; };
 		6FC3C3D4241B930700D9E14E /* DestinationCityNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D3241B930700D9E14E /* DestinationCityNameTableViewCell.swift */; };
 		6FC3C3D6241B950C00D9E14E /* nameCitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D5241B950C00D9E14E /* nameCitiesTableViewCell.swift */; };
+		6FC3C3DA241C544F00D9E14E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6FC3C3D9241C544F00D9E14E /* GoogleService-Info.plist */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
 		6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */; };
 		6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */; };
 		6FECA0FE23750BCE00B7DD8B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FECA0FC23750BCE00B7DD8B /* Main.storyboard */; };
 		6FECA10023750BD200B7DD8B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6FECA0FF23750BD200B7DD8B /* Assets.xcassets */; };
 		6FECA10323750BD200B7DD8B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6FECA10123750BD200B7DD8B /* LaunchScreen.storyboard */; };
-		6FECA13323767A1500B7DD8B /* callingCellItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA13223767A1500B7DD8B /* callingCellItem.swift */; };
+		6FECA13323767A1500B7DD8B /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA13223767A1500B7DD8B /* Plan.swift */; };
 		6FECA139237A3AC700B7DD8B /* CallingCellList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA138237A3AC700B7DD8B /* CallingCellList.swift */; };
 /* End PBXBuildFile section */
 
@@ -101,9 +101,9 @@
 		6F150BA323AAE09000908DEB /* NotificationTimeAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTimeAddingTableViewCell.swift; sourceTree = "<group>"; };
 		6F150BA523AAE0AF00908DEB /* PlaceCallingAtAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCallingAtAddingTableViewCell.swift; sourceTree = "<group>"; };
 		6F150BA723AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
-		6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Plan+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getTimeDifference.swift; sourceTree = "<group>"; };
+		6F34DAD9241E21CB005754E9 /* dataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dataManager.swift; sourceTree = "<group>"; };
+		6F34DADB241E2910005754E9 /* delegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = delegate.swift; sourceTree = "<group>"; };
 		6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCallingTableViewController.swift; sourceTree = "<group>"; };
 		6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addCallingItemScrollview.swift; sourceTree = "<group>"; };
 		6F3FF54823DC1D0C005162C7 /* EdittingMapPlaceCallingAtTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingMapPlaceCallingAtTableViewCell.swift; sourceTree = "<group>"; };
@@ -115,7 +115,6 @@
 		6F3FF54E23DC1D0D005162C7 /* EdittingNameCallingForTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EdittingNameCallingForTableViewCell.swift; path = "../../../../tutorialClass/calling/callingForAbroad/callingForAbroad/cell for editting detail/EdittingNameCallingForTableViewCell.swift"; sourceTree = "<group>"; };
 		6F3FF54F23DC1D0D005162C7 /* EdittingDestinationNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingDestinationNameTableViewCell.swift; sourceTree = "<group>"; };
 		6F3FF55023DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EdittingNotificationTableViewCell.swift; sourceTree = "<group>"; };
-		6F3FF55F23E11D09005162C7 /* callingForAbroad.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = callingForAbroad.xcdatamodel; sourceTree = "<group>"; };
 		6F3FF56523E38753005162C7 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6F3FF56723E38AF5005162C7 /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapTableViewCell.swift; path = controller/MapTableViewCell.swift; sourceTree = "<group>"; };
 		6F4966262411CF0700397B4F /* extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
@@ -149,6 +148,7 @@
 		6FC3C3D1241B929800D9E14E /* LocalNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalNameViewController.swift; path = callingForAbroad/LocalNameViewController.swift; sourceTree = SOURCE_ROOT; };
 		6FC3C3D3241B930700D9E14E /* DestinationCityNameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationCityNameTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		6FC3C3D5241B950C00D9E14E /* nameCitiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = nameCitiesTableViewCell.swift; path = callingForAbroad/nameCitiesTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		6FC3C3D9241C544F00D9E14E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -157,7 +157,7 @@
 		6FECA0FF23750BD200B7DD8B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6FECA10223750BD200B7DD8B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6FECA10423750BD200B7DD8B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6FECA13223767A1500B7DD8B /* callingCellItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = callingCellItem.swift; sourceTree = "<group>"; };
+		6FECA13223767A1500B7DD8B /* Plan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 		6FECA138237A3AC700B7DD8B /* CallingCellList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallingCellList.swift; sourceTree = "<group>"; };
 		E72489660E07ABFEEBBC7881 /* Pods_checklist.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_checklist.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -247,7 +247,7 @@
 			path = "Adding Calling Item";
 			sourceTree = "<group>";
 		};
-		6FB86C1823E9420000672851 /* structs */ = {
+		6FB86C1823E9420000672851 /* structsForMap */ = {
 			isa = PBXGroup;
 			children = (
 				6FB86C0D23E93B8A00672851 /* Root.swift */,
@@ -256,7 +256,7 @@
 				6FB86C1323E9417B00672851 /* Location.swift */,
 				6FB86C1523E941C100672851 /* Photo.swift */,
 			);
-			path = structs;
+			path = structsForMap;
 			sourceTree = "<group>";
 		};
 		6FECA0EA23750BCE00B7DD8B = {
@@ -283,8 +283,6 @@
 				6F84A6E82418A48100EECBA2 /* AccountSwitchingTableViewCell.swift */,
 				6F84A6E62418A45600EECBA2 /* LocalNameViewController.swift */,
 				6F84A6E42418A43D00EECBA2 /* nameCitiesTableViewCell.swift */,
-				6F29FA8824137C3B0008D639 /* Plan+CoreDataClass.swift */,
-				6F29FA86241379D80008D639 /* Plan+CoreDataProperties.swift */,
 				6F4966262411CF0700397B4F /* extensions.swift */,
 				6F29FA8A24149BCD0008D639 /* getTimeDifference.swift */,
 				6FA5384C23AD0A3400F73D08 /* callingItemTableViewCell.swift */,
@@ -294,15 +292,17 @@
 				6F150B9223AA2D0500908DEB /* cell for editting detail */,
 				6F150B7423AA04B800908DEB /* cell for Detail page */,
 				6F047B032394BB5C00AD3F09 /* controller */,
-				6FB86C1823E9420000672851 /* structs */,
+				6FB86C1823E9420000672851 /* structsForMap */,
 				6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */,
 				6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */,
 				6FECA138237A3AC700B7DD8B /* CallingCellList.swift */,
-				6FECA13223767A1500B7DD8B /* callingCellItem.swift */,
+				6FECA13223767A1500B7DD8B /* Plan.swift */,
+				6F34DADB241E2910005754E9 /* delegate.swift */,
+				6F34DAD9241E21CB005754E9 /* dataManager.swift */,
 				6F3BF3A8238E0084003CE424 /* addCallingItemScrollview.swift */,
 				6FECA0FC23750BCE00B7DD8B /* Main.storyboard */,
 				6FB86C2623E9FF3E00672851 /* SeeDatailViewController.swift */,
-				6F3FF55E23E11D09005162C7 /* callingForAbroad.xcdatamodeld */,
+				6FC3C3D9241C544F00D9E14E /* GoogleService-Info.plist */,
 				6FECA0FF23750BD200B7DD8B /* Assets.xcassets */,
 				6FECA10123750BD200B7DD8B /* LaunchScreen.storyboard */,
 				6FECA10423750BD200B7DD8B /* Info.plist */,
@@ -392,6 +392,7 @@
 			files = (
 				6FECA10323750BD200B7DD8B /* LaunchScreen.storyboard in Resources */,
 				6FB86C0523E8795000672851 /* apiKey.plist in Resources */,
+				6FC3C3DA241C544F00D9E14E /* GoogleService-Info.plist in Resources */,
 				6FECA10023750BD200B7DD8B /* Assets.xcassets in Resources */,
 				6FECA0FE23750BCE00B7DD8B /* Main.storyboard in Resources */,
 			);
@@ -466,7 +467,6 @@
 				6F84A6E92418A48100EECBA2 /* AccountSwitchingTableViewCell.swift in Sources */,
 				6F84A6E72418A45600EECBA2 /* LocalNameViewController.swift in Sources */,
 				6F84A6E52418A43D00EECBA2 /* nameCitiesTableViewCell.swift in Sources */,
-				6F29FA8924137C3B0008D639 /* Plan+CoreDataClass.swift in Sources */,
 				6F29FA8B24149BCD0008D639 /* getTimeDifference.swift in Sources */,
 				6FB86C0323E81AD800672851 /* MenuTableViewController.swift in Sources */,
 				6FB86BFF23E8196B00672851 /* LocalTimeAddingTableViewCell.swift in Sources */,
@@ -488,12 +488,12 @@
 				6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */,
 				6FB86C2723E9FF3E00672851 /* SeeDatailViewController.swift in Sources */,
 				6F3FF55523DC1D0E005162C7 /* EdittingLocalTimeTableViewCell.swift in Sources */,
-				6F3FF56023E11D09005162C7 /* callingForAbroad.xcdatamodeld in Sources */,
 				6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */,
 				6FB86C0E23E93B8A00672851 /* Root.swift in Sources */,
 				6F3FF56823E38AF5005162C7 /* MapTableViewCell.swift in Sources */,
 				6F3FF56623E38753005162C7 /* MapViewController.swift in Sources */,
 				6F150B7323AA047500908DEB /* DestinationTimeTableViewCell.swift in Sources */,
+				6F34DADA241E21CB005754E9 /* dataManager.swift in Sources */,
 				6F3FF55823DC1D0E005162C7 /* EdittingDestinationNameTableViewCell.swift in Sources */,
 				6F0FBB1223DA5A72009C1775 /* EdittingTableViewCell.swift in Sources */,
 				6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */,
@@ -509,7 +509,6 @@
 				6FA5384D23AD0A3400F73D08 /* callingItemTableViewCell.swift in Sources */,
 				6FA5384B23AC9CC900F73D08 /* functionTableViewCell.swift in Sources */,
 				6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */,
-				6F29FA87241379D80008D639 /* Plan+CoreDataProperties.swift in Sources */,
 				6F3BF3A9238E0084003CE424 /* addCallingItemScrollview.swift in Sources */,
 				6F150BA823AAE0C800908DEB /* MapPlaceCallingAtTableViewCell.swift in Sources */,
 				6FB86C1423E9417B00672851 /* Location.swift in Sources */,
@@ -520,13 +519,14 @@
 				6FAFCF4B23A9FF05008918CD /* LocalNameTableViewCell.swift in Sources */,
 				6FECA139237A3AC700B7DD8B /* CallingCellList.swift in Sources */,
 				6F150B9123AA2CC500908DEB /* EdittingDetailTableViewController.swift in Sources */,
+				6F34DADC241E2910005754E9 /* delegate.swift in Sources */,
 				6F150B9C23AAE03300908DEB /* DestinationNameAddingTableViewCell.swift in Sources */,
 				6F150B9823AADF2500908DEB /* addingCallingItemTableViewController.swift in Sources */,
 				6F150B6F23AA038C00908DEB /* DestinationNameTableViewCell.swift in Sources */,
 				6F150B9E23AAE04A00908DEB /* LocalDateAddingTableViewCell.swift in Sources */,
 				6F3FF55423DC1D0E005162C7 /* EdittingDestinationTimeTableViewCell.swift in Sources */,
 				6F3FF55923DC1D0E005162C7 /* EdittingNotificationTableViewCell.swift in Sources */,
-				6FECA13323767A1500B7DD8B /* callingCellItem.swift in Sources */,
+				6FECA13323767A1500B7DD8B /* Plan.swift in Sources */,
 				6F150B7623AA053F00908DEB /* NameCallingForTableViewCell.swift in Sources */,
 				6F3FF55223DC1D0E005162C7 /* EdittingLocalDateCallingTableViewCell.swift in Sources */,
 				6F8BE7B423F25B7D00CEA348 /* LocalNameAddingTableViewCell.swift in Sources */,
@@ -730,19 +730,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		6F3FF55E23E11D09005162C7 /* callingForAbroad.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				6F3FF55F23E11D09005162C7 /* callingForAbroad.xcdatamodel */,
-			);
-			currentVersion = 6F3FF55F23E11D09005162C7 /* callingForAbroad.xcdatamodel */;
-			path = callingForAbroad.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 6FECA0EB23750BCE00B7DD8B /* Project object */;
 }

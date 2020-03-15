@@ -16,6 +16,7 @@ import Firebase
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "callingForAbroad")
@@ -39,8 +40,7 @@ import Firebase
                 fatalError("Unsolved error: \(error), \(error.userInfo)")
             }
         }
-        
-        FirebaseApp.configure()
+       
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -52,14 +52,7 @@ import Firebase
         
         // Override point for customization after application launch.
         
-        UNUserNotificationCenter.current().requestAuthorization(
-        options: [.alert, .sound, .badge]){
-            (granted, _) in
-            if granted{
-                UNUserNotificationCenter.current().delegate = self
-            }
-        }
-        
+        FirebaseApp.configure()
         
         return true
     }

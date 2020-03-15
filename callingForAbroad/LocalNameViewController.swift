@@ -96,7 +96,7 @@ class LocalNameViewController: UIViewController {
     @IBAction func done(_ sender: Any) {
         
         if isAdding != true {
-            item?.localName = placeLabel.text
+            item?.localName = placeLabel.text!
             delegate?.editItemViewController(self, didFinishEditting: item!)
         } else {
             if placeLabel.text == "type the name of the city" {

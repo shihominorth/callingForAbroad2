@@ -10,7 +10,7 @@ import UIKit
 
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController)
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem)
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan)
 }
 
 class addingCallingItemTableViewController: UITableViewController {
@@ -18,7 +18,7 @@ class addingCallingItemTableViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var item = callingCellItem()
+    var item = Plan()
     
     //    var planDelegate = PlanDelegate()
     weak var delegate: AddItemTableViewControllerDelegate?
@@ -77,17 +77,17 @@ class addingCallingItemTableViewController: UITableViewController {
             
             switch datePickerIndexPath?.section {
             case 1:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
                 datePickerCell.datePicker.setDate(inputDate, animated: true)
             case 3:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.datePicker.setDate(inputDate, animated: true)
                 datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
             case 6:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 datePickerCell.datePicker.setDate(inputDate, animated: true)
                 datePickerCell.updateCell(date: inputDate, indexPath: indexPath)
@@ -123,11 +123,11 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local date", for: indexPath) as? LocalDateAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName)
+                cell.label.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!)
                 
                 
             } else {
-                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName , indexNumber: 0)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName! , indexNumber: 0)
                 appDelegate.saveContext()
                 //                item.localDate = cell.giveText(date: inputDates[0], timeZoneIdentifier: item.localName, indexNumber: 0)
             }
@@ -146,11 +146,11 @@ class addingCallingItemTableViewController: UITableViewController {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local time", for: indexPath) as? LocalTimeAddingTableViewCell)!
             
             if isFirstDateValuePassed == true {
-                cell.label.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName)
+                cell.label.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName!)
                 
                 
             } else {
-                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName, indexNumber: 1)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.localName!, indexNumber: 1)
                 appDelegate.saveContext()
             }
             
@@ -182,11 +182,11 @@ class addingCallingItemTableViewController: UITableViewController {
             
             if isFirstDateValuePassed == true {
                 
-                cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName)
+                cell.label.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!)
                 
                 
             } else {
-                cell.updateText(date: inputDate, timeZoneIdentifier: item.destinationName, indexNumber: 2)
+                cell.updateText(date: inputDate, timeZoneIdentifier: item.destinationName!, indexNumber: 2)
                 appDelegate.saveContext()
             }
             
@@ -196,7 +196,7 @@ class addingCallingItemTableViewController: UITableViewController {
         else if indexPath.section == 7 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificationTimeAddingTableViewCell)!
             
-            cell.label.text = item.notification
+            cell.label.text = String(item.notification!)
             
             return cell
         }
@@ -341,7 +341,7 @@ class addingCallingItemTableViewController: UITableViewController {
         if segue.identifier == "addingNameCallingFor" {
             if let edittingVC = segue.destination as? nameCallingViewController {
                 edittingVC.isAdding = true
-                edittingVC.text = item.nameCallingFor
+                edittingVC.text = item.nameCallingFor!
                 edittingVC.delegate2 = self as nameCallingViewControllerDelegate2
             }
         }
@@ -349,7 +349,7 @@ class addingCallingItemTableViewController: UITableViewController {
         if segue.identifier == "addingLocalName" {
             if let edittingVC = segue.destination as? LocalNameViewController {
                 edittingVC.isAdding = true
-                edittingVC.text = item.localName
+                edittingVC.text = item.localName!
                 edittingVC.delegate2 = self as LocalNameViewControllerDelegate2
             }
         }
@@ -366,7 +366,7 @@ class addingCallingItemTableViewController: UITableViewController {
         if segue.identifier == "addingNotification" {
             if let edittingVC = segue.destination as? NotificationViewController {
                 edittingVC.isAdding = true
-                edittingVC.text = item.notification
+                edittingVC.text = String(item.notification!)
                 edittingVC.delegate2 = self as NotificationViewControllerDelegate2
                 
                 //                edittingVC.delegate = self as! nameCallingViewControllerDelegate
@@ -386,7 +386,7 @@ class addingCallingItemTableViewController: UITableViewController {
 extension addingCallingItemTableViewController: DatePickerDelegate {
     
     func showDateFromTimeDifference(timeDifference: String, date: Date) -> (Int, Int) {
-        let tuple = date.getHour(timeZoneIdentifier: item.localName)
+        let tuple = date.getHour(timeZoneIdentifier: item.localName!)
         let numTimeDifference = timeDifference.split(separator: " ").index(after: 0)
         
         print(numTimeDifference)
@@ -430,10 +430,10 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
             item.localDate = date
             item.destinationTime = date
             
-            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName))
+            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!))
             
             
-            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName))
+            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!))
             
 
         case 6:
@@ -441,10 +441,10 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
             item.destinationTime = date
             item.localDate = date
             
-            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName))
+            print(item.localDate?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!))
             
             
-            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName))
+            print(item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!))
             
             
         default:
@@ -484,7 +484,7 @@ extension addingCallingItemTableViewController: DestinationNameViewControllerDel
 }
 
 extension addingCallingItemTableViewController: NotificationViewControllerDelegate2 {
-    func editItemViewController(_ controller: NotificationViewController, didFinishEditting notification: String) {
+    func editItemViewController(_ controller: NotificationViewController, didFinishEditting notification: Int) {
         self.item.notification = notification
         tableView.reloadData()
     }

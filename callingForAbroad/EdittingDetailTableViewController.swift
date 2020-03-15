@@ -14,8 +14,8 @@ protocol EditItemTableViewControllerDelegate: class {
 
 class EdittingDetailTableViewController: UITableViewController {
 
-    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-    weak var editItem:Plan?
+   
+    var editItem:Plan?
     var indexPath = IndexPath()
     weak var delegate: EditItemTableViewControllerDelegate?
     weak var callingCellList:CallingCellList?
@@ -23,7 +23,9 @@ class EdittingDetailTableViewController: UITableViewController {
     
     
     @IBAction func done(_ sender: Any) {
-        let edittedItem = Plan(entity: Plan.entity(), insertInto: context)
+      
+        var edittedItem = Plan()
+        
         if let cell:EdittingNameCallingForTableViewCell
             = (tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? EdittingNameCallingForTableViewCell)!{
             edittedItem.nameCallingFor = cell.textField.text ?? ""

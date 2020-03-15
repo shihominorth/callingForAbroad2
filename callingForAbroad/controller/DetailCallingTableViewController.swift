@@ -27,8 +27,6 @@ class DetailCallingTableViewController: UITableViewController {
     var datePickerIndexPath: IndexPath?
     //var inputDates:[Date] = []
     var inputDates = Date()
-    var appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
     var isFirstOpenDatePicker = false
     var isFirstDateValuePassed: Bool?
@@ -218,7 +216,7 @@ class DetailCallingTableViewController: UITableViewController {
             } else {
                 //                cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
                 cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 0)
-                appDelegate.saveContext()
+               
             }
             return cell
             
@@ -247,7 +245,7 @@ class DetailCallingTableViewController: UITableViewController {
                 //                cell.updateText(date: inputDates, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 //                item.localDate = cell.LocalTimeLabel.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!)
-                appDelegate.saveContext()
+               
             }
             
             return cell
@@ -278,13 +276,13 @@ class DetailCallingTableViewController: UITableViewController {
             // Configure the cell...
             
             if isFirstDateValuePassed == true {
-                cell.destinationTimeLabel.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!)
+                cell.destinationTimeLabel.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier)
                 
             } else {
                 cell.updateText(date: inputDates, timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
                 //                item.destinationTime = cell.destinationTimeLabel.text
                 
-                appDelegate.saveContext()
+               
             }
             
             return cell
@@ -293,7 +291,7 @@ class DetailCallingTableViewController: UITableViewController {
         else if indexPath.section == 7 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificaitonTableViewCell)!
             
-            cell.label.text = item.notification ?? "None"
+            cell.label.text = String(item.notification!) 
             
             return cell
         }
@@ -466,7 +464,7 @@ extension DetailCallingTableViewController: EditItemTableViewControllerDelegate 
 extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
     func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan) {
         self.item = item
-        appDelegate.saveContext()
+        
         self.tableView.reloadData()
     }
 }
@@ -474,7 +472,7 @@ extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
 extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: Plan) {
         self.item = item
-        appDelegate.saveContext()
+       
         self.tableView.reloadData()
     }
 }
@@ -484,7 +482,7 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
     
     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan) {
         self.item = item
-        appDelegate.saveContext()
+        
         self.tableView.reloadData()
     }
     
@@ -493,7 +491,7 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
 extension DetailCallingTableViewController: NotificationViewControllerDelegate {
     func editItemViewController(_ controller: NotificationViewController, didFinishEditting item: Plan) {
         self.item = item
-        appDelegate.saveContext()
+        
         self.tableView.reloadData()
     }
     
@@ -502,7 +500,7 @@ extension DetailCallingTableViewController: NotificationViewControllerDelegate {
 extension DetailCallingTableViewController: PlaceCallingAtViewControllerDelegate {
     func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting item: Plan) {
         self.item = item
-        appDelegate.saveContext()
+        
         self.tableView.reloadData()
     }
     

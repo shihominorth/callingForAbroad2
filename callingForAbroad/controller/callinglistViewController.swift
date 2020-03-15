@@ -16,8 +16,8 @@ class callinglistViewController: UITableViewController {
 //    var section2: Dictionary = [String:NSMutableArray]()
 //    var sections: Array = [Dictionary<String,NSMutableArray>]()
     
-    private let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let dataManager = DataManager()
+    var delegate: DataManagerDelegate?
     
     private var plans:[Plan]? = []
     
@@ -32,6 +32,8 @@ class callinglistViewController: UITableViewController {
         super.viewDidLoad()
         
         
+        dataManager.delegate = self
+        dataManager.getData()
         navigationController?.navigationBar.prefersLargeTitles = false
         tableView.tableFooterView = UIView()
         
@@ -40,17 +42,10 @@ class callinglistViewController: UITableViewController {
         
     }
     
-    fileprivate func getData() {
-        do {
-            plans = try context.fetch(Plan.fetchRequest())
-        } catch let error as NSError {
-            print("Could not fetch \(error), \(error.userInfo)")
-        }
-    }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getData()
+        
         tableView.reloadData()
     }
     
@@ -130,27 +125,26 @@ class callinglistViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
-            getData()
-            context.delete((plans?[indexPath.row])!)
+          
             plans?.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
-            appDelegate.saveContext()
             
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
             
         }
         
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        getData()
+       
         let item = plans![sourceIndexPath.row]
         //        context.delete(item)
         //        context.insert(item)
-        plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
+        
+        
         plans?.remove(at: sourceIndexPath.row)
         plans?.insert(item, at: destinationIndexPath.row)
         
-        appDelegate.saveContext()
+        
     }
     
     
@@ -185,12 +179,16 @@ class callinglistViewController: UITableViewController {
 }
 
 extension callinglistViewController: AddItemTableViewControllerDelegate {
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
-        guard let rowIndex = plans?.count else { return }
-        let item = addValue(item: item)
-        plans?.append(item)
-        appDelegate.saveContext()
+    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
+       
+//
+//        plans?.append(item)
+        
         //        self.callingCelllist.callingList.append(item)
+        dataManager.addPlan(plan: item)
+        dataManager.getData()
+        
+        guard let rowIndex = plans?.count else { return }
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
@@ -200,31 +198,16 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
-        guard let rowIndex = plans?.count else { return }
-        appDelegate.saveContext() 
-        plans?.append(item)
-        let indexPath = IndexPath(row: rowIndex, section: 0)
-        let indexPaths = [indexPath]
-        tableView.insertRows(at: indexPaths, with: .automatic)
-    }
-    
-    func addValue(item: callingCellItem) -> Plan{
-        let plan = Plan(entity: Plan.entity(), insertInto: context)
-        plan.nameCallingFor = item.nameCallingFor
-        plan.localDate = item.localDate
-        plan.localName = item.localName
-        plan.destinationName = item.destinationName
-        plan.jetLag = item.jetLag
-        plan.destinationTime = item.destinationTime
-        plan.notification = item.notification
-        plan.placeCallingAt = item.placeCallingAt
-        plan.order = plans?.count as NSObject?
-        
-        
-        return plan
-        
-    }
+//    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
+//        guard let rowIndex = plans?.count else { return }
+//        appDelegate.saveContext()
+//        plans?.append(item)
+//        let indexPath = IndexPath(row: rowIndex, section: 0)
+//        let indexPaths = [indexPath]
+//        tableView.insertRows(at: indexPaths, with: .automatic)
+//    }
+//
+
     
 }
 
@@ -232,20 +215,26 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
         
         print(item.localDate!)
-        appDelegate.saveContext()
-        getData()
+
+       
         
         self.tableView.reloadData()
     }
     
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath){
         guard let rowIndex = plans?.count else { return }
-        item.order = plans?.count as NSObject?
-        appDelegate.saveContext()
+       
         plans?.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
+}
+
+extension callinglistViewController: DataManagerDelegate {
+    func gotData(plans: [Plan]) {
+        self.plans = plans
+        self.plans?.sort { $0.localDate!.compare($1.localDate!) == .orderedDescending  }
+    }
 }

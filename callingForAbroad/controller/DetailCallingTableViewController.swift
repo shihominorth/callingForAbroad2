@@ -62,14 +62,14 @@ class DetailCallingTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editting Segue" {
-            if let edittingVC = segue.destination as? EdittingDetailTableViewController {
-                edittingVC.editItem = self.item
-                edittingVC.indexPath = self.indexPath
-                edittingVC.delegate = self
-            }
-        }
-        
+//        if segue.identifier == "editting Segue" {
+//            if let edittingVC = segue.destination as? EdittingDetailTableViewController {
+//                edittingVC.editItem = self.item
+//                edittingVC.indexPath = self.indexPath
+//                edittingVC.delegate = self
+//            }
+//        }
+//        
         if segue.identifier == "edittingNameCallingFor" {
             if let edittingVC = segue.destination as? nameCallingViewController {
                 edittingVC.item = self.item
@@ -459,9 +459,9 @@ class DetailCallingTableViewController: UITableViewController {
 // MARK: Extensions
 
 
-extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
-    
-}
+//extension DetailCallingTableViewController: EditItemTableViewControllerDelegate {
+//
+//}
 
 extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
     func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan) {

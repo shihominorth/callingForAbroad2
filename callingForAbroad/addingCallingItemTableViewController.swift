@@ -11,6 +11,7 @@ import UIKit
 protocol AddItemTableViewControllerDelegate: class {
     func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController)
     func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem)
+    
 }
 
 class addingCallingItemTableViewController: UITableViewController {
@@ -223,6 +224,8 @@ class addingCallingItemTableViewController: UITableViewController {
     @IBAction func add(_ sender: Any) {
         
         delegate?.addItemViewController(self, didFinishAdding: item)
+        let notificationClass = LocalNortificationDelegate(timezoneIdentifier: item.localName, date: item.localDate!)
+        notificationClass.setNotificationDate()
         navigationController?.popViewController(animated: true)
         
     }

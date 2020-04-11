@@ -15,6 +15,7 @@ import UserNotifications
 @UIApplicationMain
         class AppDelegate: UIResponder, UIApplicationDelegate {
     
+  
     
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "callingForAbroad")
@@ -41,6 +42,9 @@ import UserNotifications
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        let center = UNUserNotificationCenter.current()
+          center.delegate = self
         
         if let apiKey = KeyManager().getValue(key:"apiKey") as? String {
                GMSServices.provideAPIKey(apiKey)

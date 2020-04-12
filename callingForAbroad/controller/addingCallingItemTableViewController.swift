@@ -45,7 +45,7 @@ class addingCallingItemTableViewController: UITableViewController {
         
         item.localDate = inputDate
         item.destinationTime = inputDate
-       
+        item.localName = TimeZone.current.identifier
     }
     
     // MARK: - Table view data source
@@ -240,13 +240,13 @@ class addingCallingItemTableViewController: UITableViewController {
             
             else if item.nameCallingFor != "" && item.destinationName == "" {
                 
-                infoUserNeed = "・ Destination name"
+                infoUserNeed = "・ Where will you call"
                
             }
             
             else if item.destinationName == "" && item.nameCallingFor == "" {
                 
-                infoUserNeed = "・ You'll call \n・ Destination name"
+                infoUserNeed = "・ You'll call \n・ Where will you call"
                 
             }
             
@@ -262,6 +262,7 @@ class addingCallingItemTableViewController: UITableViewController {
             delegate?.addItemViewController(self, didFinishAdding: item)
             let notificationClass = LocalNortificationDelegate(timezoneIdentifier: item.localName, date: item.localDate!)
             notificationClass.setNotificationDate()
+            notificationClass.setNotificationDate(before: Int(item.notification)!)
             navigationController?.popViewController(animated: true)
         }
         

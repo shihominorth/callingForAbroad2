@@ -951,7 +951,11 @@
                         <viewLayoutGuide key="safeArea" id="HiZ-qc-5Nr"/>
                     </view>
                     <navigationItem key="navigationItem" id="b6J-X9-V7F">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dv1-eg-ES3"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dv1-eg-ES3">
+                            <connections>
+                                <action selector="cancel:" destination="yZX-sQ-cfo" id="VV7-H0-jQQ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="label" destination="dLw-jz-awl" id="Oaq-Zu-OBF"/>

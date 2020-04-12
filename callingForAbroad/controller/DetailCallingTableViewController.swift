@@ -452,8 +452,7 @@ class DetailCallingTableViewController: UITableViewController {
     //MARK: - BUTTON
     
     @IBAction func back() {
-    
-    // MARK: PROBLEM! changed value is stored in coredata as soon as changing value
+  
         delegate?.DetailCallingTableViewController(self, cancelItem: self.item!, indexPath: self.indexPath)
         
         navigationController?.popViewController(animated: true)
@@ -467,6 +466,7 @@ class DetailCallingTableViewController: UITableViewController {
         
         let notificationClass = LocalNortificationDelegate(timezoneIdentifier: edittedItem.localName!, date: edittedItem.localDate!)
         notificationClass.setNotificationDate()
+        notificationClass.setNotificationDate(before: Int(edittedItem.notification!)!)
         
         navigationController?.popViewController(animated: true)
     }

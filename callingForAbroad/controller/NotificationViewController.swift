@@ -40,12 +40,15 @@ class NotificationViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        tableView.delegate = self as? UITableViewDelegate
-        tableView.dataSource = self as? UITableViewDataSource
+        tableView.delegate = self
+        tableView.dataSource = self 
         
     }
     
 
+    @IBAction func cancel(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 
@@ -101,7 +104,6 @@ extension NotificationViewController: UITableViewDataSource {
         
         delegate?.editItemViewController(self, didFinishEditting: item!)
         } else {
-              let cell = (tableView.cellForRow(at: indexPath) as? PickNotificationTimeTableViewCell)!
             
             switch indexPath.row {
             case 0:

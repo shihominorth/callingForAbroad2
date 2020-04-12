@@ -130,7 +130,7 @@ class LocalNameViewController: UIViewController {
         tableView.dataSource = self
         searchBar.delegate = self
         
-        
+        tableView.tableFooterView = UIView()
     }
     
     
@@ -276,12 +276,17 @@ extension LocalNameViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//        self.view.frame.origin.y = -15
+//
+//    }
+//
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
         self.view.frame.origin.y = -15
-        
     }
-    
 }
 
 extension LocalNameViewController: UISearchBarDelegate {
@@ -293,6 +298,7 @@ extension LocalNameViewController: UISearchBarDelegate {
         if searchBar.text != "" {
 
             let text = searchBar.text!
+            cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
 
             for city in cityNamesTimezone {
     
@@ -318,6 +324,7 @@ extension LocalNameViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.becomeFirstResponder()
             self.searchBar.endEditing(true)
     //        navigationController?.popViewController(animated: true)
     }

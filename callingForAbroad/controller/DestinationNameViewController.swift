@@ -111,18 +111,24 @@ class DestinationNameViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if item?.destinationName != nil {
+            
             searchBar.text = item?.destinationName
             placeLabel.text = item?.destinationName
             original = item?.destinationName
+        
         }
         else if text != "" {
+           
             searchBar.text = text
             placeLabel.text = text
             original = text
+        
         }
         else {
+        
             searchBar.text = ""
             placeLabel.text = "Type the place"
+        
         }
         
         tableView.delegate = self
@@ -131,6 +137,7 @@ class DestinationNameViewController: UIViewController {
         searchBar.delegate = self
         
         // textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
+        tableView.tableFooterView = UIView()
     }
     
     /*
@@ -146,7 +153,7 @@ class DestinationNameViewController: UIViewController {
         searchBar.resignFirstResponder()
             self.view.frame.origin.y = -15
             
-            if !searchBar.isFirstResponder {
+            if searchBar.isFirstResponder == false {
                 sender.isEnabled = false
             }
     }
@@ -207,6 +214,8 @@ extension DestinationNameViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        searchBar.resignFirstResponder()
         let regions = nameRegion()
         
         for (index, region) in regions.enumerated() {
@@ -225,10 +234,15 @@ extension DestinationNameViewController: UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchBar.resignFirstResponder()
-        self.view.frame.origin.y = -15
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//        self.view.frame.origin.y = -15
+//    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+          searchBar.resignFirstResponder()
+          self.view.frame.origin.y = -15
+      }
     
 }
 
@@ -246,6 +260,8 @@ extension DestinationNameViewController: UISearchBarDelegate {
         if searchBar.text != "" {
             
             let text = searchBar.text!
+            
+            cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
             
             for city in cityNamesTimezone {
                 
@@ -266,9 +282,7 @@ extension DestinationNameViewController: UISearchBarDelegate {
         }
         
     }
-    
-    
-    
+
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
@@ -276,6 +290,7 @@ extension DestinationNameViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
+        searchBar.becomeFirstResponder()
         //        navigationController?.popViewController(animated: true)
     }
     

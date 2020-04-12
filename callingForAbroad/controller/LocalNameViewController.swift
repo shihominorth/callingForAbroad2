@@ -80,9 +80,10 @@ class LocalNameViewController: UIViewController {
         
         for timezone in cityNamesTimezone {
             let regionFromCityNamesTimeZone = timezone.split(separator: "/")
-            
             if regionName == regionFromCityNamesTimeZone[0] {
+           
                 arr.append(String(timezone))
+                
             }
         }
         
@@ -128,7 +129,7 @@ class LocalNameViewController: UIViewController {
         }
         else {
             searchBar.text = ""
-            placeLabel.text = "type the name of the city"
+            placeLabel.text = TimeZone.current.identifier
         }
         
         //picker.isHidden = true
@@ -143,6 +144,7 @@ class LocalNameViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
+        
         
     }
     
@@ -231,9 +233,9 @@ extension LocalNameViewController: UITableViewDataSource {
         
         for (index, region) in regions.enumerated() {
             if indexPath.section == index {
-                
                 cities = nameCities(regionName: region)
-                cell.label.text = cities[indexPath.row]
+                let onlyCityName = cities[indexPath.row].split(separator: "/")
+                cell.label.text = String(onlyCityName[1])
             }
         }
         
@@ -265,49 +267,6 @@ extension LocalNameViewController: UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-
-//extension LocalNameViewController: UIPickerViewDelegate {
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//          print(row)
-//          return cityNamesTimezone[row]
-//      }
-//
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 40.0
-//    }
-//}
-//extension LocalNameViewController: UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return cityNamesTimezone.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        textField.text = cityNamesTimezone[row]
-////        self.view.endEditing(true)
-//    }
-//
-
-//}
-
-extension LocalNameViewController: UITextFieldDelegate {
-    //    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-    //        self.view.endEditing(false)
-    //
-    //        return true
-    //    }
-    
-    //    func textFieldDidBeginEditing(_ textField: UITextField) {
-    //        self.showUpPicker(textField: self.textField)
-    //    }
 }
 
 

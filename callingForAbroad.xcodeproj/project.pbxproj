@@ -171,10 +171,10 @@
 		6F047B032394BB5C00AD3F09 /* controller */ = {
 			isa = PBXGroup;
 			children = (
-				6F84A6E62418A45600EECBA2 /* LocalNameViewController.swift */,
 				6F60733424417F7B008E6817 /* addingCallingItemTableViewController.swift */,
 				6F3BF39A2388BADF003CE424 /* DetailCallingTableViewController.swift */,
 				6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */,
+				6F84A6E62418A45600EECBA2 /* LocalNameViewController.swift */,
 				6FFCD84A244177A5007CC109 /* PlaceCallingAtViewController.swift */,
 				6F60732C24417F32008E6817 /* NotificationViewController.swift */,
 				6F60732E24417F47008E6817 /* nameCallingViewController.swift */,

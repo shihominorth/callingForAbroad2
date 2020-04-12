@@ -55,12 +55,19 @@ class nameCallingViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+
         if item?.nameCallingFor != nil {
             textField.text = item?.nameCallingFor
         }
-        else if text != "" {
-         textField.text = text
+        
+        if text != "" {
+            textField.text = text
+        } else {
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
         }
+        
+        textField.delegate = self
     }
     
 
@@ -74,4 +81,18 @@ class nameCallingViewController: UIViewController {
     }
     */
 
+}
+
+extension nameCallingViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+        return true
+    
+    }
 }

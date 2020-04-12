@@ -42,6 +42,10 @@ class addingCallingItemTableViewController: UITableViewController {
         
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
         tableView.tableFooterView = UIView()
+        
+        item.localDate = inputDate
+        item.destinationTime = inputDate
+       
     }
     
     // MARK: - Table view data source
@@ -138,7 +142,7 @@ class addingCallingItemTableViewController: UITableViewController {
             
         else if indexPath.section == 2 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "local name", for: indexPath) as? LocalNameAddingTableViewCell)!
-            
+          
             cell.label.text = item.localName
             
             return cell
@@ -223,10 +227,43 @@ class addingCallingItemTableViewController: UITableViewController {
     
     @IBAction func add(_ sender: Any) {
         
-        delegate?.addItemViewController(self, didFinishAdding: item)
-        let notificationClass = LocalNortificationDelegate(timezoneIdentifier: item.localName, date: item.localDate!)
-        notificationClass.setNotificationDate()
-        navigationController?.popViewController(animated: true)
+        
+        if  item.nameCallingFor == "" || item.destinationName == "" {
+            var alertController: UIAlertController?
+            var infoUserNeed: String?
+            
+            if item.nameCallingFor == "" && item.destinationName != "" {
+    
+                infoUserNeed = "・You'll call"
+            
+            }
+            
+            else if item.nameCallingFor != "" && item.destinationName == "" {
+                
+                infoUserNeed = "・ Destination name"
+               
+            }
+            
+            else if item.destinationName == "" && item.nameCallingFor == "" {
+                
+                infoUserNeed = "・ You'll call \n・ Destination name"
+                
+            }
+            
+            alertController = UIAlertController(title: "Error", message: "You need to enter simple info below \n\n\(String(describing: infoUserNeed!))", preferredStyle: .alert)
+            
+            let defaultAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+            alertController!.addAction(defaultAction)
+            
+            present(alertController!, animated: true, completion: nil)
+            
+        } else {
+            
+            delegate?.addItemViewController(self, didFinishAdding: item)
+            let notificationClass = LocalNortificationDelegate(timezoneIdentifier: item.localName, date: item.localDate!)
+            notificationClass.setNotificationDate()
+            navigationController?.popViewController(animated: true)
+        }
         
     }
     
@@ -424,7 +461,7 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
-       
+        
         self.isFirstDateValuePassed = false
         inputDate = date
         
@@ -454,8 +491,6 @@ extension addingCallingItemTableViewController: DatePickerDelegate {
             break
         }
         
-        
-        
     }
     
 }
@@ -471,6 +506,7 @@ extension addingCallingItemTableViewController: nameCallingViewControllerDelegat
 
 extension addingCallingItemTableViewController: LocalNameViewControllerDelegate2 {
     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting localName: String!) {
+
         self.item.localName = localName
         tableView.reloadData()
     }
@@ -488,6 +524,7 @@ extension addingCallingItemTableViewController: DestinationNameViewControllerDel
 
 extension addingCallingItemTableViewController: NotificationViewControllerDelegate2 {
     func editItemViewController(_ controller: NotificationViewController, didFinishEditting notification: String) {
+       
         self.item.notification = notification
         tableView.reloadData()
     }

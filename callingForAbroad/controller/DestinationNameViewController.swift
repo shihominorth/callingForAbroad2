@@ -96,12 +96,10 @@ class DestinationNameViewController: UIViewController {
         
         for timezone in cityNamesTimezone {
             let regionFromCityNamesTimeZone = timezone.split(separator: "/")
-            
             if regionName == regionFromCityNamesTimeZone[0] {
                 arr.append(String(timezone))
             }
         }
-    
         
         return arr
     }
@@ -131,38 +129,6 @@ class DestinationNameViewController: UIViewController {
         
         // textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
     }
-    
-    
-    
-    //       @objc func showUpPicker() {
-    //           self.picker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
-    //           self.picker?.delegate = self
-    //           self.picker?.dataSource = self
-    //           textField.inputView = self.picker
-    //
-    //           // ToolBar
-    //           let toolBar = UIToolbar()
-    //           toolBar.barStyle = .default
-    //           toolBar.isTranslucent = true
-    //           toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
-    //           toolBar.sizeToFit()
-    //
-    //           // Adding Button ToolBar
-    //           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(LocalNameViewController.doneClick))
-    //           let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    //           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(LocalNameViewController.cancelClick))
-    //           toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-    //           toolBar.isUserInteractionEnabled = true
-    //           textField.inputAccessoryView = toolBar
-    //       }
-    //
-    //       //MARK:- Button
-    //       @objc func doneClick() {
-    //           textField.resignFirstResponder()
-    //       }
-    //       @objc func cancelClick() {
-    //           textField.resignFirstResponder()
-    //       }
     
     /*
      // MARK: - Navigation
@@ -196,11 +162,6 @@ extension DestinationNameViewController: UITableViewDataSource {
             }
         }
         
-        //        for region in regions {
-        //            arr = nameCities(regionName: region)
-        //            return arr.count
-        //        }
-        //
         return 0
     }
     
@@ -214,7 +175,8 @@ extension DestinationNameViewController: UITableViewDataSource {
             if indexPath.section == index {
                 
                 cities = nameCities(regionName: region)
-                cell.label.text = cities[indexPath.row]
+                let onlyCityName = cities[indexPath.row].split(separator: "/")
+                cell.label.text = String(onlyCityName[1])
             }
         }
         
@@ -229,17 +191,17 @@ extension DestinationNameViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let regions = nameRegion()
+        let regions = nameRegion()
         
-               for (index, region) in regions.enumerated() {
-                   if indexPath.section == index {
-
-                       let cities = nameCities(regionName: region)
-                       item?.destinationName = cities[indexPath.row]
-                    placeLabel.text = cities[indexPath.row]
-                     
-                   }
-               }
+        for (index, region) in regions.enumerated() {
+            if indexPath.section == index {
+                
+                let cities = nameCities(regionName: region)
+                item?.destinationName = cities[indexPath.row]
+                placeLabel.text = cities[indexPath.row]
+                
+            }
+        }
         
         
         
@@ -293,36 +255,7 @@ extension DestinationNameViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
-//        navigationController?.popViewController(animated: true)
+        //        navigationController?.popViewController(animated: true)
     }
     
 }
-
-//extension DestinationNameViewController: UIPickerViewDelegate {
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//          print(row)
-//          return cityNamesTimezone[row]
-//      }
-//
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 40.0
-//    }
-//}
-//extension DestinationNameViewController: UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return cityNamesTimezone.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        textField.text = cityNamesTimezone[row]
-//    }
-//
-//
-//}

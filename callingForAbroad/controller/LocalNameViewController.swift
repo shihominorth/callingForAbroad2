@@ -32,6 +32,7 @@ class LocalNameViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var text = ""
+    var original: String?
     
     weak var delegate:LocalNameViewControllerDelegate?
     
@@ -58,20 +59,7 @@ class LocalNameViewController: UIViewController {
         }
         
         return names
-        //        var names:[String] = []
-        //        cityNamesTimezone.map { $0 -> [String] in
-        //            var array:[String] = []
-        //            let region = $0.split(separator: "/")
-        //
-        //            if !array.contains(String(region[0])) {
-        //                array.append(String(region[0]))
-        //            }
-        //
-        //            return array
-        //        }
-        
-        
-        
+ 
     }
     
     func nameCities(regionName: String) -> [String] {
@@ -120,12 +108,17 @@ class LocalNameViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if item?.localName != nil {
+            
             searchBar.text = item!.localName
             placeLabel.text = item!.localName
+            original = item!.localName
+        
         }
         else if text != "" {
+            
             searchBar.text = text
             placeLabel.text = text
+            original = text
         }
         else {
             searchBar.text = ""
@@ -164,6 +157,10 @@ class LocalNameViewController: UIViewController {
     //    }
     
     //MARK:- Button
+    @IBAction func cancel(_ sender: Any) {
+        item?.localName = original
+        navigationController?.popViewController(animated: true)
+    }
     //    @objc func doneClick() {
     //        textField.resignFirstResponder()
     //    }

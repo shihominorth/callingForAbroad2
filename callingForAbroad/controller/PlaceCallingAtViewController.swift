@@ -22,6 +22,7 @@ class PlaceCallingAtViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     var isAdding: Bool?
     var text: String?
+    var original: String?
     
     
     
@@ -55,9 +56,11 @@ class PlaceCallingAtViewController: UIViewController {
 
         if item?.placeCallingAt != nil {
             textField.text = item!.placeCallingAt
+            original = item!.placeCallingAt
         }
         else if text != "" {
             textField.text = text
+            original = text
         }
         else {
             self.navigationItem.rightBarButtonItem!.isEnabled = false
@@ -79,6 +82,10 @@ class PlaceCallingAtViewController: UIViewController {
     }
     */
 
+    @IBAction func cancel(_ sender: Any) {
+        item?.placeCallingAt = original
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension PlaceCallingAtViewController: UITextFieldDelegate {

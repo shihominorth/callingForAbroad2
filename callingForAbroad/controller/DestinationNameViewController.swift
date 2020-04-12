@@ -23,6 +23,7 @@ class DestinationNameViewController: UIViewController {
     var item: Plan?
     var indexPath = IndexPath()
     var text: String?
+    var original: String?
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -112,10 +113,12 @@ class DestinationNameViewController: UIViewController {
         if item?.destinationName != nil {
             searchBar.text = item?.destinationName
             placeLabel.text = item?.destinationName
+            original = item?.destinationName
         }
         else if text != "" {
             searchBar.text = text
             placeLabel.text = text
+            original = text
         }
         else {
             searchBar.text = ""
@@ -147,7 +150,11 @@ class DestinationNameViewController: UIViewController {
                 sender.isEnabled = false
             }
     }
-
+    
+    @IBAction func cancel(_ sender: Any) {
+        item?.destinationName = original
+        navigationController?.popViewController(animated: true)
+    }
         
 }
 

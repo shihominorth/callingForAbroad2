@@ -650,6 +650,11 @@
                         <viewLayoutGuide key="safeArea" id="NtQ-8G-SnS"/>
                     </view>
                     <navigationItem key="navigationItem" id="Pag-47-Ith">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="zsZ-R6-kFZ">
+                            <connections>
+                                <action selector="cancel:" destination="zUu-t2-Gn9" id="lLq-wl-e68"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="done" id="WgY-Zi-D3P">
                             <connections>
                                 <action selector="done:" destination="zUu-t2-Gn9" id="WHj-Hr-t7h"/>
@@ -744,6 +749,11 @@
                         <viewLayoutGuide key="safeArea" id="AtA-VD-Kcd"/>
                     </view>
                     <navigationItem key="navigationItem" id="F4s-Jg-MYm">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Jjz-NJ-nOS">
+                            <connections>
+                                <action selector="cancel:" destination="eay-85-0V7" id="bMJ-0N-svy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="kGj-SR-ZWb">
                             <connections>
                                 <action selector="done:" destination="eay-85-0V7" id="9JW-Eq-91H"/>
@@ -854,6 +864,11 @@
                         <viewLayoutGuide key="safeArea" id="f9J-Y4-j0s"/>
                     </view>
                     <navigationItem key="navigationItem" id="YpQ-GS-aaU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="Gy8-Lp-Bnw">
+                            <connections>
+                                <action selector="cancel:" destination="qcx-36-nLX" id="pHf-Kq-daU"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="LTa-2w-KiL">
                             <connections>
                                 <action selector="done:" destination="qcx-36-nLX" id="d53-Ck-rz4"/>
@@ -935,7 +950,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="HiZ-qc-5Nr"/>
                     </view>
-                    <navigationItem key="navigationItem" id="b6J-X9-V7F"/>
+                    <navigationItem key="navigationItem" id="b6J-X9-V7F">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="dv1-eg-ES3"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="label" destination="dLw-jz-awl" id="Oaq-Zu-OBF"/>
                         <outlet property="tableView" destination="sQa-ug-TTE" id="h1y-E7-87N"/>
@@ -977,6 +994,11 @@
                         <viewLayoutGuide key="safeArea" id="E6u-gS-BRy"/>
                     </view>
                     <navigationItem key="navigationItem" id="0Ol-qX-fea">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="SIE-dG-bRX">
+                            <connections>
+                                <action selector="cancel:" destination="Sgg-tT-IUc" id="9ae-9W-ct9"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="st5-ux-UWa">
                             <connections>
                                 <action selector="done:" destination="Sgg-tT-IUc" id="CNw-mM-eiC"/>

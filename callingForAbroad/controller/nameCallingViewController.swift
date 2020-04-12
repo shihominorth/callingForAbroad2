@@ -21,6 +21,7 @@ protocol nameCallingViewControllerDelegate2: class {
 class nameCallingViewController: UIViewController {
 
     var item: Plan?
+    var original: String?
     
     var text = ""
     var indexPath = IndexPath()
@@ -49,6 +50,10 @@ class nameCallingViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
     }
+    @IBAction func cancel(_ sender: Any) {
+        item?.nameCallingFor = original
+        navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewDidLoad() {
@@ -59,10 +64,12 @@ class nameCallingViewController: UIViewController {
 
         if item?.nameCallingFor != nil {
             textField.text = item?.nameCallingFor
+            original = item?.nameCallingFor
         }
         
         if text != "" {
             textField.text = text
+            original = text
         } else {
             self.navigationItem.rightBarButtonItem!.isEnabled = false
         }

@@ -139,7 +139,16 @@ class DestinationNameViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
-    
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+            self.view.frame.origin.y = -15
+            
+            if !searchBar.isFirstResponder {
+                sender.isEnabled = false
+            }
+    }
+
+        
 }
 
 
@@ -176,7 +185,7 @@ extension DestinationNameViewController: UITableViewDataSource {
                 
                 cities = nameCities(regionName: region)
                 let onlyCityName = cities[indexPath.row].split(separator: "/")
-                cell.label.text = String(onlyCityName[1])
+                cell.label.text = String(onlyCityName.last!)
             }
         }
         
@@ -207,6 +216,11 @@ extension DestinationNameViewController: UITableViewDataSource {
         
         
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+        self.view.frame.origin.y = -15
     }
     
 }

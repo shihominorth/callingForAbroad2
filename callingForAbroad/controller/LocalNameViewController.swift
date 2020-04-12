@@ -131,15 +131,7 @@ class LocalNameViewController: UIViewController {
             searchBar.text = ""
             placeLabel.text = TimeZone.current.identifier
         }
-        
-        //picker.isHidden = true
-        
-        //picker.reloadAllComponents()
-        
-        print(cityNamesTimezone)
-        //
-        //        textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
-        //
+
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -189,6 +181,16 @@ class LocalNameViewController: UIViewController {
      }
      */
     
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        
+        searchBar.resignFirstResponder()
+        self.view.frame.origin.y = -15
+        
+        if searchBar.isFirstResponder == false {
+            sender.isEnabled = false
+        }
+    }
+   
 }
 
 extension LocalNameViewController: UITableViewDelegate {
@@ -205,6 +207,7 @@ extension LocalNameViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+      
         let regions = nameRegion()
         var arr:[String] = []
         
@@ -233,9 +236,14 @@ extension LocalNameViewController: UITableViewDataSource {
         
         for (index, region) in regions.enumerated() {
             if indexPath.section == index {
+                if region == "GMT" {
+                    cities = nameCities(regionName: region)
+                    cell.label.text = cities[indexPath.row]
+                } else {
                 cities = nameCities(regionName: region)
                 let onlyCityName = cities[indexPath.row].split(separator: "/")
-                cell.label.text = String(onlyCityName[1])
+                    cell.label.text = String(onlyCityName.last!)
+                }
             }
         }
         
@@ -252,6 +260,9 @@ extension LocalNameViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        searchBar.resignFirstResponder()
+
          let regions = nameRegion()
         
                for (index, region) in regions.enumerated() {
@@ -267,10 +278,17 @@ extension LocalNameViewController: UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+        self.view.frame.origin.y = -15
+        
+    }
+    
 }
 
-
 extension LocalNameViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         var temp: [String] = []

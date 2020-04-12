@@ -42,7 +42,9 @@ class callinglistViewController: UITableViewController {
     
     fileprivate func getData() {
         do {
+            
             plans = try context.fetch(Plan.fetchRequest())
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
@@ -51,6 +53,16 @@ class callinglistViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         getData()
+        
+        plans = plans?.sorted {
+            $0.order < $1.order
+        }
+        
+        for plan in plans! {
+            print("original: \(plan.nameCallingFor!)")
+            print(plan.order)
+        }
+        
         tableView.reloadData()
     }
     
@@ -142,13 +154,20 @@ class callinglistViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        getData()
+
         let item = plans![sourceIndexPath.row]
-        //        context.delete(item)
-        //        context.insert(item)
-        plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
+
+        // MARK: can't chage order! // solved!
+//        plans![sourceIndexPath.row].setValue(Int64(destinationIndexPath.row), forKey: "order")
+//        plans![destinationIndexPath.row].setValue(Int64(sourceIndexPath.row), forKey: "order")
+//        appDelegate.saveContext()
+
         plans?.remove(at: sourceIndexPath.row)
         plans?.insert(item, at: destinationIndexPath.row)
+        
+        for (index, plan) in plans!.enumerated() {
+            plan.order = Int64(index)
+        }
         
         appDelegate.saveContext()
     }
@@ -174,6 +193,7 @@ class callinglistViewController: UITableViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                     let item = plans?[indexPath.row]
                     detailVC.item = item!
+                    detailVC.edittedItem = item!
                     detailVC.indexPath = indexPath
                     detailVC.delegate = self
                     detailVC.isFirstDateValuePassed = true
@@ -219,7 +239,7 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         plan.destinationTime = item.destinationTime
         plan.notification = item.notification
         plan.placeCallingAt = item.placeCallingAt
-        plan.order = plans?.count as NSObject?
+        plan.order = Int64(plans!.count)
         
         
         return plan
@@ -232,7 +252,7 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
         
         print(item.localDate!)
-        appDelegate.saveContext()
+//        appDelegate.saveContext()
         getData()
         
         self.tableView.reloadData()
@@ -240,7 +260,7 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
     
     func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath){
         guard let rowIndex = plans?.count else { return }
-        item.order = plans?.count as NSObject?
+        item.order = Int64(plans!.count)
         appDelegate.saveContext()
         plans?.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)

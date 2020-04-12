@@ -2,7 +2,7 @@
 //  Plan+CoreDataProperties.swift
 //  checklist
 //
-//  Created by 北島　志帆美 on 2020-03-06.
+//  Created by 北島　志帆美 on 2020-04-11.
 //  Copyright © 2020 北島　志帆美. All rights reserved.
 //
 //
@@ -24,7 +24,7 @@ extension Plan {
     @NSManaged public var localName: String?
     @NSManaged public var nameCallingFor: String?
     @NSManaged public var notification: String?
-    @NSManaged public var order: NSObject?
+    @NSManaged public var order: Int64
     @NSManaged public var placeCallingAt: String?
 
 }

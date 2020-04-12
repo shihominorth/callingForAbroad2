@@ -19,8 +19,9 @@ protocol DetailCallingTableViewControllerDelegate: class {
 class DetailCallingTableViewController: UITableViewController {
     
     var callingCelllist = CallingCellList()
-    //    var item = callingCellItem()
-    var item = Plan()
+    
+    var item: Plan?
+    var edittedItem = Plan()
     var indexPath = IndexPath()
     weak var delegate: DetailCallingTableViewControllerDelegate?
     
@@ -53,7 +54,7 @@ class DetailCallingTableViewController: UITableViewController {
         //        showUpDatePicker()
         tableView.tableFooterView = UIView()
         tableView.register(DayPickerTableViewCell.self, forCellReuseIdentifier: "datePicker")
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,21 +73,21 @@ class DetailCallingTableViewController: UITableViewController {
 //        
         if segue.identifier == "edittingNameCallingFor" {
             if let edittingVC = segue.destination as? nameCallingViewController {
-                edittingVC.item = self.item
+                edittingVC.item = self.edittedItem
                 edittingVC.indexPath = self.indexPath
                 edittingVC.delegate = self
             }
         }
         if segue.identifier == "edittingLocalName" {
             if let edittingVC = segue.destination as? LocalNameViewController {
-                edittingVC.item = self.item
+                edittingVC.item = self.edittedItem
                 edittingVC.indexPath = self.indexPath
                 edittingVC.delegate = self
             }
         }
         if segue.identifier == "edittingDestinationName" {
             if let edittingVC = segue.destination as? DestinationNameViewController {
-                edittingVC.item = self.item
+                edittingVC.item = self.edittedItem
                 edittingVC.indexPath = self.indexPath
                 edittingVC.delegate = self
             }
@@ -94,7 +95,7 @@ class DetailCallingTableViewController: UITableViewController {
         
         if segue.identifier == "edittingNotification" {
             if let edittingVC = segue.destination as? NotificationViewController {
-                edittingVC.item = self.item
+                edittingVC.item = self.edittedItem
                 edittingVC.indexPath = self.indexPath
                 edittingVC.delegate = self as NotificationViewControllerDelegate
             }
@@ -102,7 +103,7 @@ class DetailCallingTableViewController: UITableViewController {
         
         if segue.identifier == "editting place calling at" {
             if let edittingVC = segue.destination as? PlaceCallingAtViewController {
-                edittingVC.item = self.item
+                edittingVC.item = self.edittedItem
                 edittingVC.indexPath = self.indexPath
                 edittingVC.delegate = self as PlaceCallingAtViewControllerDelegate
             }
@@ -152,26 +153,26 @@ class DetailCallingTableViewController: UITableViewController {
             
             switch datePickerIndexPath?.section {
             case 1:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (edittedItem.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
                 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
                 
-                datePickerCell.datePicker.setDate(item.localDate!, animated: true)
+                datePickerCell.datePicker.setDate(edittedItem.localDate!, animated: true)
             //                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 3:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.localName!)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (edittedItem.localName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
                 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
-                datePickerCell.datePicker.setDate(item.localDate!, animated: true)
+                datePickerCell.datePicker.setDate(edittedItem.localDate!, animated: true)
             //                datePickerCell.updateCell(date: item.localDate!, indexPath: indexPath)
             case 6:
-                datePickerCell.datePicker.timeZone = TimeZone(identifier: (item.destinationName!)) ?? TimeZone.current
+                datePickerCell.datePicker.timeZone = TimeZone(identifier: (edittedItem.destinationName!)) ?? TimeZone.current
                 print(datePickerCell.datePicker.timeZone!)
                 //                datePickerCell.datePicker.setDate(inputDates, animated: true)
                 //                datePickerCell.updateCell(date: inputDates, indexPath: indexPath)
-                datePickerCell.datePicker.setDate(item.localDate!, animated: true)
+                datePickerCell.datePicker.setDate(edittedItem.localDate!, animated: true)
             //                datePickerCell.updateCell(date: item.destinationTime!, indexPath: indexPath)
             default:
                 break
@@ -198,7 +199,7 @@ class DetailCallingTableViewController: UITableViewController {
         if indexPath.section == 0 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "NameCalling", for: indexPath) as? NameCallingForTableViewCell)!
             
-            cell.NameCallingForLabel.text = item.nameCallingFor ?? ""
+            cell.NameCallingForLabel.text = edittedItem.nameCallingFor ?? ""
             
             
             // Configure the cell...
@@ -213,11 +214,11 @@ class DetailCallingTableViewController: UITableViewController {
             
             // Configure the cell...
             if isFirstDateValuePassed == true {
-                cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
+                cell.DateCallingLabel.text = edittedItem.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: edittedItem.localName!) ?? "None"
                 
             } else {
                 //                cell.DateCallingLabel.text = item.localDate?.convertToString(dateformat: .date, timeZoneIdentifier: item.localName!) ?? "None"
-                cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 0)
+                cell.updateText(date: edittedItem.localDate!, timeZoneIdentifier: edittedItem.localName ?? TimeZone.current.identifier, indexNumber: 0)
                 appDelegate.saveContext()
             }
             return cell
@@ -230,7 +231,7 @@ class DetailCallingTableViewController: UITableViewController {
             // Configure the cell...
             
             
-            cell.localNameLabel.text = item.localName ?? "None"
+            cell.localNameLabel.text = edittedItem.localName ?? "None"
             
             return cell
         }
@@ -241,11 +242,11 @@ class DetailCallingTableViewController: UITableViewController {
             // Configure the cell...
             
             if isFirstDateValuePassed == true {
-                cell.LocalTimeLabel.text = item.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: item.localName!) ?? "None"
+                cell.LocalTimeLabel.text = edittedItem.localDate?.convertToString(dateformat: .time, timeZoneIdentifier: edittedItem.localName!) ?? "None"
                 
             } else {
                 //                cell.updateText(date: inputDates, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
-                cell.updateText(date: item.localDate!, timeZoneIdentifier: item.localName ?? TimeZone.current.identifier, indexNumber: 1)
+                cell.updateText(date: edittedItem.localDate!, timeZoneIdentifier: edittedItem.localName ?? TimeZone.current.identifier, indexNumber: 1)
                 //                item.localDate = cell.LocalTimeLabel.text?.convertStringToDate(dateformat: .dateWithTime, timeZoneIdentifier: item.localName!)
                 appDelegate.saveContext()
             }
@@ -257,17 +258,17 @@ class DetailCallingTableViewController: UITableViewController {
             
             // Configure the cell...
             
-            cell.DestinationNameLabel.text = item.destinationName ?? "None"
+            cell.DestinationNameLabel.text = edittedItem.destinationName ?? "None"
             return cell
         }
         else if indexPath.section == 5 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "jet Lag", for: indexPath) as? JetLagTableViewCell)!
             
             // Configure the cell...
-            let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
+            let getTimeDifference = GetTimeDifference(localName: edittedItem.localName, destinationName: edittedItem.destinationName, date: nil)
             
-            item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
-            cell.jetLagLabel.text = item.jetLag ?? "None"
+            edittedItem.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+            cell.jetLagLabel.text = edittedItem.jetLag ?? "None"
             
             return cell
         }
@@ -278,10 +279,10 @@ class DetailCallingTableViewController: UITableViewController {
             // Configure the cell...
             
             if isFirstDateValuePassed == true {
-                cell.destinationTimeLabel.text = item.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: item.destinationName!)
+                cell.destinationTimeLabel.text = edittedItem.destinationTime?.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: edittedItem.destinationName!)
                 
             } else {
-                cell.updateText(date: inputDates, timeZoneIdentifier: item.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
+                cell.updateText(date: inputDates, timeZoneIdentifier: edittedItem.destinationName ?? TimeZone.current.identifier, indexNumber: 2)
                 //                item.destinationTime = cell.destinationTimeLabel.text
                 
                 appDelegate.saveContext()
@@ -293,14 +294,14 @@ class DetailCallingTableViewController: UITableViewController {
         else if indexPath.section == 7 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "notification", for: indexPath) as? NotificaitonTableViewCell)!
             
-            cell.label.text = item.notification ?? "None"
+            cell.label.text = edittedItem.notification ?? "None"
             
             return cell
         }
         else if indexPath.section == 8 {
             let cell = (tableView.dequeueReusableCell(withIdentifier: "detail place calling at ", for: indexPath) as? DetailPlaceCallingAtTableViewCell)!
             
-            cell.label.text = item.placeCallingAt ?? "None"
+            cell.label.text = edittedItem.placeCallingAt ?? "None"
             
             return cell
         }
@@ -345,11 +346,11 @@ class DetailCallingTableViewController: UITableViewController {
                 switch datePickerIndexPath.section {
                 case 1, 3:
                     
-                    datePickerCell.datePicker.setDate(item.localDate!, animated: true)
+                    datePickerCell.datePicker.setDate(edittedItem.localDate!, animated: true)
                     
                 case 6:
                     
-                    datePickerCell.datePicker.setDate(item.destinationTime!, animated: true)
+                    datePickerCell.datePicker.setDate(edittedItem.destinationTime!, animated: true)
                     
                 default:
                     break
@@ -449,8 +450,21 @@ class DetailCallingTableViewController: UITableViewController {
     //MARK: - BUTTON
     
     @IBAction func back() {
+    
+    // MARK: PROBLEM! changed value is stored in coredata as soon as changing value
+ 
         
-        delegate?.DetailCallingTableViewController(self, didFinishEditting: item, indexPath: self.indexPath)
+        navigationController?.popViewController(animated: true)
+    }
+    
+    
+    @IBAction func done(_ sender: Any) {
+        
+        delegate?.DetailCallingTableViewController(self, didFinishEditting: edittedItem, indexPath: self.indexPath)
+        
+        let notificationClass = LocalNortificationDelegate(timezoneIdentifier: edittedItem.localName!, date: edittedItem.localDate!)
+        notificationClass.setNotificationDate()
+        
         navigationController?.popViewController(animated: true)
     }
 }
@@ -465,7 +479,7 @@ class DetailCallingTableViewController: UITableViewController {
 
 extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
     func editItemViewController(_ controller: nameCallingViewController, didFinishEditting item: Plan) {
-        self.item = item
+        self.edittedItem = item
         appDelegate.saveContext()
         self.tableView.reloadData()
     }
@@ -473,7 +487,7 @@ extension DetailCallingTableViewController: nameCallingViewControllerDelegate {
 
 extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
     func editItemViewController(_ controller: LocalNameViewController, didFinishEditting item: Plan) {
-        self.item = item
+        self.edittedItem = item
         appDelegate.saveContext()
         self.tableView.reloadData()
     }
@@ -483,7 +497,7 @@ extension DetailCallingTableViewController: LocalNameViewControllerDelegate {
 extension DetailCallingTableViewController: DestinationNameViewControllerDelegate {
     
     func editItemViewController(_ controller: DestinationNameViewController, didFinishEditting item: Plan) {
-        self.item = item
+        self.edittedItem = item
         appDelegate.saveContext()
         self.tableView.reloadData()
     }
@@ -492,7 +506,7 @@ extension DetailCallingTableViewController: DestinationNameViewControllerDelegat
 
 extension DetailCallingTableViewController: NotificationViewControllerDelegate {
     func editItemViewController(_ controller: NotificationViewController, didFinishEditting item: Plan) {
-        self.item = item
+        self.edittedItem = item
         appDelegate.saveContext()
         self.tableView.reloadData()
     }
@@ -501,7 +515,7 @@ extension DetailCallingTableViewController: NotificationViewControllerDelegate {
 
 extension DetailCallingTableViewController: PlaceCallingAtViewControllerDelegate {
     func editItemViewController(_ controller: PlaceCallingAtViewController, didFinishEditting item: Plan) {
-        self.item = item
+        self.edittedItem = item
         appDelegate.saveContext()
         self.tableView.reloadData()
     }
@@ -514,7 +528,6 @@ extension DetailCallingTableViewController: DatePickerDelegate {
     
     func didChangeDate(date: Date, indexPath: IndexPath) {
         
-       
         self.isFirstDateValuePassed = false
         inputDates = date
         
@@ -522,19 +535,19 @@ extension DetailCallingTableViewController: DatePickerDelegate {
         switch indexPath.section {
         case 1, 3:
             
-            item.localDate = date
-            item.destinationTime = date
+            edittedItem.localDate = date
+            edittedItem.destinationTime = date
             
-             let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
-             item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+             let getTimeDifference = GetTimeDifference(localName: edittedItem.localName, destinationName: edittedItem.destinationName, date: nil)
+             edittedItem.jetLag = getTimeDifference.timeDifferenceWithCityNames()
             
         case 6:
             
-            item.localDate = date
-            item.destinationTime = date
+            edittedItem.localDate = date
+            edittedItem.destinationTime = date
             
-             let getTimeDifference = GetTimeDifference(localName: item.localName, destinationName: item.destinationName, date: nil)
-             item.jetLag = getTimeDifference.timeDifferenceWithCityNames()
+             let getTimeDifference = GetTimeDifference(localName: edittedItem.localName, destinationName: edittedItem.destinationName, date: nil)
+             edittedItem.jetLag = getTimeDifference.timeDifferenceWithCityNames()
             
         default:
             break

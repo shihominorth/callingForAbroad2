@@ -8,7 +8,7 @@
         <attribute name="localName" attributeType="String"/>
         <attribute name="nameCallingFor" attributeType="String"/>
         <attribute name="notification" attributeType="String"/>
-        <attribute name="order" optional="YES" attributeType="Transformable"/>
+        <attribute name="order" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="placeCallingAt" attributeType="String"/>
     </entity>
     <elements>

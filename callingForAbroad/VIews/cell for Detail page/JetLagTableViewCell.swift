@@ -11,6 +11,7 @@ import UIKit
 class JetLagTableViewCell: UITableViewCell {
 
     @IBOutlet weak var jetLagLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -11,6 +11,7 @@ import UIKit
 class DestinationTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var destinationTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
         destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)

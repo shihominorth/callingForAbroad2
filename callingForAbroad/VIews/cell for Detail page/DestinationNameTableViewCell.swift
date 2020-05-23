@@ -11,6 +11,7 @@ import UIKit
 class DestinationNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var DestinationNameLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

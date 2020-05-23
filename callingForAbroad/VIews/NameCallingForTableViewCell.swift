@@ -11,6 +11,7 @@ import UIKit
 class NameCallingForTableViewCell: UITableViewCell {
     
     @IBOutlet weak var NameCallingForLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

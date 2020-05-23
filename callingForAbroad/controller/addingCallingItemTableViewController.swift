@@ -260,9 +260,17 @@ class addingCallingItemTableViewController: UITableViewController {
         } else {
             
             delegate?.addItemViewController(self, didFinishAdding: item)
-            let notificationClass = LocalNortificationDelegate(timezoneIdentifier: item.localName, date: item.localDate!)
-            notificationClass.setNotificationDate()
-            notificationClass.setNotificationDate(before: Int(item.notification)!)
+            
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { (granted, _) in
+                
+                if granted {
+                    let notificationClass = LocalNortificationDelegate(timezoneIdentifier:
+                        self.item.localName, date: self.item.localDate!)
+                               notificationClass.setNotificationDate()
+                    notificationClass.setNotificationDate(before: Int(self.item.notification)!)
+                }
+            }
+            
             navigationController?.popViewController(animated: true)
         }
         

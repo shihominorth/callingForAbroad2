@@ -184,7 +184,7 @@ class callinglistViewController: UITableViewController {
             }
         }
         else if segue.identifier == "showDetailSegue" {
-            if let detailVC = segue.destination as? DetailCallingTableViewController {
+            if let detailVC = segue.destination as? EditingViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                     let item = plans?[indexPath.row]
                     detailVC.edittedItem = item!
@@ -241,8 +241,10 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     
 }
 
-extension callinglistViewController: DetailCallingTableViewControllerDelegate {
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, cancelItem item: callingCellItem, indexPath: IndexPath) {
+extension callinglistViewController: EdittingViewControllerDelegate {
+    
+    func DetailCallingTableViewController(_ controller: EditingViewController, cancelItem item: callingCellItem, indexPath: IndexPath) {
+        
         let plan = addValue(item: item)
         plan.order = Int64(indexPath.row)
         context.delete(plans![indexPath.row])
@@ -253,7 +255,7 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
         self.tableView.reloadData()
     }
     
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
+    func DetailCallingTableViewController(_ controller: EditingViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
         
         print(item.nameCallingFor!)
         //        appDelegate.saveContext()
@@ -262,7 +264,7 @@ extension callinglistViewController: DetailCallingTableViewControllerDelegate {
         self.tableView.reloadData()
     }
     
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath){
+    func DetailCallingTableViewController(_ controller: EditingViewController, addNewItem item: Plan, indexPath: IndexPath){
         guard let rowIndex = plans?.count else { return }
         item.order = Int64(plans!.count)
         appDelegate.saveContext()

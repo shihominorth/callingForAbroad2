@@ -306,15 +306,17 @@ extension LocalNameViewController: UISearchBarDelegate {
                     temp.append(city)
                 }
             }
-            print(temp)
 
             cityNamesTimezone.removeAll()
             cityNamesTimezone = temp
 
             tableView.reloadData()
+            
         } else {
+            
             cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
             tableView.reloadData()
+            
         }
 
     }

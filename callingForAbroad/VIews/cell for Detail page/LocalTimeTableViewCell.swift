@@ -12,6 +12,7 @@ class LocalTimeTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var LocalTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
         LocalTimeLabel.text = date.convertToString(dateformat: .time, timeZoneIdentifier: timeZoneIdentifier)

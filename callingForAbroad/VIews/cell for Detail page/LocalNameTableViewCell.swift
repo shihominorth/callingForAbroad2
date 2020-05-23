@@ -11,6 +11,7 @@ import UIKit
 class LocalNameTableViewCell: UITableViewCell {
 
     @IBOutlet weak var localNameLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

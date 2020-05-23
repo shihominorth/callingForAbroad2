@@ -1,13 +1,13 @@
+//////
+//////  EdittingDetailTableViewController.swift
+//////  checklist
+//////
+//////  Created by 北島　志帆美 on 2019-12-18.
+//////  Copyright © 2019 北島　志帆美. All rights reserved.
+//////
 ////
-////  EdittingDetailTableViewController.swift
-////  checklist
-////
-////  Created by 北島　志帆美 on 2019-12-18.
-////  Copyright © 2019 北島　志帆美. All rights reserved.
-////
-//
 //import UIKit
-//
+////
 //protocol EditItemTableViewControllerDelegate: class {
 ////    func editItemViewController(_ controller: EdittingDetailTableViewController, didFinishEditting item: callingCellItem, original originalItem: callingCellItem)
 //}
@@ -189,7 +189,7 @@
 //            tableView.deleteRows(at: [indexPath], with: .fade)
 //        } else if editingStyle == .insert {
 //            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-//        }    
+//        }
 //    }
 //    */
 //

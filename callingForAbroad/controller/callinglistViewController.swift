@@ -178,7 +178,7 @@ class callinglistViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemSegue" {
-            if let addItemViewController = segue.destination as? addingCallingItemTableViewController {
+            if let addItemViewController = segue.destination as? AddingViewController {
                 addItemViewController.delegate = self
                 addItemViewController.isEditting = false
             }
@@ -199,7 +199,7 @@ class callinglistViewController: UITableViewController {
 }
 
 extension callinglistViewController: AddItemTableViewControllerDelegate {
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
+    func addItemViewController(_ controller: AddingViewController, didFinishAdding item: callingCellItem) {
         guard let rowIndex = plans?.count else { return }
         let item = addValue(item: item)
         plans?.append(item)
@@ -209,11 +209,11 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
-    func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController) {
+    func addItemTableViewControllerDidCancel(_ controller: AddingViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
+    func addItemViewController(_ controller: AddingViewController, didFinishAdding item: Plan) {
         guard let rowIndex = plans?.count else { return }
         appDelegate.saveContext() 
         plans?.append(item)

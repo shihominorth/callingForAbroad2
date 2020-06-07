@@ -22,6 +22,7 @@ class PlaceCallingAtViewController: UIViewController {
     @IBOutlet weak var textField: UITextField!
     var isAdding: Bool?
     var text: String?
+    var original: String?
     
     
     
@@ -50,17 +51,24 @@ class PlaceCallingAtViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+            
+       
+
         if item?.placeCallingAt != nil {
             textField.text = item!.placeCallingAt
+            original = item!.placeCallingAt
         }
         else if text != "" {
             textField.text = text
+            original = text
         }
         else {
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
             textField.text = ""
         }
-        // Do any additional setup after loading the view.
+        
+        textField.delegate = self
+
     }
     
 
@@ -74,4 +82,22 @@ class PlaceCallingAtViewController: UIViewController {
     }
     */
 
+    @IBAction func cancel(_ sender: Any) {
+        item?.placeCallingAt = original
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension PlaceCallingAtViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+        return true
+    
+    }
 }

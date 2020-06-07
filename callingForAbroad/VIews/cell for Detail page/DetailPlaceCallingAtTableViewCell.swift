@@ -11,10 +11,13 @@ import UIKit
 class DetailPlaceCallingAtTableViewCell: UITableViewCell {
 
     @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "Where you will call at..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

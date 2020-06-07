@@ -26,8 +26,19 @@ class MapViewController: UIViewController {
         //        if CLLocationManager.locationServicesEnabled() {
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-        locationManager.requestWhenInUseAuthorization()
-       
+//        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            switch (CLLocationManager.authorizationStatus()) {
+            case .notDetermined, .restricted, .denied:
+                print("No access")
+            case .authorizedAlways, .authorizedWhenInUse:
+                print("Access")
+            }
+        } else {
+            print("Location services are not enabled")
+        }
+        
         //        }
         if CLLocationManager.authorizationStatus() == .authorizedAlways || CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
              locationManager.startUpdatingLocation()
@@ -46,22 +57,13 @@ class MapViewController: UIViewController {
                 mapView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             ])
             
-            
-            if CLLocationManager.locationServicesEnabled() {
-                switch (CLLocationManager.authorizationStatus()) {
-                case .notDetermined, .restricted, .denied:
-                    print("No access")
-                case .authorizedAlways, .authorizedWhenInUse:
-                    print("Access")
-                }
+            getSupermarketImformation()
+    
             } else {
                 print("Location services are not enabled")
             }
-            
-            getSupermarketImformation()
-        }
         
-        
+    
         
     }
     
@@ -216,7 +218,7 @@ extension MapViewController: CLLocationManagerDelegate {
         guard let location = locations.first else {
             return
         }
-        mapView?.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+        
         locationManager.stopUpdatingLocation()
 //        self.showCurrentLocation()
     }

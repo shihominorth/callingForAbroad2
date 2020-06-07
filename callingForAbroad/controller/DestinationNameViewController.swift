@@ -23,6 +23,7 @@ class DestinationNameViewController: UIViewController {
     var item: Plan?
     var indexPath = IndexPath()
     var text: String?
+    var original: String?
     
     @IBOutlet weak var label: UILabel!
     @IBOutlet weak var searchBar: UISearchBar!
@@ -96,12 +97,10 @@ class DestinationNameViewController: UIViewController {
         
         for timezone in cityNamesTimezone {
             let regionFromCityNamesTimeZone = timezone.split(separator: "/")
-            
             if regionName == regionFromCityNamesTimeZone[0] {
                 arr.append(String(timezone))
             }
         }
-    
         
         return arr
     }
@@ -112,16 +111,24 @@ class DestinationNameViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         if item?.destinationName != nil {
+            
             searchBar.text = item?.destinationName
             placeLabel.text = item?.destinationName
+            original = item?.destinationName
+        
         }
         else if text != "" {
+           
             searchBar.text = text
             placeLabel.text = text
+            original = text
+        
         }
         else {
+        
             searchBar.text = ""
             placeLabel.text = "Type the place"
+        
         }
         
         tableView.delegate = self
@@ -130,39 +137,8 @@ class DestinationNameViewController: UIViewController {
         searchBar.delegate = self
         
         // textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
+        tableView.tableFooterView = UIView()
     }
-    
-    
-    
-    //       @objc func showUpPicker() {
-    //           self.picker = UIPickerView(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 216))
-    //           self.picker?.delegate = self
-    //           self.picker?.dataSource = self
-    //           textField.inputView = self.picker
-    //
-    //           // ToolBar
-    //           let toolBar = UIToolbar()
-    //           toolBar.barStyle = .default
-    //           toolBar.isTranslucent = true
-    //           toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
-    //           toolBar.sizeToFit()
-    //
-    //           // Adding Button ToolBar
-    //           let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(LocalNameViewController.doneClick))
-    //           let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-    //           let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(LocalNameViewController.cancelClick))
-    //           toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-    //           toolBar.isUserInteractionEnabled = true
-    //           textField.inputAccessoryView = toolBar
-    //       }
-    //
-    //       //MARK:- Button
-    //       @objc func doneClick() {
-    //           textField.resignFirstResponder()
-    //       }
-    //       @objc func cancelClick() {
-    //           textField.resignFirstResponder()
-    //       }
     
     /*
      // MARK: - Navigation
@@ -173,7 +149,20 @@ class DestinationNameViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        searchBar.resignFirstResponder()
+            self.view.frame.origin.y = -15
+            
+            if searchBar.isFirstResponder == false {
+                sender.isEnabled = false
+            }
+    }
     
+    @IBAction func cancel(_ sender: Any) {
+        item?.destinationName = original
+        navigationController?.popViewController(animated: true)
+    }
+        
 }
 
 
@@ -196,11 +185,6 @@ extension DestinationNameViewController: UITableViewDataSource {
             }
         }
         
-        //        for region in regions {
-        //            arr = nameCities(regionName: region)
-        //            return arr.count
-        //        }
-        //
         return 0
     }
     
@@ -214,7 +198,8 @@ extension DestinationNameViewController: UITableViewDataSource {
             if indexPath.section == index {
                 
                 cities = nameCities(regionName: region)
-                cell.label.text = cities[indexPath.row]
+                let onlyCityName = cities[indexPath.row].split(separator: "/")
+                cell.label.text = String(onlyCityName.last!)
             }
         }
         
@@ -229,23 +214,35 @@ extension DestinationNameViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-         let regions = nameRegion()
         
-               for (index, region) in regions.enumerated() {
-                   if indexPath.section == index {
-
-                       let cities = nameCities(regionName: region)
-                       item?.destinationName = cities[indexPath.row]
-                    placeLabel.text = cities[indexPath.row]
-                     
-                   }
-               }
+        searchBar.resignFirstResponder()
+        let regions = nameRegion()
+        
+        for (index, region) in regions.enumerated() {
+            if indexPath.section == index {
+                
+                let cities = nameCities(regionName: region)
+                item?.destinationName = cities[indexPath.row]
+                placeLabel.text = cities[indexPath.row]
+                
+            }
+        }
         
         
         
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//        self.view.frame.origin.y = -15
+//    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+          searchBar.resignFirstResponder()
+          self.view.frame.origin.y = -15
+      }
     
 }
 
@@ -263,6 +260,8 @@ extension DestinationNameViewController: UISearchBarDelegate {
         if searchBar.text != "" {
             
             let text = searchBar.text!
+            
+            cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
             
             for city in cityNamesTimezone {
                 
@@ -283,9 +282,7 @@ extension DestinationNameViewController: UISearchBarDelegate {
         }
         
     }
-    
-    
-    
+
     
     func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
@@ -293,36 +290,8 @@ extension DestinationNameViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         self.searchBar.endEditing(true)
-//        navigationController?.popViewController(animated: true)
+        searchBar.becomeFirstResponder()
+        //        navigationController?.popViewController(animated: true)
     }
     
 }
-
-//extension DestinationNameViewController: UIPickerViewDelegate {
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//          print(row)
-//          return cityNamesTimezone[row]
-//      }
-//
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 40.0
-//    }
-//}
-//extension DestinationNameViewController: UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return cityNamesTimezone.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        textField.text = cityNamesTimezone[row]
-//    }
-//
-//
-//}

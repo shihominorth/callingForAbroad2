@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import CoreLocation
 
 class MenuTableViewController: UITableViewController {
+    
+    private let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,6 +20,7 @@ class MenuTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        locationManager.delegate = self
     }
 
     // MARK: - Table view data source
@@ -59,6 +63,12 @@ class MenuTableViewController: UITableViewController {
         
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 1 {
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
 
     /*
     // Override to support conditional editing of the table view.
@@ -104,5 +114,34 @@ class MenuTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier ==  "mapSegue" {
+            return false
+        }
+        return true
+    }
 
+}
+
+extension MenuTableViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status
+        {
+        case .notDetermined:
+            print("未設定")
+        case .authorizedAlways:
+              performSegue(withIdentifier: "mapSegue", sender: nil)
+            print("常に")
+        case .authorizedWhenInUse:
+              performSegue(withIdentifier: "mapSegue", sender: nil)
+            print("使用時のみ")
+        case .denied:
+            print("拒否")
+        case .restricted:
+            print("機能制限")
+        default:
+            break
+        }
+    }
 }

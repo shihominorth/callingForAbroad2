@@ -11,10 +11,11 @@ import UIKit
 class DestinationTimeAddingTableViewCell: UITableViewCell {
     
 
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var destinationTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel:UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
-        label.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
+        destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
        }
        
     func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String{
@@ -25,6 +26,7 @@ class DestinationTimeAddingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The time in where he/she/they are"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

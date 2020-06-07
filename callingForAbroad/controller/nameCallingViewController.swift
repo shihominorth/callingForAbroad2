@@ -21,6 +21,7 @@ protocol nameCallingViewControllerDelegate2: class {
 class nameCallingViewController: UIViewController {
 
     var item: Plan?
+    var original: String?
     
     var text = ""
     var indexPath = IndexPath()
@@ -49,18 +50,31 @@ class nameCallingViewController: UIViewController {
         navigationController?.popViewController(animated: true)
         
     }
+    @IBAction func cancel(_ sender: Any) {
+        item?.nameCallingFor = original
+        navigationController?.popViewController(animated: true)
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+
         if item?.nameCallingFor != nil {
             textField.text = item?.nameCallingFor
+            original = item?.nameCallingFor
         }
-        else if text != "" {
-         textField.text = text
+        
+        if text != "" {
+            textField.text = text
+            original = text
+        } else {
+            self.navigationItem.rightBarButtonItem!.isEnabled = false
         }
+        
+        textField.delegate = self
     }
     
 
@@ -74,4 +88,18 @@ class nameCallingViewController: UIViewController {
     }
     */
 
+}
+
+extension nameCallingViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        self.navigationItem.rightBarButtonItem!.isEnabled = true
+        return true
+    
+    }
 }

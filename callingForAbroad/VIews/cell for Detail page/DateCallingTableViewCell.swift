@@ -22,6 +22,7 @@ enum DateFormatType: String {
 class DateCallingTableViewCell: UITableViewCell {
 
     @IBOutlet weak var DateCallingLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
         DateCallingLabel.text = date.convertToString(dateformat: .date, timeZoneIdentifier: timeZoneIdentifier)
@@ -34,6 +35,8 @@ class DateCallingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The date you will call..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -11,6 +11,7 @@ import UIKit
 class DestinationTimeTableViewCell: UITableViewCell {
     
     @IBOutlet weak var destinationTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
         destinationTimeLabel.text = date.convertToString(dateformat: .dateWithTime, timeZoneIdentifier: timeZoneIdentifier)
@@ -23,6 +24,8 @@ class DestinationTimeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The time in where he/she/they are"
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

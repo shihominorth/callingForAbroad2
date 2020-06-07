@@ -8,15 +8,17 @@
 
 import UIKit
 
-class JetLagAddingTableViewCell: UITableViewCell {
+class TimeDifferenceAddingTableViewCell: UITableViewCell {
 
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var timeDifferenceLabel: UILabel!
+    @IBOutlet weak var questionLabel:UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The time difference"
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -32,6 +32,7 @@ class LocalNameViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var text = ""
+    var original: String?
     
     weak var delegate:LocalNameViewControllerDelegate?
     
@@ -58,20 +59,7 @@ class LocalNameViewController: UIViewController {
         }
         
         return names
-        //        var names:[String] = []
-        //        cityNamesTimezone.map { $0 -> [String] in
-        //            var array:[String] = []
-        //            let region = $0.split(separator: "/")
-        //
-        //            if !array.contains(String(region[0])) {
-        //                array.append(String(region[0]))
-        //            }
-        //
-        //            return array
-        //        }
-        
-        
-        
+ 
     }
     
     func nameCities(regionName: String) -> [String] {
@@ -80,9 +68,10 @@ class LocalNameViewController: UIViewController {
         
         for timezone in cityNamesTimezone {
             let regionFromCityNamesTimeZone = timezone.split(separator: "/")
-            
             if regionName == regionFromCityNamesTimeZone[0] {
+           
                 arr.append(String(timezone))
+                
             }
         }
         
@@ -119,31 +108,29 @@ class LocalNameViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         if item?.localName != nil {
+            
             searchBar.text = item!.localName
             placeLabel.text = item!.localName
+            original = item!.localName
+        
         }
         else if text != "" {
+            
             searchBar.text = text
             placeLabel.text = text
+            original = text
         }
         else {
             searchBar.text = ""
-            placeLabel.text = "type the name of the city"
+            placeLabel.text = TimeZone.current.identifier
         }
-        
-        //picker.isHidden = true
-        
-        //picker.reloadAllComponents()
-        
-        print(cityNamesTimezone)
-        //
-        //        textField.addTarget(self, action: #selector(showUpPicker), for: .touchDown)
-        //
+
         
         tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
         
+        tableView.tableFooterView = UIView()
     }
     
     
@@ -170,6 +157,10 @@ class LocalNameViewController: UIViewController {
     //    }
     
     //MARK:- Button
+    @IBAction func cancel(_ sender: Any) {
+        item?.localName = original
+        navigationController?.popViewController(animated: true)
+    }
     //    @objc func doneClick() {
     //        textField.resignFirstResponder()
     //    }
@@ -187,6 +178,16 @@ class LocalNameViewController: UIViewController {
      }
      */
     
+    @IBAction func tapped(_ sender: UITapGestureRecognizer) {
+        
+        searchBar.resignFirstResponder()
+        self.view.frame.origin.y = -15
+        
+        if searchBar.isFirstResponder == false {
+            sender.isEnabled = false
+        }
+    }
+   
 }
 
 extension LocalNameViewController: UITableViewDelegate {
@@ -203,6 +204,7 @@ extension LocalNameViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
+      
         let regions = nameRegion()
         var arr:[String] = []
         
@@ -231,9 +233,14 @@ extension LocalNameViewController: UITableViewDataSource {
         
         for (index, region) in regions.enumerated() {
             if indexPath.section == index {
-                
+                if region == "GMT" {
+                    cities = nameCities(regionName: region)
+                    cell.label.text = cities[indexPath.row]
+                } else {
                 cities = nameCities(regionName: region)
-                cell.label.text = cities[indexPath.row]
+                let onlyCityName = cities[indexPath.row].split(separator: "/")
+                    cell.label.text = String(onlyCityName.last!)
+                }
             }
         }
         
@@ -250,6 +257,9 @@ extension LocalNameViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        searchBar.resignFirstResponder()
+
          let regions = nameRegion()
         
                for (index, region) in regions.enumerated() {
@@ -265,53 +275,22 @@ extension LocalNameViewController: UITableViewDataSource {
         
         tableView.deselectRow(at: indexPath, animated: true)
     }
-}
-
-
-//extension LocalNameViewController: UIPickerViewDelegate {
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//          print(row)
-//          return cityNamesTimezone[row]
-//      }
-//
-//    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
-//        return 40.0
-//    }
-//}
-//extension LocalNameViewController: UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return cityNamesTimezone.count
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        textField.text = cityNamesTimezone[row]
-////        self.view.endEditing(true)
-//    }
-//
-
-//}
-
-extension LocalNameViewController: UITextFieldDelegate {
-    //    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-    //        self.view.endEditing(false)
-    //
-    //        return true
-    //    }
     
-    //    func textFieldDidBeginEditing(_ textField: UITextField) {
-    //        self.showUpPicker(textField: self.textField)
-    //    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        searchBar.resignFirstResponder()
+//        self.view.frame.origin.y = -15
+//
+//    }
+//
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+        self.view.frame.origin.y = -15
+    }
 }
-
 
 extension LocalNameViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         var temp: [String] = []
@@ -319,6 +298,7 @@ extension LocalNameViewController: UISearchBarDelegate {
         if searchBar.text != "" {
 
             let text = searchBar.text!
+            cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
 
             for city in cityNamesTimezone {
     
@@ -326,15 +306,17 @@ extension LocalNameViewController: UISearchBarDelegate {
                     temp.append(city)
                 }
             }
-            print(temp)
 
             cityNamesTimezone.removeAll()
             cityNamesTimezone = temp
 
             tableView.reloadData()
+            
         } else {
+            
             cityNamesTimezone = TimeZone.knownTimeZoneIdentifiers
             tableView.reloadData()
+            
         }
 
     }
@@ -344,6 +326,7 @@ extension LocalNameViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.becomeFirstResponder()
             self.searchBar.endEditing(true)
     //        navigationController?.popViewController(animated: true)
     }

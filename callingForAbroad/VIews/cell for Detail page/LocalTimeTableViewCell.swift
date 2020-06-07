@@ -12,6 +12,7 @@ class LocalTimeTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var LocalTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel: UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
         LocalTimeLabel.text = date.convertToString(dateformat: .time, timeZoneIdentifier: timeZoneIdentifier)
@@ -24,6 +25,8 @@ class LocalTimeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "What time you will call..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

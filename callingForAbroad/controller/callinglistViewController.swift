@@ -11,10 +11,6 @@ import UIKit
 class callinglistViewController: UITableViewController {
     
     let callingCelllist = CallingCellList()
-//    let planDelegate = PlanDelegate()
-//    var section1: Dictionary = [String:NSMutableArray]()
-//    var section2: Dictionary = [String:NSMutableArray]()
-//    var sections: Array = [Dictionary<String,NSMutableArray>]()
     
     private let appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -22,11 +18,6 @@ class callinglistViewController: UITableViewController {
     private var plans:[Plan]? = []
     
     @IBOutlet weak var addButton: UIBarButtonItem!
-    
-    
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,22 +27,38 @@ class callinglistViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         
         self.navigationItem.rightBarButtonItems = [self.editButtonItem, self.addButton]
-        tableView.allowsMultipleSelectionDuringEditing = true
+     
         
     }
     
     fileprivate func getData() {
+        
         do {
+            
             plans = try context.fetch(Plan.fetchRequest())
+            
         } catch let error as NSError {
             print("Could not fetch \(error), \(error.userInfo)")
         }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
         getData()
+        
+        plans = plans?.sorted {
+            $0.order < $1.order
+        }
+        
+        for plan in plans! {
+            print("original: \(plan.nameCallingFor!)")
+            print(plan.order)
+        }
+        
         tableView.reloadData()
+        
     }
     
     //    @objc func deleteItems(_ sender: Any) {
@@ -72,7 +79,6 @@ class callinglistViewController: UITableViewController {
         
         super.setEditing(editing, animated: animated)
         tableView.setEditing(tableView.isEditing, animated: true)
-        
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -129,8 +135,9 @@ class callinglistViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == UITableViewCell.EditingStyle.delete {
-            getData()
+        
+        if editingStyle == .delete {
+            
             context.delete((plans?[indexPath.row])!)
             plans?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.automatic)
@@ -142,13 +149,20 @@ class callinglistViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        getData()
+        
         let item = plans![sourceIndexPath.row]
-        //        context.delete(item)
-        //        context.insert(item)
-        plans![sourceIndexPath.row].setValue(destinationIndexPath.row, forKey: "order")
+        
+        // MARK: can't chage order! // solved!
+        //        plans![sourceIndexPath.row].setValue(Int64(destinationIndexPath.row), forKey: "order")
+        //        plans![destinationIndexPath.row].setValue(Int64(sourceIndexPath.row), forKey: "order")
+        //        appDelegate.saveContext()
+        
         plans?.remove(at: sourceIndexPath.row)
         plans?.insert(item, at: destinationIndexPath.row)
+        
+        for (index, plan) in plans!.enumerated() {
+            plan.order = Int64(index)
+        }
         
         appDelegate.saveContext()
     }
@@ -164,16 +178,16 @@ class callinglistViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addItemSegue" {
-            if let addItemViewController = segue.destination as? addingCallingItemTableViewController {
+            if let addItemViewController = segue.destination as? AddingViewController {
                 addItemViewController.delegate = self
                 addItemViewController.isEditting = false
             }
         }
         else if segue.identifier == "showDetailSegue" {
-            if let detailVC = segue.destination as? DetailCallingTableViewController {
+            if let detailVC = segue.destination as? EditingViewController {
                 if let cell = sender as? UITableViewCell, let indexPath = tableView.indexPath(for: cell) {
                     let item = plans?[indexPath.row]
-                    detailVC.item = item!
+                    detailVC.edittedItem = item!
                     detailVC.indexPath = indexPath
                     detailVC.delegate = self
                     detailVC.isFirstDateValuePassed = true
@@ -185,22 +199,21 @@ class callinglistViewController: UITableViewController {
 }
 
 extension callinglistViewController: AddItemTableViewControllerDelegate {
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: callingCellItem) {
+    func addItemViewController(_ controller: AddingViewController, didFinishAdding item: callingCellItem) {
         guard let rowIndex = plans?.count else { return }
         let item = addValue(item: item)
         plans?.append(item)
         appDelegate.saveContext()
-        //        self.callingCelllist.callingList.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
     
-    func addItemTableViewControllerDidCancel(_ controller: addingCallingItemTableViewController) {
+    func addItemTableViewControllerDidCancel(_ controller: AddingViewController) {
         navigationController?.popViewController(animated: true)
     }
     
-    func addItemViewController(_ controller: addingCallingItemTableViewController, didFinishAdding item: Plan) {
+    func addItemViewController(_ controller: AddingViewController, didFinishAdding item: Plan) {
         guard let rowIndex = plans?.count else { return }
         appDelegate.saveContext() 
         plans?.append(item)
@@ -219,7 +232,7 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
         plan.destinationTime = item.destinationTime
         plan.notification = item.notification
         plan.placeCallingAt = item.placeCallingAt
-        plan.order = plans?.count as NSObject?
+        plan.order = Int64(plans!.count)
         
         
         return plan
@@ -228,24 +241,38 @@ extension callinglistViewController: AddItemTableViewControllerDelegate {
     
 }
 
-extension callinglistViewController: DetailCallingTableViewControllerDelegate {
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
+extension callinglistViewController: EdittingViewControllerDelegate {
+    
+    func DetailCallingTableViewController(_ controller: EditingViewController, cancelItem item: callingCellItem, indexPath: IndexPath) {
         
-        print(item.localDate!)
-        appDelegate.saveContext()
-        getData()
+        let plan = addValue(item: item)
+        plan.order = Int64(indexPath.row)
+        context.delete(plans![indexPath.row])
+        context.insert(plan)
+        plans?.remove(at: indexPath.row)
+        plans?.insert(plan, at: indexPath.row)
         
         self.tableView.reloadData()
     }
     
-    func DetailCallingTableViewController(_ controller: DetailCallingTableViewController, addNewItem item: Plan, indexPath: IndexPath){
+    func DetailCallingTableViewController(_ controller: EditingViewController, didFinishEditting item: Plan, indexPath: IndexPath) {
+        
+        print(item.nameCallingFor!)
+        //        appDelegate.saveContext()
+        //        getData()
+        
+        self.tableView.reloadData()
+    }
+    
+    func DetailCallingTableViewController(_ controller: EditingViewController, addNewItem item: Plan, indexPath: IndexPath){
         guard let rowIndex = plans?.count else { return }
-        item.order = plans?.count as NSObject?
+        item.order = Int64(plans!.count)
         appDelegate.saveContext()
         plans?.append(item)
         let indexPath = IndexPath(row: rowIndex, section: 0)
         let indexPaths = [indexPath]
         tableView.insertRows(at: indexPaths, with: .automatic)
     }
+    
     
 }

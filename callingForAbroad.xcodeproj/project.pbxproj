@@ -66,7 +66,7 @@
 		6FB86C1423E9417B00672851 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C1323E9417B00672851 /* Location.swift */; };
 		6FB86C1623E941C100672851 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C1523E941C100672851 /* Photo.swift */; };
 		6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */; };
-		6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */; };
+		6FB94E3723AAE28300BDE9E0 /* TimeDifferenceAddingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FB94E3623AAE28300BDE9E0 /* TimeDifferenceAddingTableViewCell.swift */; };
 		6FECA0F723750BCE00B7DD8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */; };
 		6FECA0F923750BCE00B7DD8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */; };
 		6FECA0FB23750BCE00B7DD8B /* callinglistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FECA0FA23750BCE00B7DD8B /* callinglistViewController.swift */; };
@@ -140,7 +140,7 @@
 		6FB86C1323E9417B00672851 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		6FB86C1523E941C100672851 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		6FB86C2423E9DEFD00672851 /* SeeDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeeDetailView.swift; sourceTree = "<group>"; };
-		6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JetLagAddingTableViewCell.swift; sourceTree = "<group>"; };
+		6FB94E3623AAE28300BDE9E0 /* TimeDifferenceAddingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDifferenceAddingTableViewCell.swift; sourceTree = "<group>"; };
 		6FECA0F323750BCE00B7DD8B /* checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = checklist.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6FECA0F623750BCE00B7DD8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6FECA0F823750BCE00B7DD8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -231,7 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				6F150B9923AAE00B00908DEB /* NameCallingForAddingTableViewCell.swift */,
-				6FB94E3623AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift */,
+				6FB94E3623AAE28300BDE9E0 /* TimeDifferenceAddingTableViewCell.swift */,
 				6F150B9D23AAE04A00908DEB /* LocalDateAddingTableViewCell.swift */,
 				6F8222A0242F21EC0020ACF7 /* LocalNameAddingTableViewCell.swift */,
 				6F150B9F23AAE05500908DEB /* LocalTimeAddingTableViewCell.swift */,
@@ -505,7 +505,7 @@
 				6FFCD85824417966007CC109 /* LocalNortificationDelegate.swift in Sources */,
 				6F6073402441A3BC008E6817 /* Plan+CoreDataClass.swift in Sources */,
 				6F82229F242F1D8A0020ACF7 /* EdittingNameCallingForTableViewCell.swift in Sources */,
-				6FB94E3723AAE28300BDE9E0 /* JetLagAddingTableViewCell.swift in Sources */,
+				6FB94E3723AAE28300BDE9E0 /* TimeDifferenceAddingTableViewCell.swift in Sources */,
 				6FB86C2523E9DEFD00672851 /* SeeDetailView.swift in Sources */,
 				6F150B6D23AA024300908DEB /* LocalTimeTableViewCell.swift in Sources */,
 				6FB86C1223E9415A00672851 /* Geometry.swift in Sources */,

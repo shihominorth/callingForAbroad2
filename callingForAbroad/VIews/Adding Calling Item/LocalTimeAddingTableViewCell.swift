@@ -10,10 +10,11 @@ import UIKit
 
 class LocalTimeAddingTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var localTimeLabel: UILabel!
+    @IBOutlet weak var questionLabel:UILabel!
     
     func updateText(date: Date, timeZoneIdentifier: String, indexNumber: Int) {
-        label.text = date.convertToString(dateformat: .time, timeZoneIdentifier: timeZoneIdentifier)
+        localTimeLabel.text = date.convertToString(dateformat: .time, timeZoneIdentifier: timeZoneIdentifier)
           }
           
        func giveText(date: Date, timeZoneIdentifier: String, indexNumber: Int) -> String{
@@ -23,6 +24,7 @@ class LocalTimeAddingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "What time you will call..."
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

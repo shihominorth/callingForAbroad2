@@ -35,6 +35,8 @@ class DateCallingTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The date you will call..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

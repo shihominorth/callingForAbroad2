@@ -16,6 +16,8 @@ class DetailPlaceCallingAtTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "Where you will call at..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

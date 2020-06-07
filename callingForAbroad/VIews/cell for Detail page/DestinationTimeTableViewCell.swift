@@ -24,6 +24,8 @@ class DestinationTimeTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "The time in where he/she/they are"
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

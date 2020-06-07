@@ -22,6 +22,9 @@ class AddingViewController: UIViewController {
     
     var inputDate = Date() {
         didSet {
+            
+            isFirstOpenDatePicker = false
+            
             self.tableView.beginUpdates()
 
             self.tableView.reloadRows(at: [IndexPath(row: 0, section: 1)], with: .bottom)

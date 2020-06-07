@@ -16,6 +16,8 @@ class NotificaitonTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.text = "Notification before..."
+
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

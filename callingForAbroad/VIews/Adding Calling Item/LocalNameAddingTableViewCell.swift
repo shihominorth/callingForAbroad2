@@ -18,7 +18,7 @@ class LocalNameAddingTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        questionLabel.text = "You will call..."
+        questionLabel.text = "You are in..."
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

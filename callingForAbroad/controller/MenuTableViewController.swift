@@ -39,22 +39,25 @@ class MenuTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         switch indexPath.row {
+       
         case 0:
-            let cell = (tableView.dequeueReusableCell(withIdentifier: "account Switch", for: indexPath) as? AccountSwitchingTableViewCell)!
-
-            // Configure the cell...
-            
-            cell.accountSwitchinglabel.text = "Account Switch"
-
-            return cell
-        case 1:
             let cell = (tableView.dequeueReusableCell(withIdentifier: "map", for: indexPath) as? MapTableViewCell)!
 
             // Configure the cell...
             
             cell.label?.text = "Find Wifi"
-
+            
             return cell
+            
+        case 1:
+            let cell = (tableView.dequeueReusableCell(withIdentifier: "account Switch", for: indexPath) as? AboutTableViewCell)!
+            
+            // Configure the cell...
+            
+            cell.aboutlabel.text = "About"
+            
+            return cell
+            
         default:
             break
         }
@@ -65,7 +68,9 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if indexPath.row == 1 {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.row == 0 {
             locationManager.requestWhenInUseAuthorization()
         }
     }

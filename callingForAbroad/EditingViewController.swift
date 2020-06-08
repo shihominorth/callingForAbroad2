@@ -19,7 +19,7 @@ class EditingViewController: UIViewController {
     weak var delegate: EdittingViewControllerDelegate?
     
     var datePickerIndexPath: IndexPath?
-    //var inputDates:[Date] = []
+
     var inputDates = Date()
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     private let context =  (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext

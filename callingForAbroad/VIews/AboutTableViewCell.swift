@@ -8,10 +8,10 @@
 
 import UIKit
 
-class AccountSwitchingTableViewCell: UITableViewCell {
+class AboutTableViewCell: UITableViewCell {
 
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var accountSwitchinglabel: UILabel!
+    @IBOutlet weak var aboutlabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -8,6 +8,7 @@ target 'checklist' do
   # Pods for checklist'
 pod 'SideMenu'
 pod 'DZNEmptyDataSet'
+pod 'Gecco'
 
 # google api
 pod 'GoogleMaps'

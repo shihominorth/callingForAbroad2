@@ -1,5 +1,6 @@
 PODS:
   - DZNEmptyDataSet (1.8.1)
+  - Gecco (1.0.0)
   - GoogleMaps (3.9.0):
     - GoogleMaps/Maps (= 3.9.0)
   - GoogleMaps/Base (3.9.0)
@@ -11,6 +12,7 @@ PODS:
 
 DEPENDENCIES:
   - DZNEmptyDataSet
+  - Gecco
   - GoogleMaps
   - GooglePlaces
   - SideMenu
@@ -18,16 +20,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - DZNEmptyDataSet
+    - Gecco
     - GoogleMaps
     - GooglePlaces
     - SideMenu
 
 SPEC CHECKSUMS:
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Gecco: e662f949821e742997787bad7b730ccc0052e43c
   GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
   GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
 
-PODFILE CHECKSUM: e9326ba710120acdfd5327570e9a8825afc8c68d
+PODFILE CHECKSUM: 1876138376ea6c9ee85737023b76092887c8c497
 
 COCOAPODS: 1.9.1
